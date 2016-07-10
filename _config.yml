@@ -17,7 +17,7 @@ baseurl: ""
 title: Kişisel Blog
 
 # Short description of your site
-description: A virtual proof that name is awesome!
+description: .net teknolojileri, docker, sql ve nosql veri tabanları, performans optimizasyonu ve verimlilik artıran geliştirici araçları ile ilgili yazılar
 
 # --- Navigation bar options --- #
 
@@ -69,11 +69,11 @@ url-pretty: "www.gokhansengun.com"  # eg. "deanattali.com/beautiful-jekyll"
 # --- Don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Vancouver"
+timezone: "Europe/Istanbul"
 markdown: kramdown
 highlighter: rouge
-permalink: /:year-:month-:day-:title/
-paginate: 5
+permalink: /:title/
+paginate: 8
 
 kramdown:
   input: GFM
@@ -150,6 +150,3 @@ prose:
 
 gems:
   - jekyll-paginate
-
-# Beautiful Jekyll / Dean Attali
-# 2fc73a3a967e97599c9763d05e564189
