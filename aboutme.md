@@ -4,7 +4,7 @@ title: Hakkımda
 subtitle:
 ---
 
-Netaş'ta Yeni Ürün Geliştirme ve Ar-Ge İş Geliştirme Müdürü olarak çalışıyorum. İstanbul'da yaşıyorum, evliyim ve bir çocuk babasıyım :)
+Netaş'ta Yeni Ürün Geliştirme ve Ar-Ge İş Geliştirme Müdürü olarak çalışıyorum. İstanbul'da yaşıyorum, evliyim ve bir çocuk babasıyım :) İyi düzeyde İngilizce orta düzeyde de Almanca biliyorum. 
 
 1984 yılında Malatya'da doğdum. ilk, orta ve lise öğrenimimi Malatya'da tamamladıktan sonra 2001 yılında Boğaziçi Üniversitesi İşletme Bölümü'nde yüksek öğrenimime başladım. 2003 yılında tekrar o zamanki adıyla Öğrenci Seçme Sınavına (ÖSS) girerek yine Boğaziçi Üniversitesi Elektrik-Elektronik Mühendisliği Bölümü'nü kazandım ve öğrenimime bu bölümde devam ettim. Bu kısım ilginç biraz belki bir blog yazısında bu kısmı da ele alma fırsatı bulurum.
 
@@ -30,7 +30,7 @@ Aşağıdaki konularla yakından ilgileniyorum, bu blogda çoğunlukla bu konula
 - 3rd parti geliştirme araçları ve kütüphaneler (electron, flyway, log4net, Moq, xUnit)
 - Node.js ve Go dillerinde deneysel çalışmalar
 - HTML5, CSS, LESS, TypeScript, AngularJS, Bootstrap kullanarak SPA (Single Page Application) tasarımıs
-- Git, Apache JMeter, Apache Ab, Fiddler, IIS, WinDbg, Jekyll
+- Git, Apache JMeter, Apache Ab, Fiddler, IIS, WinDbg, Jekyll, Gulp
 - Web uygulama güvenliği
 - HTTP, TCP optimizasyonu
 - Raspberry Pi üzerinde Linux + Mono kurulumu ile uygulama kurgusu
