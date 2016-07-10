@@ -322,7 +322,8 @@ footer .theme-by {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .post-preview .post-read-more {
-  font-weight: 800;
+  font-weight: 700;
+  font-style: italic;
 }
 
 @media only screen and (min-width: 768px) {
