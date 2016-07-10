@@ -4,7 +4,13 @@ title: Hakkımda
 subtitle:
 ---
 
-Netaş'ta Yeni Ürün Geliştirme ve Ar-Ge İş Geliştirme Müdürü olarak çalışıyorum.
+Netaş'ta Yeni Ürün Geliştirme ve Ar-Ge İş Geliştirme Müdürü olarak çalışıyorum. İstanbul'da yaşıyorum, evliyim ve bir çocuk babasıyım :)
+
+1984 yılında Malatya'da doğdum. ilk, orta ve lise öğrenimimi Malatya'da tamamladıktan sonra 2001 yılında Boğaziçi Üniversitesi İşletme Bölümü'nde yüksek öğrenimime başladım. 2003 yılında tekrar o zamanki adıyla Öğrenci Seçme Sınavına (ÖSS) girerek yine Boğaziçi Üniversitesi Elektrik-Elektronik Mühendisliği Bölümü'nü kazandım ve öğrenimime bu bölümde devam ettim. Bu kısım ilginç biraz belki bir blog yazısında bu kısmı da ele alma fırsatı bulurum.
+
+Profesyonel iş yaşamıma gömülü sistemler üzerinde yazılım geliştirerek başladım. 2006'dan 2012 sonuna kadar gömülü sistemler (VxWorks ve Embedded Linux) üzerinde C ve C++ kullanarak misyon-kritik (mission critical) sistemler için yazılımlar geliştirdim. Bu süreç boyunca biraz şans biraz da fırsatların ortaya çıkmasıyla işletim sistemi seviyesinden başlayarak scheduling, file system, network stack vb konularda derin bilgiler elde ettim. 2012 sonunda kariyerimde değişiklik yapmak üzere daha önce boş zamanlarımda üzerinde çalıştığım uygulama yazılımı geliştirme alanına geçtim. Gömülü yazılım geliştirme tecrübelerimi uygulama geliştirme alanında harmanlayarak özellikle performans optimizasyonu ve uygulama dayanıklılığı (7x24 çalışma) konularında farklı deneyimler elde ettim ve etmeye devam ediyorum.
+
+Bu blog'da gerek gömülü yazılım geliştirme gerekse de uygulama yazılımı geliştirme alanındaki tecrübelerimi aktarmayı hedefliyorum. 
 
 ### İletişim
 ____
@@ -27,6 +33,8 @@ Aşağıdaki konularla yakından ilgileniyorum, bu blogda çoğunlukla bu konula
 - Git, Apache JMeter, Apache Ab, Fiddler, IIS, WinDbg, Jekyll
 - Web uygulama güvenliği
 - HTTP, TCP optimizasyonu
+- Raspberry Pi üzerinde Linux + Mono kurulumu ile uygulama kurgusu
+- Raspberry Pi üzerinde C# tarafından çağrılmak üzere C ve C++ ile yazılmış kütüphanelerin .NET Interop ile .NET tarafından kullanılabilir hale getirilmesi
 
 ### Özgeçmiş
 ____
@@ -37,7 +45,7 @@ ____
 
 #### 2007:
 
-> * Boğaziçi Üniversitesi Elektrik-Elektronik Mühendisliği Bölümünden mezun oldum.
+> * Boğaziçi Üniversitesi Elektrik-Elektronik Mühendisliği Bölümü'nden mezun oldum.
 > * Netaş'ta telefon santrallerinin işletim sistemi yazılımına (gömülü sistem) destek verilen bölümde çalışmaya başladım.
 
 #### 2009:
