@@ -14,7 +14,7 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: Kişisel Blog
+title: Gökhan Şengün
 
 # Short description of your site
 description: .net teknolojileri, docker, sql ve nosql veri tabanları, performans optimizasyonu ve verimlilik artıran geliştirici araçları ile ilgili yazılar
@@ -25,7 +25,7 @@ description: .net teknolojileri, docker, sql ve nosql veri tabanları, performan
 navbar-links:
   Blog: ""
   Hakkımda: "aboutme"
-  Arama: "search"
+  #Arama: "search"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
@@ -46,7 +46,7 @@ author:
  
 # Select which links to show in the footer
 footer-links-active:
-  rss: false
+  rss: true
   facebook: true
   email: true
   twitter: true
