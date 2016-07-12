@@ -14,12 +14,12 @@ layout: base
       <ul class="pager blog-pager">
         {% if page.previous.url %}
         <li class="previous">
-          <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Önceki Yazı</a>
+          <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; ÖNCEKİ YAZI</a>
         </li>
         {% endif %}
         {% if page.next.url %}
         <li class="next">
-          <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Sonraki Yazı &rarr;</a>
+          <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">SONRAKİ YAZI &rarr;</a>
         </li>
         {% endif %}
       </ul>
