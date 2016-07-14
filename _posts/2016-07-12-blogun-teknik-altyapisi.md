@@ -121,7 +121,6 @@ Daha önce de yazdığım gibi, komut satırından `$ jekyll new MyBlogSite` kom
 3. Favori tarayıcımızı açarak adres satırına blog'umuzun sunulduğu adresi `http://127.0.0.1:4000/` girerek sonucu görelim. Eğer aynı adımları takip ettiyseniz siz de aşağıdaki gibi bir çıktı görmelisiniz.
 
 	![Jekyll Scaffolded Site](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllScaffolded.png "Jekyll Scaffolded Site")
-	![Jekyll Scaffolded Site](JekyllScaffolded.png "Jekyll Scaffolded Site")
 
 4. `Ctrl + C` tuş kombinasyonu ile Jekyll'ın mini web sunucusunu durduralım. Blog sitesinin bulunduğu ana klasörde artık `_site` adlı klasör dikkatinizi çekecek. Jekyll konfigürasyon dosyalarındaki ayarlar, template'ler ve blog'ların yazıldığı markdown (ya da md) uzantılı dosyalardaki içeriği statik site olarak bu klasörün altında oluşturuyor. Blog'u oluşturduğunuz klasörde `tree _site` komutunu koşturarak statik sitenizin dosya yapısına göz atabilirsiniz.
 
