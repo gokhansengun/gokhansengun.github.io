@@ -53,8 +53,8 @@ Bu blog'da yer verilen adımları takip edebilmeniz için aşağıdaki koşullar
 Aşağıdaki adımları tamamlayarak Jekyll yardımı ile bir blog sitesi hazırlayacağız.
 
 * Denemeler yaparken zamandan kazanmak adına kendi bilgisayarımıza Jekyll kuracağız böylelikle blog'umuzu oluşturan statik sayfaları test amaçlı olarak kendi bilgisayarımızda hazırlayıp sunabileceğiz.
-* Sıfırdan bir site oluşturmak yerine zamandan kazanmak adına mevcut bir Jekyll template kullanacağız, bu template bize scaffold edilmiş bir blog verecek.
-* Kullandığımız template'in verdiği scaffold blog'u özelleştirerek isteklerimize göre konfigüre edeceğiz.
+* Sıfırdan bir site oluşturmak yerine zamandan kazanmak adına mevcut bir Jekyll teması kullanacağız, bu tema bize scaffold edilmiş, görselliği ve fonksiyonalitesi iyileştirilmiş bir blog verecek.
+* Kullandığımız temanın verdiği scaffold blog'u özelleştirerek isteklerimize göre konfigüre edeceğiz.
 * Blog sitemizi Github Pages'te yayınlayacağız.
 * Github Pages'te yayınladığımız blog sitemize başka bir URL'den nasıl yönlendirme yapacağımızı göreceğiz.
 
@@ -71,7 +71,7 @@ Jekyll, Ruby ile yazılan bir araç olduğu için geliştiricileri, Jekyll'ı bi
 
 Blog'umuz hazırlamaya başlamadan hem yaptığımız seçimlerin daha iyi anlaşılması hem de elimizin alışması ve ısınmak için Jekyll kullanarak çok basit bir web sitesi scaffold edelim ve bunu kendi bilgisayarımızdan lokal olarak sunup tarayıcıda görüntüleyelim.
 
-Daha önce de yazdığım gibi, komut satırından `$ jekyll new MyBlogSite` komutunu vererek çok basit anlamda bir blog sitesi scaffold ederek onun üzerinde çalışmaya başlayabiliriz. Eğer özgün bir tasarımı hedefliyorsanız bu yolla başlamalısınız fakat benim gibi daha kısa sürede tasarımını çok büyük oranda başkaları ile paylaşacağınız bir tasarıma razıysanız Jekyll Template'lerden birini seçerek başlamanız gerekecektir.
+Daha önce de yazdığım gibi, komut satırından `$ jekyll new MyBlogSite` komutunu vererek çok basit anlamda bir blog sitesi scaffold ederek onun üzerinde çalışmaya başlayabiliriz. Eğer özgün bir tasarımı hedefliyorsanız bu yolla başlamalısınız fakat benim gibi daha kısa sürede tasarımını çok büyük oranda başkaları ile paylaşacağınız bir tasarıma razıysanız Jekyll temalarından birini seçerek başlamanız gerekecektir.
 
 1. Komut satırını açıp web sitenizi yaratmak istediğiniz klasöre gidip `$ jekyll new MyBlogSite` komutunu çalıştırın. Aşağıdaki çıktıda da görebileceğiniz üzere Jekyll tek bir sayfadan `2016-07-15-welcome-to-jekyll.markdown` oluşan bir siteyi oluşturdu.
 
@@ -142,9 +142,27 @@ Daha önce de yazdığım gibi, komut satırından `$ jekyll new MyBlogSite` kom
 
 ### Kurulum Adımları
 
-Ben bir demo hazırlayabilmek için yeni bir email ve yeni bir Github hesabı açtım. Aşağıdaki demo'larda kullanacağım Github kullanıcı adım gsengundemo olacak. Adımları takip ederken bu kullanıcı adını gördüğünüz yerlerde kendi Github kullanıcı adınızı yazmanız gerektiğini tekrar hatırlatıp adımlara geçelim. 
+Ben bir demo hazırlayabilmek için yeni bir email ve yeni bir Github hesabı açtım. Aşağıdaki demo'larda kullanacağım Github kullanıcı adım `gsengundemo` olacak. Aşağıdaki adımları takip ederken bu kullanıcı adını gördüğünüz yerlerde kendi Github kullanıcı adınızı yazmanız gerektiğini tekrar hatırlatıp adımlara geçelim. 
 
-TODO: gseng -
+Bir önceki adımda Jekyll'in scaffold ettiği basit bir blog sitesini oluşturduk fakat sanırım sitenin görselliği ve fonksiyonalitesi benim gibi sizi de pek memnun etmedi. Daha önce de belirttiğim gibi blog sitemizi oluştururken yukarıdaki template'den başlamak yerine görsellik ve fonksiyonalitesi güçlendirilmiş ve ücretsiz olarak kullanıma sunulan Jekyll temalarından faydalanabiliriz. Birçok temanın ön izleme seçeneği ile sunulduğu [Jekyll Themes](http://themes.jekyllrc.org)'e göz atarak kendi beğeninize ve amacınıza yönelik bir tema seçebilirsiniz. Biz bu blog'da [Beautiful Jekyll](http://themes.jekyllrc.org/beautiful-jekyll/) adlı temayı kullanacağız. Başlamadan önce isterseniz tema'nın [tema'nın demo site](http://deanattali.com/beautiful-jekyll/)'sine ve bu blog yazısı sonunda oluşturacağımız [blog demo](https://gsengundemo.github.io) sitesine göz atabilirsiniz.
+
+1. [https://github.com/daattali/beautiful-jekyll](https://github.com/daattali/beautiful-jekyll) sayfasına giderek aşağıda görülen `fork` butonuna basın. Github'daki Beautiful Jekyll reposunu kendi account'unuz altına fork etmiş olacaksınız. Böylece o repository'nin bir kopyasını size özel bir biçimde oluşturup değiştirebileceksiniz.
+
+	![Fork Beautiful Jekyll](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllGithubFork.png "Fork Beautiful Jekyll")
+
+2. Halihazırda Github'a giriş yapmadıysanız kullanıcı adı ve şifrenizi girerek login olun. account'unuz ile [https://github.com](https://github.com/) sitesine giriş yapın ve `fork` butonuna tekrar basın. Tarayıcınızın adres satırının `https://github.com/gsengundemo/beautiful-jekyll` olarak değiştiğini ve kendi hesabınızda `beautiful-jekyll` adlı bir repo oluştuğunu göreceksiniz.
+
+3. Aşağıdaki ekranda bulunan `Settings` butonuna basarak repo'nun ayarlar bölümünü açın.
+
+	![Repo Settings](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllRepoSettings.png "Repo Settings")
+
+Açılan aşağıdaki ekranda bulunan `Repository Name` metin kutusuna `gsengunblog.github.io` yazarak `Rename` butonuna basın.
+
+	![Repo Rename](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllChangeRepoName.png "Repo Rename")
+	
+4. Birkaç saniye bekleyip Github Pages tarafından blog'un oluşturulup yayınlanmasına izin verdikten sonra [https://gsengundemo.github.io/](https://gsengundemo.github.io/) adresini ziyaret ederek birkaç adımda oluşturduğumuz blog sitesini inceleyebilirsiniz.
+
+### Özelleştirme
 
 
 
