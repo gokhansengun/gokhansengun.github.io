@@ -156,7 +156,7 @@ Bir önceki adımda Jekyll'in scaffold ettiği basit bir blog sitesini oluşturd
 
 	![Repo Settings](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllRepoSettings.png "Repo Settings")
 
-Açılan aşağıdaki ekranda bulunan `Repository Name` metin kutusuna `gsengunblog.github.io` yazarak `Rename` butonuna basın.
+	Açılan aşağıdaki ekranda bulunan `Repository Name` metin kutusuna `gsengunblog.github.io` yazarak `Rename` butonuna basın.
 
 	![Repo Rename](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllChangeRepoName.png "Repo Rename")
 	
