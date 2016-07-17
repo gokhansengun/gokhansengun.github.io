@@ -269,24 +269,9 @@ Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şa
 
 	![Demo Site First Post](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllFirstPost.png "Demo Site First Post")
 
+## Sonuç ve Sonraki Adımlar
+___
 
+Bu blog'da `Jekyll` statik site oluşturma aracı ve `Beautiful Jekyll` temasını kullanarak bir blog sitesi oluşturduk ve bu siteyi konfigürasyonda verilen parametreleri değiştirerek basit bir şekilde özelleştirdik. `Beautiful Jekyll` temasının verdiği baz kodda daha fazla değişiklik yaparak, blog'u daha da fazla özelleştirebilriz. Benim [blog sitemin Github reposu](https://github.com/gokhansengun/gokhansengun.github.io)nu bilgisayarınıza klonlayıp, kendi bilgisayarınızda Jekyll ile çalıştırabilir ve `Beautiful Jekyll` temasına yapılan eklemeleri gözlemleyebilirsiniz.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Jekyll'da blog sitenizi daha interaktif ve çekici kılabilecek, ücretsiz olarak hizmete sunulan birçok plugin bulunmaktadır. Blog sitenize kullanıcı yorumlarını [DISQUS](https://disqus.com/) aracılığıyla ekleyebileceğiniz bir plugin bulabileceğiniz gibi blog post'larınızı tag'leyebileceğiniz bir plugin de bulabilirsiniz. Farklı plugin'ler için [http://www.jekyll-plugins.com/](http://www.jekyll-plugins.com/) ve [http://jekyll.tips/jekyll-plugins/](http://jekyll.tips/jekyll-plugins/) sitelerini ziyaret edebilirsiniz.
