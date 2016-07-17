@@ -104,7 +104,7 @@ Daha önce de yazdığım gibi, komut satırından `$ jekyll new MyBlogSite` kom
         ├── feed.xml
         └── index.html
 
-2. Henüz Jekyll'a siteyi oluşturmak için bir komut vermedik dolayısıyla yukarıdaki çıktıda site ile ilgili html, css ve js dosyaları göremiyoruz. Jekyll'ın siteyi oluşturması için `$ jekyll build` ya da kısaca `$ jekyll b` komutlarını çalıştırabiliriz. Siteyi hem build etmek hem de sunmaya başlamak için ise `$ jekyll serve` ya da yine kısaca `$ jekyll s` komutlarını verebiliriz. Çıktıdan da görebileceğimiz üzere Jekyll yeni oluşturduğumuz blog sitemizi önce build ederek `http://127.0.0.1:4000/` adresinden (yani lokal olarak 4000 portundan) yayınlamaya başladı
+2. Henüz Jekyll'a siteyi oluşturmak için bir komut vermedik dolayısıyla yukarıdaki çıktıda site ile ilgili html, css ve js dosyaları göremiyoruz. Jekyll'ın siteyi oluşturması için `$ jekyll build` ya da kısaca `$ jekyll b` komutlarını çalıştırabiliriz. Siteyi hem build etmek hem de sunmaya başlamak için ise `$ jekyll serve` ya da yine kısaca `$ jekyll s` komutlarını verebiliriz. Çıktıdan da görebileceğimiz üzere Jekyll yeni oluşturduğumuz blog sitemizi önce build ederek `http://127.0.0.1:4000/` adresinden (yani lokal olarak 4000 portundan) yayınlamaya başladı.
 
         Gokhans-MacBook-Pro:DemoBlog gsengun$ jekyll s
         Configuration file: /Users/gsengun/Desktop/Garbage/DemoBlog/_config.yml
@@ -140,7 +140,7 @@ Daha önce de yazdığım gibi, komut satırından `$ jekyll new MyBlogSite` kom
                         └── 15
                             └── welcome-to-jekyll.html
 
-### Kurulum Adımları
+### Şablon Kurulum Adımları
 
 Ben bir demo hazırlayabilmek için yeni bir email ve yeni bir Github hesabı açtım. Aşağıdaki demo'larda kullanacağım Github kullanıcı adım `gsengundemo` olacak. Aşağıdaki adımları takip ederken bu kullanıcı adını gördüğünüz yerlerde kendi Github kullanıcı adınızı yazmanız gerektiğini tekrar hatırlatıp adımlara geçelim. 
 
@@ -165,12 +165,108 @@ Bir önceki adımda Jekyll'in scaffold ettiği basit bir blog sitesini oluşturd
 	![Demo Site Layout](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllDemoSiteLayout.png "Demo Site Layout")
 
 
-### Özelleştirme
+### Şablonu Özelleştirme Adımları
+
+Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şablon (template) oluşturduk. Şimdi bu template'i nasıl özelleştirebileceğimizi adım adım inceleyelim.
+
+Öncelikle blog üzerinde daha rahat değişiklik yapabilmek için blog'umuzun kaynak kodunu lokal bilgisayarımıza alacağız ve blog'umuzu daha önce bilgisayarımıza yüklediğimiz Jekyll yardımıyla sunacağız. Sonra blog üzerinde değişiklikler yapıp bu değişiklikleri lokal sunucumuz ile test edip değişikliklerden memnun kaldıktan sonra Github'daki repo'muza push ederek yayınlanmasını bekleyeceğiz.
+
+1. Favori Git istemcimiz (komut satırı, SourceTree, Github Desktop, SmartGit, vb) ile Git repo'muzu Github'dan lokal klasörümüze alalım. Ben daha kolay gösterim sağlayacağı için komut satırını tercih edeceğim ve `git clone` komutunu kullanacağım. Bu komut Github'da bulunan repo'yu bire bir olarak lokal klasörüme kopyalayacak.
+
+        Gokhans-MacBook-Pro:Garbage gsengun$ git clone https://github.com/gsengundemo/gsengundemo.github.io.git
+        Cloning into 'gsengundemo.github.io'...
+        remote: Counting objects: 1069, done.
+        remote: Total 1069 (delta 0), reused 0 (delta 0), pack-reused 1069
+        Receiving objects: 100% (1069/1069), 3.12 MiB | 1.48 MiB/s, done.
+        Resolving deltas: 100% (613/613), done.
+        Checking connectivity... done.
+        Gokhans-MacBook-Pro:Garbage gsengun$ ls
+
+	Bilgisayarınızın dosya sisteminde klonladığınız repo isminizle uyumlu olarak oluşturulacaktır. `tree` komutunu kullanarak repo içeriğini görebilirsiniz.
+
+        Gokhans-MacBook-Pro:Garbage gsengun$ tree gsengundemo.github.io/
+        gsengundemo.github.io/
+        ├── 404.html
+        ├── Gemfile
+        ├── Gemfile.lock
+        ├── LICENSE
+        ├── README.md
+        ├── Vagrantfile
+        ........
+        ........
+        
+2. Isınma Turları bölümünde yaptığımıza benzer şekilde blog'umuzu klonladığımız klasöre giderek `$ jekyll serve` ya da `$ jekyll s` komutunu verin. Jekyll `serve` veya kısaca `s` komutu ile blog sitenizi `http://127.0.0.1:4000/` adresinden yayınlamaya başlayacaktir. Bu sitenin `https://gsengundemo.github.io` adresi ile aynı içeriği verdiğini göreceksiniz.
+
+        Gokhans-MacBook-Pro:gsengundemo.github.io gsengun$ jekyll s
+        Configuration file: /Users/gsengun/Desktop/Garbage/gsengundemo.github.io/_config.yml
+                    Source: /Users/gsengun/Desktop/Garbage/gsengundemo.github.io
+            Destination: /Users/gsengun/Desktop/Garbage/gsengundemo.github.io/_site
+        Incremental build: disabled. Enable with --incremental
+            Generating...
+                            done in 0.323 seconds.
+        Auto-regeneration: enabled for '/Users/gsengun/Desktop/Garbage/gsengundemo.github.io'
+        Configuration file: /Users/gsengun/Desktop/Garbage/gsengundemo.github.io/_config.yml
+            Server address: http://127.0.0.1:4000/
+        Server running... press ctrl-c to stop.
+
+    ![Demo Site Local Layout](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllDemoSiteLayoutLocal.png "Demo Site Local Layout")
+        
+3. Favori metin editörünüz ya da entegre geliştirme aracınız (IDE) ile klonladığınız klasörü açın. Ben demo'da Windows, Linux ve Mac üzerinde de çalışan Visual Studio Code metin editörünü kullanacağım. Ana klasörde bulunan `_config.yml` dosyasını açarak gerekli değişiklikleri yapmaya hazır hale gelin. Jekyll bazı değişiklikleri yeniden başlatılmaya gerek duymadan tarayıcınıza yansıtacaktır. Tarayıcınıza yansımayan değişiklikler için sunucuyu `ctrl + C` ile durdurup `$ jekyll s` komutu ile tekrar başlatabilirsiniz.
+
+	3.1. Linklerle ilgili düzenlemeler:
+	
+	3.1.1. `url: "http://username.github.io"` yazan kısmı `url: "http://gsengundemo.github.io"` olarak değiştirin. Bu değişiklik sayesinde sayfa içinde kullanılan ve ana sayfaya dönmeye yarayan linkler doğru bir şekilde yönlenecektir.
+	
+	3.1.2. Sağ üst tarafta bulunan linkleri düzenlemek için `navbar-links:` bölümünü değiştirebilirsiniz.
+	
+	3.1.3. `footer-links-active:` bölümünü kullanarak blog sitenizin altında hangi linklerin bulunacağını belirleyebilirsiniz. Ben sadece email, github ve twitter linklerini aktif bıraktım aşağıda.
+
+        footer-links-active:
+            rss: false
+            facebook: false
+            email: true
+            twitter: true
+            github: true
+            linkedin: false
+            stackoverflow: false
+            
+    3.1.4. Yukarıda aktif bıraktığınız linkler için aşağıda gerekli bilgileri girin
+            
+        author:
+  			name: Gsengun Demo
+  			email: "gsengundemo@gmail.com"
+  			facebook: yourname
+			github: gsengundemo
+  			twitter: gsengundemo
+  			linkedin: yourlink
+  			stackoverflow: yourlink
 
 
+	3.2. Metadata düzenlemeleri:
+	
+	3.2.1. `title: My website` kısmı blog'unuzun başlığı ile değiştirin. Örneğin: `title: Gsengun Jekyll Demo Site`
+	
+	3.2.2. `description:` kısmında blog'unuzla ilgili kısa bilgi verin. 
+	
+	3.3. Ana Sayfa düzenlemeleri
+	
+	3.3.1. Ana klasörde bulunan index.html dosyasını açarak aşağıdaki satırları ana sayfada görünmesini istediğiniz bilgilere göre düzenleyin.
+	
+		title: My website
+		subtitle: This is where I will tell my friends way too much about me
 
+	Ben aşağıdaki bilgileri girdim.
+	
+		title: Gsengun Jekyll Demo Site
+		subtitle: Bu blog Jekyll ile yapılmıştır.
+		
+	3.3.2. Ana klasördeki `_posts` klasöründe bulunan bloglardan bir kısmını silip örnek olarak kullanılacak iki tane post bırakın. Aşağıdaki gibi özelleştirilmiş bir içerik görmelisiniz.
+	
+    ![Demo Site Local Customized](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllDemoSiteLayoutCustomized.png "Demo Site Local Customized")
 
+4. En son adım olarak yeni bir blog yazısının nasıl oluşturulacağını görelim. `_posts` klasörünün altındaki blog'lardan birini yine aynı klasöre kopyalayarak ona blog'unuza dair bir isim verin. Benim oluşturduğum dosyanın adı `2016-07-12-ozellestirilmis-ilk-post.md` oldu. Vereceğiniz tarihin bugün veya bugünden önce olması gerektiğini belirterek içinde bulunulan günün sonrasındakilerin ana sayfada görüntülenmeyeceğini belirteyim. Kopyalama yoluyla yeni oluşturduğunuz dosyayı açarak ilk post'unuzu yazın. Sayfayı yenilediğinizde aşağıdakine benzer bir görüntü elde etmelisiniz.
 
+	![Demo Site First Post](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllFirstPost.png "Demo Site First Post")
 
 
 
