@@ -162,6 +162,9 @@ Bir önceki adımda Jekyll'in scaffold ettiği basit bir blog sitesini oluşturd
 	
 4. Birkaç saniye bekleyip Github Pages tarafından blog'un oluşturulup yayınlanmasına izin verdikten sonra [https://gsengundemo.github.io/](https://gsengundemo.github.io/) adresini ziyaret ederek birkaç adımda oluşturduğumuz blog sitesini inceleyebilirsiniz.
 
+	![Demo Site Layout](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllDemoSiteLayout.png "Demo Site Layout")
+
+
 ### Özelleştirme
 
 

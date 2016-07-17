@@ -303,7 +303,7 @@ footer .theme-by {
 }
 
 .post-preview .post-title {
-  font-size: 30px;
+  font-size: 20px;
   margin-top: 0;
 }
 .post-preview .post-subtitle {
@@ -328,7 +328,7 @@ footer .theme-by {
 
 @media only screen and (min-width: 768px) {
   .post-preview .post-title {
-    font-size: 36px;
+    font-size: 22px;
   }
 }
 
@@ -372,7 +372,7 @@ footer .theme-by {
 }
 .intro-header .page-heading h1 {
   margin-top: 0;
-  font-size: 40px;
+  font-size: 27px;
 }
 .intro-header .post-heading h1 {
   margin-top: 0;
@@ -380,7 +380,7 @@ footer .theme-by {
 }
 .intro-header .page-heading .page-subheading,
 .intro-header .post-heading .post-subheading {
-  font-size: 27px;
+  font-size: 20px;
   line-height: 1.1;
   display: block;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -425,7 +425,7 @@ footer .theme-by {
     padding: 150px 0;
   }  
   .intro-header .page-heading h1 {
-    font-size: 64px;
+    font-size: 48px;
   }
   .intro-header .post-heading h1 {
     font-size: 40px;
