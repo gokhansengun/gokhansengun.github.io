@@ -55,9 +55,8 @@ Aşağıdaki adımları tamamlayarak Jekyll yardımı ile bir blog sitesi hazır
 
 * Denemeler yaparken zamandan kazanmak adına kendi bilgisayarımıza Jekyll kuracağız böylelikle blog'umuzu oluşturan statik sayfaları test amaçlı olarak kendi bilgisayarımızda hazırlayıp sunabileceğiz.
 * Sıfırdan bir site oluşturmak yerine zamandan kazanmak adına mevcut bir Jekyll teması kullanacağız, bu tema bize scaffold edilmiş, görselliği ve fonksiyonalitesi iyileştirilmiş bir blog verecek.
-* Kullandığımız temanın verdiği scaffold blog'u özelleştirerek isteklerimize göre konfigüre edeceğiz.
 * Blog sitemizi Github Pages'te yayınlayacağız.
-* Github Pages'te yayınladığımız blog sitemize başka bir URL'den nasıl yönlendirme yapacağımızı göreceğiz.
+* Kullandığımız temanın verdiği scaffold blog'u özelleştirerek isteklerimize göre konfigüre edeceğiz.
 
 ### Jekyll Kurulumu
 
