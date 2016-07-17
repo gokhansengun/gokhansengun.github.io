@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Blog'un Teknik Altyapısı
+level: Başlangıç
 ---
 
 
@@ -233,13 +234,13 @@ Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şa
     3.1.4. Yukarıda aktif bıraktığınız linkler için aşağıda gerekli bilgileri girin
             
         author:
-  			name: Gsengun Demo
-  			email: "gsengundemo@gmail.com"
-  			facebook: yourname
-			github: gsengundemo
-  			twitter: gsengundemo
-  			linkedin: yourlink
-  			stackoverflow: yourlink
+            name: Gsengun Demo
+            email: "gsengundemo@gmail.com"
+            facebook: yourname
+            github: gsengundemo
+            twitter: gsengundemo
+            linkedin: yourlink
+            stackoverflow: yourlink
 
 
 	3.2. Metadata düzenlemeleri:

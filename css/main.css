@@ -278,7 +278,7 @@ footer .theme-by {
 
 .post-preview {
   padding: 20px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 3px solid #eee;
 }
 
 @media only screen and (min-width: 768px) {
@@ -314,12 +314,27 @@ footer .theme-by {
 .post-preview .post-meta,
 .post-heading .post-meta {
   color: #808080;
-  font-size: 18px;
+  font-size: 16px;
   font-style: italic;
-  margin: 0 0 10px;
+  position: relative;
+}
+.post-preview .post-meta .post-level,
+.post-heading .post-meta .post-level {
+  position: absolute;
+  right: 10px;
+  display: inline-block;
+  border-bottom: 1px solid #eee;
+}
+.post-preview .post-meta .post-date,
+.post-heading .post-meta .post-date {
+  position: absolute;
+  left: 10px;
+  display: inline-block;
+  border-bottom: 1px solid #eee;
 }
 .post-preview .post-entry {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-top: 80px;
 }
 .post-preview .post-read-more {
   font-weight: 700;
