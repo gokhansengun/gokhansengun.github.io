@@ -146,11 +146,11 @@ Ben bir demo hazırlayabilmek için yeni bir email ve yeni bir Github hesabı a�
 
 Bir önceki adımda Jekyll'in scaffold ettiği basit bir blog sitesini oluşturduk fakat sanırım sitenin görselliği ve fonksiyonalitesi benim gibi sizi de pek memnun etmedi. Daha önce de belirttiğim gibi blog sitemizi oluştururken yukarıdaki template'den başlamak yerine görsellik ve fonksiyonalitesi güçlendirilmiş ve ücretsiz olarak kullanıma sunulan Jekyll temalarından faydalanabiliriz. Birçok temanın ön izleme seçeneği ile sunulduğu [Jekyll Themes](http://themes.jekyllrc.org)'e göz atarak kendi beğeninize ve amacınıza yönelik bir tema seçebilirsiniz. Biz bu blog'da [Beautiful Jekyll](http://themes.jekyllrc.org/beautiful-jekyll/) adlı temayı kullanacağız. Başlamadan önce isterseniz tema'nın [tema'nın demo site](http://deanattali.com/beautiful-jekyll/)'sine ve bu blog yazısı sonunda oluşturacağımız [blog demo](https://gsengundemo.github.io) sitesine göz atabilirsiniz.
 
-1. [https://github.com/daattali/beautiful-jekyll](https://github.com/daattali/beautiful-jekyll) sayfasına giderek aşağıda görülen `fork` butonuna basın. Github'daki Beautiful Jekyll reposunu kendi account'unuz altına fork etmiş olacaksınız. Böylece o repository'nin bir kopyasını size özel bir biçimde oluşturup değiştirebileceksiniz.
+1. [Beautiful Jekyll Github](https://github.com/daattali/beautiful-jekyll) sayfasına giderek aşağıda görülen `fork` butonuna basın. Github'daki Beautiful Jekyll reposunu kendi account'unuz altına fork etmiş olacaksınız. Böylece o repository'nin bir kopyasını size özel bir biçimde oluşturup değiştirebileceksiniz.
 
 	![Fork Beautiful Jekyll](https://github.com/gokhansengun/gokhansengun.github.io/raw/master/img/blog/JekyllGithubFork.png "Fork Beautiful Jekyll")
 
-2. Halihazırda Github'a giriş yapmadıysanız kullanıcı adı ve şifrenizi girerek login olun. account'unuz ile [https://github.com](https://github.com/) sitesine giriş yapın ve `fork` butonuna tekrar basın. Tarayıcınızın adres satırının `https://github.com/gsengundemo/beautiful-jekyll` olarak değiştiğini ve kendi hesabınızda `beautiful-jekyll` adlı bir repo oluştuğunu göreceksiniz.
+2. Halihazırda Github'a giriş yapmadıysanız kullanıcı adı ve şifrenizi girerek login olun. account'unuz ile [https://github.com](https://github.com/) sitesine giriş yapın ve `fork` butonuna tekrar basın. Tarayıcınızın adres satırının `https://github.com /gsengundemo/beautiful-jekyll` olarak değiştiğini ve kendi hesabınızda `beautiful-jekyll` adlı bir repo oluştuğunu göreceksiniz.
 
 3. Aşağıdaki ekranda bulunan `Settings` butonuna basarak repo'nun ayarlar bölümünü açın.
 
