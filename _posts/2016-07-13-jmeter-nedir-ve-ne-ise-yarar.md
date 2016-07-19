@@ -35,6 +35,32 @@ Aşağıdaki adımları tamamlayarak JMeter hakkında genel anlamda fikir sahibi
 * Hazırladığımız senaryoyu farklı kullanıcılar için farklı input'lar verecek şekilde ayarlayıp küçük çaplı bir performans testi yapacağız.
 * Performans testimizle ilgili grafik çıktıları alacağız farklı şartlarda yük testini tekrarlayacak ve değişimi grafikteki değişikliği göreceğiz.
 
+## Test ve JMeter Terminolojisi
+___
+
+Bu blog ve sonraki iki blog'da aynı dili konuşabilmek için test ve JMeter terminolojisine hakim olmamız gereklidir. Bu bölümde teorik olarak açıklayacağım bazı kavramlar konunun daha iyi anlaşılmasını diğer bir kısmı ise JMeter bileşenlerinin kullanım alanlarının öğrenilmesini sağlayacaktır. Ayrıca bu bölümde yer verilen JMeter bileşenlerini ilerleyen bölümlerde demo'larda kullanacak ve daha iyi anlayacağız.
+
+### Test Çeşitleri
+
+#### Fonksiyon Testi
+
+
+
 ## JMeter GUI
 ___
 
+Başlangıç yapabilmemize olanak tanıyacak kadar JMeter kullanıcı arayüzüne kısa bir bakış atarak başlayalım.
+
+![JMeter GUI](http://localhost:4000/img/blog/JMeterPart1/JMeterGuiDefault.png "JMeter GUI")
+
+Yukarıdaki şekilde yeni bir JMeter test planı hazırlanmak üzere JMeter programı komut satırından başlatılmıştır. Görüleceği üzere 1 oku ile gösterilen bölümde Test Plan bulunmaktadır. Bu bölümde hiyerarşik olarak test plan adımları bir ağaç yapısı şeklinde sıralanacak ve JMeter tarafından koşturulacaktır. 
+
+Kullanıcı senaryolarını daha gerçekçi olarak test edebilmek için JMeter farklı adımlar arasında belirli süre beklemek üzere Timer kullanılmasına izin vermektedir. Örneğin formu submit etmeden kullanıcının formu doldurması için geçecek süreyi bir Timer ile simüle edebilirsiniz. 2 oku ile gösterilen "Oynat" butonları Test Plan'ın koşturulmaya başlanmasını sağlanmaktadır. Sol taraftaki "Oynat" butonuna basıldığında JMeter, Test Plan'ın arasına serpiştirilmiş olan Timer'ları dikkate alacak şekilde testi başlatacaktır. Sağ taraftaki Play butonu ise ilgili Timer'ları dikkate almadan testi başlatacaktır.
+
+JMeter sunduğu geniş component setinin yanı sıra çok güçlü data toplama ve raporlama araçlarına sahiptir. Performans/yük testi yapılırken koşturumlar arasında sistemden alınan performans metriklerinin görülmesi, raporlanması ve saklanması kritiktir. JMeter data toplanması işlevi için bir önceki bölümde detaylı olarak ele aldığımız ve sonraki bölümlerde demo edeceğimiz pek çok Listener sağlamaktadır. 3 oku ile gösterilen "Süpürge" butonlarından sol tarafta olanına iki test koşturumu arasında basıldığında o anda ekranda görülen listener'da biriktirilmiş olan dataset'i sıfırlar. Sağ tarafta bulunan Süpürge butonu ise Test Plan'da bulunan bütün dataset'leri sıfırlar.
+
+JMeter'da gerçek kullanıcıları simüle eden sanal kullanıcılar Thread Group olarak adlandırılırlar. Bir Test Plan'ın farklı aşamalarında farklı sayıda kullanıcı veya farklı girdi set'leri kullanman isteyebiliriz. Dolayısıyla farklı kullanıcı senaryolarını aynı Test Plan'da test etmek üzere bir Test Plan'da birden fazla Thread Group konumlandırılabilir. 4 oku ile gösterilen bölümde bu Thread Group'lar ile ilgili konfigürasyonlar verilmiştir. "Run Thread Groups consecutively"ın seçilmesi ile Test Plan'daki Thread Group'lar paralel koşturulmanın aksine ardı ardına koşturulur. 
+
+JMeter, Thread Group'ların çalıştırılmaya başlamasından önce Thread Group'un doğru bir biçimde koşturulabilmesi için gerekli ön ayarlamaların yapılmasına imkan tanıyan "setUp Thread Group"lar ve Thread Group'un işi bittikten sonra gerekli kaynak temizleme işlemlerinin yapılabileceği "tearDown Thread Group"lar sağlamaktadır. "Run tearDown Thread Groups after shutdown of main threads" ayarı seçildiğinde "tearDown Thread Group"lar sadece Threa Group'ların başarılı koşturumlarından sonra çalıştırılırlar fakat Test Plan koşturum devam ederken durdurulursa çalıştırılmazlar. 
+
+"Functional Test Mode" ayarı seçildiğinde ise JMeter herbir test adımında Sampler'ların request ve response'larını kaydeder ve sistemin fonksiyonu test edilirken yanlış giden bir şey olduğunda ilgili input ve output görülebilir. Performans testlerinde bu ayarın seçili olmaması gerekir çünkü Sampler'lar aracılığıyla sisteme verilen request'lerin ve alınan bütün response'ların dosyaya kaydedilmesi JMeter'ın kaynaklarını loglama için tüketecek ve daha az kullanıcıyı gerçek zamanlı olarak simüle edebilmesine neden olacaktır. Bu durumda hedeflenen toplam kullanıcı sayısına ulaşabilmek için daha fazla test sunucusuna ihtiyaç duyulacaktır.
