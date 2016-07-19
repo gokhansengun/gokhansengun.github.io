@@ -51,7 +51,7 @@ ___
 
 Başlangıç yapabilmemize olanak tanıyacak kadar JMeter kullanıcı arayüzüne kısa bir bakış atarak başlayalım.
 
-![JMeter GUI](http://localhost:4000/img/blog/JMeterPart1/JMeterGuiDefault.png "JMeter GUI")
+![JMeter GUI](/img/blog/JMeterPart1/JMeterGuiDefault.png "JMeter GUI")
 
 Yukarıdaki şekilde yeni bir JMeter test planı hazırlanmak üzere JMeter programı komut satırından başlatılmıştır. Görüleceği üzere 1 oku ile gösterilen bölümde Test Plan bulunmaktadır. Bu bölümde hiyerarşik olarak test plan adımları bir ağaç yapısı şeklinde sıralanacak ve JMeter tarafından koşturulacaktır. 
 
