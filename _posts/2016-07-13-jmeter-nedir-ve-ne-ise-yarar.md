@@ -41,10 +41,36 @@ ___
 Bu blog ve sonraki iki blog'da aynı dili konuşabilmek için test ve JMeter terminolojisine hakim olmamız gereklidir. Bu bölümde teorik olarak açıklayacağım bazı kavramlar konunun daha iyi anlaşılmasını diğer bir kısmı ise JMeter bileşenlerinin kullanım alanlarının öğrenilmesini sağlayacaktır. Ayrıca bu bölümde yer verilen JMeter bileşenlerini ilerleyen bölümlerde demo'larda kullanacak ve daha iyi anlayacağız.
 
 ### Test Çeşitleri
+___
 
-#### Fonksiyon Testi
+#### Fonksiyonel Test
 
+Sunulan servisin fonksiyon olarak doğruluğunu test eder. Öğrenciler için sınav sonuçlarının sunulduğu bir web uygulamasında yapılması gereken fonksiyonel testlerden bazıları herbir öğrencinin kendi sınav sonucunu sorgulayabilmesi, başkasına ait sınav sonucunu sorgulayamaması, herbir öğrencinin sınav sorgu sonucunun kendi sonucunu getirmesi (başka bir sonuç getirmemesi) ve sınava girmeyen bir öğrenci için sonuç dönülmemesi ile birlikte öğrencinin sınava girmediği sonucunun olarak sıralanabilir.
 
+#### Yük Testi
+
+Çoğu zaman performans testi ile aynı anlamda kullanılmakla birlikte daha geniş bir anlama sahiptir. Sunulan uygulamanın belirli bir yük altında nasıl davrandığını (cevaplarda gecikme süresi, kullanıcı deneyimi, vb) gözlemleyen test türüdür.
+
+#### Performans Testi
+
+Sunulan uygulamanın planlanan performans kriterleri çerçevesinde çalışıp çalışmadığını test eder. Herbir uygulama kendisine belirli bir performans hedefi koymalıdır. Örneğin, bir web sitesi kaynak planlamasını (sunucu sayısı, sunucu özellikleri, network bant genişliği, vb) aynı anda ve/veya belirli bir süre boyunca (örneğin bir dakika) beklediği maksimum kullanıcı sayısına göre yapar. Performans testi ilgili web sitesinin belirlenen performans kriterlerini (anlık 2K kullanıcı, bir dakikada 1M request, vb) gerçekçi bir şekilde simüle eder ve beklenen en fazla kullanıcı geldiğinde sistemin kararlı bir şekilde çalışabileceği güvence altına alınmış olur.
+
+#### Stres Testi
+
+Performans testinin, sunulan uygulamanın planlanan maksimum kapasitede nasıl davrandığını test ettiğini belirtmiştik. Stres testi planlanan maksimum kapasitenin üzerinde bir yük altında sistemin nasıl davrandığını ve en önemlisi hangi noktada kırılıpdığını gözlemlemek üzere yapılan testtir. Beklenen davranış uygulamanın planlanan kapasite üzerinde (storm - fırtına) fonksiyonlarını kısmen gerçekleştirebilmesi veya tamamen gerçekleştirememesi fakat test bittikten (fırtına dindikten) sonra uygulamanın kararlı ve doğru sonuçlar üretebilecek durumda olmasıdır.
+
+### Test Kavramları
+___
+
+#### Ramp-up Time
+
+Yapacağımız testte sunduğumuz uygulamanın 1000 kullanıcı için test edilmek istendiğini düşünelim. Sistemde ilk anda 1000 kullanıcının 1000'inin de içeriye alınması çok gerçekçi değildir. Ramp-up Time 1000 kullanıcının test sistemi tarafından kaç saniye içerisinde sisteme dahil edileceğini belirler. 1000 kullanıcı için Ramp-up Time 20 saniye olarak verildiğinde ilk saniye sonunda sistemde 50, ikinci saniye sonunda 100 kullanıcı sisteme girmiş olacak ve 20 saniye sonunda bütün kullanıcılar sisteme girmiş olacaklardır.
+
+JMeter'da bütün kullanıcıların aynı anda sisteme girmesi isteniyorsa Ramp-up Time 0 saniye olarak verilebilir. Ramp-up Time 0 saniye belirlense bile JMeter'ın bu kullanıcıları işleyerek sisteme dahil etmesi belirli bir zaman alacaktır, yani siz 0 saniye verseniz bile 1000 kullanıcının sisteme dahil edilmesi JMeter testi için kullandığınız bilgisayarın kaynaklarının durumuna, yaptığınız testin ağırlığına (açtığı socket'ler, karmaşıklığı) göre 10-15 saniye arasında sürebilir.
+
+Aşağıdaki ekran çıktısında görülebileceği üzere JMeter'da Ramp-up Time Thread Group bileşeni üzerinde ayarlanmaktadır.
+
+![JMeter GUI](/img/blog/JMeterPart1/JMeterRampUpTime.png "JMeter GUI")
 
 ## JMeter GUI
 ___
