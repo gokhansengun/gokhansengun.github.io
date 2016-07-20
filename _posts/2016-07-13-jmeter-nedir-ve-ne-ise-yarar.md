@@ -74,7 +74,7 @@ Aşağıdaki ekran çıktısında görülebileceği üzere JMeter'da Ramp-up Tim
 
 #### Think Time (Düşünme Süresi)
 
-Sahip olduğumuz bilgisayarlar biz insanların aksine çok hızlı bir şekilde işlem yapabilmektedirler. Testlerde istisnai durumlar dışında gerçek kullanıcı davranışı simüle edilmeye çalışılır. Gerçek kullanıcıların iki test adımı arasında mouse veya klavye ile giriş yapmaları bir miktar süre gerektirir. Test senaryosunda bu kullanıcı davranışını simüle etmek için iki adım arasına bir timer konulur ve sanal kullanıcının (test kullanıcısı) iki adım arasında bir miktar beklemesi sağlanır. Örneğin formu submit etmeden kullanıcının formu doldurması için geçecek süreyi bir timer ile simüle edilebilir.
+Sahip olduğumuz bilgisayarlar biz insanların aksine çok hızlı bir şekilde işlem yapabilmektedirler. Testlerde istisnai durumlar dışında gerçek kullanıcı davranışı simüle edilmeye çalışılır. Gerçek kullanıcıların iki test adımı arasında mouse veya klavye ile giriş yapmaları bir miktar süre gerektirir. Test senaryosunda bu kullanıcı davranışını simüle etmek için iki adım arasına bir timer konulur ve sanal kullanıcının (test kullanıcısı) iki adım arasında bir miktar beklemesi sağlanır. İki test adımı arasında kullanıcı için tanımlanan bekleme süresi Think Time olarak adlandırılır. Örneğin, bir HTML formununun bulunduğu sayfayı yükleyen gerçek kullanıcı formu submit etmeden önce doldurmak için belirli bir süreye ihtiyaç duyacaktır. Yük ve performans testlerinde sanal kullanıcılar için adımlar arasında belirlenen Think Time ile bu süre simüle edilebilir.
 
 ## JMeter GUI
 ___
