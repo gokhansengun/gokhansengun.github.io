@@ -70,11 +70,11 @@ JMeter'da bütün kullanıcıların aynı anda sisteme girmesi isteniyorsa Ramp-
 
 Aşağıdaki ekran çıktısında görülebileceği üzere JMeter'da Ramp-up Time Thread Group bileşeni üzerinde ayarlanmaktadır.
 
+![Ramp-up Time](/img/blog/JMeterPart1/JMeterRampUpTime.png "Ramp-up Time")
+
 #### Think Time (Düşünme Süresi)
 
 Sahip olduğumuz bilgisayarlar biz insanların aksine çok hızlı bir şekilde işlem yapabilmektedirler. Testlerde istisnai durumlar dışında gerçek kullanıcı davranışı simüle edilmeye çalışılır. Gerçek kullanıcıların iki test adımı arasında mouse veya klavye ile giriş yapmaları bir miktar süre gerektirir. Test senaryosunda bu kullanıcı davranışını simüle etmek için iki adım arasına bir timer konulur ve sanal kullanıcının (test kullanıcısı) iki adım arasında bir miktar beklemesi sağlanır. Örneğin formu submit etmeden kullanıcının formu doldurması için geçecek süreyi bir timer ile simüle edilebilir.
-
-![Think Time](/img/blog/JMeterPart1/JMeterRampUpTime.png "Think Time")
 
 ## JMeter GUI
 ___
