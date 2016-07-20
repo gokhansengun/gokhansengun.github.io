@@ -62,7 +62,7 @@ Performans testinin, sunulan uygulamanın planlanan maksimum kapasitede nasıl d
 ### Test Kavramları
 ___
 
-#### Ramp-up Time
+#### Ramp-up Time (Tırmanma Süresi)
 
 Yapacağımız testte sunduğumuz uygulamanın 1000 kullanıcı için test edilmek istendiğini düşünelim. Sistemde ilk anda 1000 kullanıcının 1000'inin de içeriye alınması çok gerçekçi değildir. Ramp-up Time 1000 kullanıcının test sistemi tarafından kaç saniye içerisinde sisteme dahil edileceğini belirler. 1000 kullanıcı için Ramp-up Time 20 saniye olarak verildiğinde ilk saniye sonunda sistemde 50, ikinci saniye sonunda 100 kullanıcı sisteme girmiş olacak ve 20 saniye sonunda bütün kullanıcılar sisteme girmiş olacaklardır.
 
@@ -70,7 +70,11 @@ JMeter'da bütün kullanıcıların aynı anda sisteme girmesi isteniyorsa Ramp-
 
 Aşağıdaki ekran çıktısında görülebileceği üzere JMeter'da Ramp-up Time Thread Group bileşeni üzerinde ayarlanmaktadır.
 
-![JMeter GUI](/img/blog/JMeterPart1/JMeterRampUpTime.png "JMeter GUI")
+#### Think Time (Düşünme Süresi)
+
+Sahip olduğumuz bilgisayarlar biz insanların aksine çok hızlı bir şekilde işlem yapabilmektedirler. Testlerde istisnai durumlar dışında gerçek kullanıcı davranışı simüle edilmeye çalışılır. Gerçek kullanıcıların iki test adımı arasında mouse veya klavye ile giriş yapmaları bir miktar süre gerektirir. Test senaryosunda bu kullanıcı davranışını simüle etmek için iki adım arasına bir timer konulur ve sanal kullanıcının (test kullanıcısı) iki adım arasında bir miktar beklemesi sağlanır. Örneğin formu submit etmeden kullanıcının formu doldurması için geçecek süreyi bir timer ile simüle edilebilir.
+
+![Think Time](/img/blog/JMeterPart1/JMeterRampUpTime.png "Think Time")
 
 ## JMeter GUI
 ___
@@ -81,7 +85,7 @@ Başlangıç yapabilmemize olanak tanıyacak kadar JMeter kullanıcı arayüzün
 
 Yukarıdaki şekilde yeni bir JMeter test planı hazırlanmak üzere JMeter programı komut satırından başlatılmıştır. Görüleceği üzere 1 oku ile gösterilen bölümde Test Plan bulunmaktadır. Bu bölümde hiyerarşik olarak test plan adımları bir ağaç yapısı şeklinde sıralanacak ve JMeter tarafından koşturulacaktır. 
 
-Kullanıcı senaryolarını daha gerçekçi olarak test edebilmek için JMeter farklı adımlar arasında belirli süre beklemek üzere Timer kullanılmasına izin vermektedir. Örneğin formu submit etmeden kullanıcının formu doldurması için geçecek süreyi bir Timer ile simüle edebilirsiniz. 2 oku ile gösterilen "Oynat" butonları Test Plan'ın koşturulmaya başlanmasını sağlanmaktadır. Sol taraftaki "Oynat" butonuna basıldığında JMeter, Test Plan'ın arasına serpiştirilmiş olan Timer'ları dikkate alacak şekilde testi başlatacaktır. Sağ taraftaki Play butonu ise ilgili Timer'ları dikkate almadan testi başlatacaktır.
+Kullanıcı senaryolarını daha gerçekçi olarak test edebilmek için JMeter farklı adımlar arasında belirli süre beklemek üzere Timer (Think Time) kullanılmasına izin vermektedir. 2 oku ile gösterilen “Oynat” butonları Test Plan’ın koşturulmaya başlanmasını sağlanmaktadır. Sol taraftaki “Oynat” butonuna basıldığında JMeter, Test Plan’ın arasına serpiştirilmiş olan Timer’ları dikkate alacak şekilde testi başlatacaktır. Sağ taraftaki Play butonu ise ilgili Timer’ları dikkate almadan testi başlatacaktır.
 
 JMeter sunduğu geniş component setinin yanı sıra çok güçlü data toplama ve raporlama araçlarına sahiptir. Performans/yük testi yapılırken koşturumlar arasında sistemden alınan performans metriklerinin görülmesi, raporlanması ve saklanması kritiktir. JMeter data toplanması işlevi için bir önceki bölümde detaylı olarak ele aldığımız ve sonraki bölümlerde demo edeceğimiz pek çok Listener sağlamaktadır. 3 oku ile gösterilen "Süpürge" butonlarından sol tarafta olanına iki test koşturumu arasında basıldığında o anda ekranda görülen listener'da biriktirilmiş olan dataset'i sıfırlar. Sağ tarafta bulunan Süpürge butonu ise Test Plan'da bulunan bütün dataset'leri sıfırlar.
 
