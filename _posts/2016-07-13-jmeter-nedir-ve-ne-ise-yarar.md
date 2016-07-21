@@ -45,7 +45,7 @@ ___
 
 #### Fonksiyonel Test
 
-Sunulan servisin fonksiyon olarak doğruluğunu test eder. Öğrenciler için sınav sonuçlarının sunulduğu bir web uygulamasında yapılması gereken fonksiyonel testlerden bazıları herbir öğrencinin kendi sınav sonucunu sorgulayabilmesi, başkasına ait sınav sonucunu sorgulayamaması, herbir öğrencinin sınav sorgu sonucunun kendi sonucunu getirmesi (başka bir sonuç getirmemesi) ve sınava girmeyen bir öğrenci için sonuç dönülmemesi ile birlikte öğrencinin sınava girmediği sonucunun olarak sıralanabilir.
+Sunulan servisin fonksiyon olarak doğruluğunu test eder. Öğrenciler için sınav sonuçlarının sunulduğu bir web uygulamasında yapılması gereken fonksiyonel testlerden bazıları her bir öğrencinin kendi sınav sonucunu sorgulayabilmesi, başkasına ait sınav sonucunu sorgulayamaması, her bir öğrencinin sınav sorgu sonucunun kendi sonucunu getirmesi (başka bir sonuç getirmemesi) ve sınava girmeyen bir öğrenci için sonuç dönülmemesi ile birlikte öğrencinin sınava girmediği sonucunun olarak sıralanabilir.
 
 #### Yük Testi
 
@@ -53,7 +53,7 @@ Sunulan servisin fonksiyon olarak doğruluğunu test eder. Öğrenciler için s�
 
 #### Performans Testi
 
-Sunulan uygulamanın planlanan performans kriterleri çerçevesinde çalışıp çalışmadığını test eder. Herbir uygulama kendisine belirli bir performans hedefi koymalıdır. Örneğin, bir web sitesi kaynak planlamasını (sunucu sayısı, sunucu özellikleri, network bant genişliği, vb) aynı anda ve/veya belirli bir süre boyunca (örneğin bir dakika) beklediği maksimum kullanıcı sayısına göre yapar. Performans testi ilgili web sitesinin belirlenen performans kriterlerini (anlık 2K kullanıcı, bir dakikada 1M request, vb) gerçekçi bir şekilde simüle eder ve beklenen en fazla kullanıcı geldiğinde sistemin kararlı bir şekilde çalışabileceği güvence altına alınmış olur.
+Sunulan uygulamanın planlanan performans kriterleri çerçevesinde çalışıp çalışmadığını test eder. Her bir uygulama kendisine belirli bir performans hedefi koymalıdır. Örneğin, bir web sitesi kaynak planlamasını (sunucu sayısı, sunucu özellikleri, network bant genişliği, vb) aynı anda ve/veya belirli bir süre boyunca (örneğin bir dakika) beklediği maksimum kullanıcı sayısına göre yapar. Performans testi ilgili web sitesinin belirlenen performans kriterlerini (anlık 2K kullanıcı, bir dakikada 1M request, vb) gerçekçi bir şekilde simüle eder ve beklenen en fazla kullanıcı geldiğinde sistemin kararlı bir şekilde çalışabileceği güvence altına alınmış olur.
 
 #### Stres Testi
 
@@ -76,10 +76,63 @@ Aşağıdaki ekran çıktısında görülebileceği üzere JMeter'da Ramp-up Tim
 
 Sahip olduğumuz bilgisayarlar biz insanların aksine çok hızlı bir şekilde işlem yapabilmektedirler. Testlerde istisnai durumlar dışında gerçek kullanıcı davranışı simüle edilmeye çalışılır. Gerçek kullanıcıların iki test adımı arasında mouse veya klavye ile giriş yapmaları bir miktar süre gerektirir. Test senaryosunda bu kullanıcı davranışını simüle etmek için iki adım arasına bir timer konulur ve sanal kullanıcının (test kullanıcısı) iki adım arasında bir miktar beklemesi sağlanır. İki test adımı arasında kullanıcı için tanımlanan bekleme süresi Think Time olarak adlandırılır. Örneğin, bir HTML formununun bulunduğu sayfayı yükleyen gerçek kullanıcı formu submit etmeden önce doldurmak için belirli bir süreye ihtiyaç duyacaktır. Yük ve performans testlerinde sanal kullanıcılar için adımlar arasında belirlenen Think Time ile bu süre simüle edilebilir.
 
+#### Loop Count (Döngü Sayısı)
+
+Sisteminize 10 dakika içerisinde 100K kullanıcının gireceğine ve bir dakika boyunca işlem yapacağına göre plan yaptığınızı varsayalım. Hazırladığınız test senaryosunu 100K kullanıcıyı Ramp-up Time 10 dakika olarak sisteme sokacak şekilde hazırlamak yerine 1 dakikada 10K kullanıcıyı sisteme sokup işi biten kullanıcının sisteme tekrar tekrar (toplam 10 kere) girerek bütün adımları tekrarlamasını sağlayabilirsiniz. Loop Count buradaki her bir test kullanıcısının sisteme toplam giriş sayısıdır.
+
+Yukarıdaki senaryo dışında sisteminizin dayanıklılığını ve sürekliliğini test etmek üzere belirli bir süre için sistemin kullanıcılar tarafından normal kullanımından çok çok daha yoğun kullanılması senaryosunu kurgulamak için de Loop Count kullanılabilir. Örneğin, sisteminizi günde 10K kullanıcının 1 dakika için kullandığını düşünelim. Sistemimizin 1000 gün boyunca yeniden başlatılmadan sağlıklı çalışıp çalışmayacağını test etmek isteyelim. Sistemimize 1K kullanıcıyı belirli aralıklarla sokarak işi biten kullanıcının tekrar tekrar (toplam 10K x 1000 / 1K = 10000 kere) girmesini sağlayarak 10000 dakikada (yaklaşık 7 günde) sistemimizin 1000 gün (yaklaşık 3 sene) boyunca uygulamamızı tekrar başlatılmaya ihtiyaç duymadan sağlıklı çalıştırıp çalıştıramayacağını test edebiliriz.
+
+#### Sample Time (Örnekleme Süresi) ve Latency (Gecikme)
+
+Birbiri ile sık sık karıştırılan bu iki kavramı bir arada anlatılarak belki daha kolay anlatılabilir. Bir HTTP isteğinin yaşam döngüsünü ele alalım. Yaşam döngüsü aşağıdaki adımlardan oluşur. 
+
+1. İstemci ile sunucu arasında öncelikle bir TCP bağlantısının sağlanması (halihazırda bir bağlantı varsa onun kullanılması -http pipelining-) 
+2. İstemci tarafından HTTP isteğinin bütünü ile sunucu tarafına yollanması
+3. İsteğin sunucu tarafından TCP seviyesinde bütünü ile alınması 
+4. TCP seviyesinde alınan isteğin sunucu tarafındaki web veya uygulama sunucusuna aktarılması
+5. İsteğin web veya uygulama sunucusu tarafından işlenmesi
+6. Cevabın sunucu tarafından istemciye açık olan TCP bağlantısı üzerinden bütünü ile iletilmesi
+7. Cevabın istemci tarafından bütünü ile alınması
+
+Sample Time (Örnekleme Süresi) son kullanıcının hissettiği ve gözlemlediği performanstır ve yukarıdaki adımların tamamının toplamından oluşur. Latency (Gecikme) ise sunucu tarafında geçen işleme süresidir. Yukarıdaki listeye göre 3, 4, 5 ve 6 adımlarında geçen toplam süre Latency'yi oluşturur.
+
+### JMeter Bileşenleri
+___
+
+Bu bölümde bütün JMeter bileşenlerini ayrıntılı olarak ele almak yerine hızlıca başlamamıza olanak tanıyacak JMeter en önemli ve kullanışlı bileşenlere yer vereceğiz. Bu blog sonrasında gelecek 2 blog'da birçok bileşene göz atma fırsatı bulacağız.
+
+#### Sampler (Örnekleyici)
+
+Test yapılacak sistemle etkileşim yapmak için ihtiyaç duyulan JMeter bileşenleridir. Birçok farklı Sampler arasında en çok kullanılan HTTP Request'tir. Adından da anlaşılacağı üzere HTTP Request Sampler'ı, sunucuya HTTP istekleri göndermeye yarar.
+
+www.milliyet.com.tr/Siyaset sayfasına istek yapmak üzere hazırlanan HTTP Request Sampler'ın görüntüsü aşağıda verilmiştir. 1 ile işaretlenen bölümde Http Request Sampler'ına "Siyaset Sayfası" adı verilerek raporlarda ayrıştırılabilmesi hedeflenmiştir. 2 ile işaretlenen bölümde sunucunun DNS sunucular tarafından çözülebilecek ismi yani FQDN'i (Fully Qualified Domain Name) verilmiştir. Bu kısımda IP de verilebilirdi. 3 ile işaretlenen bölümde ise web sunucudan istenecek bölüm (path) verilmiştir.
+
+![JMeter HTTP Request Sampler](/img/blog/JMeterPart1/JMeterHttpRequestSampler.png "JMeter HTTP Request Sampler")
+
+JMeter versiyon 2.13 tarafından desteklenen güncel Sampler listesi aşağıda verilmiştir. Bu blog serisinde ele alacağımız ve en çok kullanılan Sampler'lar altı çizilerek işaretlenmiştir.
+
+![JMeter Sampler List](/img/blog/JMeterPart1/JMeterSamplerList.png "JMeter Sampler List")
+
+JMeter genel olarak genişletilebilir bir araç olduğu için kendi Sampler'ınızı yazmanız da mümkün. Örneğin MQTT sunucusuna isteklerde bulunmak üzere kendimiz MQTT Request Sampler'ını Java kullanarak yazabiliriz veya daha önce başkaları tarafından yazılmışsa import ederek kullanabiliriz.
+
+#### Listener (Dinleyici)
+
+Sampler'lar tarafından yapılan istekler ve bu isteklere sunucu tarafından verilen cevapların özelliklerinin teker teker, toplu veya kümüle bir şekilde kaydedilmesi işlevini Listener'lar yerine getirmektedir. Bazı Listener'lar yapılan istek ve cevabı tutarken, bazıları yapılan isteğe sunucu tarafından dönen cevabın süresini tutmaktadır. Çok fazla Listener eklenmesi JMeter istemci tarafında loglamayı artıracağı için performansı olumsuz etkileyecek ve bir sunucuda simüle edilebilecek maksimum kullanıcı sayısını düşürecektir. Bu sebeple sadece gerçekten ihtiyaç duyulan Listener'lar test sırasında açık tutulmalıdır.
+
+Sampler'ı anlatırken örnek olarak kullandığımız Test Plan'ına View Result Tree ve View Results in Table Listener'larını ekleyip testi 10 eş zamanlı kullanıcı ile test ederek oluşan çıktı aşağıda verilmiştir. JMeter'la uçtan uca test oluşturulmasını ilerleyen bölümlerde ele alacağız. Şimdilik örnek olması açısından bu ekranlar verilmiştir.
+
+1 ile işaretlenen bölümde eş zamanlı olarak 10 sanal kullanıcı için başlatılan 10 istek görülmektedir. 2 ile işaretlenen bölümde dinlenen HTTP Sampler ile ilgili detay bilgiler verilmektedir. Buradaki bilgilere bakılarak sunucuya bağlantı zamanının "Connect Time" 133 ms, sayfanın yüklenme zamanının "Load Time" 285 ms, HTTP cevabının boyutunun "Size in bytes" 47803 byte olduğunu görebiliyoruz. 3 ile işaretlenen bölümde ise yine dinlenen HTTP Sampler'ın "Sampler result"a ek olarak yapılan Request (istek) ve alınan Response (cevap) ile ilgili bilgi alabileceğimizi görüyoruz.
+
+![JMeter View Results Tree Listener](/img/blog/JMeterPart1/JMeterViewResultsTreeListener.png "JMeter View Results Tree Listener")
+
+HTTP Sampler'lar tarafından yapılan istekler ve alınan cevaplar ile ilgili özet bilgiler aşağıda View Results in Table Listener'ı tarafından sağlanmıştır. 1 ile işaretlenen bölümde her bir HTTP isteğinin sonuçlanma süresini görebiliyoruz. www.milliyet.com.tr'nin en düşük 104 ms'de en yüksek ise 593 ms'de /siyaset/ sayfası için sonuçları döndüğünü görebiliyoruz. 2 ile işaretlenen bölümde yapılan bütün isteklere sunucunun pozitif cevap verdiğini görüyoruz. 3 ile işaretlenen bölümde ise sunucudan gönderilen cevabın boyutunun neredeyse her seferinde değiştiğini görüyoruz. Aynı sayfa için sunucudan gelen toplam byte sayısının neden değiştiğini görebiliyorsanız aşağıdaki yorum bölümüne yazabilir misiniz? :) 4 ile işaretlenen bölümde ise her bir HTTP isteğinin sunucuda geçirdiği süreyi Latency olarak görüyoruz. Sample Time ve Latency arasındaki fark (Sample Time (Örnekleme Süresi) ve Latency (Gecikme)) başlıklı bölümde anlatılmıştı.
+
+![JMeter View Results in Table Listener](/img/blog/JMeterPart1/JMeterViewResultsInTableListener.png "JMeter View Results in Table Listener")
+
 ## JMeter GUI
 ___
 
-Başlangıç yapabilmemize olanak tanıyacak kadar JMeter kullanıcı arayüzüne kısa bir bakış atarak başlayalım.
+Bir önceki bölümde başlangıç yapabilmemize olanak tanıyacak kadar JMeter bileşenlerine göz attık. Bu bölümde anlatılan bileşenlerin yerleştirildiği JMeter kullanıcı arayüzüne kısa bir bakış atacağız.
 
 ![JMeter GUI](/img/blog/JMeterPart1/JMeterGuiDefault.png "JMeter GUI")
 
@@ -93,4 +146,4 @@ JMeter'da gerçek kullanıcıları simüle eden sanal kullanıcılar Thread Grou
 
 JMeter, Thread Group'ların çalıştırılmaya başlamasından önce Thread Group'un doğru bir biçimde koşturulabilmesi için gerekli ön ayarlamaların yapılmasına imkan tanıyan "setUp Thread Group"lar ve Thread Group'un işi bittikten sonra gerekli kaynak temizleme işlemlerinin yapılabileceği "tearDown Thread Group"lar sağlamaktadır. "Run tearDown Thread Groups after shutdown of main threads" ayarı seçildiğinde "tearDown Thread Group"lar sadece Threa Group'ların başarılı koşturumlarından sonra çalıştırılırlar fakat Test Plan koşturum devam ederken durdurulursa çalıştırılmazlar. 
 
-"Functional Test Mode" ayarı seçildiğinde ise JMeter herbir test adımında Sampler'ların request ve response'larını kaydeder ve sistemin fonksiyonu test edilirken yanlış giden bir şey olduğunda ilgili input ve output görülebilir. Performans testlerinde bu ayarın seçili olmaması gerekir çünkü Sampler'lar aracılığıyla sisteme verilen request'lerin ve alınan bütün response'ların dosyaya kaydedilmesi JMeter'ın kaynaklarını loglama için tüketecek ve daha az kullanıcıyı gerçek zamanlı olarak simüle edebilmesine neden olacaktır. Bu durumda hedeflenen toplam kullanıcı sayısına ulaşabilmek için daha fazla test sunucusuna ihtiyaç duyulacaktır.
+"Functional Test Mode" ayarı seçildiğinde ise JMeter her bir test adımında Sampler'ların request ve response'larını kaydeder ve sistemin fonksiyonu test edilirken yanlış giden bir şey olduğunda ilgili input ve output görülebilir. Performans testlerinde bu ayarın seçili olmaması gerekir çünkü Sampler'lar aracılığıyla sisteme verilen request'lerin ve alınan bütün response'ların dosyaya kaydedilmesi JMeter'ın kaynaklarını loglama için tüketecek ve daha az kullanıcıyı gerçek zamanlı olarak simüle edebilmesine neden olacaktır. Bu durumda hedeflenen toplam kullanıcı sayısına ulaşabilmek için daha fazla test sunucusuna ihtiyaç duyulacaktır.
