@@ -158,7 +158,43 @@ CSV Data Set Config bileşeninin görünümü aşağıda verilmiştir. 1 ile gö
 
 JMeter her bir Thread için ayrı ayrı ya da bütün Thread'ler için ortak olarak geçerli olabilecek şekilde değişkenler tanımlanmasına izin vermektedir. Debug Sampler bileşeni ile ilgili Thread'e ve global olarak bütün Thread'lere ilişkin değişkenler gösterilebilir. Debug Sampler genellikle Test Plan hazırlanırken test script'ini debug etmek için kullanılır ve yük/performans testlerinin koşturulması sırasında devre dışı bırakılır. Kullanım senaryosuna örnek olması açısından ilk web servis çağrısından dönen JSON sonuçtaki bir alanın bir sonraki web servis çağrısına girdi olarak geçirildiği durumu ele alalım. İlk servis çağrısından dönen cevabın içindeki ilgili alan bir JMeter değişkenine atanır. Bu değişken sonraki çağrıda kullanılarak ikinci çağrı yapılır. Bu test plan'da araya bir Debug Sampler eklenerek JMeter'ın ilk web servis çağrısından parse edip doldurduğu değişkenin değeri okunarak parse işlemi için yazılan Regex'in doğru yapılandırılıp yapılandırılmadığı anlaşılır.
 
-TODO: TODO: ![JMeter Debug Sampler](/resource/img/JMeterPart1/JMeterViewResultsInTableListener.png "JMeter Debug Sampler")
+Debug Sampler'ı daha kolay örneklemek için bir önceki bölümde (CSV Data Set Config) ele alınan ve CSV dosyalarından okunan ve her bir Thread'e atanan değişkenleri ele alalım. Thread'lere atanan değişkenlerin (mobile_phone, password, username) değerleri (5358282828, Passw0rd, gsengun) aşağıdaki çıktıda sırasıyla 1, 2 ve 3 ile işaret edilmiştir. 
+
+![JMeter Debug Sampler](/resource/img/JMeterPart1/JMeterDebugSampler.png "JMeter Debug Sampler")
+
+#### Assertion
+
+JMeter'daki Assertion'lar da birçok programlama dilindeki Assertion'a benzer şekilde davranmaktadır. Programlama dillerindeki Assertion'larda gerçekleşmesi beklenen koşul belirlenir ve beklenen koşul dışındaki değerlerde Assertion Failure durumu oluşur ve akış kesilerek hatadan haberdar olunur. JMeter'da ise Assertion Failure oluştuğundaki davranış aşağıdaki çıktıda 1 ile gösterilen bölümde Thread Group'daki "Action to be taken after a Sampler error" konfigürasyonu ile belirlenir. Assertion Failure, Assertion'ın bağlı bulunduğu Sampler'da hataya sebep olacağı için bu konfigürasyonda girilecek aksiyon alınacaktır. 
+
+![JMeter Thread Group](/resource/img/JMeterPart1/JMeterThreadGroup.png "JMeter Thread Group")
+
+Assertion'lar ile Thread bazlı olarak istenen test adımında değişkenler incelenip beklenmeyen koşullarda Assertion Failure oluşturulabileceği gibi, JMeter Sampler'lar ile yapılan request'lere verilen response'lar incelenip beklenmeyen koşullar Assertion Failure oluşturmak üzere programlanabilir.
+
+Aşağıda Test Plan'da Siyaset Sayfası'na bir Response Assertion eklenerek test edilecek response bölümü olarak "Response Code" seçilmiştir. Alattaki bölümde test edilecek patern olarak Response Code'un 400 olması beklendiği ifade edilmiştir. Response Code normal şartlarda sunucudan bildiğiniz gibi 200 olarak dönecektir. Böylece örneğimizde bir Assertion Failure'ı canlandırmış olacağız.
+
+![JMeter Response Assertion](/resource/img/JMeterPart1/JMeterResponseAssertion.png "JMeter Response Assertion")
+
+Test Plan'ı çalıştırdığımızda View Results Tree bileşeninde Assertion Failure durumu olan Sample'ların JMeter tarafından kırmızıya boyandığı ve Assertion Failure sebebinin sağ tarafta yazıldığı görülmektedir.
+
+![JMeter Response Assertion Failure](/resource/img/JMeterPart1/JMeterResponseAssertionFailure.png "JMeter Response Assertion Failure")
+
+#### Pre Processor ve Post Processor (Extractor'lar)
+
+JMeter Sampler'lar koşturulmadan önce ve sonra çalıştırılmak üzere sampler'lara sağ tıklanarak eklenebilecek Pre ve Post Processor'lar sunmaktadır. Post Processor'lardan Regular Expression Extractor'ı örnekleyerek Extractor'ların nasıl kullanıldıkları ile ilgili kafanızda bir fikir oluşturmaya çalışalım.
+
+Yine aynı örneği (www.milliyet.com.tr/siyaset/ sayfasını) kullanarak sayfa başında gösterilen ve HTML `<title>` tag'leri arasında bulunan sayfa başlığını alıp bir değişkene atmaya çalışalım. 
+
+Regex ile yakanalacak metin aşağıda işaretlenmiştir.
+
+![JMeter Title Regex Extractor](/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractor.png "JMeter Title Regex Extractor")
+
+`<title>` tag'leri arasında bulunan sayfa başlığının alınabilmesi için gerekli olan JMeter Regular Expression Extractor konfigürasyonu aşağıda verilmiştir. 1 ile işaretlenen bölümde Regex ile parse edilen string'in atılacağı JMeter değişkeninin ismi verilmiştir. Bu değişken ilerleyen adımlarda `{$page_title}` olarak kullanılabilecektir. 2 ile işaretlenen bölümde HTML response'u ile eşleştirilmek üzere gerekli olan Regular Expression (Düzenli İfade) verilmiştir. 3 ile işaretlenen bölümde Regex ile eşleşen değişkene atılacak değer için bir template belirtimi yapılmaktadır. `$1$` Regex'te ilk eşleşen grubu `$2$` Regex'te ikinci eşleşen grubu ifade etmektedir. Değişkenden başına `Sayfa Başlığı ` ve sonuna da `'dır` eklemek istersek template'i `Sayfa Başlığı $1$'dır` şeklinde vermemiz gerekir. 4 ile işaretlenen bölümde Regex ile birden fazla eşleşme olması durumunda hangi sıradaki eşleşmenin kullanılacağını belirler, bizim durumumuzda sadece 1 eşleşme olacağı için bu bölümde 1 kullanıldı. 
+
+![JMeter Title Regex Extractor Conf](/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractorConf.png "JMeter Title Regex Extractor Conf")
+
+Response'lardan çıkarılan bilgilerin atıldığı değişkenlerin başka Sampler'larda kullanılabileceğini daha önce söylemiştik. Demo'da bu kullanımı örnekleyeceğiz. Şimdilik Debug Sampler'daki görünümü aşağıda vererek bu kısmı kapatalım. Görebileceğiniz üzere `page_title` değişkenine `<title>` tag'leri arasında bulunan başlık atılmış oldu.
+
+![JMeter Title Regex Extractor Result](/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractorResult.png "JMeter Title Regex Extractor Result")
 
 ## JMeter GUI
 ___
@@ -167,14 +203,17 @@ Bir önceki bölümde başlangıç yapabilmemize olanak tanıyacak kadar JMeter 
 
 ![JMeter GUI](/resource/img/JMeterPart1/JMeterGuiDefault.png "JMeter GUI")
 
-Yukarıdaki şekilde yeni bir JMeter test planı hazırlanmak üzere JMeter programı komut satırından başlatılmıştır. Görüleceği üzere 1 oku ile gösterilen bölümde Test Plan bulunmaktadır. Bu bölümde hiyerarşik olarak test plan adımları bir ağaç yapısı şeklinde sıralanacak ve JMeter tarafından koşturulacaktır. 
+Yukarıdaki şekilde yeni bir JMeter test planı hazırlanmak üzere JMeter programı komut satırından başlatılmıştır. Görüleceği üzere 1 ile gösterilen bölümde Test Plan bulunmaktadır. Bu bölümde hiyerarşik olarak test plan adımları bir ağaç yapısı şeklinde sıralanacak ve JMeter tarafından koşturulacaktır. 
 
-Kullanıcı senaryolarını daha gerçekçi olarak test edebilmek için JMeter farklı adımlar arasında belirli süre beklemek üzere Timer (Think Time) kullanılmasına izin vermektedir. 2 oku ile gösterilen “Oynat” butonları Test Plan’ın koşturulmaya başlanmasını sağlanmaktadır. Sol taraftaki “Oynat” butonuna basıldığında JMeter, Test Plan’ın arasına serpiştirilmiş olan Timer’ları dikkate alacak şekilde testi başlatacaktır. Sağ taraftaki Play butonu ise ilgili Timer’ları dikkate almadan testi başlatacaktır.
+Önceki bölümlerde anlatıldığı gibi JMeter, kullanıcı senaryolarını daha gerçekçi olarak test edebilmek için farklı adımlar arasında belirli süre beklemek üzere Timer (Think Time) kullanılmasına izin vermektedir. 2 ile gösterilen bölümdeki “Oynat” butonları Test Plan’ın koşturulmaya başlanmasını sağlanmaktadır. Sol taraftaki “Oynat” butonuna basıldığında JMeter, Test Plan’ın arasına serpiştirilmiş olan Timer’ları dikkate alacak şekilde testi başlatacaktır. Sağ taraftaki Play butonu ise ilgili Timer’ları dikkate almadan testi başlatacaktır.
 
-JMeter sunduğu geniş component setinin yanı sıra çok güçlü data toplama ve raporlama araçlarına sahiptir. Performans/yük testi yapılırken koşturumlar arasında sistemden alınan performans metriklerinin görülmesi, raporlanması ve saklanması kritiktir. JMeter data toplanması işlevi için bir önceki bölümde detaylı olarak ele aldığımız ve sonraki bölümlerde demo edeceğimiz pek çok Listener sağlamaktadır. 3 oku ile gösterilen "Süpürge" butonlarından sol tarafta olanına iki test koşturumu arasında basıldığında o anda ekranda görülen listener'da biriktirilmiş olan dataset'i sıfırlar. Sağ tarafta bulunan Süpürge butonu ise Test Plan'da bulunan bütün dataset'leri sıfırlar.
+JMeter sunduğu geniş component setinin yanı sıra çok güçlü data toplama ve raporlama araçlarına sahiptir. Performans/yük testi yapılırken koşturumlar arasında sistemden alınan performans metriklerinin görülmesi, raporlanması ve saklanması kritiktir. JMeter data toplanması işlevi için bir önceki bölümde detaylı olarak ele aldığımız ve sonraki bölümlerde demo edeceğimiz pek çok Listener sağlamaktadır. 3 ile gösterilen bölümdeki "Süpürge" butonlarından sol tarafta olanına iki test koşturumu arasında basıldığında o anda ekranda görülen listener'da biriktirilmiş olan dataset'i sıfırlar. Sağ tarafta bulunan Süpürge butonu ise Test Plan'da bulunan bütün dataset'leri sıfırlar.
 
-JMeter'da gerçek kullanıcıları simüle eden sanal kullanıcılar Thread Group olarak adlandırılırlar. Bir Test Plan'ın farklı aşamalarında farklı sayıda kullanıcı veya farklı girdi set'leri kullanman isteyebiliriz. Dolayısıyla farklı kullanıcı senaryolarını aynı Test Plan'da test etmek üzere bir Test Plan'da birden fazla Thread Group konumlandırılabilir. 4 oku ile gösterilen bölümde bu Thread Group'lar ile ilgili konfigürasyonlar verilmiştir. "Run Thread Groups consecutively"ın seçilmesi ile Test Plan'daki Thread Group'lar paralel koşturulmanın aksine ardı ardına koşturulur. 
+Bir Test Plan'ın farklı aşamalarında farklı sayıda kullanıcı veya farklı girdi set'leri kullanman isteyebiliriz. Dolayısıyla farklı kullanıcı senaryolarını aynı Test Plan'da test etmek üzere bir Test Plan'da birden fazla Thread Group konumlandırılabilir. 4 oku ile gösterilen bölümde bu Thread Group'lar ile ilgili konfigürasyonlar verilmiştir. "Run Thread Groups consecutively"ın seçilmesi ile Test Plan'daki Thread Group'lar paralel koşturulmanın aksine ardı ardına koşturulur. 
 
 JMeter, Thread Group'ların çalıştırılmaya başlamasından önce Thread Group'un doğru bir biçimde koşturulabilmesi için gerekli ön ayarlamaların yapılmasına imkan tanıyan "setUp Thread Group"lar ve Thread Group'un işi bittikten sonra gerekli kaynak temizleme işlemlerinin yapılabileceği "tearDown Thread Group"lar sağlamaktadır. "Run tearDown Thread Groups after shutdown of main threads" ayarı seçildiğinde "tearDown Thread Group"lar sadece Thread Group'ların başarılı koşturumlarından sonra çalıştırılırlar fakat Test Plan koşturum devam ederken durdurulursa çalıştırılmazlar. 
 
-"Functional Test Mode" ayarı seçildiğinde ise JMeter her bir test adımında Sampler'ların request ve response'larını kaydeder ve sistemin fonksiyonu test edilirken yanlış giden bir şey olduğunda ilgili input ve output görülebilir. Performans testlerinde bu ayarın seçili olmaması gerekir çünkü Sampler'lar aracılığıyla sisteme verilen request'lerin ve alınan bütün response'ların dosyaya kaydedilmesi JMeter'ın kaynaklarını loglama için tüketecek ve daha az kullanıcıyı gerçek zamanlı olarak simüle edebilmesine neden olacaktır. Bu durumda hedeflenen toplam kullanıcı sayısına ulaşabilmek için daha fazla test sunucusuna ihtiyaç duyulacaktır.
+## Uçtan Uca Demo
+___
+
+TODO: gseng - 
