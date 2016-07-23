@@ -17,7 +17,7 @@ Bu blog yazısını okuduktan sonra aşağıdaki iki blog yazısını da sıras�
 ## JMeter Nedir?
 ___
 
-JMeter başlangıçta web uygulamalarının test edilebilmesi için tasarlanmış fakat sonrasında farklı test fonksiyonlarını gerçekleştirecek şekilde geliştirilmiştir.
+JMeter başlangıçta web uygulamalarının test edilebilmesi için tasarlanmış fakat sonrasında farklı test fonksiyonlarını da gerçekleştirecek şekilde geliştirilmiştir.
 
 JMeter web uygulamalarında html, resim, css ve js gibi statik dosyaları test edebilmenin yanı sıra SOAP ve REST bazlı içeriği dinamik olarak üretilen web servisleri test etme amaçlı olarak da kullanılabilir. Gerçek kullanıcıların bir web uygulamasını kullanırken sunuculardan talep ettikleri kaynaklar JMeter yardımı ile sanki gerçek kullanıcılar bu kaynakları talep ediyormuşcasına simüle edilir. JMeter ile simüle edilen kullanıcı senaryoları (kullanıcıların web uygulamasını kullanma şekilleri), web uygulamasının isteği girdiler (input) farklılaştırılarak sanki birden fazla kullanıcı aynı anda aynı senaryoyu çalıştırıyormuş gibi simüle edilir ve sistemde istenen büyüklükte bir yük oluşturulabilir. Bir kullanıcı senaryosu oluşturma ve bir kullanıcı için oluşturulan senaryonun farklı kullanıcılar oluşturacak şekilde hazırlanmasını, yani JMeter'ın temel fonksiyonu diyebileceğimiz özelliği, ilerleyen bölümlerde bir demo olarak gösterip pekiştirmenizi sağlamaya çalışacağım.
 
@@ -70,7 +70,7 @@ JMeter'da bütün kullanıcıların aynı anda sisteme girmesi isteniyorsa Ramp-
 
 Aşağıdaki ekran çıktısında görülebileceği üzere JMeter'da Ramp-up Time Thread Group bileşeni üzerinde ayarlanmaktadır.
 
-![Ramp-up Time](/img/blog/JMeterPart1/JMeterRampUpTime.png "Ramp-up Time")
+![Ramp-up Time](/resource/img/JMeterPart1/JMeterRampUpTime.png "Ramp-up Time")
 
 #### Think Time (Düşünme Süresi)
 
@@ -99,7 +99,7 @@ Sample Time (Örnekleme Süresi) son kullanıcının hissettiği ve gözlemledi�
 ### JMeter Bileşenleri
 ___
 
-Bu bölümde bütün JMeter bileşenlerini ayrıntılı olarak ele almak yerine hızlıca başlamamıza olanak tanıyacak JMeter en önemli ve kullanışlı bileşenlere yer vereceğiz. Bu blog sonrasında gelecek 2 blog'da birçok bileşene göz atma fırsatı bulacağız.
+Bu bölümde bütün JMeter bileşenlerini ayrıntılı olarak ele almak yerine hızlıca başlamamıza olanak tanıyacak JMeter en önemli ve kullanışlı bileşenlere yer vereceğiz. Bu blog sonrasında gelecek 2 blog'da birçok bileşene göz atma fırsatı bulacağız. 
 
 #### Sampler (Örnekleyici)
 
@@ -107,11 +107,11 @@ Test yapılacak sistemle etkileşim yapmak için ihtiyaç duyulan JMeter bileşe
 
 www.milliyet.com.tr/Siyaset sayfasına istek yapmak üzere hazırlanan HTTP Request Sampler'ın görüntüsü aşağıda verilmiştir. 1 ile işaretlenen bölümde Http Request Sampler'ına "Siyaset Sayfası" adı verilerek raporlarda ayrıştırılabilmesi hedeflenmiştir. 2 ile işaretlenen bölümde sunucunun DNS sunucular tarafından çözülebilecek ismi yani FQDN'i (Fully Qualified Domain Name) verilmiştir. Bu kısımda IP de verilebilirdi. 3 ile işaretlenen bölümde ise web sunucudan istenecek bölüm (path) verilmiştir.
 
-![JMeter HTTP Request Sampler](/img/blog/JMeterPart1/JMeterHttpRequestSampler.png "JMeter HTTP Request Sampler")
+![JMeter HTTP Request Sampler](/resource/img/JMeterPart1/JMeterHttpRequestSampler.png "JMeter HTTP Request Sampler")
 
 JMeter versiyon 2.13 tarafından desteklenen güncel Sampler listesi aşağıda verilmiştir. Bu blog serisinde ele alacağımız ve en çok kullanılan Sampler'lar altı çizilerek işaretlenmiştir.
 
-![JMeter Sampler List](/img/blog/JMeterPart1/JMeterSamplerList.png "JMeter Sampler List")
+![JMeter Sampler List](/resource/img/JMeterPart1/JMeterSamplerList.png "JMeter Sampler List")
 
 JMeter genel olarak genişletilebilir bir araç olduğu için kendi Sampler'ınızı yazmanız da mümkün. Örneğin MQTT sunucusuna isteklerde bulunmak üzere kendimiz MQTT Request Sampler'ını Java kullanarak yazabiliriz veya daha önce başkaları tarafından yazılmışsa import ederek kullanabiliriz.
 
@@ -123,18 +123,49 @@ Sampler'ı anlatırken örnek olarak kullandığımız Test Plan'ına View Resul
 
 1 ile işaretlenen bölümde eş zamanlı olarak 10 sanal kullanıcı için başlatılan 10 istek görülmektedir. 2 ile işaretlenen bölümde dinlenen HTTP Sampler ile ilgili detay bilgiler verilmektedir. Buradaki bilgilere bakılarak sunucuya bağlantı zamanının "Connect Time" 133 ms, sayfanın yüklenme zamanının "Load Time" 285 ms, HTTP cevabının boyutunun "Size in bytes" 47803 byte olduğunu görebiliyoruz. 3 ile işaretlenen bölümde ise yine dinlenen HTTP Sampler'ın "Sampler result"a ek olarak yapılan Request (istek) ve alınan Response (cevap) ile ilgili bilgi alabileceğimizi görüyoruz.
 
-![JMeter View Results Tree Listener](/img/blog/JMeterPart1/JMeterViewResultsTreeListener.png "JMeter View Results Tree Listener")
+![JMeter View Results Tree Listener](/resource/img/JMeterPart1/JMeterViewResultsTreeListener.png "JMeter View Results Tree Listener")
 
-HTTP Sampler'lar tarafından yapılan istekler ve alınan cevaplar ile ilgili özet bilgiler aşağıda View Results in Table Listener'ı tarafından sağlanmıştır. 1 ile işaretlenen bölümde her bir HTTP isteğinin sonuçlanma süresini görebiliyoruz. www.milliyet.com.tr'nin en düşük 104 ms'de en yüksek ise 593 ms'de /siyaset/ sayfası için sonuçları döndüğünü görebiliyoruz. 2 ile işaretlenen bölümde yapılan bütün isteklere sunucunun pozitif cevap verdiğini görüyoruz. 3 ile işaretlenen bölümde ise sunucudan gönderilen cevabın boyutunun neredeyse her seferinde değiştiğini görüyoruz. Aynı sayfa için sunucudan gelen toplam byte sayısının neden değiştiğini görebiliyorsanız aşağıdaki yorum bölümüne yazabilir misiniz? :) 4 ile işaretlenen bölümde ise her bir HTTP isteğinin sunucuda geçirdiği süreyi Latency olarak görüyoruz. Sample Time ve Latency arasındaki fark (Sample Time (Örnekleme Süresi) ve Latency (Gecikme)) başlıklı bölümde anlatılmıştı.
+HTTP Sampler'lar tarafından yapılan istekler ve alınan cevaplar ile ilgili özet bilgiler aşağıda View Results in Table Listener'ı tarafından sağlanmıştır. 1 ile işaretlenen bölümde her bir HTTP isteğinin sonuçlanma süresini görebiliyoruz. www.milliyet.com.tr'nin en düşük 104 ms'de en yüksek ise 593 ms'de `/siyaset/` sayfası için sonuçları döndüğünü görebiliyoruz. 2 ile işaretlenen bölümde yapılan bütün isteklere sunucunun pozitif cevap verdiğini görüyoruz. 3 ile işaretlenen bölümde ise sunucudan gönderilen cevabın boyutunun neredeyse her seferinde değiştiğini görüyoruz. Aynı sayfa için sunucudan gelen toplam byte sayısının neden değiştiğini görebiliyorsanız aşağıdaki yorum bölümüne yazabilir misiniz? :) 4 ile işaretlenen bölümde ise her bir HTTP isteğinin sunucuda geçirdiği süreyi Latency olarak görüyoruz. Sample Time ve Latency arasındaki fark (Sample Time (Örnekleme Süresi) ve Latency (Gecikme)) başlıklı bölümde anlatılmıştı.
 
-![JMeter View Results in Table Listener](/img/blog/JMeterPart1/JMeterViewResultsInTableListener.png "JMeter View Results in Table Listener")
+![JMeter View Results in Table Listener](/resource/img/JMeterPart1/JMeterViewResultsInTableListener.png "JMeter View Results in Table Listener")
+
+#### Thread Group
+
+JMeter'da bir Test Plan'ında oluşturulan senaryonun farklı kullanıcılar tarafından paralel bir şekilde koşturulabileceğinden bahsetmiştik. Eş zamanlı kullanıcılar koşturacakları senaryolar (ilgili sampler'lar ile birlikte) Thread Group'lar altında tanımlanır. Thread Group'un özelliklerinden "Number of Threads (users)" simüle edilmek istenen kullanıcı sayısına göre ayarlanarak test hazırlanmış olur.
+
+Thread Group bileşeninin görünümü aşağıda verilmiştir. 1 ile gösterilen bölümde Thread Group'un içinde bulunan Thread'lerin (user'ların) bir Sampler hatası ile karşılaşıldığında ne yapmaları gerektiği ayarlanır. Default değer Continue'dur. Örneğin HTTP Request sampler sunucuya bir istek göndermiş ve 60 saniye boyunca sunucudan cevap alamamışsa işlemi başarısız olarak değerlendirir. Continue seçildiğinde ilgili Thread bir sonraki adıma geçer. Burada bir sonraki loop'a başlamak seçilebileceği gibi, ilgili Thread (user) veya test bütünü ile durdurulabilir. JMeter ile yük, performans testi yapıldığında bu ayar Continue olarak işaretlenmelidir. Fonksiyon testi yapıldığında ayarın Stop Test olarak işaretlenmesi uygun olacaktır. 2 ile gösterilen bölümde yukarıda açıklandığı gibi Thread Group tarafından koşturulacak eşzamanlı kullanıcı sayısı girilmelidir. 3 ile gösterilen bölümde bir Number of Threads bölümünde seçilen sayıdaki kullanıcının sisteme toplam kaç saniyede gireceği belirlenir. Örneğimiz için 10 kullanıcı 1 saniye içinde yani 100 ms'de bir kullanıcı sisteme girecek şekilde bir ayar yapılmıştır. 4 ile gösterilen bölümde her bir Thread'in (user'ın) Thread Group'un altında bulunan test adımlarını toplam kaç kere koşturacağı ayarı yapılır.
+
+![JMeter Thread Group](/resource/img/JMeterPart1/JMeterThreadGroup.png "JMeter Thread Group")
+
+#### CSV Data Set Config
+
+JMeter'da bir Thread Group için hazırlanmış senaryoda kullanıcıya özgü bir takım değerler bulunabilir veya her bir kullanıcının sistemin farklı bölümlerini test etmesi istenebilir. Örneğin, test edilen senaryo eğer sisteme giriş yapılmasını gerektiriyorsa bir girdi dosyası ile JMeter'a her bir kullanıcıya ait kullanıcı adı ve parola bilgileri verilmelidir. JMeter girdi dosyalarını CSV (Comma Separated Values) formatında kabul etmektedir. Her ne kadar CSV adından virgül ile ayrılmış dosya formatını çağrıştırsa da istenildiği taktirde (input dosyasındaki alanlardan birinde virgül olması durumunda) virgül yerine noktalı virgül (;) veya soru işareti (?) de kullanılabilir.
+
+Örnek bir CSV girdi dosyası ve JMeter CSV Data Set Config bileşeni aşağıda verilmiştir. Dikkat edilmesi gereken en önemli husus JMeter Test Plan'ın kaydedildiği JMX dosyası ile CSV dosyasının aynı klasörde olması veya CSV dosyasının CSV Data Set Config'de konfigüre edilirken JMX dosyasına göre relative path'inin verilmesi gerekliliğidir.
+
+`jmeter_input.csv` dosya içeriği:
+
+```
+gsengun;Passw0rd;5358282828
+adere;Passw0rd!!;5358282829
+```
+
+CSV Data Set Config bileşeninin görünümü aşağıda verilmiştir. 1 ile gösterilen bölümde CSV dosyasının adı (aslında JMX dosyasının konumuna göre relative path'i) verilmiştir. 2 ile gösterilen bölümde input dosyasındaki kolonlara atanacak değişken isimleri verilmiştir. İlk kolona `username`, ikinci kolona `password` ve üçüncü kolona da `mobile_phone` değişken adı atanmıştır. Debug Sampler'ın anlatıldığı kısımda burası örnekle birlikte daha anlaşılır hale gelecektir. Variable isimleri burada verilmek yerine CSV dosyasında ilk satır olarak da verilebilir. Bu durumda CSV Data Set Config bileşenindeki bu kısmın boş bırakılması gerekir. 3 ile gösterilen bölümde CSV dosyasında kolonlar arasındaki ayracın hangi karakter olduğu girilmiştir. Default değer virgüldür (,) fakat bizim dosyamızda noktalı virgül (;) kolon ayracı olarak kullanıldığı için bu bölüme (;) yazmamız gerekir.
+
+![CSV Data Set Config](/resource/img/JMeterPart1/JMeterCsvDataSetConfig.png "CSV Data Set Config")
+
+#### Debug Sampler
+
+JMeter her bir Thread için ayrı ayrı ya da bütün Thread'ler için ortak olarak geçerli olabilecek şekilde değişkenler tanımlanmasına izin vermektedir. Debug Sampler bileşeni ile ilgili Thread'e ve global olarak bütün Thread'lere ilişkin değişkenler gösterilebilir. Debug Sampler genellikle Test Plan hazırlanırken test script'ini debug etmek için kullanılır ve yük/performans testlerinin koşturulması sırasında devre dışı bırakılır. Kullanım senaryosuna örnek olması açısından ilk web servis çağrısından dönen JSON sonuçtaki bir alanın bir sonraki web servis çağrısına girdi olarak geçirildiği durumu ele alalım. İlk servis çağrısından dönen cevabın içindeki ilgili alan bir JMeter değişkenine atanır. Bu değişken sonraki çağrıda kullanılarak ikinci çağrı yapılır. Bu test plan'da araya bir Debug Sampler eklenerek JMeter'ın ilk web servis çağrısından parse edip doldurduğu değişkenin değeri okunarak parse işlemi için yazılan Regex'in doğru yapılandırılıp yapılandırılmadığı anlaşılır.
+
+TODO: TODO: ![JMeter Debug Sampler](/resource/img/JMeterPart1/JMeterViewResultsInTableListener.png "JMeter Debug Sampler")
 
 ## JMeter GUI
 ___
 
 Bir önceki bölümde başlangıç yapabilmemize olanak tanıyacak kadar JMeter bileşenlerine göz attık. Bu bölümde anlatılan bileşenlerin yerleştirildiği JMeter kullanıcı arayüzüne kısa bir bakış atacağız.
 
-![JMeter GUI](/img/blog/JMeterPart1/JMeterGuiDefault.png "JMeter GUI")
+![JMeter GUI](/resource/img/JMeterPart1/JMeterGuiDefault.png "JMeter GUI")
 
 Yukarıdaki şekilde yeni bir JMeter test planı hazırlanmak üzere JMeter programı komut satırından başlatılmıştır. Görüleceği üzere 1 oku ile gösterilen bölümde Test Plan bulunmaktadır. Bu bölümde hiyerarşik olarak test plan adımları bir ağaç yapısı şeklinde sıralanacak ve JMeter tarafından koşturulacaktır. 
 
@@ -144,6 +175,6 @@ JMeter sunduğu geniş component setinin yanı sıra çok güçlü data toplama 
 
 JMeter'da gerçek kullanıcıları simüle eden sanal kullanıcılar Thread Group olarak adlandırılırlar. Bir Test Plan'ın farklı aşamalarında farklı sayıda kullanıcı veya farklı girdi set'leri kullanman isteyebiliriz. Dolayısıyla farklı kullanıcı senaryolarını aynı Test Plan'da test etmek üzere bir Test Plan'da birden fazla Thread Group konumlandırılabilir. 4 oku ile gösterilen bölümde bu Thread Group'lar ile ilgili konfigürasyonlar verilmiştir. "Run Thread Groups consecutively"ın seçilmesi ile Test Plan'daki Thread Group'lar paralel koşturulmanın aksine ardı ardına koşturulur. 
 
-JMeter, Thread Group'ların çalıştırılmaya başlamasından önce Thread Group'un doğru bir biçimde koşturulabilmesi için gerekli ön ayarlamaların yapılmasına imkan tanıyan "setUp Thread Group"lar ve Thread Group'un işi bittikten sonra gerekli kaynak temizleme işlemlerinin yapılabileceği "tearDown Thread Group"lar sağlamaktadır. "Run tearDown Thread Groups after shutdown of main threads" ayarı seçildiğinde "tearDown Thread Group"lar sadece Threa Group'ların başarılı koşturumlarından sonra çalıştırılırlar fakat Test Plan koşturum devam ederken durdurulursa çalıştırılmazlar. 
+JMeter, Thread Group'ların çalıştırılmaya başlamasından önce Thread Group'un doğru bir biçimde koşturulabilmesi için gerekli ön ayarlamaların yapılmasına imkan tanıyan "setUp Thread Group"lar ve Thread Group'un işi bittikten sonra gerekli kaynak temizleme işlemlerinin yapılabileceği "tearDown Thread Group"lar sağlamaktadır. "Run tearDown Thread Groups after shutdown of main threads" ayarı seçildiğinde "tearDown Thread Group"lar sadece Thread Group'ların başarılı koşturumlarından sonra çalıştırılırlar fakat Test Plan koşturum devam ederken durdurulursa çalıştırılmazlar. 
 
 "Functional Test Mode" ayarı seçildiğinde ise JMeter her bir test adımında Sampler'ların request ve response'larını kaydeder ve sistemin fonksiyonu test edilirken yanlış giden bir şey olduğunda ilgili input ve output görülebilir. Performans testlerinde bu ayarın seçili olmaması gerekir çünkü Sampler'lar aracılığıyla sisteme verilen request'lerin ve alınan bütün response'ların dosyaya kaydedilmesi JMeter'ın kaynaklarını loglama için tüketecek ve daha az kullanıcıyı gerçek zamanlı olarak simüle edebilmesine neden olacaktır. Bu durumda hedeflenen toplam kullanıcı sayısına ulaşabilmek için daha fazla test sunucusuna ihtiyaç duyulacaktır.
