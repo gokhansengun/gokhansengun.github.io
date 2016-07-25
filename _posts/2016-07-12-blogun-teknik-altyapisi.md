@@ -120,7 +120,7 @@ Daha önce de yazdığım gibi, komut satırından `$ jekyll new MyBlogSite` kom
 
 3. Favori tarayıcımızı açarak adres satırına blog'umuzun sunulduğu adresi `http://127.0.0.1:4000/` girerek sonucu görelim. Eğer aynı adımları takip ettiyseniz siz de aşağıdaki gibi bir çıktı görmelisiniz.
 
-	![Jekyll Scaffolded Site](/resource/img/Jekyll/JekyllScaffolded.png "Jekyll Scaffolded Site")
+    {% include image.html url="/resource/img/Jekyll/JekyllScaffolded.png" description="Jekyll Scaffolded Site" %}
 
 4. `Ctrl + C` tuş kombinasyonu ile Jekyll'ın mini web sunucusunu durduralım. Blog sitesinin bulunduğu ana klasörde artık `_site` adlı klasör dikkatinizi çekecek. Jekyll konfigürasyon dosyalarındaki ayarlar, template'ler ve blog'ların yazıldığı markdown (ya da md) uzantılı dosyalardaki içeriği statik site olarak bu klasörün altında oluşturuyor. Blog'u oluşturduğunuz klasörde `tree _site` komutunu koşturarak statik sitenizin dosya yapısına göz atabilirsiniz.
 
@@ -148,21 +148,21 @@ Bir önceki adımda Jekyll'in scaffold ettiği basit bir blog sitesini oluşturd
 
 1. [Beautiful Jekyll Github](https://github.com/daattali/beautiful-jekyll) sayfasına giderek aşağıda görülen `fork` butonuna basın. Github'daki Beautiful Jekyll reposunu kendi account'unuz altına fork etmiş olacaksınız. Böylece o repository'nin bir kopyasını size özel bir biçimde oluşturup değiştirebileceksiniz.
 
-	![Fork Beautiful Jekyll](/resource/img/Jekyll/JekyllGithubFork.png "Fork Beautiful Jekyll")
+	{% include image.html url="/resource/img/Jekyll/JekyllGithubFork.png" description="Fork Beautiful Jekyll" %}
 
 2. Halihazırda Github'a giriş yapmadıysanız kullanıcı adı ve şifrenizi girerek login olun. account'unuz ile [https://github.com](https://github.com/) sitesine giriş yapın ve `fork` butonuna tekrar basın. Tarayıcınızın adres satırının `https://github.com /gsengundemo/beautiful-jekyll` olarak değiştiğini ve kendi hesabınızda `beautiful-jekyll` adlı bir repo oluştuğunu göreceksiniz.
 
 3. Aşağıdaki ekranda bulunan `Settings` butonuna basarak repo'nun ayarlar bölümünü açın.
 
-	![Repo Settings](/resource/img/Jekyll/JekyllRepoSettings.png "Repo Settings")
-
+    {% include image.html url="/resource/img/Jekyll/JekyllRepoSettings.png" description="Repo Settings" %}
+	
 	Açılan aşağıdaki ekranda bulunan `Repository Name` metin kutusuna `gsengunblog.github.io` yazarak `Rename` butonuna basın.
 
-	![Repo Rename](/resource/img/Jekyll/JekyllChangeRepoName.png "Repo Rename")
+    {% include image.html url="/resource/img/Jekyll/JekyllChangeRepoName.png" description="Repo Rename" %}
 	
 4. Birkaç saniye bekleyip Github Pages tarafından blog'un oluşturulup yayınlanmasına izin verdikten sonra [https://gsengundemo.github.io/](https://gsengundemo.github.io/) adresini ziyaret ederek birkaç adımda oluşturduğumuz blog sitesini inceleyebilirsiniz.
 
-	![Demo Site Layout](/resource/img/Jekyll/JekyllDemoSiteLayout.png "Demo Site Layout")
+	{% include image.html url="/resource/img/Jekyll/JekyllDemoSiteLayout.png" description="Demo Site Layout" %}
 
 
 ### Şablonu Özelleştirme Adımları
@@ -209,7 +209,7 @@ Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şa
             Server address: http://127.0.0.1:4000/
         Server running... press ctrl-c to stop.
 
-    ![Demo Site Local Layout](/resource/img/Jekyll/JekyllDemoSiteLayoutLocal.png "Demo Site Local Layout")
+    {% include image.html url="/resource/img/Jekyll/JekyllDemoSiteLayoutLocal.png" description="Demo Site Local" %}
         
 3. Favori metin editörünüz ya da entegre geliştirme aracınız (IDE) ile klonladığınız klasörü açın. Ben demo'da Windows, Linux ve Mac üzerinde de çalışan Visual Studio Code metin editörünü kullanacağım. Ana klasörde bulunan `_config.yml` dosyasını açarak gerekli değişiklikleri yapmaya hazır hale gelin. Jekyll bazı değişiklikleri yeniden başlatılmaya gerek duymadan tarayıcınıza yansıtacaktır. Tarayıcınıza yansımayan değişiklikler için sunucuyu `ctrl + C` ile durdurup `$ jekyll s` komutu ile tekrar başlatabilirsiniz.
 
@@ -262,11 +262,11 @@ Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şa
 		
 	3.3.2. Ana klasördeki `_posts` klasöründe bulunan bloglardan bir kısmını silip örnek olarak kullanılacak iki tane post bırakın. Aşağıdaki gibi özelleştirilmiş bir içerik görmelisiniz.
 	
-    ![Demo Site Local Customized](/resource/img/Jekyll/JekyllDemoSiteLayoutCustomized.png "Demo Site Local Customized")
+    {% include image.html url="/resource/img/Jekyll/JekyllDemoSiteLayoutCustomized.png" description="Demo Site Local Customized" %}
 
 4. En son adım olarak yeni bir blog yazısının nasıl oluşturulacağını görelim. `_posts` klasörünün altındaki blog'lardan birini yine aynı klasöre kopyalayarak ona blog'unuza dair bir isim verin. Benim oluşturduğum dosyanın adı `2016-07-12-ozellestirilmis-ilk-post.md` oldu. Vereceğiniz tarihin bugün veya bugünden önce olması gerektiğini belirterek içinde bulunulan günün sonrasındakilerin ana sayfada görüntülenmeyeceğini belirteyim. Kopyalama yoluyla yeni oluşturduğunuz dosyayı açarak ilk post'unuzu yazın. Sayfayı yenilediğinizde aşağıdakine benzer bir görüntü elde etmelisiniz.
 
-	![Demo Site First Post](/resource/img/Jekyll/JekyllFirstPost.png "Demo Site First Post")
+	{% include image.html url="/resource/img/Jekyll/JekyllFirstPost.png" description="Demo Site First Post" %}
 
 ## Sonuç ve Sonraki Adımlar
 ___

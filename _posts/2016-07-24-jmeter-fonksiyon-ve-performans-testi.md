@@ -46,11 +46,11 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
 
 1. JMeter'da yeni bir Test Plan oluşturarak adını "Github Functional Test" olarak belirleyin ve Test Plan'ı kaydedin. Aşağıdaki gibi bir ekran görüntüsü görmelisiniz.
 
-    ![New Test Plan](/resource/img/JMeterPart2/CreateANewTestPlan.png "New Test Plan")
+    {% include image.html url="/resource/img/JMeterPart2/CreateANewTestPlan.png" description="New Test Plan" %}
 
 2. Test Plan üzerinde sağ tıklayarak Add > Threads (Users) > Thread Group menüsünü izleyerek yeni bir Thread Group ekleyin. Thread Group'un ismini istediğiniz gibi güncelleyerek "Action to be taken after a Sampler error" bölümünden "Stop Test"i seçin, böylece adımların herhangi birinde bir hata oluştuğunda testin diğer adımları koşturulmaz ve test sonlandırılır. Fonksiyonel test koşturduğumuz için Test Plan'ın hiçbir hata olmadan koşturulması gerekecektir. Değişikliği yaptıktan sonra aşağıdakine benzer bir ekran görüntüsü görmelisiniz.
 
-    ![New Thread Group](/resource/img/JMeterPart2/CreateANewThreadGroup.png "New Thread Group")
+    {% include image.html url="/resource/img/JMeterPart2/CreateANewThreadGroup.png" description="New Thread Group" %}
 
 3. Thread Group üzerinde sağ tıklayarak aşağıdaki bileşenleri ekleyin. 
     * Add > Config Element > HTTP Request Defaults
@@ -65,37 +65,37 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
 
     Aşağıdaki gibi bir ekran görüntüsü görmelisiniz.
 
-    ![Add Http Config Elements](/resource/img/JMeterPart2/AddHttpConfigElements.png "Add Http Config Elements")
+    {% include image.html url="/resource/img/JMeterPart2/AddHttpConfigElements.png" description="Add Http Config Elements" %}
 
 4. Thread Group üzerinde sağ tıklayarak Add > Sampler > HTTP Request ile ilk HTTP Sampler'ımızı JMeter projesine ekleyelim. Sampler'ımızın ismini "Github Ana Sayfası" olarak değiştirerek path kısmına `/` yazalım. Hatırlayacağınız gibi HTTP isteği yapacağımız adres daha önce eklediğimiz HTTP Request Defaults Config Element'inden alınacak. Aşağıdaki gibi bir ekran görüntüsü görmelisiniz.
 
-    ![Add Main Page HTTP Request Sampler](/resource/img/JMeterPart2/AddMainPageHttpRequestSampler.png "Add Main Page HTTP Request Sampler")
+    {% include image.html url="/resource/img/JMeterPart2/AddMainPageHttpRequestSampler.png" description="Add Main Page HTTP Request Sampler" %}
 
 5. Thread Group üzerinde sağ tıklayarak Add > Listener > View Results Tree ile HTTP Request'lerin kaydedilmesi amacı ile bir listener ekleyin. View Results Tree bileşeni seçili iken Start butonuna basarak testi çalıştırın. Yapılan request'e tıklayarak sağ tarafta, Request ve Response data sekmelerine tıklayarak yapılan request'le ilgili detayları görebilirsiniz. Aşağıda benim denemem sonucu oluşan görüntüyü görebilirsiniz.
 
-    ![Requesting Main Page](/resource/img/JMeterPart2/RequestingMainPage.png "Requesting Main Page")
+    {% include image.html url="/resource/img/JMeterPart2/RequestingMainPage.png" description="Requesting Main Page" %}
 
     Bu adımda Github Ana Sayfasını istedik ve HTML'ini aldık. Dikkat ettiyseniz sunucu JMeter'a sadece ana sayfanın HTML'ini gönderdi. Test senaryomuzun daha gerçekçi olabilmesi için Ana Sayfa ile birlikte Ana Sayfadaki resource'ları (imaj, css, js) da istememiz gerekir çünkü gerçek kullanıcı tarayıcı ile Github Ana Sayfasını ziyaret ettiğinde imajlarla birlikte formatlanmış (css) ve etkileşime girebileceği (JavaScript) bir site bekleyecektir. 
 
     HTML sayfa ile birlikte sayfa HTML'inde referans edilen resource'ları indirmek için HTTP Request Sampler bileşeninde "Retrieve All Embedded Resources" seçeneği seçili olmalıdır.
 
-    ![Retrieve All Embedded Resources](/resource/img/JMeterPart2/RetrieveAllEmbeddedResources.png "Retrieve All Embedded Resources")
-
+    {% include image.html url="/resource/img/JMeterPart2/RetrieveAllEmbeddedResources.png" description="Retrieve All Embedded Resources" %}
+    
     Bu seçenek işaretlenip, önceki test sonucu Clear edilerek test tekrar başlatıldığında Ana Sayfa içinde embed edilmiş kaynakların da sunucudan istendiği görülecektir.
 
-    ![Requesting Main Page with Resources](/resource/img/JMeterPart2/RequestingMainPageWithResources.png "Requesting Main Page with Resources")
- 
+    {% include image.html url="/resource/img/JMeterPart2/RequestingMainPageWithResources.png" description="Requesting Main Page with Resources" %}
+    
     Sunucudan dönen cevabın HTML cevabın text format yerine render edilmiş olarak verilmesi isteniyorsa View Results Tree'de ilgili sample seçilir ve format olarak "HTML (Download Resources)" seçilir. Bu örnekte cevap HTML olduğu için HTML seçtik dönen cevap JSON olsaydı, JSON şeklinde formatlamak için JSON seçebilirdik.
 
-    ![Requesting Main Page HTML Formatted Response](/resource/img/JMeterPart2/RequestingMainPageResponseHTMLFormatted.png "Requesting Main Page HTML Formatted Response")
+    {% include image.html url="/resource/img/JMeterPart2/RequestingMainPageResponseHTMLFormatted.png" description="Requesting Main Page HTML Formatted Response" %}
  
 6. Thread Group üzerinde sağ tıklayarak Add > Sampler > HTTP Request ile Login sayfası için gerekli HTTP Sampler'ımızı JMeter projesine ekleyelim. Github.com üzerinden Sign in butonuna bastığımızda https://github.com/login adresine yönlendirilmekteyiz. https://github.com adresini HTTP Request Defaults Config Bileşeninde tanımlamıştık dolayısıyla Sampler'da Path olarak `/login` yazmamız yeterli olacaktır. Sampler'ımızın ismini "Github Login Sayfası" olarak değiştirip son olarak da "Retrieve All Embedded Resources" seçeneğini seçelim. Aşağıdakine benzer bir ekran görüntüsü elde etmelisiniz.
 
-    ![Add Login Page HTTP Request Sampler](/resource/img/JMeterPart2/RequestingLoginPage.png "Add Login Page HTTP Request Sampler")
+    {% include image.html url="/resource/img/JMeterPart2/RequestingLoginPage.png" description="Add Login Page HTTP Request Sampler" %}
 
 7. View Results Tree bileşeni seçili iken Start butonuna basarak testi tekrar çalıştırın. Sign in sayfasının sunucudan istendiğini ve cevap olarak kullanıcı adı ve parola istenen sayfanın gönderildiğini teyit edin.
 
-    ![Requesting Login with Resources](/resource/img/JMeterPart2/RequestingLoginPageWithResources.png "Requesting Login with Resources")
+    {% include image.html url="/resource/img/JMeterPart2/RequestingLoginPageWithResources.png" description="Requesting Login with Resources" %}
 
 8. Bundan önceki adımları tamamlayarak "Test Edilecek Fonksiyonlar" bölümünde yer verdiğimiz ilk iki fonksiyonu gerçekleştirmiş olduk. Üçüncü fonksiyon Github.com'a kullanıcı adı ve parola ile giriş yapmamızı gerektiriyor. İlk iki adımda HTTP GET ile sunucudan HTML sayfaları ve embed edilen resource'ları istemiştik. Bu adımda is HTTP POST kullanacağız. Öncelikle tarayıcımızın Geliştirici Konsolunu (Developer Console) açarak Github.com'a tarayıcı üzerinden yapılan giriş işlemlerinde hangi URL'ye POST edildiğini tespit edeceğiz ve JMeter'da aynı ayarlamayı yapacağız.
 
@@ -103,7 +103,7 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
 
     Aşağıda Firefox tarayıcısında Network tabı açıkken yaptığım giriş denemesi görülüyor. Yapılan request'in bir POST request'i olduğu ve URL'inin `/session` olarak verildiği aşağıdaki ekran çıktısından görülebilir.
 
-    ![Login Post Grab URL From Firefox](/resource/img/JMeterPart2/LoginPagePostRequestUrl.png "Login Post Grab URL From Firefox")
+    {% include image.html url="/resource/img/JMeterPart2/LoginPagePostRequestUrl.png" description="Login Post Grab URL From Firefox" %}
 
     Yukarıdaki ekran çıktısında görülen bir başka detay da `/session` URL'ine yapılan POST request'ine dönülen cevabın 302 olmasıdır. Burada klasik PRG (Post/Redirect/Get) pattern'i uygulanmıştır. PRG pattern'i konumuz dışında fakat başka bir blog post'a konu olmaya değer bir patterndir. Kısaca buradaki durum üzerinden açıklamak gerekirse, `/session` URL'ine yapılan isteğe sunucu 302 Found (istenen URL başka bir adresten hizmet vermektedir) cevabı ile istemciye bir URL sağlar ve bu URL'e GET request yaparak işleme devam etmesini salık verir. POST sonucunda gidilecek adres HTTP Response Header'ında "Location" anahtarında verilir. Bizim durumumuzda bu URL https://github.com olarak verilmiştir. Yani Github login olduktan sonra bizi login sayfasına geldiğimiz adrese (bizim durumumuzda Ana Sayfa) yönlendirmektedir. Yukarıdaki çıktıda 302 Status Code ile sonuçlanan request'ten sonra `/`ya yapılan GET request'inin hikmeti budur.
 
@@ -113,11 +113,11 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
 
     Parameters bölümünü aşağıdaki bilgilerle doldurun. `login` ve `password` bölümlerinde kendi kullanıcı adınız ve parolanızı yazın. Follow Redirects'i işaretleyerek POST request'ten dönecek 302 Found ile birlikte gösterilecek adrese JMeter'in GET request yapmasını sağlayabiliriz. 
 
-    ![Login Post Request Not Complete Yet](/resource/img/JMeterPart2/LoginPostRequestIncomplete.png "Login Post Request Not Complete Yet")
+    {% include image.html url="/resource/img/JMeterPart2/LoginPostRequestIncomplete.png" description="Login Post Request Not Complete Yet" %}
 
     View Results Tree'ye gelerek testi başlatın. Aşağıda göreceğiniz şekilde bir hata almalısınız, endişeye kapılmayın biraz sonra o hatayı düzelteceğiz. Hata mesajından da göreceğiniz gibi Github sunucusu isteğimizi reddetti. Reddederken de bize bir şeyleri eksik yapmış olabileceğimiz ile ilgili ipuçları verdi. 
 
-    ![Login Post Response to Not Complete Request](/resource/img/JMeterPart2/LoginPostResponseToIncompleteRequest.png "Login Post Response to Not Complete Request")
+    {% include image.html url="/resource/img/JMeterPart2/LoginPostResponseToIncompleteRequest.png" description="Login Post Response to Not Complete Request" %}
 
     Github ve iyi bir şekilde güvenlik önlemi alınmış bütün siteler CSRF (Cross Site Request Forgery)'den korunmak için POST request'lerinde POST request'i öncesinde kendisinden GET request'i ile istenen sayfaya koydukları bir `Magic String`i sağlamalarını beklerler. Böylelikle POST request'i çağıran sayfanın kendi sayfaları olduğunu garanti altına alırlar, bu request'ler başka bir sayfadan çağrılamaz. Bizim örneğimizde https://github.com/login sayfasının içindeki Magic String'i bularak onu POST request'inde `authenticity_token` olarak vermemiz gerekiyor.
 
@@ -129,12 +129,12 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
     
     "Github Login Sayfası" adını verdiğimiz HTTP Request Sampler'a sağ tıklayarak Add > Post Processor > Regular Expression Extractor bileşenini ekleyin. Aşağıdaki çıktıda görüldüğü gibi konfigüre edin. İsterseniz, önceki blog'da anlatıldığı gibi "Github Login Sayfası"ndan sonra bir Debug Sampler ekleyerek parse edilen ve `the_auth_token` değişkenine atılan dinamik değeri görebilirsiniz.
 
-    ![Login Auth Token Extractor](/resource/img/JMeterPart2/LoginAuthTokenExtractor.png "Login Auth Token Extractor")
+    {% include image.html url="/resource/img/JMeterPart2/LoginAuthTokenExtractor.png" description="Login Auth Token Extractor" %}
 
     Şimdi sıra "Github Login - Post"taki parametrelere `authenticity_token` parametresini eklemeye geldi. `the_auth_token` değişkeninden alınacak değeri aşağıdaki gibi ekleyebilirsiniz.
 
-    ![Login Post Request Complete](/resource/img/JMeterPart2/LoginPostRequestComplete.png "Login Post Request ßComplete")
+    {% include image.html url="/resource/img/JMeterPart2/LoginPostRequestComplete.png" description="Login Post Request Complete" %}
 
     Testi tekrar çalıştırarak testin bu kez başarılı bir şekilde login olabildiğini sonrasında da POST'a cevap olarak gönderilen Redirect linkini takip ederek Ana Sayfaya - fakat bu kez login olmuş vaziyette - döndüğünü (Ana Sayfayı istediğini) görebilirsiniz. Sizdeki görüntü de aşağıdaki gibi olmalıdır.
 
-    ![Login Post Response to Complete Request](/resource/img/JMeterPart2/LoginPostResponseToCompleteRequest.png "Login Post Response to Complete Request")
+    {% include image.html url="/resource/img/JMeterPart2/LoginPostResponseToCompleteRequest.png" description="Login Post Response to Complete Request" %}
