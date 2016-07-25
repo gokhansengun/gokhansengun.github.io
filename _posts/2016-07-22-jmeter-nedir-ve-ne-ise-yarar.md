@@ -70,7 +70,7 @@ JMeter'da bütün kullanıcıların aynı anda sisteme girmesi isteniyorsa Ramp-
 
 Aşağıdaki ekran çıktısında görülebileceği üzere JMeter'da Ramp-up Time Thread Group bileşeni üzerinde ayarlanmaktadır.
 
-![Ramp-up Time](/resource/img/JMeterPart1/JMeterRampUpTime.png "Ramp-up Time")
+{% include image.html url="/resource/img/JMeterPart1/JMeterRampUpTime.png" description="Ramp-up Time" %} 
 
 #### Think Time (Düşünme Süresi)
 
@@ -107,11 +107,11 @@ Test yapılacak sistemle etkileşim yapmak için ihtiyaç duyulan JMeter bileşe
 
 www.milliyet.com.tr/Siyaset sayfasına istek yapmak üzere hazırlanan HTTP Request Sampler'ın görüntüsü aşağıda verilmiştir. 1 ile işaretlenen bölümde Http Request Sampler'ına "Siyaset Sayfası" adı verilerek raporlarda ayrıştırılabilmesi hedeflenmiştir. 2 ile işaretlenen bölümde sunucunun DNS sunucular tarafından çözülebilecek ismi yani FQDN'i (Fully Qualified Domain Name) verilmiştir. Bu kısımda IP de verilebilirdi. 3 ile işaretlenen bölümde ise web sunucudan istenecek bölüm (path) verilmiştir.
 
-![JMeter HTTP Request Sampler](/resource/img/JMeterPart1/JMeterHttpRequestSampler.png "JMeter HTTP Request Sampler")
+{% include image.html url="/resource/img/JMeterPart1/JMeterHttpRequestSampler.png" description="JMeter HTTP Request Sampler" %} 
 
 JMeter versiyon 2.13 tarafından desteklenen güncel Sampler listesi aşağıda verilmiştir. Bu blog serisinde ele alacağımız ve en çok kullanılan Sampler'lar altı çizilerek işaretlenmiştir.
 
-![JMeter Sampler List](/resource/img/JMeterPart1/JMeterSamplerList.png "JMeter Sampler List")
+{% include image.html url="/resource/img/JMeterPart1/JMeterSamplerList.png" description="JMeter Sampler List" %}
 
 JMeter genel olarak genişletilebilir bir araç olduğu için kendi Sampler'ınızı yazmanız da mümkün. Örneğin MQTT sunucusuna isteklerde bulunmak üzere kendimiz MQTT Request Sampler'ını Java kullanarak yazabiliriz veya daha önce başkaları tarafından yazılmışsa import ederek kullanabiliriz.
 
@@ -123,11 +123,11 @@ Sampler'ı anlatırken örnek olarak kullandığımız Test Plan'ına View Resul
 
 1 ile işaretlenen bölümde eş zamanlı olarak 10 sanal kullanıcı için başlatılan 10 istek görülmektedir. 2 ile işaretlenen bölümde dinlenen HTTP Sampler ile ilgili detay bilgiler verilmektedir. Buradaki bilgilere bakılarak sunucuya bağlantı zamanının "Connect Time" 133 ms, sayfanın yüklenme zamanının "Load Time" 285 ms, HTTP cevabının boyutunun "Size in bytes" 47803 byte olduğunu görebiliyoruz. 3 ile işaretlenen bölümde ise yine dinlenen HTTP Sampler'ın "Sampler result"a ek olarak yapılan Request (istek) ve alınan Response (cevap) ile ilgili bilgi alabileceğimizi görüyoruz.
 
-![JMeter View Results Tree Listener](/resource/img/JMeterPart1/JMeterViewResultsTreeListener.png "JMeter View Results Tree Listener")
+{% include image.html url="/resource/img/JMeterPart1/JMeterViewResultsTreeListener.png" description="JMeter View Results Tree Listener" %}
 
 HTTP Sampler'lar tarafından yapılan istekler ve alınan cevaplar ile ilgili özet bilgiler aşağıda View Results in Table Listener'ı tarafından sağlanmıştır. 1 ile işaretlenen bölümde her bir HTTP isteğinin sonuçlanma süresini görebiliyoruz. www.milliyet.com.tr'nin en düşük 104 ms'de en yüksek ise 593 ms'de `/siyaset/` sayfası için sonuçları döndüğünü görebiliyoruz. 2 ile işaretlenen bölümde yapılan bütün isteklere sunucunun pozitif cevap verdiğini görüyoruz. 3 ile işaretlenen bölümde ise sunucudan gönderilen cevabın boyutunun neredeyse her seferinde değiştiğini görüyoruz. Aynı sayfa için sunucudan gelen toplam byte sayısının neden değiştiğini görebiliyorsanız aşağıdaki yorum bölümüne yazabilir misiniz? :) 4 ile işaretlenen bölümde ise her bir HTTP isteğinin sunucuda geçirdiği süreyi Latency olarak görüyoruz. Sample Time ve Latency arasındaki fark (Sample Time (Örnekleme Süresi) ve Latency (Gecikme)) başlıklı bölümde anlatılmıştı.
 
-![JMeter View Results in Table Listener](/resource/img/JMeterPart1/JMeterViewResultsInTableListener.png "JMeter View Results in Table Listener")
+{% include image.html url="/resource/img/JMeterPart1/JMeterViewResultsInTableListener.png" description="JMeter View Results in Table Listener" %}
 
 #### Thread Group
 
@@ -135,7 +135,7 @@ JMeter'da bir Test Plan'ında oluşturulan senaryonun farklı kullanıcılar tar
 
 Thread Group bileşeninin görünümü aşağıda verilmiştir. 1 ile gösterilen bölümde Thread Group'un içinde bulunan Thread'lerin (user'ların) bir Sampler hatası ile karşılaşıldığında ne yapmaları gerektiği ayarlanır. Default değer Continue'dur. Örneğin HTTP Request sampler sunucuya bir istek göndermiş ve 60 saniye boyunca sunucudan cevap alamamışsa işlemi başarısız olarak değerlendirir. Continue seçildiğinde ilgili Thread bir sonraki adıma geçer. Burada bir sonraki loop'a başlamak seçilebileceği gibi, ilgili Thread (user) veya test bütünü ile durdurulabilir. JMeter ile yük, performans testi yapıldığında bu ayar Continue olarak işaretlenmelidir. Fonksiyon testi yapıldığında ayarın Stop Test olarak işaretlenmesi uygun olacaktır. 2 ile gösterilen bölümde yukarıda açıklandığı gibi Thread Group tarafından koşturulacak eşzamanlı kullanıcı sayısı girilmelidir. 3 ile gösterilen bölümde bir Number of Threads bölümünde seçilen sayıdaki kullanıcının sisteme toplam kaç saniyede gireceği belirlenir. Örneğimiz için 10 kullanıcı 1 saniye içinde yani 100 ms'de bir kullanıcı sisteme girecek şekilde bir ayar yapılmıştır. 4 ile gösterilen bölümde her bir Thread'in (user'ın) Thread Group'un altında bulunan test adımlarını toplam kaç kere koşturacağı ayarı yapılır.
 
-![JMeter Thread Group](/resource/img/JMeterPart1/JMeterThreadGroup.png "JMeter Thread Group")
+{% include image.html url="/resource/img/JMeterPart1/JMeterThreadGroup.png" description="JMeter Thread Group" %}
 
 #### CSV Data Set Config
 
@@ -152,7 +152,7 @@ adere;Passw0rd!!;5358282829
 
 CSV Data Set Config bileşeninin görünümü aşağıda verilmiştir. 1 ile gösterilen bölümde CSV dosyasının adı (aslında JMX dosyasının konumuna göre relative path'i) verilmiştir. 2 ile gösterilen bölümde input dosyasındaki kolonlara atanacak değişken isimleri verilmiştir. İlk kolona `username`, ikinci kolona `password` ve üçüncü kolona da `mobile_phone` değişken adı atanmıştır. Debug Sampler'ın anlatıldığı kısımda burası örnekle birlikte daha anlaşılır hale gelecektir. Variable isimleri burada verilmek yerine CSV dosyasında ilk satır olarak da verilebilir. Bu durumda CSV Data Set Config bileşenindeki bu kısmın boş bırakılması gerekir. 3 ile gösterilen bölümde CSV dosyasında kolonlar arasındaki ayracın hangi karakter olduğu girilmiştir. Default değer virgüldür (,) fakat bizim dosyamızda noktalı virgül (;) kolon ayracı olarak kullanıldığı için bu bölüme (;) yazmamız gerekir.
 
-![CSV Data Set Config](/resource/img/JMeterPart1/JMeterCsvDataSetConfig.png "CSV Data Set Config")
+{% include image.html url="/resource/img/JMeterPart1/JMeterCsvDataSetConfig.png" description="CSV Data Set Config" %}
 
 #### Debug Sampler
 
@@ -160,23 +160,23 @@ JMeter her bir Thread için ayrı ayrı ya da bütün Thread'ler için ortak ola
 
 Debug Sampler'ı daha kolay örneklemek için bir önceki bölümde (CSV Data Set Config) ele alınan ve CSV dosyalarından okunan ve her bir Thread'e atanan değişkenleri ele alalım. Thread'lere atanan değişkenlerin (mobile_phone, password, username) değerleri (5358282828, Passw0rd, gsengun) aşağıdaki çıktıda sırasıyla 1, 2 ve 3 ile işaret edilmiştir. 
 
-![JMeter Debug Sampler](/resource/img/JMeterPart1/JMeterDebugSampler.png "JMeter Debug Sampler")
+{% include image.html url="/resource/img/JMeterPart1/JMeterDebugSampler.png" description="JMeter Debug Sampler" %}
 
 #### Assertion
 
 JMeter'daki Assertion'lar da birçok programlama dilindeki Assertion'a benzer şekilde davranmaktadır. Programlama dillerindeki Assertion'larda gerçekleşmesi beklenen koşul belirlenir ve beklenen koşul dışındaki değerlerde Assertion Failure durumu oluşur ve akış kesilerek hatadan haberdar olunur. JMeter'da ise Assertion Failure oluştuğundaki davranış aşağıdaki çıktıda 1 ile gösterilen bölümde Thread Group'daki "Action to be taken after a Sampler error" konfigürasyonu ile belirlenir. Assertion Failure, Assertion'ın bağlı bulunduğu Sampler'da hataya sebep olacağı için bu konfigürasyonda girilecek aksiyon alınacaktır. 
 
-![JMeter Thread Group](/resource/img/JMeterPart1/JMeterThreadGroup.png "JMeter Thread Group")
+{% include image.html url="/resource/img/JMeterPart1/JMeterThreadGroup.png" description="JMeter Thread Group" %}
 
 Assertion'lar ile Thread bazlı olarak istenen test adımında değişkenler incelenip beklenmeyen koşullarda Assertion Failure oluşturulabileceği gibi, JMeter Sampler'lar ile yapılan request'lere verilen response'lar incelenip beklenmeyen koşullar Assertion Failure oluşturmak üzere programlanabilir.
 
 Aşağıda Test Plan'da Siyaset Sayfası'na bir Response Assertion eklenerek test edilecek response bölümü olarak "Response Code" seçilmiştir. Alattaki bölümde test edilecek patern olarak Response Code'un 400 olması beklendiği ifade edilmiştir. Response Code normal şartlarda sunucudan bildiğiniz gibi 200 olarak dönecektir. Böylece örneğimizde bir Assertion Failure'ı canlandırmış olacağız.
 
-![JMeter Response Assertion](/resource/img/JMeterPart1/JMeterResponseAssertion.png "JMeter Response Assertion")
+{% include image.html url="/resource/img/JMeterPart1/JMeterResponseAssertion.png" description="JMeter Response Assertion" %}
 
 Test Plan'ı çalıştırdığımızda View Results Tree bileşeninde Assertion Failure durumu olan Sample'ların JMeter tarafından kırmızıya boyandığı ve Assertion Failure sebebinin sağ tarafta yazıldığı görülmektedir.
 
-![JMeter Response Assertion Failure](/resource/img/JMeterPart1/JMeterResponseAssertionFailure.png "JMeter Response Assertion Failure")
+{% include image.html url="/resource/img/JMeterPart1/JMeterResponseAssertionFailure.png" description="JMeter Response Assertion Failure" %}
 
 #### Pre Processor ve Post Processor (Extractor'lar)
 
@@ -186,22 +186,22 @@ Yine aynı örneği (www.milliyet.com.tr/siyaset/ sayfasını) kullanarak sayfa 
 
 Regex ile yakanalacak metin aşağıda işaretlenmiştir.
 
-![JMeter Title Regex Extractor](/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractor.png "JMeter Title Regex Extractor")
+{% include image.html url="/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractor.png" description="JMeter Title Regex Extractor" %}
 
 `<title>` tag'leri arasında bulunan sayfa başlığının alınabilmesi için gerekli olan JMeter Regular Expression Extractor konfigürasyonu aşağıda verilmiştir. 1 ile işaretlenen bölümde Regex ile parse edilen string'in atılacağı JMeter değişkeninin ismi verilmiştir. Bu değişken ilerleyen adımlarda `{$page_title}` olarak kullanılabilecektir. 2 ile işaretlenen bölümde HTML response'u ile eşleştirilmek üzere gerekli olan Regular Expression (Düzenli İfade) verilmiştir. 3 ile işaretlenen bölümde Regex ile eşleşen değişkene atılacak değer için bir template belirtimi yapılmaktadır. `$1$` Regex'te ilk eşleşen grubu `$2$` Regex'te ikinci eşleşen grubu ifade etmektedir. Değişkenden başına `Sayfa Başlığı ` ve sonuna da `'dır` eklemek istersek template'i `Sayfa Başlığı $1$'dır` şeklinde vermemiz gerekir. 4 ile işaretlenen bölümde Regex ile birden fazla eşleşme olması durumunda hangi sıradaki eşleşmenin kullanılacağını belirler, bizim durumumuzda sadece 1 eşleşme olacağı için bu bölümde 1 kullanıldı. 
 
-![JMeter Title Regex Extractor Conf](/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractorConf.png "JMeter Title Regex Extractor Conf")
+{% include image.html url="/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractorConf.png" description="JMeter Title Regex Extractor Conf" %}
 
 Response'lardan çıkarılan bilgilerin atıldığı değişkenlerin başka Sampler'larda kullanılabileceğini daha önce söylemiştik. Demo'da bu kullanımı örnekleyeceğiz. Şimdilik Debug Sampler'daki görünümü aşağıda vererek bu kısmı kapatalım. Görebileceğiniz üzere `page_title` değişkenine `<title>` tag'leri arasında bulunan başlık atılmış oldu.
 
-![JMeter Title Regex Extractor Result](/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractorResult.png "JMeter Title Regex Extractor Result")
+{% include image.html url="/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractorResult.png" description="JMeter Title Regex Extractor Result" %}
 
 ## JMeter GUI
 ___
 
 Bir önceki bölümde başlangıç yapabilmemize olanak tanıyacak kadar JMeter bileşenlerine göz attık. Bu bölümde anlatılan bileşenlerin yerleştirildiği JMeter kullanıcı arayüzüne kısa bir bakış atacağız.
 
-![JMeter GUI](/resource/img/JMeterPart1/JMeterGuiDefault.png "JMeter GUI")
+{% include image.html url="/resource/img/JMeterPart1/JMeterGuiDefault.png" description="JMeter GUI" %}
 
 Yukarıdaki şekilde yeni bir JMeter test planı hazırlanmak üzere JMeter programı komut satırından başlatılmıştır. Görüleceği üzere 1 ile gösterilen bölümde Test Plan bulunmaktadır. Bu bölümde hiyerarşik olarak test plan adımları bir ağaç yapısı şeklinde sıralanacak ve JMeter tarafından koşturulacaktır. 
 
