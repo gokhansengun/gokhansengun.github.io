@@ -138,3 +138,29 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
     Testi tekrar çalıştırarak testin bu kez başarılı bir şekilde login olabildiğini sonrasında da POST'a cevap olarak gönderilen Redirect linkini takip ederek Ana Sayfaya - fakat bu kez login olmuş vaziyette - döndüğünü (Ana Sayfayı istediğini) görebilirsiniz. Sizdeki görüntü de aşağıdaki gibi olmalıdır.
 
     {% include image.html url="/resource/img/JMeterPart2/LoginPostResponseToCompleteRequest.png" description="Login Post Response to Complete Request" %}
+
+10. Bir önceki adımla birlikte test etmeyi planladığımız ilk üç fonksiyonu test ettik. Bir sonraki adım kullanıcıların bütün repository'lerini listeleme ile ilgili. Bir kullanıcının bütün repository'lerini listeleyen Github url'i `/gokhansengun?tab=repositories` dir. Bu URL'e yapılan GET request'i ile gelen sayfayı tarayıcınızın sağladığı geliştirici araçlarından inspector ile incelediğinizde repository isimlerinin aşağıdaki ekran çıktısında işaretlenen HTML parçasından alınabileceğini görebilirsiniz. 
+
+    {% include image.html url="/resource/img/JMeterPart2/HtmlSnippetForRepoName.png" description="Html snippet for repo name" %}
+
+    Bir önceki adımda `authenticity_token`ı seçmek için HTML içinde Regex Extractor kullanmıştık ama oradaki senaryoda sadece bir eşleşme yeterli oluyordu. Burada ise kullanıcının birden fazla repository'si olması durumunda Regex'in birden fazla kere eşleşmesi gerekecek. Neyse ki JMeter'ın sağladığı Regex Extractor birden fazla eşleşme için destek vermekte ve bu sonuçlar üzerinde ForEach bileşeni ile dolaşmaya olanak tanımaktadır.
+
+    Öncelikle repo isimlerini listelemek üzere ilgili URL'e GET request'i yaparak repository'lerin olduğu HTML'leri alacak sampler'ı projeye ekleyelim. Aşağıdaki ekran görüntüsü oluşacak şekilde HTTP Request Sampler'ı test plana ekleyin.
+
+    {% include image.html url="/resource/img/JMeterPart2/GetRepositoriesPage.png" description="Get repositories page" %}
+
+    Bir önceki adımda olduğu gibi HTTP Request Sampler'a Post Processor olarak Regular Expression Extractor ekleyin ve aşağıda gösterildiği şekilde konfigüre edin. Burada bir önceki Extractor'dan farklı olarak `Match No.` olarak `-1` verildiğine dikkat edin. Bir önceki örnekte verilen 1 değeri, Regex Extractor'a ilk eşleşmeyi değişkene atmasını öğütlemişti. Bu örnekteki -1 değeri, eşleşen bütün değerlerin bir liste olarak değişkene atılmasını salık vermektedir.
+
+    {% include image.html url="/resource/img/JMeterPart2/RepositoriesPageRegexExtractor.png" description="Get repositories page regex extractor" %}
+
+    Eşleşen Regex parçalarını görmek için View Results Tree'den önce bir Debug Sampler ekleyin ve testi başlatın. Aşağıdakine benzer bir görüntü elde etmeniz gerekir.
+
+    {% include image.html url="/resource/img/JMeterPart2/RepositoriesPageRegexExtractorDebugSampler.png" description="Get repositories page regex extractor result" %}
+
+    Son olarak aşağıdaki gibi bir ForEach kontrolü ekleyerek Regex ile parse ederek liste olarak bir değişkene attığımız repo isimlerini teker teker işleyebilecek kabiliyette olduğumuzu görelim. `input_variable_prefix` bölümüne Regex Extractor'daki Reference Name'i yani Regex ile eşleşen elemanların bulunduğu liste ismini verelim, `output_variable_name` kısmına ise listedeki her bir elemanın değerinin tutulacağı değişken ismini verelim. Böylece ForEach kontrolü içinde `repository_name` değişkeni ile repository'lerin isimlerine teker teker ulaşabileceğiz.
+
+    {% include image.html url="/resource/img/JMeterPart2/RepositoriesPageForEachController.png" description="Get repositories page foreach controller" %}
+
+    Debug Sampler'ı ForEach kontrolünün içine alarak listenenin üzerinden geçilen elemanının değerinin `repository_name` çıktıda gösterilmesini sağlayın.
+
+    {% include image.html url="/resource/img/JMeterPart2/RepositoriesPageForEachControllerDebugSampler.png" description="Get repositories page foreach controller debug sampler" %}
