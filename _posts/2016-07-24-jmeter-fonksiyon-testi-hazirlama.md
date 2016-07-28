@@ -170,7 +170,7 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
 
     Bu adımda Regex Extractor ile bir önceki adımda parse ettiğimiz repository isimlerinden birini random olarak seçmemiz gerekiyor. Random olarak bir repo seçebilirsek bir önceki adımda uyguladığımıza benzer adımlarla bu repo'nun commit'lerini bir sonraki adımda sıralayabiliriz.
 
-    JMeter'ın en önemli özelliklerinden bir tanesi de genişletilebilir olmasıdır. JMeter genişletilebilir, hem de Script yazılarak genişletilebilir bir araçtır. JMeter tarafından sağlanan BeanShell Post/Pre Processor'lar ile JMeter Sampler'larda request yapılmadan önce ve yapıldıktan sonra bütün değişkenlerde istediğimiz değişiklikleri gerçekleştirebiliriz. Bize verilen görev için yapmamız gereken BeanShell içerisinde bir önceki adımda Regex Extractor ile parse ettiğimiz repo sayısını almak, 0 ile bu repo sayısı arasında rastgele bir seçim yaparak, seçim yaptığımız index'teki repository ismini ileride kullanılmak üzere Thread bazlı değişken olarak yazmaktır.
+    JMeter'ın en önemli özelliklerinden bir tanesi de genişletilebilir olmasıdır. JMeter genişletilebilir, hem de Script yazılarak genişletilebilir bir araçtır. JMeter tarafından sağlanan BeanShell Post/Pre Processor'lar ile JMeter Sampler'larda request yapılmadan önce ve yapıldıktan sonra bütün değişkenlerde Java programlama dilini kullanarak istediğimiz değişiklikleri gerçekleştirebiliriz. Bize verilen görev için yapmamız gereken BeanShell içerisinde bir önceki adımda Regex Extractor ile parse ettiğimiz repo sayısını almak, 0 ile bu repo sayısı arasında rastgele bir seçim yaparak, seçim yaptığımız index'teki repository ismini ileride kullanılmak üzere Thread bazlı değişken olarak yazmaktır.
 
     Github Repository Sayfası HTTP Sampler'ına aşağıdaki BeanShell PostProcessor'ını üzerinde sağ tıklayarak Add > Post Processors > BeanShell PostProcessor yolu ile ekleyin. Aşağıdaki ekran çıktısında gördüğünüz gibi konfigüre edin.
 
@@ -263,9 +263,33 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
 ## Doğruluk Testleri
 ___
 
-TODO: gseng
+Fonksiyon testlerinde test edilen senaryolarda sunucuya yapılan isteklere verilen cevapların detaylı bir şekilde incelenerek gerçekten beklenen cevapların gelip gelmediği kontrol edilmelidir. Bir önceki blog'da da bahsedilen Assertion'lar doğruluk testlerinin gerçekleştirilmesinde kullanılmaktadır.
+
+### Response Assertion
+
+Assertion'lar Request Sampler'lara eklenerek response'ları farklı açılardan kontrol edebilirler. Assertion'lardan en çok kullanılanı Response Assertion'dır. Response Assertion, ilgili Sampler'ın üzerinde sağ tıklanarak Add > Assertions > Response Assertion menüsünden eklenebilir. Github.com web sitesinin ana sayfasında bulunan "How people build software" text'inin Github ana sayfası istendiğinde gelip gelmediğini test etmek için aşağıdaki gibi bir Response Assertion bileşeni eklenebilir.
+
+Aşağıdaki ekran çıktısında 1 ile gösterilen bölümde response olarak "Main sample only" seçilmiştir, böylelikle sadece Ana Sayfa HTML'inin içeriği test edilecektir. "Main sample and sub-samples" seçilseydi HTML sayfası ile birlikte HTML'den referans edilen JS ve CSS dosyalarının da response'ları test edilecekti. 2 ile gösterilen bölümde "Response Field to Test" olarak "Text Response"ı seçtik ve böylece HTML dosyasının içinde ilgili text'in aranmasını sağladık. "Response Code"u seçerek HTTP response'ın kodunu "Response Headers"ı seçerek de HTTP response header'ına göre test edilmesini sağlayabilirdik. 3 ile gösterilen bölümde 4 ile gösterilen bölümde pattern olarak verilen test'in hangi kritere göre yapılacağı belirtilmiştir. Biz "Contains"i seçerek verdiğimiz text'in gelen response'ın içinde olmasının yeterli olduğu ifade edilmiştir.
+
+{% include image.html url="/resource/img/JMeterPart2/MainPageResponseTextAssertion.png" description="Main Page Response Text Assertion" %}
+
+Assertion'ında verilen kriterin tutmadığı durumlarda JMeter'da ilgili Thread'de bir hata oluşturulur. Hata View Results Tree'de kırmızıya boyanır. Önceki blog'da belirtildiği gibi Thread hata aldığında JMeter tarafından alınacak aksiyon, Thread'i durdurma, testi durdurma, devam etme vb olabilir. Fonksiyon testleri için bu parametre Stop Test olarak belirlenmelidir.
+
+Bir önceki örnekte test edilecek patern'e "How people build software" yerine "How build software" yazarak testi çalıştırdığımızda ilgili adımın kırmızıya boyandığını görürüz.
+
+{% include image.html url="/resource/img/JMeterPart2/MainPageResponseTextAssertionFailure.png" description="Main Page Response Text Assertion Failure" %}
+
+### Duration Assertion
+
+Bir miktar performans testi kapsamına giriyor olsa da fonksiyon testlerinde de bazı fonksiyonlar için maksimum response süresi tanımlanabilir. Örneğin login senaryosunun 5 saniyeden fazla sürmesinin kabul edilmediği durumlarda Request Sampler'a Duration Assertion eklenerek Sampler'ın 5 saniyeden fazla sürdüğü durumlarda hata oluşması sağlanır. Login request'ine 50 milisaniyelik (login için gerekenden az) bir Duration Assertion ekleyerek testi çalıştıralım.
+
+{% include image.html url="/resource/img/JMeterPart2/LoginPageDurationAssertionFailure.png" description="Login Page Duration Assertion Failure" %}
+
+Benzer şekilde Size Assertion, gelen response'ın minimum ve maksimum boyutlarının belirlenebileceği bir bileşendir. Mevcut Assertion bileşenleri ile gerçekleştirilemeyecek logic'ler BeanShell Assertion ile Java kodu ile rahatlıkla gerçekleştirilebilir. 
 
 ## Sonuç
 ___
 
-Bu blog'da JMeter'daki birçok özelliği kullanarak gerçek hayattan karmaşık bir test senaryosunu tamamlamış olduk. Önceki blog'da öğrendiğimiz bileşenlerin demo edilmiş halini görmenin yanında yeri geldikçe yeni bileşenleri de tanıma fırsatı bulduk ve onları da kullanarak konuyu bir bütün olarak ele almaya çalıştık. 
+Bu blog'da JMeter'daki birçok özelliği kullanarak gerçek hayattan karmaşık bir test senaryosunu tamamlamış olduk. Önceki blog'da öğrendiğimiz bileşenlerin demo edilmiş halini görmenin yanında yeri geldikçe yeni bileşenleri de tanıma fırsatı bulduk ve onları da kullanarak konuyu bir bütün olarak ele almaya çalıştık.
+
+Bir sonraki [blog'da](/jmeter-pratik-test-hazirlama/) JMeter'da daha pratik bir biçimde nasıl test senaryoları hazırlanabileceğini göreceğiz.
