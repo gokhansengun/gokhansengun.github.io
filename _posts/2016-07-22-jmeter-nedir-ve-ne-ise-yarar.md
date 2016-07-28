@@ -8,9 +8,11 @@ Bu blog yazımda Apache Software Foundation (Apache Yazılım Vakfı) tarafında
 
 Bu blog yazısını okuduktan sonra aşağıdaki iki blog yazısını da sırasıyla okumanızı tavsiye ederim. Böylelikle JMeter'ı bütün yönleriyle anlamış olacağınızı umuyorum.
 
-[JMeter Bölüm 2: Fonksiyon ve Performans Testi Nasıl Yapılır?](/jmeter-fonksiyon-ve-performans-testi/)
+[JMeter Bölüm 2: Fonksiyon Testi Nasıl Hazırlanır?](/jmeter-fonksiyon-testi-hazirlama/)
 
-[JMeter Bölüm 3: İleri Düzey Özellikleri Nelerdir?](/jmeter-ileri-duzey-ozellikler/)
+[JMeter Bölüm 3: Pratik Test Senaryosu Kaydı Nasıl Yapılır?](/jmeter-pratik-test-hazirlama/)
+
+[JMeter Bölüm 4: İleri Düzey Özellikleri Nelerdir?](/jmeter-ileri-duzey-ozellikler/)
 
 Şimdi isterseniz ufaktan başlayalım.
 
@@ -216,4 +218,4 @@ JMeter, Thread Group'ların çalıştırılmaya başlamasından önce Thread Gro
 ## Sonuç
 ___
 
-Bu blog'da genel olarak test terminolojilerinin üzerinden geçip, JMeter bileşenlerini yakından inceleyerek JMeter ile bir test senaryosu hazırlayabilecek duruma geldik. Bir sonraki [blog'da](/jmeter-fonksiyon-ve-performans-testi/) JMeter ile, ilgi çekici bir demo hazırlayarak öğrendiğimiz test kavramlarını ve JMeter bileşenlerini kullanarak öğrendiğimiz bilgileri pekiştirmeye çalışacağız. 
+Bu blog'da genel olarak test terminolojilerinin üzerinden geçip, JMeter bileşenlerini yakından inceleyerek JMeter ile bir test senaryosu hazırlayabilecek duruma geldik. Bir sonraki [blog'da](/jmeter-fonksiyon-testi-hazirlama/) JMeter ile, ilgi çekici bir demo hazırlayarak öğrendiğimiz test kavramlarını ve JMeter bileşenlerini kullanarak öğrendiğimiz bilgileri pekiştirmeye çalışacağız. 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JMeter Bölüm 3: İleri Düzey Özellikleri Nelerdir?"
+title: "JMeter Bölüm 4: İleri Düzey Özellikleri Nelerdir?"
 level: Orta Düzey
 ---
 

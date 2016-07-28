@@ -1,18 +1,20 @@
 ---
 layout: post
-title: "JMeter Bölüm 2: Fonksiyon ve Performans Testi Nasıl Yapılır?"
+title: "JMeter Bölüm 2: Fonksiyon Testi Nasıl Hazırlanır?"
 level: Orta Düzey
 ---
 
-Bu blog yazımda bir önceki blog yazısında detaylı olarak tanıtımını yaptığım JMeter aracı ile baştan sona bir fonksiyonel test demosu hazırlayacağız. Karşılaştığımız bütün problemleri çözecek ve bir sonraki adıma geçeceğiz. Fonksiyonel test script'imiz hazır olduktan sonra aynı script'i kullanarak bir performans testi hazırlayıp koşturacağız. Bu sayede fonksiyonel test ve performans testi arasındaki farklara JMeter gözünden de bakmış olacağız.
+Bu blog yazımda bir önceki blog yazısında detaylı olarak tanıtımını yaptığım JMeter aracı ile baştan sona bir fonksiyonel test demosu hazırlayacağız. Karşılaştığımız bütün problemleri çözecek ve bir sonraki adıma geçeceğiz. Fonksiyonel test script'imiz hazır olduktan sonra aynı script'i kullanarak testimize doğruluk ölçmeye yardımcı olacak assertion'lar ekleyerek script'imizi Continuous Integration pipeline'ında kullanılabilir hale getirmeye çalışacağız. JMeter'ın Continuous Integration (CI) ve Continuous Delivery (CD) pipeline'larında nasıl kullanılabileceği sorusu ilerleyen zamanlarda başka bir blog'da cevap bulacak. 
 
 JMeter ile önceden bir deneyiminiz yoksa öncelikle aşağıdaki blog yazısını okuyarak başlamanızı öneririm. Önceden deneyiminiz varsa bile aşağıda verilen blog yazısını okumanızda fayda olduğunu düşünüyorum. 
 
 [JMeter Bölüm 1: Nedir ve Ne İşe Yarar?](/jmeter-nedir-ve-ne-ise-yarar/)
 
-Bu blog yazısını okuduktan sonra ise aşağıdaki yazısına göz atmanızı tavsiye ederim. Böylelikle JMeter'ı bütün yönleriyle anlamış olacağınızı umuyorum.
+Bu blog yazısını okuduktan sonra ise aşağıdaki blog yazılarına da göz atmanızı tavsiye ederim. Böylelikle JMeter'ı bütün yönleriyle anlamış olacağınızı umuyorum.
 
-[JMeter Bölüm 3: İleri Düzey Özellikleri Nelerdir?](/jmeter-ileri-duzey-ozellikler/)
+[JMeter Bölüm 3: Pratik Test Senaryosu Kaydı Nasıl Yapılır?](/jmeter-pratik-test-hazirlama/)
+
+[JMeter Bölüm 4: İleri Düzey Özellikleri Nelerdir?](/jmeter-ileri-duzey-ozellikler/)
 
 Şimdi isterseniz ufaktan başlayalım.
 
@@ -21,10 +23,10 @@ ___
 
 ### Hazırlık
 
-JMeter'ı test etmek için sunucu tarafında koşan bir uygulamaya ihtiyacımız var. Demo amaçlı olarak basit bir uygulamayı kendimiz de hazırlayıp yayınlayabiliriz ancak servis olarak birçoğumuzun bildiği bir servisi ele alarak JMeter'a yoğunlaşmamız daha pratik olacak. JMeter ile test edeceğimiz servis Github olacak.
+JMeter'ı test etmek için sunucu tarafında koşan bir web uygulamasına ihtiyacımız var. Demo amaçlı olarak basit bir uygulamayı kendimiz de hazırlayıp yayınlayabiliriz ancak web sitesi olarak birçoğumuzun bildiği bir siteyi ele alarak JMeter'a yoğunlaşmamız daha pratik olacaktır. JMeter ile test edeceğimiz web sitesi Github olarak belirlenmiştir.
 
 * Bir sonraki bölümde detaylarını vereceğimiz fonksiyonları JMeter'da hazırlıp bir kullanıcı için koşturacağız ve fonksiyonel testi tamamlamış olacağız.
-* Hazırladığımız senaryoyu farklı kullanıcılar için farklı input'lar verecek şekilde ayarlayıp küçük çaplı bir performans testi yapacağız.
+* Hazırladığımız senaryoda yapılan request'lere verilen cevaplar üzerinde doğruluk testleri yapacağız.
 
 #### Test Edilecek Fonksiyonlar
 
@@ -34,13 +36,12 @@ Github.com bir blog yazısında fonksiyonel olarak test edilemeyecek kadar fazla
 2. Github.com'un login sayfası ve yine bu sayfadaki bütün resource dosyalarını çekilmesi.
 3. Kullanıcı adı ve parola ile Github.com'a giriş yapılması.
 4. İlgili kullanıcının bütün repository'lerinin listelenmesi.
-5. Rastgele seçilen bir repository'deki bütün commit'lerin listelenmesi.
-6. Rastgele seçilen bir commit'in comment kısmının okunması.
-7. Github.com'dan çıkış yapılması.
+5. Rastgele seçilen bir repository'de master branch'teki bütün commit'lerin SHA1 id'lerinin listelenmesi.
+6. Github.com'dan çıkış yapılması.
 
 #### Yöntem
 
-JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle bir web browser'da (tarayıcı) test edip yapılan request'leri tarayıcımızın geliştirici araçları veya Fiddler, Burp Suite gibi Web Debugging Proxy araçları ile yakalayıp aynı düzende ve sırada JMeter'da konfigüre etmemiz gereklidir. Bu yönteme alternatif ve daha pratik olarak JMeter tarafından sağlanan ve tarayıcıdan yapılan bütün request'lerin JMeter üzerinden geçirilmesi (JMeter'ın proxy olarak kullanılması) sağlanarak kaydedilen request'ler düzenlenmek sureti ile de JMeter test senaryosu hazırlanabilir. İlk methodu anlamadan ikinci methodu etkili kullanmak pek mümkün olmadığı için ben test edilecek 7 fonksiyonun ilk 3 adımını ilk yöntemle son 4 adımını ise ikinci yöntemle yapmayı planladım.
+JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle bir web browser'da (tarayıcı) test edip yapılan request'leri tarayıcımızın geliştirici araçları veya Fiddler, Burp Suite gibi Web Debugging Proxy araçları ile yakalayıp aynı düzende ve sırada JMeter'da konfigüre etmemiz gereklidir. Bu yönteme alternatif ve daha pratik olarak JMeter tarafından sağlanan ve tarayıcıdan yapılan bütün request'lerin JMeter üzerinden geçirilmesi (JMeter'ın proxy olarak kullanılması) sağlanarak kaydedilen request'ler düzenlenmek sureti ile de JMeter test senaryosu hazırlanabilir. İlk methodu anlamadan ikinci methodu etkili kullanmak pek mümkün olmadığı için ben bu blog'da ilk methodu kullanacağım. İkinci methodu ise bir sonraki blog'da ele alacağım.
 
 ### Adımlar
 
@@ -164,3 +165,107 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
     Debug Sampler'ı ForEach kontrolünün içine alarak listenenin üzerinden geçilen elemanının değerinin `repository_name` çıktıda gösterilmesini sağlayın.
 
     {% include image.html url="/resource/img/JMeterPart2/RepositoriesPageForEachControllerDebugSampler.png" description="Get repositories page foreach controller debug sampler" %}
+
+11. Bir önceki adımı tamamlayarak baştan test etmeyi planladığımız dördüncü fonksiyonu da test etmiş olduk. Beşinci fonksiyon bir önceki adımda sıralanan repository'lerden rastgele seçilen birine ait bütün commit'lerin listelenmesi.
+
+    Bu adımda Regex Extractor ile bir önceki adımda parse ettiğimiz repository isimlerinden birini random olarak seçmemiz gerekiyor. Random olarak bir repo seçebilirsek bir önceki adımda uyguladığımıza benzer adımlarla bu repo'nun commit'lerini bir sonraki adımda sıralayabiliriz.
+
+    JMeter'ın en önemli özelliklerinden bir tanesi de genişletilebilir olmasıdır. JMeter genişletilebilir, hem de Script yazılarak genişletilebilir bir araçtır. JMeter tarafından sağlanan BeanShell Post/Pre Processor'lar ile JMeter Sampler'larda request yapılmadan önce ve yapıldıktan sonra bütün değişkenlerde istediğimiz değişiklikleri gerçekleştirebiliriz. Bize verilen görev için yapmamız gereken BeanShell içerisinde bir önceki adımda Regex Extractor ile parse ettiğimiz repo sayısını almak, 0 ile bu repo sayısı arasında rastgele bir seçim yaparak, seçim yaptığımız index'teki repository ismini ileride kullanılmak üzere Thread bazlı değişken olarak yazmaktır.
+
+    Github Repository Sayfası HTTP Sampler'ına aşağıdaki BeanShell PostProcessor'ını üzerinde sağ tıklayarak Add > Post Processors > BeanShell PostProcessor yolu ile ekleyin. Aşağıdaki ekran çıktısında gördüğünüz gibi konfigüre edin.
+
+    {% include image.html url="/resource/img/JMeterPart2/RepositoryBeanShellPostProcessor.png" description="Repository BeanShell Post Processor" %}
+
+    Bu noktada yazdığımız kodu anlamaya çalışalım. Bir önceki adımda eklediğimiz Debug Sampler'ın çıktısının son bölümü aşağıdaki gibiydi. Buradaki `repositories_list_matchNr` değişkeninin Regex'in yaptığı toplam eşleşme sayısı yani repository sayısı olan `7`yi tuttuğunu göreceğiz. Ayrıca eşleşen repository isimlerinin `X` eşleşme index'i olmak üzere `repositories_list_X` formatında olduğuna dikkat edelim.
+
+        ....
+        repositories_list_5_g1=Docker-DB-Seed-Sample
+        repositories_list_6=Gulp-Sample
+        repositories_list_6_g=1
+        repositories_list_6_g0=itemprop="name codeRepository">
+                Gulp-Sample</a>
+        repositories_list_6_g1=Gulp-Sample
+        repositories_list_7=SignalR-Sample
+        repositories_list_7_g=1
+        repositories_list_7_g0=itemprop="name codeRepository">
+                SignalR-Sample</a>
+        repositories_list_7_g1=SignalR-Sample
+        repositories_list_matchNr=7
+
+    Şimdi BeanShell'e yazdığımız satır satır inceleyelim.
+
+    Aşağıdaki kod parçasında JMeter'ın tuttuğu `repositories_list_matchNr` değişkenini BeanShell içerisinde kullanmak üzere alıyoruz, bir anlamda import ediyoruz.
+
+        noOfRepos = vars.get("repositories_list_matchNr");
+
+    Sonra `0` ile `noOfRepos` arasında rastgele bir sayı seçiyoruz. Burada 0 bazlı bir index geleceği ve bize 1 bazlı bir index gerekli olduğu için sonucu 1 artırıyoruz.
+
+        Random rand = new Random();
+        int randIndex = rand.nextInt(Integer.parseInt(noOfRepos)) + 1; // bump index by 1
+    
+    Index'i belirledikten sonra sıra bu index'teki repository'nin ismini tutan variable ismini oluşturmaya ve JMeter'dan bu variable'ın değerini BeanSheel içerisine almaya geliyor.
+
+        // example var: repositories_list_7=SignalR-Sample
+        String existingVariableName = "repositories_list_" + randIndex.toString();
+
+        // retrieve randomly selected repo name from the variable
+        String randomlySelectedRepo = vars.get(existingVariableName);
+
+    Son adım olarak random olarak seçtiğimiz repo ismini `random_repository_name` adlı değişkene atarak kontrolü tekrar JMeter'a bırakmak üzere BeanShell Script'i bitiriyoruz.
+
+        // add the randomly selected repo to variable list to be used by JMeter
+        vars.put("random_repository_name", randomlySelectedRepo);
+
+    Script'i çalıştırdığınızda aşağıdaki gibi siz de random olarak bir repository'nin seçildiği ve `random_repository_name` adlı değişkene atıldığını gözlemlemelisiniz.
+
+    {% include image.html url="/resource/img/JMeterPart2/RepositoryBeanShellPostProcessorDebugOutput.png" description="Repository BeanShell Post Processor Debug Output" %}
+
+12. Bir önceki adımda random olarak bir repository seçmiştik. Şimdi bu repository'deki commit'lerin id'lerini listeleyelim. Dördüncü fonsiyon ile çok büyük benzerlik içerdiği için hızlanma amaçlı olarak bazı kısımları daha az detayla ele alacağız.
+
+    Github'da rastgele seçilen bir repository'de master branch'teki bütün commitlerin listelenmesi için https://github.com/gokhansengun/Owin-Sync-vs-Async-Perf-Test/commits/master URL'ine benzer bir URL kullanılıyor.
+
+    Öncelikle yeri gelmişken yeni bir bilgi öğrenelim. Burada test edeceğimiz Github account'u gokhansengun olmasına rağmen bu başka bir testte değişebilir. Test bazlı olarak belirlemek istediğimiz ve daha önceden öğrendiğimiz CSV dosyasından almak istemediğimiz değişkenler de olabilir. Bu tip değişkenler tanımlamak için JMeter User Defined Variables bileşenini kullanmaktadır. Thread Group üzerinde sağ tıklayarak Add > Config Element > User Defined Variables yolu ile bileşeni plana ekleyerek ilk bileşen olmasını sağlayın. Sonra da aşağıdaki gibi konfigüre edin.
+
+    {% include image.html url="/resource/img/JMeterPart2/UserDefinedVariablesAccountName.png" description="User Defined Variable for Account Name" %}
+
+    Path'i aşağıdaki belirtilen şekilde olacak bir HTTP Request Sampler ekleyin ve testi başlatın. Başarılı bir şekilde commit sayfasını almış olduğunuzu kontrol edin.
+
+    {% include image.html url="/resource/img/JMeterPart2/RetrieveCommitPageForRandomRepo.png" description="Retrieve Commit Page for Random Repository" %}
+
+    Tıpkı onuncu adımda olduğu gibi HTTP Request Sampler'a Post Processor olarak Regular Expression Extractor ekleyerek aşağıdaki HTML içinde belirli bir patern'de bulunan commit id'lerini ayıklayalım.
+
+    Tarayıcının geliştirici araçları ile sayfa incelendiğinde commit id'lerin aşağıdaki HTML snippet'ları ile oluşturulduğu görülebilir.
+
+        <a href="/gokhansengun/Mono-Linux-Interop/commit/892f59423a71122d294046d618516ca7312f5075" class="sha btn btn-outline">
+            892f594
+        </a>
+
+    Aşağıdaki Regex patern'i ve sonrasında verilen Regular Expression Extractor belirtilen patern'le eşleşecektir.
+
+        <a href="\/${ACCOUNT_NAME}\/${random_repository_name}\/commit\/(\w+?)" class="sha
+
+    {% include image.html url="/resource/img/JMeterPart2/CommitIdsRegexExtractorConfig.png" description="Commit ids Regex Extractor" %}
+
+    Testi çalıştırıp View Results Tree'de extract edilen değerlere baktığınızda rastgele seçilen repository'ye göre aşağıdaki gibi bir görüntü görmelisiniz.
+
+    {% include image.html url="/resource/img/JMeterPart2/CommitIdsExtracted.png" description="Commit ids Regex Extractor" %}
+
+13. Gerçekleştirmemiz gereken son fonksiyon Github.com'dan çıkış yapılması. Yine tarayıcımızın geliştirici araçlarından network bölümüne bakarak tarayıcıda çıkış yaptığımızda sunucuya gönderilen request'i görebiliriz.
+
+    Belirtilen adımları uyguladığınızda tek yapmamız gerekenin `/logout` URL'ine bir POST request'i yapmak olduğunu görebilirsiniz. Yeni bir HTTP Request Sampler ekleyip Path'ini `/logout` ve methodunu POST olarak değiştirin. Github logout adımında da tıpkı login'de olduğu gibi `authenticity_token`'ın POST request'inde gönderilmesini beklemektedir. `authenticity_token` logout tetiklenmeden önceki son sayfadan alınmalıdır. Github Login Sayfası HTTP Request Sampler'ı altında bulunan Auth Token Extractor'ü Logout'tan önceki son sayfa olan Github Commit Sayfası HTTP Request Sampler'ının altına kopyalayın. Aşağıdaki gibi bir görüntü elde etmelisiniz.
+
+    {% include image.html url="/resource/img/JMeterPart2/LogoutAuthenticityTokenExtractor.png" description="Logout Authenticity Token Extractor" %}
+
+    Son olarak POST Request'i aşağıdaki gibi yapılandırarak testi başlatın. View Results Tree'de bütün adımların başarılı olduğunu gözlemlemeniz gerekmektedir.
+
+    {% include image.html url="/resource/img/JMeterPart2/LogoutPostRequestSampler.png" description="Logout Post Request Sampler" %}
+
+## Doğruluk Testleri
+___
+
+TODO: gseng
+
+## Sonuç
+___
+
+Bu blog'da JMeter'daki birçok özelliği kullanarak gerçek hayattan karmaşık bir test senaryosunu tamamlamış olduk. Önceki blog'da öğrendiğimiz bileşenlerin demo edilmiş halini görmenin yanında yeri geldikçe yeni bileşenleri de tanıma fırsatı bulduk ve onları da kullanarak konuyu bir bütün olarak ele almaya çalıştık. 
