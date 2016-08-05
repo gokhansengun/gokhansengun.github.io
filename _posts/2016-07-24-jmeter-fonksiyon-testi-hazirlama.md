@@ -41,7 +41,7 @@ Github.com bir blog yazısında fonksiyonel olarak test edilemeyecek kadar fazla
 
 #### Yöntem
 
-JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle bir web browser'da (tarayıcı) test edip yapılan request'leri tarayıcımızın geliştirici araçları veya Fiddler, Burp Suite gibi Web Debugging Proxy araçları ile yakalayıp aynı düzende ve sırada JMeter'da konfigüre etmemiz gereklidir. Bu yönteme alternatif ve daha pratik olarak JMeter tarafından sağlanan ve tarayıcıdan yapılan bütün request'lerin JMeter üzerinden geçirilmesi (JMeter'ın proxy olarak kullanılması) sağlanarak kaydedilen request'ler düzenlenmek sureti ile de JMeter test senaryosu hazırlanabilir. İlk methodu anlamadan ikinci methodu etkili kullanmak pek mümkün olmadığı için ben bu blog'da ilk methodu kullanacağım. İkinci methodu ise bir sonraki blog'da ele alacağım.
+JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle bir web browser'da (tarayıcı) test edip yapılan request'leri tarayıcımızın geliştirici araçları veya Fiddler, Burp Suite gibi Web Debugging Proxy (HTTP Proxy) araçları ile yakalayıp aynı düzende ve sırada JMeter'da konfigüre etmemiz gereklidir. Bu yönteme alternatif ve daha pratik olarak JMeter tarafından sağlanan ve tarayıcıdan yapılan bütün request'lerin JMeter üzerinden geçirilmesi (JMeter'ın proxy olarak kullanılması) sağlanarak kaydedilen request'ler düzenlenmek sureti ile de JMeter test senaryosu hazırlanabilir. İlk methodu anlamadan ikinci methodu etkili kullanmak pek mümkün olmadığı için ben bu blog'da ilk methodu kullanacağım. İkinci methodu ise bir sonraki blog'da ele alacağım.
 
 ### Adımlar
 
