@@ -12,9 +12,11 @@ JMeter ile önceden bir deneyiminiz yoksa öncelikle aşağıdaki blog yazılar�
 
 [JMeter Bölüm 2: Fonksiyon Testi Nasıl Hazırlanır?](/jmeter-fonksiyon-testi-hazirlama/)
 
-Bu blog yazılarını okuduktan sonra ise aşağıdaki blog yazısına da göz atmanızı tavsiye ederim. Böylelikle JMeter'ı bütün yönleriyle anlamış olacağınızı ümit ediyorum.
+Bu blog yazılarını okuduktan sonra ise aşağıdaki blog yazılarına da göz atmanızı tavsiye ederim. Böylelikle JMeter'ı bütün yönleriyle anlamış olacağınızı ümit ediyorum.
 
-[JMeter Bölüm 4: İleri Düzey Özellikleri Nelerdir?](/jmeter-ileri-duzey-ozellikler/)
+[JMeter Bölüm 4: Performans Testi Nasıl Hazırlanır??](/jmeter-performans-testi-hazirlama/)
+
+[JMeter Bölüm 5: İleri Düzey Özellikleri Nelerdir?](/jmeter-ileri-duzey-ozellikler/)
 
 ## Hızlı JMeter Script'i Hazırlama
 ___

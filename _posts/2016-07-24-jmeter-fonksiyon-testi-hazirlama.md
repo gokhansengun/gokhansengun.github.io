@@ -6,7 +6,7 @@ level: Orta Düzey
 
 Bu blog yazımda bir önceki blog yazısında detaylı olarak tanıtımını yaptığım JMeter aracı ile baştan sona bir fonksiyonel test demosu hazırlayacağız. Karşılaştığımız bütün problemleri çözecek ve bir sonraki adıma geçeceğiz. Fonksiyonel test script'imiz hazır olduktan sonra aynı script'i kullanarak testimize doğruluk ölçmeye yardımcı olacak assertion'lar ekleyerek script'imizi Continuous Integration pipeline'ında kullanılabilir hale getirmeye çalışacağız. JMeter'ın Continuous Integration (CI) ve Continuous Delivery (CD) pipeline'larında nasıl kullanılabileceği sorusu ilerleyen zamanlarda başka bir blog'da cevap bulacak. 
 
-JMeter ile önceden bir deneyiminiz yoksa öncelikle aşağıdaki blog yazısını okuyarak başlamanızı öneririm. Önceden deneyiminiz varsa bile aşağıda verilen blog yazısını okumanızda fayda olduğunu düşünüyorum. 
+JMeter ile önceden bir deneyiminiz yoksa öncelikle aşağıdaki blog yazılarını okuyarak başlamanızı öneririm. Önceden deneyiminiz varsa bile aşağıda verilen blog yazılarını okumanızda fayda olduğunu düşünüyorum. 
 
 [JMeter Bölüm 1: Nedir ve Ne İşe Yarar?](/jmeter-nedir-ve-ne-ise-yarar/)
 
@@ -14,7 +14,9 @@ Bu blog yazısını okuduktan sonra ise aşağıdaki blog yazılarına da göz a
 
 [JMeter Bölüm 3: Pratik Test Senaryosu Kaydı Nasıl Yapılır?](/jmeter-pratik-test-hazirlama/)
 
-[JMeter Bölüm 4: İleri Düzey Özellikleri Nelerdir?](/jmeter-ileri-duzey-ozellikler/)
+[JMeter Bölüm 4: Performans Testi Nasıl Hazırlanır??](/jmeter-performans-testi-hazirlama/)
+
+[JMeter Bölüm 5: İleri Düzey Özellikleri Nelerdir?](/jmeter-ileri-duzey-ozellikler/)
 
 Şimdi isterseniz ufaktan başlayalım.
 
