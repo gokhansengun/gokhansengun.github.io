@@ -55,11 +55,11 @@ ____
 #### 2010:
 
 > * Askerlik sonrası evoline TR'de Gömülü Sistem Yazılım Geliştirme Mühendisi olarak çalışmaya başladım.
-> * 9 ay boyunca Almanya'nın Karlsruhe kendinde Siemens AG'de evosoft GMBH bordrosu ile Siemens PLC firmware'leri üzerine çalıştım.
+> * 9 ay boyunca Almanya'nın Karlsruhe kentinde Siemens AG'de evosoft GMBH bordrosu ile Siemens PLC firmware'leri üzerine çalıştım.
 
 #### 2011:
 
-> * Almanya sonrası Türkiye'ye dönüp evoline TR'de yime Siemens PLC firmware'leri üzerine Kıdemli Gömülü Sistem Yazılım Geliştirme Mühendisi olarak çalışmaya devam ettim.
+> * Almanya sonrası Türkiye'ye dönüp evoline TR'de yine Siemens PLC firmware'leri üzerine Kıdemli Gömülü Sistem Yazılım Geliştirme Mühendisi olarak çalışmaya devam ettim.
 
 #### 2012:
 

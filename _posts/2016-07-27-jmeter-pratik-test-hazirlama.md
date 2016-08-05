@@ -61,11 +61,11 @@ Bu blog yazısında test edeceğimiz fonksiyonlar aşağıdaki gibi olacak.
 
     Görüldüğü gibi template'ler Recording'in yanında birçok başka template de bulumaktadır. Sıfırdan bir test plan oluşturmak yerine bu planlardan birinden başlamak akıllıca olacaktır. Biz Recording template'ini seçerek ilerleyelim. Recording with Think Time template'i adından da anlaşılabileceği gibi senaryoyu browser'da kaydederken mouse tıklamaları ve klavye girdileri arasındaki süreleri de test plana eklemektedir. Yük ve performans testi hazırlarken Think Time'la kayıt yapılması daha gerçekçi bir senaryo oluşturmamızı sağlayacaktır. Think Time ile ilgili detaylı bilgi [ilk blog'da](/jmeter-nedir-ve-ne-ise-yarar/) bulunabilir.
 
-2. Recording template aşağıdakine ekran görüntüsüne benzer bir Test Plan'ı hazır hale getirecektir. Test Plan'ı kaydedin ve aşağıda detayları verilen Test Script Recorder bileşeninin en altında bulunan `start` butonuna basarak JMeter'ın 8888 portuna gelen isteklerini dinlemeye başlamasını sağlayın.
+2. Recording template aşağıdakine ekran görüntüsüne benzer bir Test Plan'ı hazır hale getirecektir. Test Plan'ı kaydedin.
 
     {% include image.html url="/resource/img/JMeterPart3/TestScriptRecorderComponent.png" description="Test Script Recorder Component" %} 
 
-    1 ile gösterilen bölümde HTTP Proxy'nin dinleyeceği port 8888 olarak konfigüre edilmiştir. İsterseniz bu değeri değiştirebilirsiniz. Testi hazırlayacağınız bilgisayarda bu portta başka bir uygulamanın halihazırda çalışıyor olması durumunda bu değeri kesinlikle değiştirmeniz gerekli olacaktır. 2 ile gösterilen bölümde tarayıcının yaptığı isteklerin JMeter tarafından nasıl gruplanacağı konfigüre edilmektedir. Genel olarak seçili bulunan default değer daha yönetilebilir testler oluşturmasını sağlamaktadır. 3 ile gösterilen bölümde kayıt sırasında dahil etmek istemediğimiz URL pattern'lerini dahil edebiliriz. Yukarıdaki örnekte template, bmp, css, js, jpeg, png ve font dosyalarının kaydedilmemesi için gerekli konfigürasyon yapılmıştır. Eğer bu dosyalar için yapılan request'lerin de test plana dahil olmasını isterseniz bu konfigürasyonu silmeniz gerekmektedir. 
+    1 ile gösterilen bölümde HTTP Proxy'nin dinleyeceği port 8888 olarak konfigüre edilmiştir. İsterseniz bu değeri değiştirebilirsiniz. Testi hazırlayacağınız bilgisayarda bu portta başka bir uygulamanın halihazırda çalışıyor olması durumunda bu değeri kesinlikle değiştirmeniz gerekli olacaktır. 2 ile gösterilen bölümde tarayıcının yaptığı isteklerin JMeter tarafından nasıl gruplanacağı konfigüre edilmektedir. Genel olarak seçili bulunan default değer daha yönetilebilir testler oluşturmasını sağlamaktadır. 3 ile gösterilen bölümde kayıt sırasında dahil etmek istemediğimiz URL pattern'lerini dahil edebiliriz. Yukarıdaki örnekte template, bmp, css, js, jpeg, png ve font dosyalarının kaydedilmemesi için gerekli konfigürasyon yapılmıştır. Eğer bu dosyalar için yapılan request'lerin de test plana dahil olmasını isterseniz bu konfigürasyonu silmeniz gerekmektedir. 4 ile gösterilen bölümde JMeter'ın bütün HTTPS request'ler yerine sadece test yapacağımız siteye (bizim için github.com) yapılan request'leri kaydetmesini sağlamak için bir pattern girmiş ve başka sitelerden gelen trafiğin test planına girmesini engellemiş oluruz. 5 ile gösterilen bölümdeki Capture HTTP Headers seçimi ile HTTP Header'ların request bazlı olarak kaydedilmesi sağlanır. Bu sayede browser'ın yaptığı cache vb tercihleri rahatlıkla tekrarlamış oluruz. 6 ile gösterilen bölümdeki "Add Assertions" seçimi ile her bir request'ten sonra bir response assertion otomatik olarak eklenir. Böylece daha kayıt sonrasında bu assertion'ları doldurmak istediğimizde bize kolaylık sağlanmış olur.
 
 3. Geçen blog'umuzda Mozilla Firefox kullanmıştık. Bu blog'da Google Chrome kullanalım. Ayrıca ayarların Windows için nasıl yapıldığını gösterelim. Chrome tarayıcıyı açarak adres çubuğunda `chrome://settings/` yazın ve ayarlar sayfasına erişin.
 
@@ -77,3 +77,47 @@ Bu blog yazısında test edeceğimiz fonksiyonlar aşağıdaki gibi olacak.
 
     {% include image.html url="/resource/img/JMeterPart3/ChromeSetupProxyPart2.gif" description="Chrome network settings part 2" %} 
 
+4. İkinci adımda verilen şekilde detayları görülen Test Script Recorder bileşeninin en altında bulunan `start` butonuna basarak JMeter'ın 8888 portuna gelen isteklerini dinlemeye başlamasını sağlayın. Aşağıdaki gibi bir uyarı mesajı görmeniz gerekir. 
+
+    {% include image.html url="/resource/img/JMeterPart3/NeedToInstallJMeterCertificateWarning.png" description="Warning: Need to install JMeter certificate" %} 
+
+    JMeter HTTPS request'lerini de dinleyebilmek için bir Private Key ile birlikte bu Private Key'in Public Key'ini içeren bir Self-Signed sertifikayı issue ederek JMeter klasörünün altında bulunan `bin` klasörüne kopyalamıştır. Private Key, Public Key ve sertifika meseleleri konumuzun dışında olduğu için detaylı olarak ele almayacağız fakat ilerleyen blog'lardan birinin konusu olabilir. Bu blog'da sadece JMeter ile Recording yapabilmeye imkan tanıyacak derecede bu konular ile ilgili bilgi sahibi olmamız yeterli olacaktır.
+
+5. Bu adımda yapmamız gereken, JMeter'ın ürettiği sertifika dosyasını bilgisayarımızda bulunan Root Certificate Authority'lerin arasına eklemek ve bilgisayarımızın dolayısıyla da kullandığımız tarayıcının JMeter'ın ürettiği sertifikaya güvenmesini ve bu sayede de tarayıcının JMeter ile 8888 numaralı port üzerinden konuşurken hata almamasını sağlamaktır. JMeter'ın kurulu olduğu dizinin altındaki `bin` klasörüne giderek `ApacheJMeterTemporaryRootCA.crt` dosyasına çift tıklayın ve aşağıdaki animasyonda gösterilen adımları takip edin.
+
+    {% include image.html url="/resource/img/JMeterPart3/InstallSelfSignedCertificate.gif" description="Chrome network settings part 2" %}
+
+    Siz de aşağıdakine benzer bir çıktı görmelisiniz.
+
+    {% include image.html url="/resource/img/JMeterPart3/GithubRecordedHttpSamplers.png" description="Recorded Http Samplers" %} 
+
+6. Elimizde testini hazırlamak istediğimiz senaryo için HTTP Sampler Request ve diğer elemanlar bulunan bir senaryo var artık. Bu senaryoyu JMeter'da olduğu gibi çalıştırırsak `/session` ve `/logout` request'lerinin hata aldığını göreceksiniz. Bir önceki blog'da da bize sorun çıkaran Cross Site Request Forgery (CSRF) önlemleri burada da karşımıza çıkıyor. Bir önceki blog'un dokuzuncu adımında yaptığımız gibi burada da hata alan POST request'lerden önce çağrılan, POST request'lerin yapıldığı (GET request'leri ile alınan) sayfaların kaynağından Regular Expression Extractor ile `authenticity_token`'ı alıp bir değişkene atıp POST request'lerde kullanmamız gerekecektir.
+
+    Bir önceki ekran görüntüsünde bulunan `149 /login` GET request'ine bir önceki blog'un dokuzuncu adımında yaptığımız ve bir önceki paragrafta özetlediğimiz işlemleri yapalım. Login Request'ine Post Processor olarak eklenen Regular Expression Extractor aşağıda verilmiştir.
+
+    {% include image.html url="/resource/img/JMeterPart3/LoginRegularExpressionExtractor.png" description="Login Regular Expression Extractor" %} 
+
+    Extract edilen değişken'in `154 /session` çağrısına nasıl beslendiğini aşağıdaki ekran çıktısından görebilirsiniz. JMeter ile kaydedilen diğer parametrelerin aksine `authenticity_token` için `Encode?` kolonunu işaretlediğimize dikkat edin. JMeter request'lerdeki parametreleri zaten encode edip kaydettiği için o parametrelerde encode seçilmemiştir bizim extract ettiğimiz değişkende ise seçilmiştir. 
+
+    {% include image.html url="/resource/img/JMeterPart3/LoginFeedExtractedAuthenticityToken.png" description="Login Give Extracted Authenticity Token" %}
+
+7. Bir önceki adımda `/session` yani login için yaptığımız işlemleri `/logout` için de yapmamız gereklidir. Logout butonuna basmadan önce girdiğimiz son sayfadaki `authenticity_token`'ı kullanarak POST request'ine vermemiz gerekiyor. Kayıt sırasında son olarak `repositories` tabına tıkladık fakat repository tabına tıklamamız sunucuya yeni bir istek göndermediği için `authenticity_token`'ı bir önceki request'ten almamız gerekiyor. Yaptığımız kayıt dosyasındaki `166 /gokhansengun` GET request'ine aynı şekilde bir Extractor ekleyip değişkene attığımız değeri `/logout` çağrısında kullanabiliriz.
+
+    Regular Expression Extractor aşağıda verilmiştir.
+
+    {% include image.html url="/resource/img/JMeterPart3/LogoutRegularExpressionExtractor.png" description="Logout Regular Expression Extractor" %} 
+
+    POST request'e beslenme şeklinde yine `Encode?` kolonunun seçili olmasına dikkat ediniz.
+
+    {% include image.html url="/resource/img/JMeterPart3/LogoutFeedExtractedAuthenticityToken.png" description="Logout Give Extracted Authenticity Token" %}
+
+8. Bu adımda test script'i çalıştabilir ve testin başarı ile sonuçlandığını gözlemleyebilirsiniz.
+
+JMX Script'inin son haline Github parolam haricinde [buradan](/resource/file/JMeterPart3/Github Recording.jmx) ulaşabilirsiniz. JMX dosyasını bu haliyle parola değiştirildiği için direkt olarak çalıştıramayacak olsanız bile inceleme amacı ile kullanabilirsiniz. 
+
+## Sonuç
+___
+
+Bu blog'da JMeter'ın Recording Template'ini kullanarak bir önceki blog'da elle uzun uğraşlar sonucu hazırladığımız karmaşık test senaryosunun aynısını daha pratik bir şekilde tamamlamış olduk.
+
+Bir sonraki [blog'da](/jmeter-ileri-duzey-ozellikler/) JMeter'ın ileri düzey özelliklerinden ve bazı püf noktalarından bahsedeceğiz.
