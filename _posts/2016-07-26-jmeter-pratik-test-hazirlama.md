@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "JMeter Bölüm 3: Pratik Test Senaryosu Kaydı Nasıl Yapılır?"
-level: Orta Düzey
+level: Orta
+progress: finished-not-reviewed
 ---
 
 [Bir önceki blog yazısında](/jmeter-fonksiyon-testi-hazirlama/) JMeter kullanarak Github'da en çok kullanılan işlemleri bir fonksiyonel test senaryosu haline getirdik. Birçok komponenti bir arada etkili bir şekilde kullanmanın yanında web uygulamaları için test senaryosu yazımında karşımıza çıkabilecek Cross Site Request Forgery (CSRF), vb başka bazı genel bilgiler de öğrendik. O blog yazısının Yöntem başlığında da söz ettiğimiz gibi aslında JMeter script'lerini daha hızlı ve pratik bir şekilde hazırlamanın başka yolları da var. Bu blog yazısında bu yollardan web uygulamaları için kullanılabilecek en pratik yönteme bir göz atacağız.
@@ -122,4 +123,4 @@ ___
 
 Bu blog'da JMeter'ın Recording Template'ini kullanarak bir önceki blog'da elle uzun uğraşlar sonucu hazırladığımız karmaşık test senaryosunun aynısını daha pratik bir şekilde tamamlamış olduk.
 
-Bir sonraki [blog'da](/jmeter-ileri-duzey-ozellikler/) JMeter'ın ileri düzey özelliklerinden ve bazı püf noktalarından bahsedeceğiz.
+Bir sonraki [blog'da](/jmeter-performans-testi-hazirlama/) JMeter'ın ileri düzey özelliklerinden ve bazı püf noktalarından bahsedeceğiz.

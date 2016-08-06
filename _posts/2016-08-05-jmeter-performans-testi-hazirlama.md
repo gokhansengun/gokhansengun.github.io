@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "JMeter Bölüm 4: Performans Testi Nasıl Hazırlanır?"
-level: Orta Düzey
+level: Orta
+progress: only-planned
 ---
 
 TODO: Giriş paragrafı

@@ -73,7 +73,7 @@ timezone: "Europe/Istanbul"
 markdown: kramdown
 highlighter: rouge
 permalink: /:title/
-paginate: 8
+paginate: 20
 
 kramdown:
   input: GFM

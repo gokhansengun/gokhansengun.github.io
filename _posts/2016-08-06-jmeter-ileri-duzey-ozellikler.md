@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "JMeter Bölüm 5: İleri Düzey Özellikleri Nelerdir?"
-level: Orta Düzey
+level: Orta
+progress: only-planned
 ---
 
 TODO: Giriş paragrafı

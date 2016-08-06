@@ -2,6 +2,7 @@
 layout: post
 title: Merhaba Blog Dünyası!
 level: Başlangıç
+progress: finished-not-reviewed
 ---
 
 İlk blog yazımda bu blogun başlatılma gerekçesi ve içerik hedefi ile ilgili biraz bilgi vermek istiyorum.

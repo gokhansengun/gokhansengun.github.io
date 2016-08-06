@@ -2,6 +2,7 @@
 layout: post
 title: "JMeter Bölüm 1: Nedir ve Ne İşe Yarar?"
 level: Başlangıç
+progress: finished-not-reviewed
 ---
 
 Bu blog yazımda Apache Software Foundation (Apache Yazılım Vakfı) tarafından geliştirilmekte olan JMeter uygulaması ile ilgili genel bilgiler vermeye çalışacağım. Bu blog'da kısaca tanıtılacak olan JMeter'i, sonraki iki blog'da detaylı olarak işlemeye çalışacağım. JMeter uygulamasının kullanım alanları ile birlikte sağladığı farklı bileşenleri ekran görüntüleri ile birlikte paylaşarak siz okuyucuların kafasında net bir JMeter imajı oluşturmaya çabalayacağım.

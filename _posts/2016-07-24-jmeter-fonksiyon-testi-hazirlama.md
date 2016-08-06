@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "JMeter Bölüm 2: Fonksiyon Testi Nasıl Hazırlanır?"
-level: Orta Düzey
+level: Orta
+progress: finished-not-reviewed
 ---
 
 Bu blog yazımda bir önceki blog yazısında detaylı olarak tanıtımını yaptığım JMeter aracı ile baştan sona bir fonksiyonel test demosu hazırlayacağız. Karşılaştığımız bütün problemleri çözecek ve bir sonraki adıma geçeceğiz. Fonksiyonel test script'imiz hazır olduktan sonra aynı script'i kullanarak testimize doğruluk ölçmeye yardımcı olacak assertion'lar ekleyerek script'imizi Continuous Integration pipeline'ında kullanılabilir hale getirmeye çalışacağız. JMeter'ın Continuous Integration (CI) ve Continuous Delivery (CD) pipeline'larında nasıl kullanılabileceği sorusu ilerleyen zamanlarda başka bir blog'da cevap bulacak. 

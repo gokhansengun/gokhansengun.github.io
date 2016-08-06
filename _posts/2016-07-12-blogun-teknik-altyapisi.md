@@ -2,6 +2,7 @@
 layout: post
 title: Blog'un Teknik Altyapısı
 level: Başlangıç
+progress: finished-not-reviewed
 ---
 
 

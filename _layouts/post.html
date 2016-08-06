@@ -8,6 +8,15 @@ layout: base
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
+
+	      {% if page.progress == "only-planned" %}
+	        <h3 class="progress-status-warning alert alert-success">Bu blog yazısına henüz başlanmadı.</h3>
+	      {% elsif page.progress == "continues" %}
+	        <h3 class="progress-status-warning alert alert-danger">Bu blog yazısının hazırlanması devam ediyor.</h3>
+	      {% elsif page.progress == "finished-not-reviewed" %}
+	        <h3 class="progress-status-warning alert alert-warning">Bu blog yazısı bitti fakat henüz gözden geçirilmedi.</h3>
+	      {% endif %}
+
 	      {{ content }}
 	    </article>
 	  	  
