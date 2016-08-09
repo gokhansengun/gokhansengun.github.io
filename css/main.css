@@ -572,3 +572,7 @@ table tr td :last-child {
 .progress-status-warning {
   text-align: center;
 }
+
+h3,h4 {
+  margin: 25px 0;
+}
