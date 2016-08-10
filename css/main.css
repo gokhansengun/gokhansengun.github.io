@@ -576,3 +576,12 @@ table tr td :last-child {
 h3,h4 {
   margin: 25px 0;
 }
+
+pre {
+    overflow-x: auto;
+}
+
+pre code {
+    overflow-wrap: normal;
+    white-space: pre;
+}
