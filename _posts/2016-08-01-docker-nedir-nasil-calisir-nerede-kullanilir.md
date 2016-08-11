@@ -21,7 +21,7 @@ Aşağıdaki adımları tamamlayarak Docker hakkında genel anlamda fikir sahibi
 * Docker'ın doğuş hikayesini anlatarak başlayacağız.
 * Docker'ın mimarisi hakkında bilgiler vererek kurulumla ilgili doğru kaynakları göstereceğiz.
 * Docker terminolojisine göz atacağız.
-* Docker CLI (Command-Line Interface - Komut Satırı)'la tanışacağız.
+* Docker CLI'la (Command-Line Interface - Komut Satırı) tanışacağız.
 * Docker'ın kullanım alanlarını ve çözmeye namzet olduğu problemleri tartışacağız.
 * İlerleyen bölümlerde referans olması açısından Docker CLI - Cheat Sheet (Kopya Kağıdı) oluşturarak kapatacağız.
 
@@ -32,6 +32,13 @@ Bu blog'u okumaya başlamadan veya okumaya devam ederken aşağıdaki iki videoy
 * [İlk video](https://www.youtube.com/watch?v=wW9CAH9nSLs)'da (5:21) Docker'ın fikir babası ve uygulayıcısı pek muhterem üstad Solomon Hykes'ın 21 Mart 2013'te Docker'ı ilk defa bir topluluk önünde demo etme görüntüleri var. Ecnebiler enteresan tabii, adam (Solomon) teknoloji dünyasını değiştirecek, 5 dakikası doldu diye adamın önce elini ayağına karıştırtıyorlar (hello world yerine hello wowlrd yazıyor). Prensip başka bir şey.
 * [İkinci video](https://www.youtube.com/watch?v=3N3n9FzebAA)'da (20:47) yine Solomon Hykes Docker'ı neden geliştirdiklerini çok sade ve vurucu bir biçimde anlatıyor.
 * Muhammed C. Tahiroğlu'nun kendine has üslubu ile kaleme aldığı [Docker Medeniyeti](http://tahiroglu.com/post/145827965207/docker-medeniyeti) büyük resmin bir kısmını çok güzel özetliyor.
+
+### Ön Koşullar
+
+Bu blog'da yer verilen adımları takip edebilmeniz için aşağıdaki koşulları sağlamanız beklenmektedir.
+
+* İlgili platformda (Windows, Linux, Mac) komut satırı (command window veya terminal) kullanabiliyor olmak.
+* Hypervisor bazlı sanallaştırma ortamları ile ilgili genel bilgi sahibi olmak (opsiyonel).
 
 ### Doğuş Hikayesi
 
@@ -277,7 +284,7 @@ Bu bölümde Docker CLI'ı kullanarak yukarıda anlattığımız bileşenler ve 
 
 Bu bölüm kısa gelecekte muhtemelen eskiyecek ve yeniden yazıma ihtiyaç duyacaktır fakat gün itibariyle eldeki durumun bir fotoğrafının çekilmesi açısından burada yazılanları kavramanın diğer bölümlere nazaran daha önemli olduğunu düşünüyorum. Blog'un başında Motivasyon başlığında yer verdiğim videoların ilkinde Docker'ın fikir babası ve birinci adamı Solomon Hykes aslında projeyi neden ortaya koyduklarını DotCloud üzerinden anlatıyor. Temel olarak söylediği gittikçe artan cloud (bulut) gerensinimlerine cevap vermek üzere kurulan özellikle PaaS sağlayıcılardan biri olan ve Solomon'un da sahibi olduğu DotCloud, Linux Containers (LXC) kullanarak daha az maliyetli, daha performanslı, daha performanslı ve daha az down-time'lı bir hizmet sunuyor. İnsanlar Solomon'a nasıl yaptıklarını sorunca Solomon Linux Kernel'indeki Container desteğinin pek bilinmediği, bilinse bile etkili kullanılamadığı sonucunu çıkarıyor ve yaptıkları kurmaylar toplantısında LXC'yi halka indirmeye karar veriyorlar. Daha önce de yazdığım gibi Kernel'in sunduğu Container desteğini bir Image formatı ile standardize edip Container'ın etrafında onun bütün yaşam döngüsünü basitleştiren ve yönetimini kolaylaştıran bir ekosistem inşa ediyorlar. Bu işleri o kadar hızlı ve doğru yapıyorlar ki rakipleri daha nefes alamadan bitiş çizgisine ulaşıyorlar.
 
-Yukarıdaki paragrafta Docker projesinin başlatılma gerekçesini küçük yorumlar ekleyerek başlatan kişinin ağzından nakletmeye çalıştım. Tabii Docker belki Solomon'un da en başta hatta ortalarında hayal ettiği çizginin de ötesine geçti, çok farklı alanlarda kendine çok geniş kullanım alanları buldu buluyor. Şimdi biraz bunların üzerinden gidelim. Aşağıdaki sıralamayı yaparken kendi görüşüme göre önem sırasına koymaya çalıştım.
+Yukarıdaki paragrafta Docker projesinin başlatılma gerekçesini küçük yorumlar ekleyerek başlatan kişinin ağzından nakletmeye çalıştım. Tabii Docker belki Solomon'un da en başta hatta ortalarında hayal ettiği çizginin de ötesine geçti, çok farklı alanlarda kendine çok geniş kullanım alanları buldu buluyor. Şimdi biraz bunların üzerinden gidelim.
 
 #### Benim Makinemde Çalışıyor (Works on my Machine) Problemine Çözüm Sağlaması
 
@@ -299,11 +306,57 @@ Popülerleşen DevOps kavramı ile birlikte, CI (Continuous Integration - Sürek
 
 Bu blog serisinin bir parçası olmamakla birlikte ilerleyen zamanlarda Docker ile bir CI ortamı kurulumunun tekniği ve adımları ile ilgili de bir blog yazma planım var.
 
-#### Mikroservis Mimari için Kolay ve Hızlı Bir Şekilde Devreye Alınabilmesi 
+#### Mikroservis Mimari için Kolay ve Hızlı Bir Şekilde Kullanıma Hazır Hale Getirilebilmesi 
 
+Docker işletim sistemi çekirdeği seviyesinde bir sanallaştırma sağladığı için Hypervisor'lerle sağlanan sanallaştırmaya göre çok daha maliyetsiz (lightweight) ve hızlı bir sistem sunmaktadır. Hypervisor'lerle kurulan bir sanallaştırma altyapısında yeni bir node'un (sanal makina) sisteme eklenmesi için öncelikle işletim sisteminin hypervisor üzerinde boot edilerek başlatılmasının beklenmesi gerekmektedir. İşletim sisteminin başlatılması için ise ön yükleyicinin (boot loader) işletim sistemini belleğe yüklemesi, sanallaştırılan donanım bileşenlerinin (sanal disk, sanal ekran kartı, vb) kullanıma hazır hale getirilmesi ile işletim sistemi modüllerinin kullanıma hazır hale getirilmesinin beklenmesi gereklidir. Bütün bu işlemler en iyi ihtimalle 20-25 saniye sürmektedir. Docker ile yeni bir node (container) eklenmesi ise milisaniyeler mertebesinde (50 - 100 ms) gerçekleştirilebilmektedir.
+
+Mikroservis mimarilerde kullanım oranları artan servislerin kolaylıkla genişletilebilmesi yani yeni node'ların hızlı bir şekilde sisteme eklenebilmesi ve artık çok fazla kullanılmayan node'ların da hızlı bir şekilde kapatılarak kaynaklarının sisteme iade edilmesi gerekmektedir. Bu özellikler Docker'ın mikroservis mimariler için biçilmiş kaftan olmasını sağlamaktadır.
+
+Açılıp kapanma performansına ek olarak Docker'ın teşvik ettiği her bir Container içinde sadece bir uygulamanın çalıştırılması zaten mikroservis sistemlerin sahip olması gereken ideal özelliklerin başında gelmektedir. Bir container içinde sadece bir uygulamanın yani servisin çalıştırılması, ilgili servisin genişletilmesi (yeni node'lar eklenmesi) gerektiğinde, diğer servislerden bağımsız olarak ilgili Image'dan yeni Container'lar oluşturulark maliyet-etkin ve çakışma yaşanmayacak bir biçimde genişleme sağlanmasına da olanak tanımaktadır.  
 
 #### Kaynakların Etkili ve Efektif Bir Biçimde Kullanılmasını Sağlaması
 
+Hatırlarsanız tarihçe kısmında Docker'ın Hypervisor'lere göre donanım kaynaklarının nasıl daha etkin kullanılmasını sağlandığını örneklemiştik. Docker'ın uygulamaları birbirinden ayırmak için Hypervisor'ler gibi farklı işletim sistemlerine ihtiyaç duymaması, her bir uygulama için yeni bir işletim sistemi kurulması gereğini ortadan kaldırarak ciddi bir kaynak tasarrufu sağlamıştır. 
+
+Tarihçe bölümünde detaylandırılan ve yukarıda özetlenen özelliğe ek olarak Docker'ın kaynakların daha etkili kullanılması için sağladığı başka fonksiyonlar da vardır. Bilindiği gibi Hypervisor'ler tarafından sağlanan sanal makinaların fiziksel makinalara göre en önemli avantajlarından birisi aynı fiziksel sunucuyu mantıksal parçalara bölerek farklı amaçlar için kullanabilmeleridir. Hypervisor'lerde bulunan bu mekanizma büyük bir avantaj sağlamasının yanında değişen ihtiyaçlara cevap verme noktasında Docker kadar esnek değildir. Aynı fiziksel sunucu üzerinde verilen A, B ve C servislerinden A'nın CPU ihtiyacının arttığını ve artık daha güçlü başka bir sunucuya taşınması gerektiğini düşünelim. Hypervisor teknolojisi ile A sanal sunucusu öncelikle halihazırda çalıştığı fiziksel sunucuda durdurulmalı, yeni sunucusuna kopyalanmalı ve tekrar çalıştırılmalıdır. Taşıma işlemi sırasında uygulama ve data'sının yanında işletim sistemi de taşındığı için bu işlem uzun sürmekte ve genellikle bakım periyodunda (maintenance period) yapılmakta ve değişik ihtiyaçların karşılanması için esnek bir yapı sunmamaktadır. Docker'ın sunduğu sanallaştırma ile Container durdurulur, yeni sunucusuna taşınır ve hızlı bir şekilde yeniden başlatılabilir. Gereken süre Hypervisor'e oranla daha kısa olduğu için değişikliğin yapılması için bakım periyodunun gelmesi beklenmeyebilir.   
+
+#### Multitenant Sistemlerde Tenancy Mantığını Uygulama Seviyesinden Çıkarmayı Sağlaması
+
+Docker ile birlikte gelen az maliyetli ve esnek sanallaştırma ile birlikte artık uygulama kodlarının içerisine multitenancy (çok kiracılılık) mantığının konmasına gerek kalmamıştır. Multitenancy aynı uygulamanın birden çok müşteri için sanki farklı instance'larda koşuyormuş izlenimi veren bir yazılım mimarisidir. Örnek olarak Konferans'lardaki oturum ve katılımcı bilgilerini yöneten bir uygulama, farklı müşterilerin farklı konferansları için tek bir instance'da hizmet verebilir. Her bir müşteri için ayrı birer web sunucu ve/veya uygulama sunucusu kurulması gerekmez böylelikle bakım maliyetleri düşürülür fakat uygulama seviyesinde Tenant'ları (kiracı) birbirinden ayıracak mantıklar (logic)'ler eklemek gerekmektedir ve bu da tahmin edebileceğiniz gibi hataya çok açık bir özelliktir. İşe yeni başlayan bir yazılımcı yeni tasarladığı bir ekranı Multitenancy özelliğini göz önünde bulundurmadan kodlarsa bütün tenant'lar diğer tenant'ların bilgilerini görebilir.
+
+Docker ile birlikte Tenancy mantığı uygulama kodundan kaldırılabilir. Uygulama sadece tek bir tenant varmış gibi çalışacak şekilde öncekine göre daha basit bir şekilde tasarlanır. Her bir Tenant için ilgili Image'dan yeni bir Container yaratılarak Tenant ile ilişkilendirilir böylece Tenant yönetimi daha karmaşık olan uygulama seviyesinden alınarak platform seviyesine çekilmiş olur ve daha yönetilebilir bir altyapı sağlar. 
 
 ### Docker CLI - Cheat Sheet (Kopya Kağıdı)
 
+| Komut | Açıklaması
+|---|---|
+|`docker images`|Lokal registery'de mevcut bulunan Image'ları listeler|
+|`docker ps`|Halihazırda çalışmakta olan Container'ları listeler|
+|`docker ps -a`|Docker Daemon üzerindeki bütün Container'ları listeler|
+|`docker ps -aq`|Docker Daemon üzerindeki bütün Container'ların ID'lerini listeler|
+|`docker pull <repository_name>/<image_name>:<image_tag>`|Belirtilen Image'ı lokal registry'ye indirir. Örnek: `docker pull gsengun/jmeter3.0:1.7`|
+|`docker top <container_id>`|İlgili Container'da `top` komutunu çalıştırarak çıktısını gösterir|
+|`docker run -it <image_id|image_name> CMD`|Verilen Image'dan terminal'i attach ederek bir Container oluşturur|
+|`docker pause <container_id>`|İlgili Container'ı duraklatır|
+|`docker stop <container_id>`|İlgili Container'ı durdurur|
+|`docker start <container_id>`|İlgili Container'ı durdurulmuşsa tekrar başlatır|
+|`docker rm <container_id>`|İlgili Container'ı kaldırır fakat ilişkili Volume'lara dokunmaz|
+|`docker rm -v <container_id>`|İlgili Container'ı ilişkili Volume'lar ile birlikte kaldırır|
+|`docker rm -f <container_id>`|İlgili Container'ı zorlayarak kaldırır. Çalışan bir Container ancak `-f` ile kaldırılabilir|
+|`docker rmi <image_id|image_name>`|İlgili Image'ı siler|
+|`docker rmi -f <image_id|image_name>`|İlgili Image'ı zorlayarak kaldırır, başka isimlerle Tag'lenmiş Image'lar `-f` ile kaldırılabilir|
+|`docker info`|Docker Daemon'la ilgili özet bilgiler verir|
+|`docker inspect <container_id>`|İlgili Container'la ilgili detaylı bilgiler verir|
+|`docker inspect <image_id|image_name>`|İlgili Image'la ilgili detaylı bilgiler verir|
+|`docker rm $(docker ps -aq)`|Bütün Container'ları kaldırır|
+|`docker stop $(docker ps -aq)`|Çalışan bütün Container'ları kaldırır|
+|`docker rmi $(docker images -aq)`|Bütün Image'ları kaldırır|
+|`docker images -q -f dangling=true`|Dangling (taglenmemiş ve bir Container ile ilişkilendirilmemiş) Image'ları listeler|
+|`docker rmi $(docker images -q -f dangling=true)`|Dangling Image'ları kaldırır|
+|`docker volume ls -f dangling=true`|Danling Volume'ları listeler|
+|`docker volume rm $(docker volume ls -f dangling=true -q)`|Danling Volume'ları kaldırır|
+|`docker logs <container_id>`|İlgili Container'ın terminalinde o ana kadar oluşan çıktıyı gösterir|
+|`docker logs -f <container_id>`|İlgili Container'ın terminalinde o ana kadar oluşan çıktıyı gösterir ve `-f` follow parametresi ile o andan sonra oluşan logları da göstermeye devam eder|
+|`docker exec <container_id> <command>`|Çalışan bir Container içinde bir komut koşturmak için kullanılır|
+|`docker exec -it <container_id> /bin/bash`|Çalışan bir Container içinde terminal açmak için kullanılır. İlgili Image'da /bin/bash bulunduğu varsayımı ile|
+|`docker attach <container_id>`|Önceden detached modda `-d` başlatılan bir Container'a attach olmak için kullanılır|
