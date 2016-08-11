@@ -2,18 +2,18 @@
 layout: post
 title: "Docker Bölüm 1: Nedir, Nasıl Çalışır, Nerede Kullanılır?"
 level: Başlangıç
-progress: continues
+progress: finished-not-reviewed
 ---
 
 Popüler tabirle "Geleceğin Teknolojisi"ne detaylı bir şekilde göz atacağız. Bu blog'da ilerleyen zamanlarda yer vereceğim post'ların neredeyse tamamının demo'larında Docker kullanacak olduğumdan post'ların anlaşılabilmesi açısından siz değerli okuyucuların "Yeter Derece"de Docker'a hakim olması gerektiğini düşünüyorum. Bu blog serisini başlatma sebebim tam olarak da bu. Başka kaynaklarda Docker ile ilgili bulunamayacak bilgilerin bu blog serisinde bulunacağı iddiasında değilim ancak derli toplu, pratik bilgilere ağırlık veren pragmatik bir yaklaşımla konuyu ele alacağımızı söyleyebilirim.
 
 Docker blog serisinde okumaya başladığınız bu blog'a ek olarak aşağıdaki iki blog daha yer alacaktır.
 
-[Docker Bölüm 2: Yeni bir Docker İmajı Nasıl Hazırlanır?](/docker-yeni-imaj-hazirlama/)
+[Docker Bölüm 2: Yeni bir Docker İmajı Nasıl Hazırlanır?](/docker-yeni-image-hazirlama/)
 
 [Docker Bölüm 3: Docker Compose Hangi Amaçlarla ve Nasıl Kullanılır?](/docker-compose-nasil-kullanilir/)
 
-## Çalışma Özeti
+### Çalışma Özeti
 ___
 
 Aşağıdaki adımları tamamlayarak Docker hakkında genel anlamda fikir sahibi olarak nasıl çalıştığını ve hangi amaçlarla nerelerde kullanıldığını anlamaya çalışacağız.
@@ -90,9 +90,9 @@ Docker Engine tarafından Linux çekirdeği içerisinde birbirinden izole olarak
 
 #### Image ve Dockerfile
 
-Docker Engine ile çalıştırılacak Container'ların baz alacağı işletim sistemi veya başka imajı, dosya sisteminin yapısı ve içerisindeki dosyaları, koşturacağı programı (veya bazen çok tercih edilmemekle birlikte programları) belirleyen ve içeriği metin bazlı bir Dockerfile (yazımı tam olarak böyle, ne dockerfile ne DockerFile ne de DOCKERFILE) ile belirlenen binary'ye verilen isimdir.
+Docker Engine ile çalıştırılacak Container'ların baz alacağı işletim sistemi veya başka Image'ı, dosya sisteminin yapısı ve içerisindeki dosyaları, koşturacağı programı (veya bazen çok tercih edilmemekle birlikte programları) belirleyen ve içeriği metin bazlı bir Dockerfile (yazımı tam olarak böyle, ne dockerfile ne DockerFile ne de DOCKERFILE) ile belirlenen binary'ye verilen isimdir.
 
-Hatırlarsanız Docker'ın doğuşunu anlattığımız ilk bölümde Docker'ın oyunu değiştiren bir hamle yaparak LXC'ye göre fonksiyon kıstığınını ve böylece başarılı olduğunu söylemiştik. İşte Docker, koşturulacak container'ların iskeletini oluşturan her bir imajın bir Dockerfile ile tanımlanmasını gerekli kılar. Bu Dockerfile içerisinde imajın hangi imajı baz aldığı, hangi dosyaları içerdiği ve hangi uygulamayı hangi parametrelerle koşturacağı açık açık verilir. Dockerfile'ın içeriğini ve yeni bir Dockerfile dolayısıyla da yeni bir Image oluşturmayı [bir sonraki](/docker-yeni-imaj-hazirlama/) blog'da ziyade detayda ele alacağız. Bu blog'un amaçları doğrultusunda bu kadar açıklama yeterli duruyor.
+Hatırlarsanız Docker'ın doğuşunu anlattığımız ilk bölümde Docker'ın oyunu değiştiren bir hamle yaparak LXC'ye göre fonksiyon kıstığınını ve böylece başarılı olduğunu söylemiştik. İşte Docker, koşturulacak container'ların iskeletini oluşturan her bir Image'ın bir Dockerfile ile tanımlanmasını gerekli kılar. Bu Dockerfile içerisinde Image'ın hangi Image'ı baz aldığı, hangi dosyaları içerdiği ve hangi uygulamayı hangi parametrelerle koşturacağı açık açık verilir. Dockerfile'ın içeriğini ve yeni bir Dockerfile dolayısıyla da yeni bir Image oluşturmayı [bir sonraki](/docker-yeni-image-hazirlama/) blog'da ziyade detayda ele alacağız. Bu blog'un amaçları doğrultusunda bu kadar açıklama yeterli duruyor.
 
 #### Docker Engine (Docker Daemon)
 
@@ -106,7 +106,7 @@ Kullanıcının Docker Engine ile konuşabilmesi için gerekli komut setini sağ
 
 Zaten bir teknoloji harikası olan Docker'ı daha da kullanılabilir ve değerli kılan bir özellik bütün açık kaynak sistemler gibi paylaşımı özendirmesi, adeta işin merkezine koymasıdır. [DockerHub](https://hub.docker.com)'da topluluğun ürettiği Image'lar ücretsiz ve sınırsız indirilebilir, oluşturulan yeni Image'lar gerek topluluk ile gerekse kişisel veya şirket referansı için açık kaynaklı (ücretsiz) veya kapalı kaynaklı (ücretli) yüklenebilir ve sonradan indirilebilir. Cloud'da hizmet veren DockerHub'ın yanında Image'larını kendi Private Cloud'unda tutmak isteyenler için Docker'ın sunduğu Private Registery hizmeti de vardır.
 
-Sözün özü Container'lar Image'lardan oluşturulur. Image'larsa ortak bir eforun sonucu olarak meydana gelir ve Docker Registery'lerde tutulur. Örnek olarak, Ubuntu'nun üreticisi [Canonical](http://www.canonical.com/) DockerHub'da Official Repository'ler tutmakta ve Ubuntu versiyonlarını [bu repository](https://hub.docker.com/r/library/ubuntu/)'lerde yayınlamaktadır. Ubuntu Image'ını kullanarak bir container oluşturmak isteyen kişiler direkt olarak bu imajı kullanabilirler. İkinci bir kullanım senaryosu olarak, sağlanan bu Ubuntu Image'ını kullanarak başka bir işlev gerçekleştiren, örneğin Nginx ile statik web server hizmeti veren, bir Image yaratıp bunu DockerHub'da yayınlamak, yani hem kendi hem de başkalarının kullanımına sunmak verilebilir.
+Sözün özü Container'lar Image'lardan oluşturulur. Image'larsa ortak bir eforun sonucu olarak meydana gelir ve Docker Registery'lerde tutulur. Örnek olarak, Ubuntu'nun üreticisi [Canonical](http://www.canonical.com/) DockerHub'da Official Repository'ler tutmakta ve Ubuntu versiyonlarını [bu repository](https://hub.docker.com/r/library/ubuntu/)'lerde yayınlamaktadır. Ubuntu Image'ını kullanarak bir container oluşturmak isteyen kişiler direkt olarak bu Image'ı kullanabilirler. İkinci bir kullanım senaryosu olarak, sağlanan bu Ubuntu Image'ını kullanarak başka bir işlev gerçekleştiren, örneğin Nginx ile statik web server hizmeti veren, bir Image yaratıp bunu DockerHub'da yayınlamak, yani hem kendi hem de başkalarının kullanımına sunmak verilebilir.
 
 #### Docker Repository
 
@@ -228,7 +228,7 @@ Bu bölümde Docker CLI'ı kullanarak yukarıda anlattığımız bileşenler ve 
 
     Burada yine kafamızı kaldıralım ve ne olup bittiğine bir göz atalım. Daha önce yaptığımız gibi yeni bir Image'dan bir Container ürettik, burada enteresan bir şey yok. Host'un 8080 numaralı portuna gelen istekleri Container'ın 80 numaralı port'una yönlendirdik ve Container tarafından sunulan Nginx test sayfasına erişmiş olduk. Peki bu ikinci kısım nasıl gerçekleşti? Yani Nginx Container'ına 80 numaralı port'u dinlemesi gerektiğini kim söyledi ve 80 numaralı port'a gelen request'lerde test sayfasını göndermesini kim salık verdi?
 
-    İşte Docker mucizesi yine tam da burada karşımıza çıkmaktadır. Official `Nginx` Image'ını hazırlayan arkadaşlar Nginx'i default olarak 80 numaralı portu dinlemeye ve bu porta gelen web isteklerini test web sitesine yönlendirmeye dolayısıyla da test ana sayfasını sunmak üzere ayarlamıştır. Dolayısıyla `Nginx` Image'ından oluşturulan Container'ın yegane amacı budur. Bu Nginx Image'ı başka bir görevi, daha anlamlı olarak kendi web sitemizi, sunmak üzere ayarlanabilir. [Bir sonraki blog](/docker-yeni-imaj-hazirlama/)'da bu konuya detaylı olarak eğileceğimizi tekrar söyleyerek devam edelim. 
+    İşte Docker mucizesi yine tam da burada karşımıza çıkmaktadır. Official `Nginx` Image'ını hazırlayan arkadaşlar Nginx'i default olarak 80 numaralı portu dinlemeye ve bu porta gelen web isteklerini test web sitesine yönlendirmeye dolayısıyla da test ana sayfasını sunmak üzere ayarlamıştır. Dolayısıyla `Nginx` Image'ından oluşturulan Container'ın yegane amacı budur. Bu Nginx Image'ı başka bir görevi, daha anlamlı olarak kendi web sitemizi, sunmak üzere ayarlanabilir. [Bir sonraki blog](/docker-yeni-image-hazirlama/)'da bu konuya detaylı olarak eğileceğimizi tekrar söyleyerek devam edelim. 
 
 8. Olayı biraz daha ilginçleştirelim ve bir önceki adımda çalıştırdığımız `Nginx` Container'ının 80 numaralı portu dinlemeye ve default web site'ı sunmak üzere nasıl ayarlandığına göz atalım.
 
