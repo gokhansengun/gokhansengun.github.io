@@ -14,7 +14,6 @@ Docker blog serisinde okumaya başladığınız bu blog'a ek olarak aşağıdaki
 [Docker Bölüm 3: Docker Compose Hangi Amaçlarla ve Nasıl Kullanılır?](/docker-compose-nasil-kullanilir/)
 
 ### Çalışma Özeti
-___
 
 Aşağıdaki adımları tamamlayarak Docker hakkında genel anlamda fikir sahibi olarak nasıl çalıştığını ve hangi amaçlarla nerelerde kullanıldığını anlamaya çalışacağız.
 
