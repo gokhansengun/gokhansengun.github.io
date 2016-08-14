@@ -2,6 +2,7 @@
 layout: post
 title: "JMeter Bölüm 4: Performans Testi Nasıl Hazırlanır?"
 level: Orta
+published: false
 progress: only-planned
 ---
 

@@ -2,6 +2,7 @@
 layout: post
 title: "JMeter Bölüm 5: İleri Düzey Özellikleri Nelerdir?"
 level: Orta
+published: false
 progress: only-planned
 ---
 
