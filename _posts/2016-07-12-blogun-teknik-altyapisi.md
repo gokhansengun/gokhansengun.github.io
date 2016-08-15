@@ -9,14 +9,12 @@ progress: finished-not-reviewed
 Bu blog'da blog'umu hazırlarken ve sizlere sunarken kullanıdığım yöntemler, araçlar ve teknik altyapı ile ilgili detaylı bilgiler vermeye çalışacağım. Bu yazıyı okuyup referans verdiğim linkleri de takip ederek siz de kendi blog sitenizi oluşturabilirsiniz. Önceden web sitesi oluşturma, yayınlama ve web programlama tecrübeniz varsa hem yazıyı daha rahat takip edebilirsiniz hem de blog üzerinde yapmak istediğiniz değişiklikleri daha rahat yapabilirsiniz.
 
 ## Web Sitelerinin Gelişimi
-___
 
 Birçoğumuzun bildiği gibi web siteleri sunucular tarafından hazırlanan html dosyalarının bilgisayarlarımız ve akıllı telefonlarımızda kullandığımız tarayıcı'lar (browser) tarafından talep edilmesi ile ulaşılabilir hale gelir. İnternet'in ilk yıllarında bütün web siteleri her bir kullanıcı için kullanıcıya göre ayrı ayrı hazırlanmayan statik sayfaların önceden hazırlanıp kullanıcı talep ettiğinde kullanıcıya ulaştırılması ile sunuluyordu. Örnek olarak Apple'ın 1996 yılındaki [sitesine](https://web.archive.org/web/19961022105458/http://www.apple.com/) baktığımızda oldukça sade tasarlanmış ve kullanıcıya özel olmayan bir site olduğunu görebiliriz.
 
 Günümüzde kullanıcı ile etkileşime girmeyen ve içeriğini kullanıcıya göre belirlemeyen bir web sitesi bulmamız neredeyse imkansız. Güncel web siteleri kullanıcı deneyimini artırmak için sunucu tarafında çalışan uygulamalarla, kullanıcıları sistemlerine dahil edip kullanıcıya özel içerik oluşturup hedefledikleri amaca daha kolay ulaşabiliyorlar. Sayfa içeriklerinin her bir kullanıcı için sunucu tarafında oluşturulması bir takım performans problemleri ve bakım ihtiyacı yaratmaktadır. Sayfa içeriklerinin dinamik olarak hazırlanması sunucu tarafında çalışması gereken bir web sunucunun yanında bir uygulama sunucusu ile birlikte çoğu zaman bir de veri tabanı sunucusunu gerekli kılmaktadır.  
 
 ## Platform
-___
 
 Sunucu tarafında çalışan uygulamalar, web sitesi geliştiricilerin işlerini o denli kolaylaştırmakta ve ürettikleri platformun esnek olmasını sağlamaktadır ki, günümüzde statik (kullanıcıdan kullanıcıya değişmeyen) içeriğe sahip birçok web sitesi sunucu tarafında çalışan uygulamalar tarafından üretilmektedir. Birçok blog sitesi de doğası gereği okuyucudan okuyucuya değişen bilgiler vermedikleri halde sayfaları sunucu tarafında çalışan uygulamalara ürettirmektedirler. 
 
@@ -31,14 +29,12 @@ Ben bu blog'u hazırlarken bir önceki bölümde anlattığım internet'in ilk y
 * İşletme maliyetinin dinamik oluşturulan blog'lara göre daha düşük olması, aslında bedava olması/olabilmesi :)
 
 ## Araç
-___
 
 Statik web sayfaları İnternet'in ilk zamanlarındaki gibi direkt html, css, js dosyaları *doğrudan* hazırlanarak yapılabileceği gibi bu dosyaların hazırlanmasını *dolaylı* olarak yapan araçlardan da yardım alınabilir. Bu araçlar "Static Site Generator" olarak adlandırılmaktadır. [http://staticgen.com ](https://www.staticgen.com/) web sitesi açık kaynak kodlu statik site üreten araçları karşılaştırmalı olarak tanıtmakta, popülerlik ve başka kriterlere göre sıralama ve filtrelemeye olanak tanımaktadır.
 
 Birçok opsiyon arasında benim kendi blog'um için tercih ettiğim araç birkaç nedenden dolayı [Jekyll](https://jekyllrb.com/) oldu. Bunlardan en önemlisi Jekyll ile hazırladığım template'lerin [Github Pages](https://pages.github.com/) tarafından render edilebilmesi, ücretsiz, açık kaynaklı ve yüksek oranda erişilebilir olarak yayınlanabilmesiydi.
 
 ## Jekyll'la Blog Sitesi Hazırlamak
-___
 
 ### Ön Koşullar
 
@@ -270,7 +266,6 @@ Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şa
 	{% include image.html url="/resource/img/Jekyll/JekyllFirstPost.png" description="Demo Site First Post" %}
 
 ## Sonuç ve Sonraki Adımlar
-___
 
 Bu blog'da `Jekyll` statik site oluşturma aracı ve `Beautiful Jekyll` temasını kullanarak bir blog sitesi oluşturduk ve bu siteyi konfigürasyonda verilen parametreleri değiştirerek basit bir şekilde özelleştirdik. `Beautiful Jekyll` temasının verdiği baz kodda daha fazla değişiklik yaparak, blog'u daha da fazla özelleştirebilriz. Benim [blog sitemin Github reposu](https://github.com/gokhansengun/gokhansengun.github.io)nu bilgisayarınıza klonlayıp, kendi bilgisayarınızda Jekyll ile çalıştırabilir ve `Beautiful Jekyll` temasına yapılan eklemeleri gözlemleyebilirsiniz.
 

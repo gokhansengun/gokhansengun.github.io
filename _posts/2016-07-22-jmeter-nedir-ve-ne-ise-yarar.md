@@ -20,7 +20,6 @@ Bu blog yazısını okuduktan sonra aşağıdaki blog yazılarını da sırasıy
 Şimdi isterseniz ufaktan başlayalım.
 
 ## JMeter Nedir?
-___
 
 JMeter başlangıçta web uygulamalarının test edilebilmesi için tasarlanmış fakat sonrasında farklı test fonksiyonlarını da gerçekleştirecek şekilde geliştirilmiştir.
 
@@ -31,7 +30,6 @@ JMeter %100 Java ile yazılan bir araç olduğu için Java Runtime Environment (
 JMeter kurulumu çok iyi bir şekilde dokümante edildiği ve blog'umuzu uzatacağı için burada yer vermek istemiyorum. JMeter kurulumu için platformunuza göre [bu linkten](http://jmeter.apache.org/usermanual/get-started.html#install) yardım alabilirsiniz.
 
 ## Çalışma Özeti
-___
 
 Aşağıdaki adımları tamamlayarak JMeter hakkında genel anlamda fikir sahibi olarak hangi amaçlarla kullanıldığını anlamaya çalışacağız.
 
@@ -41,12 +39,10 @@ Aşağıdaki adımları tamamlayarak JMeter hakkında genel anlamda fikir sahibi
 * JMeter GUI'sini (Graphical User Interface - Grafik Kullanıcı Arayüzü) tanıyacağız.
 
 ## Test ve JMeter Terminolojisi
-___
 
 Bu blog ve sonraki iki blog'da aynı dili konuşabilmek için test ve JMeter terminolojisine hakim olmamız gereklidir. Bu bölümde teorik olarak açıklayacağım bazı kavramlar konunun daha iyi anlaşılmasını diğer bir kısmı ise JMeter bileşenlerinin kullanım alanlarının öğrenilmesini sağlayacaktır. Ayrıca bu bölümde yer verilen JMeter bileşenlerini ilerleyen bölümlerde demo'larda kullanacak ve daha iyi anlayacağız.
 
 ### Test Çeşitleri
-___
 
 #### Fonksiyonel Test
 
@@ -65,7 +61,6 @@ Sunulan uygulamanın planlanan performans kriterleri çerçevesinde çalışıp 
 Performans testinin, sunulan uygulamanın planlanan maksimum kapasitede nasıl davrandığını test ettiğini belirtmiştik. Stres testi planlanan maksimum kapasitenin üzerinde bir yük altında sistemin nasıl davrandığını ve en önemlisi hangi noktada kırılıpdığını gözlemlemek üzere yapılan testtir. Beklenen davranış uygulamanın planlanan kapasite üzerinde (storm - fırtına) fonksiyonlarını kısmen gerçekleştirebilmesi veya tamamen gerçekleştirememesi fakat test bittikten (fırtına dindikten) sonra uygulamanın kararlı ve doğru sonuçlar üretebilecek durumda olmasıdır.
 
 ### Test Kavramları
-___
 
 #### Ramp-up Time (Tırmanma Süresi)
 
@@ -102,7 +97,6 @@ Birbiri ile sık sık karıştırılan bu iki kavramı bir arada anlatılarak be
 Sample Time (Örnekleme Süresi) son kullanıcının hissettiği ve gözlemlediği performanstır ve yukarıdaki adımların tamamının toplamından oluşur. Latency (Gecikme) ise sunucu tarafında geçen işleme süresidir. Yukarıdaki listeye göre 3, 4, 5 ve 6 adımlarında geçen toplam süre Latency'yi oluşturur.
 
 ### JMeter Bileşenleri
-___
 
 Bu bölümde bütün JMeter bileşenlerini ayrıntılı olarak ele almak yerine hızlıca başlamamıza olanak tanıyacak JMeter en önemli ve kullanışlı bileşenlere yer vereceğiz. Bu blog sonrasında gelecek 2 blog'da birçok bileşene göz atma fırsatı bulacağız. 
 
@@ -202,7 +196,6 @@ Response'lardan çıkarılan bilgilerin atıldığı değişkenlerin başka Samp
 {% include image.html url="/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractorResult.png" description="JMeter Title Regex Extractor Result" %}
 
 ## JMeter GUI
-___
 
 Bir önceki bölümde başlangıç yapabilmemize olanak tanıyacak kadar JMeter bileşenlerine göz attık. Bu bölümde anlatılan bileşenlerin yerleştirildiği JMeter kullanıcı arayüzüne kısa bir bakış atacağız.
 
@@ -219,6 +212,5 @@ Bir Test Plan'ın farklı aşamalarında farklı sayıda kullanıcı veya farkl�
 JMeter, Thread Group'ların çalıştırılmaya başlamasından önce Thread Group'un doğru bir biçimde koşturulabilmesi için gerekli ön ayarlamaların yapılmasına imkan tanıyan "setUp Thread Group"lar ve Thread Group'un işi bittikten sonra gerekli kaynak temizleme işlemlerinin yapılabileceği "tearDown Thread Group"lar sağlamaktadır. "Run tearDown Thread Groups after shutdown of main threads" ayarı seçildiğinde "tearDown Thread Group"lar sadece Thread Group'ların başarılı koşturumlarından sonra çalıştırılırlar fakat Test Plan koşturum devam ederken durdurulursa çalıştırılmazlar. 
 
 ## Sonuç
-___
 
 Bu blog'da genel olarak test terminolojilerinin üzerinden geçip, JMeter bileşenlerini yakından inceleyerek JMeter ile bir test senaryosu hazırlayabilecek duruma geldik. Bir sonraki [blog'da](/jmeter-fonksiyon-testi-hazirlama/) JMeter ile, ilgi çekici bir demo hazırlayarak öğrendiğimiz test kavramlarını ve JMeter bileşenlerini kullanarak öğrendiğimiz bilgileri pekiştirmeye çalışacağız. 

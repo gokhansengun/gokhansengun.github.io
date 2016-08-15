@@ -20,7 +20,6 @@ Bu blog yazılarını okuduktan sonra ise aşağıdaki blog yazılarına da göz
 [JMeter Bölüm 5: İleri Düzey Özellikleri Nelerdir?](/jmeter-ileri-duzey-ozellikler/)
 
 ## Hızlı JMeter Script'i Hazırlama
-___
 
 ### Hazırlık
 
@@ -119,7 +118,6 @@ Bu blog yazısında test edeceğimiz fonksiyonlar aşağıdaki gibi olacak.
 JMX Script'inin son haline Github parolam haricinde [buradan](/resource/file/JMeterPart3/Github Recording.jmx) ulaşabilirsiniz. JMX dosyasını bu haliyle parola değiştirildiği için direkt olarak çalıştıramayacak olsanız bile inceleme amacı ile kullanabilirsiniz. 
 
 ## Sonuç
-___
 
 Bu blog'da JMeter'ın Recording Template'ini kullanarak bir önceki blog'da elle uzun uğraşlar sonucu hazırladığımız karmaşık test senaryosunun aynısını daha pratik bir şekilde tamamlamış olduk.
 

@@ -10,14 +10,12 @@ progress: finished-not-reviewed
 Kısaca başlatılma gereçleri ve amacı hakkında bilgi verdikten sonra detaylı olarak blog'da yer vereceğim içerik, içeriği nasıl organize edip sunacağımı anlatacağım. Burada yazacaklarım siz okuyucuların blog yazıları ile ilgili daha detaylı bilgi almanızı sağlamanın yanı sıra benim de blog yazılarını yazarken aynı çizgide kalmama da yardımcı olacağını düşünüyorum.
 
 ## Blog'un Başlatılma Gerekçeleri
-___
 
 Uzun yıllar boyunca blog yazılarına hep uzaktan baktım. Bir dönem blog yazacak bir konu bulamamam, başka bir dönem konu olması fakat zaman olmaması, diğer bir dönem ise konu ve zaman olması fakat blog yazacağım konularda harcadığım efora değecek sayıda fazla okuyucu/takipçi kitlesinin bulunmadığı düşünmem sebepleriyle kendi kişisel blog'umu oluşturmayı hep geciktirdim. 
 
 Yaşım, deneyimlerim ve bilgi birikimin arttıkça artık bazı püf noktaları unutmaya, ihtiyaç duyduğumda geri dönüp bulamamaya veya bulsam bile düzenli ve rahatlıkla tekrar kullanılabilir formatta bulamamaya başladım. Tam da bu sebeple "Kendime Notlar" şeklinde isimlendirebileceğim ve hiç kimse tarafından faydalı ve takip edilmeye değer bulunmayacaksa bile kendim için faydalı olacak bu blog oluşturmaya karar verdim.
 
 ## Blog'da Yer Vereceğim İçerikler
-___
 
 Yeni bir projeye başlarken hedeflerin projenin başında net ve somut biçimde ifade edilmesinin projenin başarısını olumlu etkilediğini gözlemledim hep. Bu yüzden henüz blog yazmaya başlamamışken ve neler yazmak istediğim hakkında kafamın net olduğu bu dönemde içerik hedeflerimi gerekçeleri ile birlikte alt alta sıralamamın faydalı olduğunu düşünüyorum.
 
@@ -25,11 +23,11 @@ Yeni bir projeye başlarken hedeflerin projenin başında net ve somut biçimde 
 
 *Ele alınan konular orta ve ileri düzey özgün içerikler olmalı.*
 
-Ana sayfadaki başlıktan da anlaşılabileceği üzere **Yazılım Geliştirme** üzerine yazılardan oluşacak blog'um. Fark ettiğiniz üzere içerik dili olarak Türkçe'yi belirledim. İlerleyen süreçte blog'ları İngilizce yazıp Türkçe'ye çevirerek her iki dilde daha fazla okuyucu kitlesine ulaşmayı hedefleyebilirim fakat şu aşamada ilk hedefim bu butik projenin zaman açısından bana fazla yük getirmemesi.
+Ana sayfadaki başlıktan da anlaşılabileceği üzere **Yazılım Geliştirme** üzerine yazılardan oluşacak blog'um. Fark ettiğiniz üzere ilk blog'lar için içerik dili Türkçe oldu. İlk 9 blog'da, sonraki blog'larda sıklıkla kullanılacak ve öğrenilmediğinde bu blog'ların takip edilmesini zorlaştıracak araçlar ve teknikler incelenmiştir. Bu blog'larda anlatılan araçlar ve teknikler ile ilgili İngilizce kaynaklar yeterli düzeyde bulunduğu için bu blog'ları İngilizce'ye şu aşamada çevirmeyi gerekli görmedim. İlerleyen süreçte hazırlayacağım blog'larda gerçekten özgün içerikler üreterek blog'ları önce İngilizce yazıp sonra Türkçe'ye çevirerek her iki dilde daha geniş bir okuyucu kitlesine ulaşmayı hedefliyorum.
 
-Giriş seviyesindeki konular için Türkçe ve İngilizce birçok içerik hali hazırda mevcut zaten. Benim amacım orta ve ileri düzey olarak sınıflandırılabilecek özgün konulara yer vermek olacak. İstisnai olarak yer verilecek orta ve ileri derece konulara temel oluşturacak Türkçe yeterli ve kaliteli kaynak bulunmayan konulara da yer vereceğim.
+Giriş seviyesindeki konular için Türkçe ve İngilizce birçok içerik hali hazırda zaten mevcut. Benim amacım orta ve ileri düzey olarak sınıflandırılabilecek özgün konulara yer vermek olacak. İlk 9 blog'da olduğu gibi ileride de istisnai olarak yer verilecek orta ve ileri derece konulara temel oluşturacak Türkçe yeterli ve kaliteli kaynak bulunmayan konulara da yer vereceğim.
 
-Merak ve heyecanla beklenmesi için örnek konularla ilgili şu aşamada bilgi vermek istemiyorum :) Zaten blog'u 3-4 yazıya ulaşmadan yayınlamayı ve farklı mecralarda yaymayı da düşünmüyorum. İlk yazılar oluştuktan sonra siz okuyucuların mevcut konulara bakarak blog'un ele alacağı konuları, size hitap edip etmeyeceğini rahatlıkla anlayabileceğinizi düşünüyorum.
+Merak ve heyecanla beklenmesi için örnek konularla ilgili şu aşamada bilgi vermek istemiyorum :) Blog'u 8-9 yazıya ulaşmadan yayınlamayı ve farklı mecralarda yaymayı da düşünmüyorum. İlk yazılar oluştuktan sonra siz okuyucuların mevcut konulara bakarak blog'un ele alacağı konuları, size hitap edip etmeyeceğini rahatlıkla anlayabileceğinizi düşünüyorum.
 
 ### Organizasyon
 
@@ -51,5 +49,5 @@ Blog'un okuyucularına en üst düzeyde faydalı olabilmesi için read-only olma
 
 *Sade, kolay takip edilebilir bir arayüze sahip olmalı.*
 
-Bu blog'un teknik altyapısına yer vereceğim bir sonraki blog'da daha detaylı anlatacak olmakla birlikte blog yazılarının içeri ön plana çıkaracak şekilde sade olmasını hedefliyorum. Blog yazılarının büyük bir bölümü okuyucunun kendi kendine tekrarlayabileceği adımlardan oluşmasını istiyorum, sadece yazı ve şekillerden oluşan bir içerikle okuyucunun dikkatini içeriğe yoğunlaştıracağını ve içeriği daha rahat takip edebileceğini düşünüyorum.
+Bu blog'un teknik altyapısına yer vereceğim bir sonraki blog'da daha detaylı anlatacak olmakla birlikte blog yazılarının içeriği ön plana çıkaracak şekilde sade olmasını hedefliyorum. Blog yazılarının büyük bir bölümü okuyucunun kendi kendine tekrarlayabileceği adımlardan oluşmasını istiyorum, sadece yazı ve şekillerden oluşan bir içerikle okuyucunun dikkatini içeriğe yoğunlaştıracağını ve içeriği daha rahat takip edebileceğini düşünüyorum.
 

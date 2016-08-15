@@ -22,7 +22,6 @@ Bu blog yazısını okuduktan sonra ise aşağıdaki blog yazılarına da göz a
 Şimdi isterseniz ufaktan başlayalım.
 
 ## Github Fonksiyon Testi - Demo
-___
 
 ### Hazırlık
 
@@ -264,7 +263,6 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
     {% include image.html url="/resource/img/JMeterPart2/LogoutPostRequestSampler.png" description="Logout Post Request Sampler" %}
 
 ## Doğruluk Testleri
-___
 
 Fonksiyon testlerinde test edilen senaryolarda sunucuya yapılan isteklere verilen cevapların detaylı bir şekilde incelenerek gerçekten beklenen cevapların gelip gelmediği kontrol edilmelidir. Bir önceki blog'da da bahsedilen Assertion'lar doğruluk testlerinin gerçekleştirilmesinde kullanılmaktadır.
 
@@ -291,7 +289,6 @@ Bir miktar performans testi kapsamına giriyor olsa da fonksiyon testlerinde de 
 Benzer şekilde Size Assertion, gelen response'ın minimum ve maksimum boyutlarının belirlenebileceği bir bileşendir. Mevcut Assertion bileşenleri ile gerçekleştirilemeyecek logic'ler BeanShell Assertion ile Java kodu ile rahatlıkla gerçekleştirilebilir. 
 
 ## Sonuç
-___
 
 Bu blog'da JMeter'daki birçok özelliği kullanarak gerçek hayattan karmaşık bir test senaryosunu tamamlamış olduk. Önceki blog'da öğrendiğimiz bileşenlerin demo edilmiş halini görmenin yanında yeri geldikçe yeni bileşenleri de tanıma fırsatı bulduk ve onları da kullanarak konuyu bir bütün olarak ele almaya çalıştık.
 

@@ -13,11 +13,11 @@ Profesyonel iş yaşamıma gömülü sistemler üzerinde yazılım geliştirerek
 Bu blog'da gerek gömülü yazılım geliştirme gerekse de uygulama yazılımı geliştirme alanındaki tecrübelerimi aktarmayı hedefliyorum. 
 
 ### İletişim
-____
+
 Sayfanın altında bulunan sosyal medya hesaplarım ve mail aracılığı ile bana ulaşabilirsiniz. 
 
 ### İlgi Alanları
-____
+
 Aşağıdaki konularla yakından ilgileniyorum, bu blogda çoğunlukla bu konular ile ilgili yazılar bulacaksınız.
 
 - .NET framework, Mono, .NET Core
@@ -37,7 +37,6 @@ Aşağıdaki konularla yakından ilgileniyorum, bu blogda çoğunlukla bu konula
 - Raspberry Pi üzerinde C# tarafından çağrılmak üzere C ve C++ ile yazılmış kütüphanelerin .NET Interop ile .NET tarafından kullanılabilir hale getirilmesi
 
 ### Özgeçmiş
-____
 
 #### 2006:
 
