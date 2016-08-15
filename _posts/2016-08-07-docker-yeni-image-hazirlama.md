@@ -7,11 +7,11 @@ progress: finished-not-reviewed
 
 Docker blog serimizin ilk bölümünde Docker nedir, nasıl çalışır ve nerede kullanılır sorularına cevap aramış ve Docker'a detaylı bir giriş yapmıştık. Önceki blog'da bahsettiğimiz gibi [DockerHub](https://hub.docker.com) gerek official (Ubuntu, Nginx, Redis, vb) gerekse de bu Image'lardan türetilen ve farklı özellikler barındıran birçok farklı ve çok faydalı Image içermektedir. Bu Image'lar ihtiyaçlarımızı çok büyük oranda karşılasa da kısa sürede gerek official gerekse de diğer repository'lerdeki Image'ları özelleştirme ihtiyacı ortaya çıkmaktadır. Blog serimizin ikinci bölümü olan bu blog'da Docker'ın sunduğu zengin özelleştirme araçlarını kullanarak mevcut Docker Image'larını özelleştirerek ihtiyaçlarımıza uygun hale getireceğiz ve bir yandan da Docker'ı bu vesile ile daha yakından tanımış olacağız. 
 
-Docker blog serisinin ilki aşağıda verilmiştir. Eğer daha önce okumadıysanız bu blog'u da okumanızı tavsiye ederim.
+Docker blog serisinin ilki aşağıda verilmiştir. Eğer daha önce okumadıysanız bu blog'u da okumanız tavsiye edilir.
 
 [Docker Bölüm 1: Nedir, Nasıl Çalışır, Nerede Kullanılır?](/docker-nedir-nasil-calisir-nerede-kullanilir/)
 
-Docker Image hazırlamayı gösteren bu ikinci blog'da da günlük kullanım örneklerine pek değinemeyeceğiz. Docker'ın pratik kullanım alanlarını aşağıda linki verilen blog'da özetlemeye gayret edeceğim. Bu blog'u okuduktan sonra onu okumanızı tavsiye ederim.
+Docker Image hazırlamayı gösteren bu ikinci blog'da da günlük kullanım örneklerine pek değinemeyeceğiz. Docker'ın pratik kullanım alanlarını aşağıda linki verilen blog'da özetlemeye gayret edeceğiz. Bu blog'u okuduktan sonra onu okumanızı tavsiye ederim.
 
 [Docker Bölüm 3: Docker Compose Hangi Amaçlarla ve Nasıl Kullanılır?](/docker-compose-nasil-kullanilir/)
 
@@ -264,7 +264,7 @@ Vereceğimiz ilk örnek basit bir web sitesi hazırlayarak bunu Nginx ile sunmak
     - Nginx web sunucumuza gelen istekler HTTP yani 80 numaralı port üzerinden geleceği için Container'ın bu portunu `EXPOSE` etmek 
     - Container'ın `ENTRYPOINT`'i olarak `nginx -g 'daemon off;' vererek ` Nginx'i çalıştırmak
 
-2. Yeni bir Image oluştururken doğru yöntem baz alınacak Image'ı interactive modda çalıştırarak terminal'i attach etmek, komutları öncelikle burada çalıştırıp istenen fonksiyonun gerçekleşip gerçekleşmediğini kontrol ederek iteratif ilerlemek olmalıdır fakat biz burada bu adımı zaten gerçekleştirdiğimizi düşünelim çünkü ben bir önceki adımda verdiğim bilgileri aslında bu yöntemle öğrendim.
+2. Yeni bir Image oluştururken doğru yöntem baz alınacak Image'ı interactive modda çalıştırarak terminal'i attach etmek, komutları öncelikle burada çalıştırıp istenen fonksiyonun gerçekleşip gerçekleşmediğini kontrol ederek iteratif ilerlemek olmalıdır fakat biz burada bu adımı zaten gerçekleştirdiğimizi düşünelim çünkü bir önceki adımda verilen bilgiler de aslında bu yöntemle öğrenildi.
 
     Öncelikle bu projeyi saklayacağınız bir klasör yaratarak boş bir `Dockerfile` ve aşağıdaki içeriğe sahip bir `index.html` dosyasını bu klasörün içerisine koyun.
 
@@ -339,7 +339,7 @@ Vereceğimiz ilk örnek basit bir web sitesi hazırlayarak bunu Nginx ile sunmak
 
 ### Bu Blog'da Değinilmeyen Konular
 
-Docker Daemon'ın Dockerfile ile Image oluşturma process'i başlı başına bir sanat eseridir ve entellektüel kaygılarla muhakkak incelenmeli ve iyi bir şekilde anlaşılmalıdır. Ben bu blog dizisinde Docker'ı pragmatik bir yaklaşımla ele almaya çabaladığım için bu bölümü şimdilik atladım. Belki ileride başka bir blog'da Docker Image katmanları ve Image oluşturma işleminin mekaniklerine detaylı bir bakış atabiliriz. 
+Docker Daemon'ın Dockerfile ile Image oluşturma process'i başlı başına bir sanat eseridir ve entellektüel kaygılarla muhakkak incelenmeli ve iyi bir şekilde anlaşılmalıdır. Bu blog dizisinde Docker'ı pragmatik bir yaklaşımla ele almaya çabaladığımız için bu bölümü şimdilik atladık. Belki ileride başka bir blog'da Docker Image katmanları ve Image oluşturma işleminin mekaniklerine detaylı bir bakış atabiliriz. 
 
 ### Sonuç
 

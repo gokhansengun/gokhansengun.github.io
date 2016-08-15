@@ -7,7 +7,7 @@ progress: finished-not-reviewed
 
 Docker blog serimizin ilk iki bölümünde Docker'ı günlük hayatta kullanmaya başlamak için gerekli bilgi seviyesini oluşturmak için Docker ve sunduğu olanakları yakından tanımaya çalıştık. Bu blog'da ise Docker'ı gerek geliştirme, gerek test ve gerekse de üretim ortamında nasıl kullanabileceğimiz ile ilgili çok pratik ve genellikle demo'lardan oluşan bilgileri elde edeceğiz. Eminim verilen örnekler sizin kafanızda da farklı çağrışımlar uyandıracak ve siz de kendinizi her gün uğraştığınız işlerde Docker kullanarak nasıl daha verimli olabileceğinize dair düşünceler içinde bulacaksınız.
 
-Docker blog serisinin ilk ikisi aşağıda verilmiştir. Eğer bu blog'ları daha önce okumadıysanız okumanızı şiddetle tavsiye ederim.
+Docker blog serisinin ilk ikisi aşağıda verilmiştir. Eğer daha önce okumadıysanız bu blog'ları da okumanız tavsiye edilir.
 
 [Docker Bölüm 1: Nedir, Nasıl Çalışır, Nerede Kullanılır?](/docker-nedir-nasil-calisir-nerede-kullanilir/)
 
@@ -88,7 +88,7 @@ Hemen işe koyulalım.
 
     Çıktıdan görebileceğiniz gibi Docker Compose öncelikle `dcblog_default` adında bir network yarattı sonra benim klasör ismim olan `DCBlog` ve servis isimlerini `company_x_web_server` birleştirip Container'lara vererek onları teker teker çalıştırdı. En son satırda ise terminali çalıştırılan bu Container'lara attach ettiğini görüyoruz. Bu çıktı ile ilgili farklı açılardan bakarak detaylı analizler yapacağız fakat öncelikle demo'yu tamamlayalım.
 
-3. Web tarayıcıyı açarak `http://localhost:8001`, `http://localhost:8002` ve `http://localhost:8003` adreslerinden Nginx'in default sayfasının gelip gelmediğini kontrol edin. Sizde de aşağıdakine benzer bir görüntü oluşmalı. Ben aşağıya sadece A şirketinin web sitesi kabul ettiğimiz Container'ın sunduğu ana sayfanın ekran çıktısını aldım.
+3. Web tarayıcıyı açarak `http://localhost:8001`, `http://localhost:8002` ve `http://localhost:8003` adreslerinden Nginx'in default sayfasının gelip gelmediğini kontrol edin. Sizde de aşağıdakine benzer bir görüntü oluşmalı. Burada aşağıya sadece A şirketinin web sitesi kabul ettiğimiz Container'ın sunduğu ana sayfanın ekran çıktısı alınmıştır.
 
     {% include image.html url="/resource/img/DockerPart3/CompanyAHomePage.png" description="Home Page Company A" %}
 
@@ -232,7 +232,7 @@ Son olarak `docker-compose run` ile çalıştırılan Container'lar genellikle t
 
 #### docker-compose start
 
-Önceden `docker-compose up` veya `docker-compose run` ile başlatılan Container'lardan birini veya birkaçını yeniden başlatmak için kullanılır. Açık konuşmak gerekirse bugüne kadar çok fazla kullandığım bir komut olmadı. Sağladığı fonksiyon `docker-compose up <service_name>` tarafından bire bir karşılandığı için muhtemelen Docker CLI ile uyum için konduğu veya [Fig](http://www.fig.sh)'e geriye uyumluluk amacıyla bırakıldığını düşünüyorum. 
+Önceden `docker-compose up` veya `docker-compose run` ile başlatılan Container'lardan birini veya birkaçını yeniden başlatmak için kullanılır. Açık konuşmak gerekirse bugüne kadar çok fazla kullandığımız bir komut olmadı. Sağladığı fonksiyon `docker-compose up <service_name>` tarafından bire bir karşılandığı için muhtemelen Docker CLI ile uyum için konduğu veya [Fig](http://www.fig.sh)'e geriye uyumluluk amacıyla bırakıldığını düşünüyorum. 
 
 #### docker-compose stop
 
@@ -339,7 +339,7 @@ Kullanım senaryosunu örneklemeye çalışalım. Docker Compose ile oluşturdu�
         redis-service:
             image: redis
 
-Başlangıçta ben bu opsiyonu yanlış anladığım ve muhtemelen siz de yanlış anlayacağınız için bu yanlış anlaşılmayı en baştan düzeltelim isterseniz. `depends_on` Service'leri başlatırken Service'lerin çalışmaya hazır hale gelip gelmediğini beklememektedir. Yukarıdaki örnekte, `ruby-service`'in `redis-service`'e bağımlılığı vardır. Burada `redis-service` Container'ı başlatıldıktan hemen sonra `ruby-service` Container'ı başlatılacaktır. Eğer Ruby uygulaması ilk açılışta Redis sunucunun hazır olup olmadığını kontrol ediyorsa ve hazır olmadığında hata veriyorsa Compose ile başlatıldıktan sonra muhtemelen hata verecektir çünkü Redis Container'ı ile Ruby App'inin Container'ı ile neredeyse aynı anlarda başlatılmış olmaktadır, Ruby App'inin Redis'in ayağa kalkması beklenmemektedir. Ruby App'inin Redis'in ayağa kalkmasının beklenmesi için bazı 3rd party mekanizmalar vardır ve benim yazacağım başka bir blog'un konusunu olacaktır fakat açık bir şekilde `depends_on` bu işe yaramamaktadır.
+Başlangıçta bu opsiyon hep yanlış anlaşıldığı için ve muhtemelen siz de yanlış anlayacağınız için bu yanlış anlaşılmayı en baştan düzeltelim isterseniz. `depends_on` Service'leri başlatırken Service'lerin çalışmaya hazır hale gelip gelmediğini beklememektedir. Yukarıdaki örnekte, `ruby-service`'in `redis-service`'e bağımlılığı vardır. Burada `redis-service` Container'ı başlatıldıktan hemen sonra `ruby-service` Container'ı başlatılacaktır. Eğer Ruby uygulaması ilk açılışta Redis sunucunun hazır olup olmadığını kontrol ediyorsa ve hazır olmadığında hata veriyorsa Compose ile başlatıldıktan sonra muhtemelen hata verecektir çünkü Redis Container'ı ile Ruby App'inin Container'ı ile neredeyse aynı anlarda başlatılmış olmaktadır, Ruby App'inin Redis'in ayağa kalkması beklenmemektedir. Ruby App'inin Redis'in ayağa kalkmasının beklenmesi için bazı 3rd party mekanizmalar vardır ve bu hazırlayacağımız başka bir blog'un konusunu olacaktır fakat açık bir şekilde `depends_on` bu işe yaramamaktadır.
 
 Bu durumda `depends_on` ne işe yaramaktır sorusunun cevabını yukarıdaki örneğe göre tekrar verelim. `docker-compose up ruby-service` komutu verilerek `ruby-service` ve bağımlılıklarının kaldırılması istendiğinde eğer `depends_on` opsiyonu ile `nginx-service`'e olan bağımlılık belirlenmeseydi bu servis başlatılmamış olacaktı.
 
@@ -469,7 +469,7 @@ Compose kompleks sistemlerde kullanılmak üzere kapsamlı Network konfigürasyo
 
 Bütün bu öğrendiklerimizi yapısı karmaşık (dolayısıyla Compose'un birçok özelliğini görebileceğimiz) ancak fonksiyonalitesi sade (dolayısıyla uygulamanın mantığından çok Compose'un mantığına odaklanabileceğimiz) bir uygulamada test ederek öğrendiklerimizi iyice pekiştirelim.
 
-Bu uygulamanın orjinal halini [bu linkten](https://github.com/docker/example-voting-app.git) benim Github'da fork ettiğim halini de [bu linkten](https://github.com/gokhansengun/example-voting-app.git) indirebilirsiniz. Uygulamayı bir klasöre indirdikten sonra ilgili klasöre giderek `docker-compose up` komutunu çalıştırırsanız uygulamayı kendi bilgisayarınızdan da test edebilirsiniz. Sanırım bu kolaylık Docker Compose'u tek cümlede açıklamaya yetti :)
+Bu uygulamanın orjinal hali [bu linkten](https://github.com/docker/example-voting-app.git), bu blog için Github'dan fork edilen hali de [bu linkten](https://github.com/gokhansengun/example-voting-app.git) indirilebilir. Uygulamayı bir klasöre indirdikten sonra ilgili klasöre giderek `docker-compose up` komutunu çalıştırırsanız uygulamayı kendi bilgisayarınızdan da test edebilirsiniz. Sanırım bu kolaylık Docker Compose'u tek cümlede açıklamaya yetti :)
 
 Örnek uygulama olarak Docker ile ilgili birçok demoda kullanılan `Voting App`'i kullanacağız. Uygulamanın sunduğu fonksiyon, bir anketle kullanıcılara kedileri mi yoksa köpekleri mi daha çok sevdiklerini sormak ve bütün kullanıcılardan gelen cevapları kümüle bir şekilde yüzde olarak göstermektir.
 
@@ -591,4 +591,4 @@ Bu servisin tanımı aşağıda verilmiştir. Şimdi teker teker ilgili satırla
 
 Bu blog'da Docker'ı günlük hayat kullanımında çok daha etkili kılan Docker Compose'u çok detaylı bir biçimde inceleyerek Docker'la ilgili üç blog'luk blog serimizi tamamlamış olduk.
 
-Bundan sonraki blog yazılarımdaki bütün örnek uygulamaları (demo'ları) Docker kullanarak vereceğim ve bu blog serisinde öğrendiğimiz bilgiler çok işimize yarayacak.
+Bundan sonraki blog yazılarındaki bütün örnek uygulamaları (demo'ları) Docker kullanarak vereceğiz ve bu blog serisinde öğrendiğimiz bilgiler emin olun çok işimize yarayacak.

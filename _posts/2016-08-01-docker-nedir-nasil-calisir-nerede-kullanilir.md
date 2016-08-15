@@ -5,7 +5,7 @@ level: Başlangıç
 progress: finished-not-reviewed
 ---
 
-Popüler tabirle "Geleceğin Teknolojisi"ne detaylı bir şekilde göz atacağız. Bu blog'da ilerleyen zamanlarda yer vereceğim post'ların neredeyse tamamının demo'larında Docker kullanacak olduğumdan post'ların anlaşılabilmesi açısından siz değerli okuyucuların "Yeter Derece"de Docker'a hakim olması gerektiğini düşünüyorum. Bu blog serisini başlatma sebebim tam olarak da bu. Başka kaynaklarda Docker ile ilgili bulunamayacak bilgilerin bu blog serisinde bulunacağı iddiasında değilim ancak derli toplu, pratik bilgilere ağırlık veren pragmatik bir yaklaşımla konuyu ele alacağımızı söyleyebilirim.
+Popüler tabirle "Geleceğin Teknolojisi"ne detaylı bir şekilde göz atacağız. Bu blog'da ilerleyen zamanlarda yer vereceğimiz post'ların neredeyse tamamının demo'larında Docker kullanacak olduğumuzdan post'ların anlaşılabilmesi açısından siz değerli okuyucuların "Yeter Derece"de Docker'a hakim olması gerektiğini düşünüyorum. Bu blog serisini başlatma sebebim tam olarak da bu. Başka kaynaklarda Docker ile ilgili bulunamayacak bilgilerin bu blog serisinde bulunacağı iddiasında değilim ancak derli toplu, pratik bilgilere ağırlık veren pragmatik bir yaklaşımla konuyu ele alacağımızı söyleyebilirim.
 
 Docker blog serisinde okumaya başladığınız bu blog'a ek olarak aşağıdaki iki blog daha yer alacaktır.
 
@@ -61,7 +61,7 @@ Son olarak Docker geliştirmesinin en başlarında bence çok doğru bir kararla
 
 ### Kurulum ve Mimari
 
-Başlık biraz yanıltıcı olabilir. Docker'ın kurulum detayları aşağıdaki linklerde çok detaylı ve ek izaha gerek bırakmayacak kadar güzel açıklanmış. Kullanıdığınız platforma göre aşağıdaki linklerden kurulum yapabilirsiniz. Ben burada biraz daha büyük resmi göstermeye çabalayacağım.
+Başlık biraz yanıltıcı olabilir. Docker'ın kurulum detayları aşağıdaki linklerde çok detaylı ve ek izaha gerek bırakmayacak kadar güzel açıklanmış. Kullanıdığınız platforma göre aşağıdaki linklerden kurulum yapabilirsiniz. Burada biraz daha büyük resmi göstermeye çabalayacağız.
 
 #### Kurulum
 
@@ -113,7 +113,7 @@ Bir grup Image'ın oluşturduğu yapıdır. Bir repository'deki değişik Image'
 
 ### Docker CLI - Uzun Bir Tur
 
-Bu bölümde Docker CLI'ı kullanarak yukarıda anlattığımız bileşenler ve terminolojileri örnekleyerek pekiştirmeye çalışacağız. Ben komutları Mac OS X'te çalıştırıp çıktılarını paylaşacağım ancak bütün komutlar Windows ve Linux sistemlerde de aynen çalışacaktır fakat üzerinde çalışılan sisteme göre farklı çıktılar üretecektir.
+Bu bölümde Docker CLI'ı kullanarak yukarıda anlattığımız bileşenler ve terminolojileri örnekleyerek pekiştirmeye çalışacağız. Komutlar Mac OS X'te çalıştırıp çıktıları paylaşılacaktır ancak bütün komutlar Windows ve Linux sistemlerde de aynen çalışacaktır fakat üzerinde çalışılan sisteme göre farklı çıktılar üretecektir.
 
 1. Öncelikle Docker kurulumumuzun doğru çalışıp çalışmadığını kontrol edebilmek için `docker version` komutunu verin.
 
@@ -136,7 +136,7 @@ Bu bölümde Docker CLI'ı kullanarak yukarıda anlattığımız bileşenler ve 
         OS/Arch:      linux/amd64
         Experimental: true
 
-    Çıktıtan görebileceğiniz üzere `docker version` komutu hem Client (Docker CLI) hem de Server (Docker Engine) için ayrı ayrı versiyon bilgisi dönmektedir. Burada önceki bölümlerde anlattığımız bir konuya dikkatinizi çekmek istiyorum. Client'ta Mac OS X kullandığım için `darwin/amd64` olan `OS/Arch` tipi Docker Engine'de `linux/amd64` görünüyor çünkü Daemon Mac OS X içindeki bir Hypervisor tarafından çalıştırılan Linux makinede koşturuluyor.
+    Çıktıtan görebileceğiniz üzere `docker version` komutu hem Client (Docker CLI) hem de Server (Docker Engine) için ayrı ayrı versiyon bilgisi dönmektedir. Burada önceki bölümlerde anlattığımız bir konuya dikkatinizi çekmek istiyorum. Client'ta Mac OS X kullandığımız için `darwin/amd64` olan `OS/Arch` tipi Docker Engine'de `linux/amd64` görünüyor çünkü Daemon Mac OS X içindeki bir Hypervisor tarafından çalıştırılan Linux makinede koşturuluyor.
 
 2. İlk adımda Docker kurulumumuzun başarılı olduğu tespitini yaptıktan sonra [DockerHub](http://hubs.docker.com)'dan ilk Image'ımızı download edelim ve Image'ımızı listeleyelim.
 
@@ -281,7 +281,7 @@ Bu bölümde Docker CLI'ı kullanarak yukarıda anlattığımız bileşenler ve 
 
 ### Docker'ın Kullanım Alanları ve Çözmeye Aday Olduğu Problemler
 
-Bu bölüm kısa gelecekte muhtemelen eskiyecek ve yeniden yazıma ihtiyaç duyacaktır fakat gün itibariyle eldeki durumun bir fotoğrafının çekilmesi açısından burada yazılanları kavramanın diğer bölümlere nazaran daha önemli olduğunu düşünüyorum. Blog'un başında Motivasyon başlığında yer verdiğim videoların ilkinde Docker'ın fikir babası ve birinci adamı Solomon Hykes aslında projeyi neden ortaya koyduklarını DotCloud üzerinden anlatıyor. Temel olarak söylediği gittikçe artan cloud (bulut) gerensinimlerine cevap vermek üzere kurulan özellikle PaaS sağlayıcılardan biri olan ve Solomon'un da sahibi olduğu DotCloud, Linux Containers (LXC) kullanarak daha az maliyetli, daha performanslı, daha performanslı ve daha az down-time'lı bir hizmet sunuyor. İnsanlar Solomon'a nasıl yaptıklarını sorunca Solomon Linux Kernel'indeki Container desteğinin pek bilinmediği, bilinse bile etkili kullanılamadığı sonucunu çıkarıyor ve yaptıkları kurmaylar toplantısında LXC'yi halka indirmeye karar veriyorlar. Daha önce de yazdığım gibi Kernel'in sunduğu Container desteğini bir Image formatı ile standardize edip Container'ın etrafında onun bütün yaşam döngüsünü basitleştiren ve yönetimini kolaylaştıran bir ekosistem inşa ediyorlar. Bu işleri o kadar hızlı ve doğru yapıyorlar ki rakipleri daha nefes alamadan bitiş çizgisine ulaşıyorlar.
+Bu bölüm kısa gelecekte muhtemelen eskiyecek ve yeniden yazıma ihtiyaç duyacaktır fakat gün itibariyle eldeki durumun bir fotoğrafının çekilmesi açısından burada yazılanları kavramanın diğer bölümlere nazaran daha önemli olduğunu düşünüyorum. Blog'un başında Motivasyon başlığında yer verilen videoların ilkinde Docker'ın fikir babası ve birinci adamı Solomon Hykes aslında projeyi neden ortaya koyduklarını DotCloud üzerinden anlatıyor. Temel olarak söylediği gittikçe artan cloud (bulut) gerensinimlerine cevap vermek üzere kurulan özellikle PaaS sağlayıcılardan biri olan ve Solomon'un da sahibi olduğu DotCloud, Linux Containers (LXC) kullanarak daha az maliyetli, daha performanslı, daha performanslı ve daha az down-time'lı bir hizmet sunuyor. İnsanlar Solomon'a nasıl yaptıklarını sorunca Solomon Linux Kernel'indeki Container desteğinin pek bilinmediği, bilinse bile etkili kullanılamadığı sonucunu çıkarıyor ve yaptıkları kurmaylar toplantısında LXC'yi halka indirmeye karar veriyorlar. Daha önce de yazdığımız gibi Kernel'in sunduğu Container desteğini bir Image formatı ile standardize edip Container'ın etrafında onun bütün yaşam döngüsünü basitleştiren ve yönetimini kolaylaştıran bir ekosistem inşa ediyorlar. Bu işleri o kadar hızlı ve doğru yapıyorlar ki rakipleri daha nefes alamadan bitiş çizgisine ulaşıyorlar.
 
 Yukarıdaki paragrafta Docker projesinin başlatılma gerekçesini küçük yorumlar ekleyerek başlatan kişinin ağzından nakletmeye çalıştım. Tabii Docker belki Solomon'un da en başta hatta ortalarında hayal ettiği çizginin de ötesine geçti, çok farklı alanlarda kendine çok geniş kullanım alanları buldu buluyor. Şimdi biraz bunların üzerinden gidelim.
 

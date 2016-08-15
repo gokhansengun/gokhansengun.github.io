@@ -6,7 +6,7 @@ progress: finished-not-reviewed
 ---
 
 
-Bu blog'da blog'umu hazırlarken ve sizlere sunarken kullanıdığım yöntemler, araçlar ve teknik altyapı ile ilgili detaylı bilgiler vermeye çalışacağım. Bu yazıyı okuyup referans verdiğim linkleri de takip ederek siz de kendi blog sitenizi oluşturabilirsiniz. Önceden web sitesi oluşturma, yayınlama ve web programlama tecrübeniz varsa hem yazıyı daha rahat takip edebilirsiniz hem de blog üzerinde yapmak istediğiniz değişiklikleri daha rahat yapabilirsiniz.
+Bu blog'da, okuduğunuz bu blog'u hazırlarken ve sizlere sunarken kullanılan yöntemler, araçlar ve teknik altyapı ile ilgili detaylı bilgiler vermeye çalışacağız. Bu yazıyı okuyup referans verilen linkleri de takip ederek siz de kendi blog sitenizi oluşturabilirsiniz. Önceden web sitesi oluşturma, yayınlama ve web programlama tecrübeniz varsa hem yazıyı daha rahat takip edebilirsiniz hem de blog üzerinde yapmak istediğiniz değişiklikleri daha rahat yapabilirsiniz.
 
 ## Web Sitelerinin Gelişimi
 
@@ -20,9 +20,11 @@ Sunucu tarafında çalışan uygulamalar, web sitesi geliştiricilerin işlerini
 
 Blog sitelerinin çok büyük bir bölümünde servis sağlayıcı olarak kullanılan [WordPress](https://wordpress.com/) ve [Ghost](https://ghost.org/) da sayfalarını sunucu tarafında çalışan uygulamalar ile üretmektedirler. Son kullanıcıya yönelik olarak hazırlanan ve son kullanıcının mail yazar gibi kolaylıkla blog yazısı hazırlamasına olanak tanıyan bu platformlar doğal olarak kullanıcıların büyük beğenisini topluyor, blog yazarları birkaç fare tıklaması ile yeni blog'ları kitlelerle buluşturabiliyorlar. 
 
-Ben bu blog'u hazırlarken bir önceki bölümde anlattığım internet'in ilk yıllarına giderek statik sayfalar oluşturup kullanıcılara bu sayfaları sunmayı tercih ettim. Bu seçimi yapma sebeplerimden bazıları;
+Okuduğunuz bu blog hazırlanırken bir önceki bölümde anlatılan internet'in ilk yıllarına gidilerek statik sayfalar oluşturup kullanıcılara bu sayfaları sunma yöntemi tercih edilmiştir. Bu seçimin yapılma nedenlerinden bazıları:
 
-* Oluşturulan statik web sayfalarının platform bağımsız olarak herhangi bir web sunucusunda çalıştırılabilecek olması.
+Oluşturulan statik web sayfalarının
+
+* Platform bağımsız olarak herhangi bir web sunucusunda çalıştırılabilecek olması.
 * Dinamik oluşturulan blog'lara göre daha az kaynak gerektirmesi.
 * Dinamik oluşturulan blog'lara göre daha performanslı olması.
 * Dinamik oluşturulan blog'lara göre hata olasılığının (sistem basitliğinden dolayı) daha düşük olması.
@@ -32,7 +34,7 @@ Ben bu blog'u hazırlarken bir önceki bölümde anlattığım internet'in ilk y
 
 Statik web sayfaları İnternet'in ilk zamanlarındaki gibi direkt html, css, js dosyaları *doğrudan* hazırlanarak yapılabileceği gibi bu dosyaların hazırlanmasını *dolaylı* olarak yapan araçlardan da yardım alınabilir. Bu araçlar "Static Site Generator" olarak adlandırılmaktadır. [http://staticgen.com ](https://www.staticgen.com/) web sitesi açık kaynak kodlu statik site üreten araçları karşılaştırmalı olarak tanıtmakta, popülerlik ve başka kriterlere göre sıralama ve filtrelemeye olanak tanımaktadır.
 
-Birçok opsiyon arasında benim kendi blog'um için tercih ettiğim araç birkaç nedenden dolayı [Jekyll](https://jekyllrb.com/) oldu. Bunlardan en önemlisi Jekyll ile hazırladığım template'lerin [Github Pages](https://pages.github.com/) tarafından render edilebilmesi, ücretsiz, açık kaynaklı ve yüksek oranda erişilebilir olarak yayınlanabilmesiydi.
+Birçok opsiyon arasında okuduğunuz bu blog için tercih edilen araç birkaç özelliğinden dolayı [Jekyll](https://jekyllrb.com/) olmuştur. Bu özelliklerden en önemlisi Jekyll ile hazırlanan template'lerin [Github Pages](https://pages.github.com/) tarafından render edilebilmesi, ücretsiz, açık kaynaklı ve yüksek oranda erişilebilir olarak yayınlanabilmesidir.
 
 ## Jekyll'la Blog Sitesi Hazırlamak
 
@@ -57,18 +59,18 @@ Aşağıdaki adımları tamamlayarak Jekyll yardımı ile bir blog sitesi hazır
 
 ### Jekyll Kurulumu
 
-Blog boyunca ben komutları yazarken ve ekran görüntülerini alırken işletim sistemi olarak Mac OS X kullanacağım. Aşağıda verilen linklerden Windows ve Linux için Jekyll kurulumu tamamlanıp blog'daki adımlar takip edilebilir.   
+Blog boyunca komutlar yazılırken ve ekran görüntüleri alınırken işletim sistemi olarak Mac OS X kullanılacaktır. Aşağıda verilen linklerden Windows ve Linux için Jekyll kurulumu tamamlanıp blog'daki adımlar takip edilebilir.   
 
-Jekyll, Ruby ile yazılan bir araç olduğu için geliştiricileri, Jekyll'ı bir Ruby paketi gibi dağıtmayı uygun görmüşler. Dolayısıyla Jekyll kurulumu, RubyGems (Ruby'nin paket yöneticisi, .NET platformundaki Nuget ve Node.js'teki npm benzeri) ile sağlanmakta. Kullandığınız işletim sistemine göre aşağıdaki yönergeleri takip ederek Jekyll kurulumunu tamamlayıp demo blog'umuzu hazırlamaya başlayalım.
+Jekyll, Ruby ile yazılan bir araç olduğu için geliştiricileri, Jekyll'ı bir Ruby paketi gibi dağıtmayı uygun görmüşlerdir. Dolayısıyla Jekyll kurulumu, RubyGems (Ruby'nin paket yöneticisi, .NET platformundaki Nuget ve Node.js'teki npm benzeri) ile sağlanmaktadır. Kullandığınız işletim sistemine göre aşağıdaki yönergeleri takip ederek Jekyll kurulumunu tamamlayıp demo blog'umuzu hazırlamaya başlayalım.
 
 * [Linux, Mac OS X ve Unix](https://jekyllrb.com/docs/installation/)
 * [Windows Kurulum Adımları](https://jekyllrb.com/docs/windows/#installation)
 
 ### Isınma Turları
 
-Blog'umuz hazırlamaya başlamadan hem yaptığımız seçimlerin daha iyi anlaşılması hem de elimizin alışması ve ısınmak için Jekyll kullanarak çok basit bir web sitesi scaffold edelim ve bunu kendi bilgisayarımızdan lokal olarak sunup tarayıcıda görüntüleyelim.
+Blog'umuzu hazırlamaya başlamadan hem yaptığımız seçimlerin daha iyi anlaşılması hem de elimizin alışması ve ısınmak için Jekyll kullanarak çok basit bir web sitesi scaffold edelim ve bunu kendi bilgisayarımızdan lokal olarak sunup tarayıcıda görüntüleyelim.
 
-Daha önce de yazdığım gibi, komut satırından `$ jekyll new MyBlogSite` komutunu vererek çok basit anlamda bir blog sitesi scaffold ederek onun üzerinde çalışmaya başlayabiliriz. Eğer özgün bir tasarımı hedefliyorsanız bu yolla başlamalısınız fakat benim gibi daha kısa sürede tasarımını çok büyük oranda başkaları ile paylaşacağınız bir tasarıma razıysanız Jekyll temalarından birini seçerek başlamanız gerekecektir.
+Daha önce de yazıldığı gibi, komut satırından `$ jekyll new MyBlogSite` komutu verilerek çok basit anlamda bir blog sitesi scaffold ederek onun üzerinde çalışmaya başlayabiliriz. Eğer özgün bir tasarımı hedefliyorsanız bu yolla başlamalısınız fakat bu blog'daki gibi daha kısa sürede tasarımını çok büyük oranda başkaları ile paylaşacağınız bir tasarıma razıysanız Jekyll temalarından birini seçerek başlamanız gerekecektir.
 
 1. Komut satırını açıp web sitenizi yaratmak istediğiniz klasöre gidip `$ jekyll new MyBlogSite` komutunu çalıştırın. Aşağıdaki çıktıda da görebileceğiniz üzere Jekyll tek bir sayfadan `2016-07-15-welcome-to-jekyll.markdown` oluşan bir siteyi oluşturdu.
 
@@ -139,9 +141,9 @@ Daha önce de yazdığım gibi, komut satırından `$ jekyll new MyBlogSite` kom
 
 ### Şablon Kurulum Adımları
 
-Ben bir demo hazırlayabilmek için yeni bir email ve yeni bir Github hesabı açtım. Aşağıdaki demo'larda kullanacağım Github kullanıcı adım `gsengundemo` olacak. Aşağıdaki adımları takip ederken bu kullanıcı adını gördüğünüz yerlerde kendi Github kullanıcı adınızı yazmanız gerektiğini tekrar hatırlatıp adımlara geçelim. 
+Bu blog'da bir demo hazırlayabilmek için yeni bir email ve yeni bir Github hesabı açılmıştır. Aşağıdaki demo'larda kullanılacak Github kullanıcı adı `gsengundemo` olacak. Aşağıdaki adımları takip ederken bu kullanıcı adını gördüğünüz yerlerde kendi Github kullanıcı adınızı yazmanız gerektiğini tekrar hatırlatıp adımlara geçelim. 
 
-Bir önceki adımda Jekyll'in scaffold ettiği basit bir blog sitesini oluşturduk fakat sanırım sitenin görselliği ve fonksiyonalitesi benim gibi sizi de pek memnun etmedi. Daha önce de belirttiğim gibi blog sitemizi oluştururken yukarıdaki template'den başlamak yerine görsellik ve fonksiyonalitesi güçlendirilmiş ve ücretsiz olarak kullanıma sunulan Jekyll temalarından faydalanabiliriz. Birçok temanın ön izleme seçeneği ile sunulduğu [Jekyll Themes](http://themes.jekyllrc.org)'e göz atarak kendi beğeninize ve amacınıza yönelik bir tema seçebilirsiniz. Biz bu blog'da [Beautiful Jekyll](http://themes.jekyllrc.org/beautiful-jekyll/) adlı temayı kullanacağız. Başlamadan önce isterseniz tema'nın [tema'nın demo site](http://deanattali.com/beautiful-jekyll/)'sine ve bu blog yazısı sonunda oluşturacağımız [blog demo](https://gsengundemo.github.io) sitesine göz atabilirsiniz.
+Bir önceki adımda Jekyll'in scaffold ettiği basit bir blog sitesini oluşturduk fakat sanırım sitenin görselliği ve fonksiyonalitesi sizi de pek memnun etmedi. Daha önce de belirtildiği gibi blog sitemizi oluştururken yukarıdaki template'den başlamak yerine görsellik ve fonksiyonalitesi güçlendirilmiş ve ücretsiz olarak kullanıma sunulan Jekyll temalarından faydalanabiliriz. Birçok temanın ön izleme seçeneği ile sunulduğu [Jekyll Themes](http://themes.jekyllrc.org)'e göz atarak kendi beğeninize ve amacınıza yönelik bir tema seçebilirsiniz. Biz bu blog'da [Beautiful Jekyll](http://themes.jekyllrc.org/beautiful-jekyll/) adlı temayı kullanacağız. Başlamadan önce isterseniz tema'nın [tema'nın demo site](http://deanattali.com/beautiful-jekyll/)'sine ve bu blog yazısı sonunda oluşturacağımız [blog demo](https://gsengundemo.github.io) sitesine göz atabilirsiniz.
 
 1. [Beautiful Jekyll Github](https://github.com/daattali/beautiful-jekyll) sayfasına giderek aşağıda görülen `fork` butonuna basın. Github'daki Beautiful Jekyll reposunu kendi account'unuz altına fork etmiş olacaksınız. Böylece o repository'nin bir kopyasını size özel bir biçimde oluşturup değiştirebileceksiniz.
 
@@ -168,7 +170,7 @@ Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şa
 
 Öncelikle blog üzerinde daha rahat değişiklik yapabilmek için blog'umuzun kaynak kodunu lokal bilgisayarımıza alacağız ve blog'umuzu daha önce bilgisayarımıza yüklediğimiz Jekyll yardımıyla sunacağız. Sonra blog üzerinde değişiklikler yapıp bu değişiklikleri lokal sunucumuz ile test edip değişikliklerden memnun kaldıktan sonra Github'daki repo'muza push ederek yayınlanmasını bekleyeceğiz.
 
-1. Favori Git istemcimiz (komut satırı, SourceTree, Github Desktop, SmartGit, vb) ile Git repo'muzu Github'dan lokal klasörümüze alalım. Ben daha kolay gösterim sağlayacağı için komut satırını tercih edeceğim ve `git clone` komutunu kullanacağım. Bu komut Github'da bulunan repo'yu bire bir olarak lokal klasörüme kopyalayacak.
+1. Favori Git istemcimiz (komut satırı, SourceTree, Github Desktop, SmartGit, GitKraken, vb) ile Git repo'muzu Github'dan lokal klasörümüze alalım. Biz daha kolay gösterim sağlayacağı için komut satırını tercih edeceğiz ve `git clone` komutunu kullanacağız. Bu komut Github'da bulunan repo'yu bire bir olarak lokal klasörüme kopyalayacak.
 
         Gokhans-MacBook-Pro:Garbage gsengun$ git clone https://github.com/gsengundemo/gsengundemo.github.io.git
         Cloning into 'gsengundemo.github.io'...
@@ -208,7 +210,7 @@ Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şa
 
     {% include image.html url="/resource/img/Jekyll/JekyllDemoSiteLayoutLocal.png" description="Demo Site Local" %}
         
-3. Favori metin editörünüz ya da entegre geliştirme aracınız (IDE) ile klonladığınız klasörü açın. Ben demo'da Windows, Linux ve Mac üzerinde de çalışan Visual Studio Code metin editörünü kullanacağım. Ana klasörde bulunan `_config.yml` dosyasını açarak gerekli değişiklikleri yapmaya hazır hale gelin. Jekyll bazı değişiklikleri yeniden başlatılmaya gerek duymadan tarayıcınıza yansıtacaktır. Tarayıcınıza yansımayan değişiklikler için sunucuyu `ctrl + C` ile durdurup `$ jekyll s` komutu ile tekrar başlatabilirsiniz.
+3. Favori metin editörünüz ya da entegre geliştirme aracınız (IDE) ile klonladığınız klasörü açın. Biz demo'da Windows, Linux ve Mac üzerinde de çalışan Visual Studio Code metin editörünü kullanacağız. Ana klasörde bulunan `_config.yml` dosyasını açarak gerekli değişiklikleri yapmaya hazır hale gelin. Jekyll bazı değişiklikleri yeniden başlatılmaya gerek duymadan tarayıcınıza yansıtacaktır. Tarayıcınıza yansımayan değişiklikler için sunucuyu `ctrl + C` ile durdurup `$ jekyll s` komutu ile tekrar başlatabilirsiniz.
 
 	3.1. Linklerle ilgili düzenlemeler:
 	
@@ -216,7 +218,7 @@ Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şa
 	
 	3.1.2. Sağ üst tarafta bulunan linkleri düzenlemek için `navbar-links:` bölümünü değiştirebilirsiniz.
 	
-	3.1.3. `footer-links-active:` bölümünü kullanarak blog sitenizin altında hangi linklerin bulunacağını belirleyebilirsiniz. Ben sadece email, github ve twitter linklerini aktif bıraktım aşağıda.
+	3.1.3. `footer-links-active:` bölümünü kullanarak blog sitenizin altında hangi linklerin bulunacağını belirleyebilirsiniz. Bu örnekte sadece email, github ve twitter linklerini aktif bırakacağız aşağıda.
 
         footer-links-active:
             rss: false
@@ -252,7 +254,7 @@ Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şa
 		title: My website
 		subtitle: This is where I will tell my friends way too much about me
 
-	Ben aşağıdaki bilgileri girdim.
+	Biz aşağıdaki bilgileri girdik.
 	
 		title: Gsengun Jekyll Demo Site
 		subtitle: Bu blog Jekyll ile yapılmıştır.
@@ -261,12 +263,12 @@ Yuklarıdaki adımlarla Beautiful Jekyll temasını kullanarak kendimize bir şa
 	
     {% include image.html url="/resource/img/Jekyll/JekyllDemoSiteLayoutCustomized.png" description="Demo Site Local Customized" %}
 
-4. En son adım olarak yeni bir blog yazısının nasıl oluşturulacağını görelim. `_posts` klasörünün altındaki blog'lardan birini yine aynı klasöre kopyalayarak ona blog'unuza dair bir isim verin. Benim oluşturduğum dosyanın adı `2016-07-12-ozellestirilmis-ilk-post.md` oldu. Vereceğiniz tarihin bugün veya bugünden önce olması gerektiğini belirterek içinde bulunulan günün sonrasındakilerin ana sayfada görüntülenmeyeceğini belirteyim. Kopyalama yoluyla yeni oluşturduğunuz dosyayı açarak ilk post'unuzu yazın. Sayfayı yenilediğinizde aşağıdakine benzer bir görüntü elde etmelisiniz.
+4. En son adım olarak yeni bir blog yazısının nasıl oluşturulacağını görelim. `_posts` klasörünün altındaki blog'lardan birini yine aynı klasöre kopyalayarak ona blog'unuza dair bir isim verin. Bizim oluşturduğumuz dosyanın adı `2016-07-12-ozellestirilmis-ilk-post.md` oldu. Vereceğiniz tarihin bugün veya bugünden önce olması gerektiğini belirterek içinde bulunulan günün sonrasındakilerin ana sayfada görüntülenmeyeceğini belirtelim. Kopyalama yoluyla yeni oluşturduğunuz dosyayı açarak ilk post'unuzu yazın. Sayfayı yenilediğinizde aşağıdakine benzer bir görüntü elde etmelisiniz.
 
 	{% include image.html url="/resource/img/Jekyll/JekyllFirstPost.png" description="Demo Site First Post" %}
 
 ## Sonuç ve Sonraki Adımlar
 
-Bu blog'da `Jekyll` statik site oluşturma aracı ve `Beautiful Jekyll` temasını kullanarak bir blog sitesi oluşturduk ve bu siteyi konfigürasyonda verilen parametreleri değiştirerek basit bir şekilde özelleştirdik. `Beautiful Jekyll` temasının verdiği baz kodda daha fazla değişiklik yaparak, blog'u daha da fazla özelleştirebilriz. Benim [blog sitemin Github reposu](https://github.com/gokhansengun/gokhansengun.github.io)nu bilgisayarınıza klonlayıp, kendi bilgisayarınızda Jekyll ile çalıştırabilir ve `Beautiful Jekyll` temasına yapılan eklemeleri gözlemleyebilirsiniz.
+Bu blog'da `Jekyll` statik site oluşturma aracı ve `Beautiful Jekyll` temasını kullanarak bir blog sitesi oluşturduk ve bu siteyi konfigürasyonda verilen parametreleri değiştirerek basit bir şekilde özelleştirdik. `Beautiful Jekyll` temasının verdiği baz kodda daha fazla değişiklik yaparak, blog'u daha da fazla özelleştirebilriz. Bu [blog sitesinin Github reposu](https://github.com/gokhansengun/gokhansengun.github.io)nu bilgisayarınıza klonlayıp, kendi bilgisayarınızda Jekyll ile çalıştırabilir ve `Beautiful Jekyll` temasına yapılan eklemeleri gözlemleyebilirsiniz.
 
 Jekyll'da blog sitenizi daha interaktif ve çekici kılabilecek, ücretsiz olarak hizmete sunulan birçok plugin bulunmaktadır. Blog sitenize kullanıcı yorumlarını [DISQUS](https://disqus.com/) aracılığıyla ekleyebileceğiniz bir plugin bulabileceğiniz gibi blog post'larınızı tag'leyebileceğiniz bir plugin de bulabilirsiniz. Farklı plugin'ler için [http://www.jekyll-plugins.com/](http://www.jekyll-plugins.com/) ve [http://jekyll.tips/jekyll-plugins/](http://jekyll.tips/jekyll-plugins/) sitelerini ziyaret edebilirsiniz.

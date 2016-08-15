@@ -5,13 +5,13 @@ level: Orta
 progress: finished-not-reviewed
 ---
 
-Bu blog yazımda bir önceki blog yazısında detaylı olarak tanıtımını yaptığım JMeter aracı ile baştan sona bir fonksiyonel test demosu hazırlayacağız. Karşılaştığımız bütün problemleri çözecek ve bir sonraki adıma geçeceğiz. Fonksiyonel test script'imiz hazır olduktan sonra aynı script'i kullanarak testimize doğruluk ölçmeye yardımcı olacak assertion'lar ekleyerek script'imizi Continuous Integration pipeline'ında kullanılabilir hale getirmeye çalışacağız. JMeter'ın Continuous Integration (CI) ve Continuous Delivery (CD) pipeline'larında nasıl kullanılabileceği sorusu ilerleyen zamanlarda başka bir blog'da cevap bulacak. 
+Bu blog'da bir önceki blog yazısında detaylı olarak tanıtımını yaptığımız JMeter aracı ile baştan sona bir fonksiyonel test demosu hazırlayacağız. Karşılaştığımız bütün problemleri çözecek ve bir sonraki adıma geçeceğiz. Fonksiyonel test script'imiz hazır olduktan sonra aynı script'i kullanarak testimize doğruluk ölçmeye yardımcı olacak assertion'lar ekleyerek script'imizi Continuous Integration pipeline'ında kullanılabilir hale getirmeye çalışacağız. JMeter'ın Continuous Integration (CI) ve Continuous Delivery (CD) pipeline'larında nasıl kullanılabileceği sorusu ilerleyen zamanlarda başka bir blog'da cevap bulacak. 
 
-JMeter ile önceden bir deneyiminiz yoksa öncelikle aşağıdaki blog yazılarını okuyarak başlamanızı öneririm. Önceden deneyiminiz varsa bile aşağıda verilen blog yazılarını okumanızda fayda olduğunu düşünüyorum. 
+JMeter ile önceden bir deneyiminiz yoksa öncelikle aşağıdaki blog yazılarını okuyarak başlamanızı öneririz. Önceden deneyiminiz varsa bile aşağıda verilen blog yazılarını okumanızda fayda bulunmaktadır. 
 
 [JMeter Bölüm 1: Nedir ve Ne İşe Yarar?](/jmeter-nedir-ve-ne-ise-yarar/)
 
-Bu blog yazısını okuduktan sonra ise aşağıdaki blog yazılarına da göz atmanızı tavsiye ederim. Böylelikle JMeter'ı bütün yönleriyle anlamış olacağınızı umuyorum.
+Bu blog yazısını okuduktan sonra aşağıdaki blog yazılarını da sırasıyla okumanız tavsiye edilir. Böylelikle JMeter'ı bütün yönleriyle anlamış olacağınızı umuyoruz.
 
 [JMeter Bölüm 3: Pratik Test Senaryosu Kaydı Nasıl Yapılır?](/jmeter-pratik-test-hazirlama/)
 
@@ -43,7 +43,7 @@ Github.com bir blog yazısında fonksiyonel olarak test edilemeyecek kadar fazla
 
 #### Yöntem
 
-JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle bir web browser'da (tarayıcı) test edip yapılan request'leri tarayıcımızın geliştirici araçları veya Fiddler, Burp Suite gibi Web Debugging Proxy (HTTP Proxy) araçları ile yakalayıp aynı düzende ve sırada JMeter'da konfigüre etmemiz gereklidir. Bu yönteme alternatif ve daha pratik olarak JMeter tarafından sağlanan ve tarayıcıdan yapılan bütün request'lerin JMeter üzerinden geçirilmesi (JMeter'ın proxy olarak kullanılması) sağlanarak kaydedilen request'ler düzenlenmek sureti ile de JMeter test senaryosu hazırlanabilir. İlk methodu anlamadan ikinci methodu etkili kullanmak pek mümkün olmadığı için ben bu blog'da ilk methodu kullanacağım. İkinci methodu ise bir sonraki blog'da ele alacağım.
+JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle bir web browser'da (tarayıcı) test edip yapılan request'leri tarayıcımızın geliştirici araçları veya Fiddler, Burp Suite gibi Web Debugging Proxy (HTTP Proxy) araçları ile yakalayıp aynı düzende ve sırada JMeter'da konfigüre etmemiz gereklidir. Bu yönteme alternatif ve daha pratik olarak JMeter tarafından sağlanan ve tarayıcıdan yapılan bütün request'lerin JMeter üzerinden geçirilmesi (JMeter'ın proxy olarak kullanılması) sağlanarak kaydedilen request'ler düzenlenmek sureti ile de JMeter test senaryosu hazırlanabilir. İlk methodu anlamadan ikinci methodu etkili kullanmak pek mümkün olmadığı için bu blog'da ilk method kullanılacaktır. İkinci methodu ise bir sonraki blog'da ele alacağız.
 
 ### Adımlar
 
@@ -104,7 +104,7 @@ JMeter'da test senaryosu hazırlamak için test edeceğimiz senaryoyu öncelikle
 
     Bu adımda öncelikle tarayıcımızın geliştirici konsolu penceresini açarak Github.com'a login olalım ve yapılan request'leri görelim. 
 
-    Aşağıda Firefox tarayıcısında Network tabı açıkken yaptığım giriş denemesi görülüyor. Yapılan request'in bir POST request'i olduğu ve URL'inin `/session` olarak verildiği aşağıdaki ekran çıktısından görülebilir.
+    Aşağıda Firefox tarayıcısında Network tabı açıkken yapılan giriş denemesi görülüyor. Yapılan request'in bir POST request'i olduğu ve URL'inin `/session` olarak verildiği aşağıdaki ekran çıktısından görülebilir.
 
     {% include image.html url="/resource/img/JMeterPart2/LoginPagePostRequestUrl.png" description="Login Post Grab URL From Firefox" %}
 

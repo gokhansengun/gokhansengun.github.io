@@ -32,7 +32,7 @@ Windows'ta Linux/Unix'teki make aracını çalıştırabilmek için bugün itiba
 1. Docker ile herhangi bir Ubuntu Linux bazlı Image terminal attached modda çalıştırılarak make aracına erişilebilir fakat Docker metin editörü olarak grafik bazlı bir araç sunmadığı için pek pratik olmayacaktır.
 2. Virtual Box, Hyper-V veya VMware ile Windows üzerine Linux/Unix bazlı bir işletim sistemi kurulabilir.
 3. Windows 10 öncesi sistemler için [Cygwin](https://www.cygwin.com/) kurularak buradan make aracına erişilebilir
-4. Windows 10 kullanıcıları için benim tavsiye edeceğim ise [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about) ile birlikte Linux/Unix'teki make aracının kullanılmasıdır. Eğer Windows 10 kullanıyorsanız, bunu şiddetle tavsiye ederim.
+4. Windows 10 kullanıcıları için bizim tavsiye edeceğimiz ise [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about) ile birlikte Linux/Unix'teki make aracının kullanılmasıdır. Eğer Windows 10 kullanıyorsanız, bu yöntemi şiddetle tavsiye ederiz.
 
 ### Makefile ve Make Aracı - Giriş
 
