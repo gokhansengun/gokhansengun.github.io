@@ -23,7 +23,7 @@ Bu blog yazısını okuduktan sonra aşağıdaki blog yazılarını da sırasıy
 
 ### Hazırlık
 
-JMeter, web uygulama testlerinde hızlı bir şekilde test senaryosu hazırlanmasına olanak tanımak için Recording template'ini sunmaktadır. Bu template'in detaylarına girmeden olayı daha iyi kavramanıza yardımcı olacak bazı bilgileri sizinle paylaşacağım.
+JMeter, web uygulama testlerinde hızlı bir şekilde test senaryosu hazırlanmasına olanak tanımak için Recording template'ini sunmaktadır. Bu template'in detaylarına girmeden olayı daha iyi kavramanıza yardımcı olacak bazı bilgileri sizinle paylaşacağız.
 
 #### HTTP Proxy'ler
 

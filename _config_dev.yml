@@ -17,7 +17,7 @@ baseurl: ""
 title: Gökhan Şengün
 
 # Short description of your site
-description: .net teknolojileri, docker, sql ve nosql veri tabanları, performans optimizasyonu ve verimlilik artıran geliştirici araçları ile ilgili yazılar
+description: .net teknolojileri, docker, sql ve nosql veri tabanları, performans optimizasyonu, ci/cd ve verimlilik artıran geliştirici araçları ile ilgili yazılar
 
 # --- Navigation bar options --- #
 

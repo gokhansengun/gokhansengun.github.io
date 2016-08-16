@@ -277,7 +277,7 @@ Bu bölümde Docker CLI'ı kullanarak yukarıda anlattığımız bileşenler ve 
 
 9. `Nginx` Container'ı terminal'e Attached bir şekilde ayağa kalktı. Bu çoğu zaman istenen durum değildir. `-d` parametresi ile Container'ı Detached modda çalıştırabilir ve terminali bloklanmaktan kurtarabiliriz. Detached modda çalışan Container'ların ID'lerini `docker ps` komutu ile elde edebilir, `docker kill <container_id>` komutu ile de Container'ı acil çıkışa zorlayabiliriz.
 
-Şimdilik bu kısımda anlatacaklarım bu kadar. Bir sonraki bölümde bulunan Cheat Sheet çok işimize yarayacak. Orada da yeri geldikçe ekstra açıklamalar yapacağım.
+Şimdilik bu kısımda anlatacaklarımız bu kadar. Bir sonraki bölümde bulunan Cheat Sheet çok işimize yarayacak. Orada da yeri geldikçe ekstra açıklamalar yapacağız.
 
 ### Docker'ın Kullanım Alanları ve Çözmeye Aday Olduğu Problemler
 
