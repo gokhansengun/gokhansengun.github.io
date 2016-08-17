@@ -77,7 +77,7 @@ Hemen işe koyulalım.
 
     Docker Compose dosyası ile oluşturacağımız Nginx Container'larının (servislerinin) kullandığı official Nginx Image'ı HTTP (80) numaralı portu dinlemekte, bu portu `EXPOSE` etmekte ve bu porttan web sayfalarını sunmaktadır. Host üzerinden Container'lar tarafından 80 portundan sunulan web sayfalara ulaşabilmek için 80'li portların Host'ta farklı portlara forward edilmesi gereklidir. Port forwarding (Map'leme) amacı ile Compose file'da her bir servis için `ports` keyword'ü ile 8001, 8002 ve 8003 numaralı portlar sırasıyla A, B ve C şirketlerinin web sayfaları için Map'lenir.
 
-2. Terminal veya komut satırı açarak `docker-compose.yml` dosyasının bulunduğu klasöre gidin ve `docker-compose up` komutunu verin. Docker Compose, YAML dosyasında bulunan bütün Image'ları önce pull edip (eğer daha önce pull edilmediyse) sonra da çalıştıracaktır. Siz de benim gibi `nginx` Image'ını DockerHub'dan daha önce indirdiyseniz aşağıdakine benzer bir çıktı görmelisiniz.
+2. Terminal veya komut satırı açarak `docker-compose.yml` dosyasının bulunduğu klasöre gidin ve `docker-compose up` komutunu verin. Docker Compose, YAML dosyasında bulunan bütün Image'ları önce pull edip (eğer daha önce pull edilmediyse) sonra da çalıştıracaktır. Siz de `nginx` Image'ını DockerHub'dan daha önce indirdiyseniz aşağıdakine benzer bir çıktı görmelisiniz.
 
         Gokhans-MacBook-Pro:DCBlog gsengun$ docker-compose up
         Creating network "dcblog_default" with the default driver
@@ -86,7 +86,7 @@ Hemen işe koyulalım.
         Creating dcblog_company_c_web_server_1
         Attaching to dcblog_company_a_web_server_1, dcblog_company_c_web_server_1, dcblog_company_b_web_server_1
 
-    Çıktıdan görebileceğiniz gibi Docker Compose öncelikle `dcblog_default` adında bir network yarattı sonra benim klasör ismim olan `DCBlog` ve servis isimlerini `company_x_web_server` birleştirip Container'lara vererek onları teker teker çalıştırdı. En son satırda ise terminali çalıştırılan bu Container'lara attach ettiğini görüyoruz. Bu çıktı ile ilgili farklı açılardan bakarak detaylı analizler yapacağız fakat öncelikle demo'yu tamamlayalım.
+    Çıktıdan görebileceğiniz gibi Docker Compose öncelikle `dcblog_default` adında bir network yarattı sonra kullanılan klasör ismi olan `DCBlog` ve servis isimlerini `company_x_web_server` birleştirip Container'lara vererek onları teker teker çalıştırdı. En son satırda ise terminali çalıştırılan bu Container'lara attach ettiğini görüyoruz. Bu çıktı ile ilgili farklı açılardan bakarak detaylı analizler yapacağız fakat öncelikle demo'yu tamamlayalım.
 
 3. Web tarayıcıyı açarak `http://localhost:8001`, `http://localhost:8002` ve `http://localhost:8003` adreslerinden Nginx'in default sayfasının gelip gelmediğini kontrol edin. Sizde de aşağıdakine benzer bir görüntü oluşmalı. Burada aşağıya sadece A şirketinin web sitesi kabul ettiğimiz Container'ın sunduğu ana sayfanın ekran çıktısı alınmıştır.
 

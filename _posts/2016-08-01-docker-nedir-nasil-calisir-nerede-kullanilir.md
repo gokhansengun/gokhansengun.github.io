@@ -192,7 +192,7 @@ Bu bölümde Docker CLI'ı kullanarak yukarıda anlattığımız bileşenler ve 
         Gokhans-MacBook-Pro:~ gsengun$ docker ps
         CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 
-    Eğer her şeyi doğru yaptıysanız siz de benim gibi ekranda sadece başlıkları görmelisiniz. Bu çıktıda bir hata yok çünkü `hello-world` Container'ımız bir kereye mahsus çalıştı, kendisine verilen misyonu (ekrana metin yazdırma) tamamladı ve çıktı (exited).
+    Eğer her şeyi doğru yaptıysanız siz de terminal ekranında sadece başlıkları görmelisiniz. Bu çıktıda bir hata yok çünkü `hello-world` Container'ımız bir kereye mahsus çalıştı, kendisine verilen misyonu (ekrana metin yazdırma) tamamladı ve çıktı (exited).
 
     Çalıştırılan koşan ve çıkış (exit) yapan Container'ları görmek için `docker ps -a` komutunu kullanabiliriz, kullanalım ve çıktıya bakalım.
 

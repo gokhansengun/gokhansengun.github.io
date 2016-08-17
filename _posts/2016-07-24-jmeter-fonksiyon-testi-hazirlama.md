@@ -7,7 +7,7 @@ progress: finished-not-reviewed
 
 Bu blog'da bir önceki blog yazısında detaylı olarak tanıtımını yaptığımız JMeter aracı ile baştan sona bir fonksiyonel test demosu hazırlayacağız. Karşılaştığımız bütün problemleri çözecek ve bir sonraki adıma geçeceğiz. Fonksiyonel test script'imiz hazır olduktan sonra aynı script'i kullanarak testimize doğruluk ölçmeye yardımcı olacak Assertion'lar ekleyerek script'imizi Continuous Integration pipeline'ında kullanılabilir hale getirmeye çalışacağız. JMeter'ın Continuous Integration (CI) ve Continuous Delivery (CD) pipeline'larında nasıl kullanılabileceği sorusu ilerleyen zamanlarda başka bir blog'da cevap bulacak. 
 
-JMeter ile önceden bir deneyiminiz yoksa öncelikle aşağıdaki blog yazılarını okuyarak başlamanızı öneririz. Önceden deneyiminiz varsa bile aşağıda verilen blog yazılarını okumanızda fayda bulunmaktadır. 
+JMeter ile önceden bir deneyiminiz yoksa öncelikle aşağıdaki blog yazısını okuyarak başlamanız önerilir. Önceden deneyiminiz varsa bile aşağıda verilen blog yazılarını okumanızda fayda bulunmaktadır. 
 
 [JMeter Bölüm 1: Nedir ve Ne İşe Yarar?](/jmeter-nedir-ve-ne-ise-yarar/)
 

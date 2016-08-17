@@ -226,6 +226,6 @@ Yeni Makefile ile make'in Target'ı her durumda güncellemeye çalıştığını
 
 Sanırım bu blog'da verdiğimiz bilgiler ile make aracının Makefile'lar ile birlikte ne kadar güçlü bir altyapı sunduğunu gösterebilmişizdir. make aracı muhtemelen birçoğunuzun günlük direkt veya endirekt olarak kullandığı Ant ve MSBuild gibi araçların atasıdır. Güncel JavaScript Client Side Build Automation (İstemci Tarafı Build Otomasyon) tool'larından [Gulp](http://gulpjs.com/)'ın da atası make denebilir. make'i anlamak bilinç düzeyinizin yükselmesine katkıda bulunacağı gibi karmaşık Script'ler ile daha uzun yoldan ve daha az okunur kodlar yazmak yerine kullanabileceğiniz güçlü bir alternatif de sunmaktadır.
 
-Benim make'e bu blog'da yer vermemin bir amacı da [Docker Compose blog](/docker-compose-nasil-kullanilir/)'unda tanıtılan Docker Compose aracında sunulan fonksiyonlara make'in fonksiyonlarını katarak ilerleyen zamanlarda [Jenkins](https://jenkins.io/)'le işletilen Docker bazlı bir Continuous Integration Pipeline'ının nasıl hazırlanacağını özetleyen bir blog yazmak istemem ve bu blog'un ona önceki blog'larla birlikte bir altyapı oluşturması gerekliliğidir.
+Bu blog'da make'e yer verilmesinin bir amacı da ilerleyen günlerde bu blog'da, [Docker Compose blog](/docker-compose-nasil-kullanilir/)'unda tanıtılan Docker Compose aracında sunulan fonksiyonlara make'in fonksiyonlarını katarak [Jenkins](https://jenkins.io/)'le işletilen Docker bazlı bir Continuous Integration Pipeline'ının nasıl hazırlanacağını özetleyen bir blog'a yer verilecek olmasıdır. Dolayısıyla bu blog ifade edilen çalışmaya önceki blog'larla birlikte bir altyapı oluşturmaya çalışmaktadır.
 
-Sonraki blog'da görüşmek üzere. 
+Sonraki blog'larda görüşmek üzere. 
