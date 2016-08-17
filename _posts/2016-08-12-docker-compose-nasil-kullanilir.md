@@ -11,13 +11,13 @@ Docker blog serisinin ilk ikisi aşağıda verilmiştir. Eğer daha önce okumad
 
 [Docker Bölüm 1: Nedir, Nasıl Çalışır, Nerede Kullanılır?](/docker-nedir-nasil-calisir-nerede-kullanilir/)
 
-[Docker Bölüm 2: Yeni bir Docker İmajı Nasıl Hazırlanır?](/docker-yeni-image-hazirlama/)
+[Docker Bölüm 2: Yeni bir Docker Image'ı Nasıl Hazırlanır?](/docker-yeni-image-hazirlama/)
 
 ### Çalışma Özeti
 
 Öncelikle bu blog'da anlatılacak özellikler Docker-Compose'un 1.6 versiyonu ve sonrasında desteklenmektedir. Komut satırında `docker-compose version` komutunu vererek kullandığınız versiyon ile ilgili bilgi alabilirsiniz. Eğer bu komutun çıktısında görülen versiyon 1.6 altındaysa bu blog'da yazılanları takip edebilmek için kullandığınız versiyonu yükseltmeniz gereklidir. 
 
-Bu blog'da aşağıdaki adımları tamamlayarak Docker'ın günlük hayatta kullanımı ve getirdiği kolaylıkları daha yakından tanıma fırsatı bulacağınızı düşünüyorum.
+Bu blog'da aşağıdaki adımları tamamlayarak Docker'ın günlük hayatta kullanımı ve getirdiği kolaylıkları daha yakından tanıma fırsatı bulacağız.
 
 * Öncelikle Docker Compose'un ne işe yaradığı ve hangi problemi çözdüğü üzerinde duracağız.
 * Motivasyon olması açısından en basit haliyle bir docker-compose.yml dosyası oluşturarak basit bir sistemi ayağa kaldıracağız.
@@ -232,7 +232,7 @@ Son olarak `docker-compose run` ile çalıştırılan Container'lar genellikle t
 
 #### docker-compose start
 
-Önceden `docker-compose up` veya `docker-compose run` ile başlatılan Container'lardan birini veya birkaçını yeniden başlatmak için kullanılır. Açık konuşmak gerekirse bugüne kadar çok fazla kullandığımız bir komut olmadı. Sağladığı fonksiyon `docker-compose up <service_name>` tarafından bire bir karşılandığı için muhtemelen Docker CLI ile uyum için konduğu veya [Fig](http://www.fig.sh)'e geriye uyumluluk amacıyla bırakıldığını düşünüyorum. 
+Önceden `docker-compose up` veya `docker-compose run` ile başlatılan Container'lardan birini veya birkaçını yeniden başlatmak için kullanılır. Açık konuşmak gerekirse bugüne kadar çok fazla kullandığımız bir komut olmadı. Sağladığı fonksiyon `docker-compose up <service_name>` tarafından bire bir karşılandığı için `docker-compose start` muhtemelen Docker CLI ile uyum amacıyla konmuş veya [Fig](http://www.fig.sh)'e geriye dönük uyumluluk amacıyla bırakılmıştır.
 
 #### docker-compose stop
 
@@ -285,7 +285,7 @@ Docker Compose CLI'ı detaylı bir şekilde inceledik. Şimdi de `docker-compose
 
 ### docker-compose.yml Dosyasının Yapısı ve Konfigürasyon Opsiyonlarını
 
-Daha önce de söylediğimiz ve uzantısından zaten anlaşılabileceği gibi docker-compose.yml dosyası [YAML](http://yaml.org/) (yamıl diye okunur) formatındadır. YAML, JSON ve XML gibi bir data serializasyon formatıdır. Kişisel olarak basit konfigürasyonlar için JSON'dan çok daha okunur buluyor ve severek kullanıyorum.
+Daha önce de söylediğimiz ve uzantısından zaten anlaşılabileceği gibi docker-compose.yml dosyası [YAML](http://yaml.org/) (yamıl diye okunur) formatındadır. YAML, JSON ve XML gibi bir data serializasyon formatıdır. YAML, endüstride basit konfigürasyonlar için JSON'dan çok daha okunur bulunmakta ve severek kullanılmaktadır.
 
 Compose dosyasının yapısını üç ana bölümde inceleyebiliriz. Bu bölümler Service, Volume ve Network konfigürasyonu olarak sıralanabilir. Bu bölümde sıraladığımız bütün özelliklerin versiyon 2'ye ait olduğunu bir kez daha tekrarlayarak başlayalım.
 

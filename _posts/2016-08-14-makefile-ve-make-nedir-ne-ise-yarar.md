@@ -174,7 +174,7 @@ Daha karmaşık Makefile'larda bir bağımlılık birden fazla Target için sağ
 
 [Yukarıdaki Makefile'ı indirin](/resource/file/Makefile/3/Makefile)
 
-Target'lardan kimin kime bağımlı olduğunu artık öğrendiğimizi varsayarak yazmıyorum. Burada `make target3` komutunu koşturduğumuzda bütün Target'ların bağımlı olduğu `common_dep` Target'ının sadece bir kez koşturulduğunu görebilirsiniz.
+Target'lardan kimin kime bağımlı olduğu konusunu artık öğrendiğimizi varsayarak geçelim. Burada `make target3` komutunu koşturduğumuzda bütün Target'ların bağımlı olduğu `common_dep` Target'ının sadece bir kez koşturulduğunu görebilirsiniz.
 
     Gokhans-MacBook-Pro:3 gsengun$ make target3
     echo "Common Dependency Running";
