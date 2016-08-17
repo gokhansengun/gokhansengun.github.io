@@ -39,7 +39,7 @@ Bu blog'da yer verilen adımları takip edebilmeniz için aşağıdaki koşullar
 
 Önceki iki blog'da üzerinde durduğumuz konular hep tek bir Docker Image oluşturma veya tek bir Container çalıştırma ile ilgiliydi. Günlük olarak kullandığımız veya kullanılmak üzere müşterilerimize sunduğumuz ürünler ve sistemler birden fazla servisin (genellikle web sunucular, uygulama sunucuları, veri tabanı sunucuları, cache sunucuları, message queue sunucuları, vb) bir araya gelmesiyle oluşmaktadırlar. Orta ve büyük ölçekteki sistemleri Docker CLI kullanarak kullanıma sunmak ve bakımını yapmak pek makul değildir. Bu tip sistemlerde Container'ların çalıştırılması, durdurulması, birbirleri ile olan ilişkilerinin belirtilmesi yani basit bir şekilde yönetilebilmesi görevlerini yerine getirecek ayrı bir aracın varlığı gereklidir. 
 
-Development (geliştirme), kullanıcı kabul (UAT) ve test ortamlarının kolay bir şekilde yönetilebilmesi için Docker Compose kullanılmaktadır. Docker Compose bu ortamlarda kolay kurulum, bakım ve genel olarak kullanım sağlamaktadır fakat `Docker Inc` tarafından yapılan yeni geliştirmelerle sistem kararlılığı, performansı, tutarlılığı, yedekliliği ve yüksek erişilebilirliğinin önemli olduğu production (üretim) ortamlarında da kullanılmaya doğru gitmektedir. Özellikle Docker 1.12 versiyonu ile birlikte gelen Docker Compose ve Swarm entegrasyonu bu konuda yakın gelecekte daha da sağlam adımlar atılacağının bir habercisi niteliğindedir. Docker Compose, Docker Swarm ve Kubernetes gibi Clusterin (kümeleme) araçları ile karıştırılmamalıdır. Swarm ve Kubernetes, Production sistemlerin yukarıda sıralanan özelliklerini yerine getirmeye çabalamaktadır. 
+Development (geliştirme), kullanıcı kabul (UAT) ve test ortamlarının kolay bir şekilde yönetilebilmesi için Docker Compose kullanılmaktadır. Docker Compose bu ortamlarda kolay kurulum, bakım ve genel olarak kullanım sağlamaktadır fakat `Docker Inc` tarafından yapılan yeni geliştirmelerle sistem kararlılığı, performansı, tutarlılığı, yedekliliği ve yüksek erişilebilirliğinin önemli olduğu production (üretim) ortamlarında da kullanılmaya doğru gitmektedir. Özellikle Docker 1.12 versiyonu ile birlikte gelen Docker Compose ve Swarm entegrasyonu bu konuda yakın gelecekte daha da sağlam adımlar atılacağının bir habercisi niteliğindedir. Docker Compose, Docker Swarm ve Kubernetes gibi Clustering (kümeleme) araçları ile karıştırılmamalıdır. Swarm ve Kubernetes, Production sistemlerin yukarıda sıralanan özelliklerini yerine getirmeye çabalamaktadır. 
 
 docker-compose.yml dosyasında detayları verilen ve birbirleri ile ilişkileri tanımlanan servisler (Container'lar) tek bir komut ile ayağa kaldırılıp tek bir komut ile durdurulur ve yine tek bir komut ile kaldırılabilirler (silinebilirler).
 
@@ -77,7 +77,7 @@ Hemen işe koyulalım.
 
     Docker Compose dosyası ile oluşturacağımız Nginx Container'larının (servislerinin) kullandığı official Nginx Image'ı HTTP (80) numaralı portu dinlemekte, bu portu `EXPOSE` etmekte ve bu porttan web sayfalarını sunmaktadır. Host üzerinden Container'lar tarafından 80 portundan sunulan web sayfalara ulaşabilmek için 80'li portların Host'ta farklı portlara forward edilmesi gereklidir. Port forwarding (Map'leme) amacı ile Compose file'da her bir servis için `ports` keyword'ü ile 8001, 8002 ve 8003 numaralı portlar sırasıyla A, B ve C şirketlerinin web sayfaları için Map'lenir.
 
-2. Terminal veya komut satırı açarak `docker-compose.yml` dosyasının bulunduğu klasöre gidin ve `docker-compose up` komutunu verin. Docker Compose, YAML dosyasında bulunan bütün Image'ları önce pull edip (eğer daha önce pull edilmediyse) sonra da çalıştıracaktır. Siz de `nginx` Image'ını DockerHub'dan daha önce indirdiyseniz aşağıdakine benzer bir çıktı görmelisiniz.
+2. Terminal veya komut satırı açarak `docker-compose.yml` dosyasının bulunduğu klasöre gidin ve `docker-compose up` komutunu verin. Docker Compose, YAML dosyasında bulunan bütün Image'ları önce pull edip (eğer daha önce pull edilmediyse) sonra da çalıştıracaktır. Siz de `Nginx` Image'ını DockerHub'dan daha önce indirdiyseniz aşağıdakine benzer bir çıktı görmelisiniz.
 
         Gokhans-MacBook-Pro:DCBlog gsengun$ docker-compose up
         Creating network "dcblog_default" with the default driver
@@ -148,13 +148,13 @@ Hemen işe koyulalım.
 
 #### docker-compose build
 
-Docker Compose CLI'ın sunduğu `docker-compose build` ve `docker-compose build <service_name>` komutları ile Compose dosyasında tanımladığınız Container'ları (servisleri) teker teker veya toplu halde build edebilirsiniz. Önceki bölümde `docker-compose up` komutunu verdiğimizde bu komutun, servisler eğer daha önce build edilmemişse onları build ettiğini söylemiştik. Servislerden birinin Host'dan kopyaladığı değiştirdiğimizi ve Image'ını yeniden build etmek istediğimizi düşünelim. Bu durumda `docker-compose up` komutunu verirsek Docker Compose servisin içeriğinin değiştiğini anlayamadığı için sadece stop durumdaki Container'ları tekrar ayağa kaldıracaktır, dolayısıyla yapılan değişiklikler görülemeyecektir. İçeriği değiştirilen servis için `docker-compose build <service_name>` komutu koşturulduktan sonra `docker-compose up` komutu koşturulursa ilgili servis'in Container'ı kaldırılarak yeni Image'dan yeni bir Container oluşturulur. 
+Docker Compose CLI'ın sunduğu `docker-compose build` ve `docker-compose build <service_name>` komutları ile Compose dosyasında tanımladığınız Container'ları (servisleri) teker teker veya toplu halde build edebilirsiniz. Önceki bölümde `docker-compose up` komutunu verdiğimizde bu komutun, servisler eğer daha önce build edilmemişse onları build ettiğini söylemiştik. Servislerden birinin Host'dan kopyaladığı dosyaları Host'ta değiştirdiğimizi ve ilgili servisin Image'ını yeniden build etmek istediğimizi düşünelim. Bu durumda `docker-compose up` komutunu verirsek Docker Compose servisin içeriğinin değiştiğini anlayamadığı için sadece stop durumdaki Container'ları tekrar ayağa kaldıracaktır, dolayısıyla yapılan değişiklikler görülemeyecektir. İçeriği değiştirilen servis için `docker-compose build <service_name>` komutu koşturulduktan sonra `docker-compose up` komutu koşturulursa ilgili servis'in Container'ı kaldırılarak yeni Image'dan yeni bir Container oluşturulur. 
 
 #### docker-compose up
 
 Bir önceki bölümdeki örneklerde görüldüğü gibi Compose dosyasında tanımlı bütün servisleri ayağa kaldırmak için kullanılır.
 
-`docker-compose build` için verilen yukarıdaki örnekte eğer değiştirilen şey Host'tan kopyalanan dosyalar olmayıp, Dockerfile veya servis konfigürasyonu olsaydı `docker-compose up` komutu verildiğinde Compose değişiklikleri tanıyacak Image'ı rebuild edecek, önceki Container'ı kaldıracak ve yeni bir Container yaratacaktır. Bütün bunların olması istenmiyorsa `--no-recreate` parametresi ile Compose'un değişiklikleri algılaması ve yeni bir build oluşturması engellenir. Tam tersine bir önceki örnekteki gibi Host'tan kopyalanan dosyalar gibi Compose'un anlayamayacağı değişikliklerde `--force-recreate` paramtresi verilerek Image'ın her seferinde tekrar build edilmesi, önceki Container'ın kaldırılması ve yeni bir Container yaratılması sağlanabilir.
+`docker-compose build` için verilen yukarıdaki örnekte eğer değiştirilen şey Host'tan kopyalanan dosyalar olmayıp, Dockerfile veya servis konfigürasyonu olsaydı `docker-compose up` komutu verildiğinde Compose değişiklikleri tanıyacak, Image'ı rebuild edecek, önceki Container'ı kaldıracak ve yeni bir Container yaratacaktır. Bütün bunların olması istenmiyorsa `--no-recreate` parametresi ile Compose'un değişiklikleri algılaması ve yeni bir build oluşturması engellenir. Tam tersine bir önceki örnekteki gibi Host'tan kopyalanan dosyalar gibi Compose'un anlayamayacağı değişikliklerde `--force-recreate` paramtresi verilerek Image'ın her seferinde tekrar build edilmesi, önceki Container'ın sistemden kaldırılması ve yeni bir Container yaratılması sağlanabilir.
 
 Bütün durumlarda Compose dosyasında servislerin tamamının ayağa kaldırılması istenmeyebilir. Sadece belirli servis veya servislerin ayağa kaldırılması için servis isimleri parametre olarak verilebilir. Kullanım `docker-compose up <service_name_1>  <service_name_2>`. Bir önceki bölümdeki örnekde A, B ve C şirketlerinin sitelerinin hepsini değil sadece A sitesini çalıştırmaya başlamak istersek `docker-compose up company_a_web_server` komutunu verebiliriz. `docker-compose.yml` dosyasının buluduğu klasöre giderek aşağıdaki komutu verin.
 
@@ -172,11 +172,11 @@ Docker CLI'da olduğu gibi `-d` parametresi Compose'da da Container'ların `deta
     Creating dcblog_company_a_web_server_1
     Creating dcblog_company_b_web_server_1
 
-Bu kez `-d` parametresi ile başlattığımız iki servisi görüyoruz. Bu servislerin log'larına bakmak istersek, aynı terminali kullanarak `docker-compose logs` komutunu verebiliriz.
+Bu kez `-d` parametresi ile başlattığımız iki servisi görüyoruz. Bu servislerin log'larına bakmak istersek, aynı terminali kullanarak `docker-compose logs <container_name>` komutunu verebiliriz.
 
 #### docker-compose down
 
-Önceki bölümdeki örnekten de gördüğümüz gibi `docker-compose down` Compose tarafından yaratılmış Container'ları (servisleri) öncelikle durdurarak sonra da kaldırmaktadır. Burada `-v` parametresine dikkat etmek gereklidir. Compose tarafından oluşturulan Volume'ların (sonraki bölümlerde değineceğiz) da kaldırılması isteniyorsa `-v` parametresinin sağlanması gerekmektedir.
+Önceki bölümdeki örnekten de gördüğümüz gibi `docker-compose down` Compose tarafından yaratılmış Container'ları (servisleri) öncelikle durdurarak sonra da sistemden kaldırmaktadır. Burada `-v` parametresine dikkat etmek gereklidir. Compose tarafından oluşturulan Volume'ların (sonraki bölümlerde değineceğiz) da kaldırılması isteniyorsa `-v` parametresinin sağlanması gerekmektedir.
 
 Eğer Compose dosyasında Compose tarafından yeni Image'lar build edilmesi konfigüre edilmişse `docker-compose down` bu Image'ların silinmesi için de kullanılabilir. Oluşturulan Image'ların silinmesi için `--rmi all` parametresinin sağlanması gereklidir.
 
@@ -224,7 +224,7 @@ Docker Compose CLI'daki en enteresan komutlardan biridir. Bu komutu kullanmaya b
     4 packets transmitted, 4 packets received, 0% packet loss
     round-trip min/avg/max/stddev = 0.102/0.115/0.132/0.000 ms
 
-Dikkatli okuyucularımız hemen iki şeyi farkettiler. İlki her nasıl olduysa `company_a_web_server` servisini çalıştıran Container `company_b_web_server` servisini çalıştıran Container'a ismi ile ping atabildi. İkincisi de `company_b_web_server` servisini çalıştıran Container'ın IP'sinin `172.20.0.2` olduğuydu. 
+Dikkatli okuyucularımız hemen iki şeyi farkettiler. İlki her nasıl olduysa `company_a_web_server` servisini çalıştıran Container `company_b_web_server` servisini çalıştıran Container'a ismi ile ping atabilmesiydi. İkincisi ise `company_b_web_server` servisini çalıştıran Container'ın IP'sinin `172.20.0.2` olmasıydı. 
 
 `ÇOK ÖNEMLİ NOT:` Docker Compose aynı dosyada tanımlanan bütün servislerin birbirlerine servis isimleri üzerinden network bağlantısı sağlayabilmeleri için gerekli düzenlemeleri yapar. Yaptığı düzenleme Networking modulünde ilgili servis isimleri ve bu servisleri çalıştıran Container'lara verdiği IP'leri mini bir DNS sunucuya karşılık olarak yazmasıdır.
 
@@ -232,7 +232,7 @@ Son olarak `docker-compose run` ile çalıştırılan Container'lar genellikle t
 
 #### docker-compose start
 
-Önceden `docker-compose up` veya `docker-compose run` ile başlatılan Container'lardan birini veya birkaçını yeniden başlatmak için kullanılır. Açık konuşmak gerekirse bugüne kadar çok fazla kullandığımız bir komut olmadı. Sağladığı fonksiyon `docker-compose up <service_name>` tarafından bire bir karşılandığı için `docker-compose start` muhtemelen Docker CLI ile uyum amacıyla konmuş veya [Fig](http://www.fig.sh)'e geriye dönük uyumluluk amacıyla bırakılmıştır.
+Önceden `docker-compose up` veya `docker-compose run` ile başlatılan Container'lardan birini veya birkaçını yeniden başlatmak için kullanılır. Açık konuşmak gerekirse bugüne kadar çok fazla kullandığımız bir komut olmadı bu komut. Sağladığı fonksiyon `docker-compose up <service_name>` tarafından bire bir karşılandığı için `docker-compose start` muhtemelen Docker CLI ile uyum amacıyla konmuş veya [Fig](http://www.fig.sh)'e geriye dönük uyumluluk amacıyla bırakılmıştır.
 
 #### docker-compose stop
 
@@ -429,7 +429,7 @@ Service'ten oluşturulacak Container'lardan Host'a map'lenecek (forward edilecek
 
 2. Container üzerinde bir volume yaratılması:
 
-    Container durdurulduktan sonra ve hatta eğer kasıtlı olarak silinmez ise kaldırıldıktan sonra bile ulaşılabilecek bir Volume yaratmak için opsiyon aşağıdaki gibi kullanılabilir.
+    Container durdurulduktan sonra ve hatta eğer kasıtlı olarak silinmez ise sistemden kaldırıldıktan sonra bile ulaşılabilecek bir Volume yaratmak için opsiyon aşağıdaki gibi kullanılabilir.
 
         services:
             my-service:
