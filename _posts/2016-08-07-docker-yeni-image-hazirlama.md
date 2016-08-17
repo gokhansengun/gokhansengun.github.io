@@ -22,7 +22,6 @@ Bu blog'da aşağıdaki adımları tamamlayarak Docker'ı daha etkili kullanmak 
 * Motivasyon olması açısından basit bir Image oluşturup, çalıştırıp DockerHub'a Push edip başkalarının kullanımına sunarak başlayacağız.
 * Dockerfile'ın yapısını ve Instruction'ları (komut) inceleyerek devam edeceğiz.
 * Ubuntu baz Image'ını özelleştirerek üzerine Nginx kuracağız ve Nginx ile basit bir web sayfasını sunacağız.
-* En son olarak da yeni bir Image hazırlamadaki Best Practice'lere (en iyi uygulamalara) göz atarak bu blog'u kapatacağız.
 
 ### Ön Koşullar
 
@@ -41,7 +40,7 @@ Bu blog'da yer verilen adımları takip edebilmeniz için aşağıdaki koşullar
 
 Yeni bir Image oluşturmak çok basittir. Yeni Image'ın nasıl oluşturulacağını özetleyen Dockerfile bir klasöre konulur ve terminalde bu klasöre gidilerek `docker build .` komutu çalıştırılır. Oluşan Image `docker images` komutu ile görülebilir.
 
-1. Hemen çok basit bir Image oluşturarak başlayalım. Dosya sistemi üzerinde düzenli olması açısından yeni bir klasör oluşturun ve bu klasör içinde Dockerfile adında bir dosya oluşturun. Dockerfile'ın uzantısı olmadığına lütfen dikkat edin. Windows kullanıyorsanız klasör görünümünde dosya uzantılarının göründüğünden ve yeni oluşturduğunuz dosyaya default `.txt` uzantısının verilmediğinden emin olun. En güzeli dosyayı komut satırından veya metin editörü ile yaratmaktır. Komut satırından Windows'ta `echo. 2>Docker`, Mac OS X ve Linux'ta ise `touch Dockerfile` yazarak ilgili klasörde bir Dockerfile yaratabilirsiniz.
+1. Hemen çok basit bir Image oluşturarak başlayalım. Dosya sistemi üzerinde düzenli olması açısından yeni bir klasör oluşturun ve bu klasör içinde Dockerfile adında bir dosya oluşturun. Dockerfile'ın uzantısı olmadığına lütfen dikkat edin. Windows kullanıyorsanız klasör görünümünde dosya uzantılarının göründüğünden ve yeni oluşturduğunuz dosyaya default `.txt` uzantısının verilmediğinden emin olun. En güzeli dosyayı komut satırından veya metin editörü ile yaratmaktır. Komut satırından Windows'ta `echo. 2>Dockerfile`, Mac OS X ve Linux'ta ise `touch Dockerfile` yazarak ilgili klasörde bir Dockerfile yaratabilirsiniz.
 
 2. Oluşturduğunuz Dockerfile'ı bir metin editörü ile açarak aşağıdaki satırları girin.
 
@@ -72,7 +71,7 @@ Yeni bir Image oluşturmak çok basittir. Yeni Image'ın nasıl oluşturulacağ�
         gsengun/jmeter3.0         1.7.1               055a31dd0034        2 days ago          736.6 MB
         mono                      4.4.0.182-onbuild   15129f680b3b        13 days ago         771.7 MB
 
-    `docker images` çıktısında yeni oluşturduğumuz bu Image'ın diğer Image'lardan biraz farklı olduğu dikkatinizi çekecek. `REPOSITORY` ve `TAG` kolonları boş kalmıştır. Yukarıdaki çıktıda yeni oluşturduğumuz Image'a ek olarak daha önceden kullanılan Host'ta bulunan iki farklı Image daha göreceksiniz. Bu Image'lardan `mono` direkt olarak ifade edilmiş, `gsengun/jmeter3.0` ise bir namespace (gsengun) ile gösterilmiştir. Önceki blog'da da açıkladığımız gibi official repository'ler başlarında bir namespace `gsengun` olmadan verilirler yani global namespace'delerdir, DockerHub'da bulunan diğer Image'larda ise örnek verdiğim Image gibi başında bir namespace (gsengun gibi) bulunması zorunludur. Böylelikle çakışmalar önlenmektedir. 
+    `docker images` çıktısında yeni oluşturduğumuz bu Image'ın diğer Image'lardan biraz farklı olduğu dikkatinizi çekecek. `REPOSITORY` ve `TAG` kolonları boş kalmıştır. Yukarıdaki çıktıda yeni oluşturduğumuz Image'a ek olarak daha önceden kullanılan Host'ta bulunan iki farklı Image daha göreceksiniz. Bu Image'lardan `mono` direkt olarak ifade edilmiş, `gsengun/jmeter3.0` ise bir namespace (gsengun) ile gösterilmiştir. Önceki blog'da da açıkladığımız gibi official repository'ler başlarında bir namespace `gsengun` olmadan verilirler yani global namespace'delerdir, DockerHub'da bulunan diğer Image'larda ise örnek verdiğim Image gibi başında bir namespace (gsengun gibi) bulunması zorunludur. Böylelikle Image'lar arasındaki isim çakışmaları önlenmektedir. 
 
 4. Yukarıda oluşturduğumuz Image'a Tag ve Repository eklemek için `docker tag` komutunu kullanabiliriz. Aşağıdakine benzer bir komutu `gsengun`'ü kendi namespace'iniz ile değiştirerek komut satırından verin. Image'ları DockerHub'a gönderecekseniz namespace'in DockerHub kullanıcı adınız (Docker Hub ID) olması gerektiğini unutmayın.
 
@@ -88,7 +87,7 @@ Yeni bir Image oluşturmak çok basittir. Yeni Image'ın nasıl oluşturulacağ�
 
     Bu arada Image'ı ayrı ayrı build etmek ve Tag'lemek yerine Tag'leme işlemini build sırasında yapabilirdik. Bunun için vermemiz gereken komut `docker build myubuntu .` yerine `docker build -t gsengun/myubuntu:0.1 .` komutunu olacaktı.
 
-5. Bu adımda oluşturduğumuz Image'ı çalıştırarak test etmemiz ve her şeyin istediğimiz gibi olduğunu kontrol etmemiz gerekiyor. Tabii bizim ilk Image'ımız Ubuntu'nun bire bir aynısı olduğu için aslında bu adımı pas geçebilirdik ancak yine de deneyelim. Ekrana "Ubuntu'dan Merhaba Docker" yazıp çıkan bir Container yaratalım.
+5. Bu adımda oluşturduğumuz Image'ı çalıştırarak test etmemiz ve her şeyin istediğimiz gibi olduğunu kontrol etmemiz gerekiyor. Tabii bizim ilk Image'ımız Ubuntu'nun bire bir aynısı olduğu için aslında bu adımı pas geçebilirdik ancak yine de deneyelim. Ekrana "Ubuntu'dan Merhaba Docker" yazıp çıkan (Exit eden) bir Container yaratalım.
 
         Gokhans-MacBook-Pro:DockerfileBlog gsengun$ docker run gsengun/myubuntu:0.1 echo "Ubuntu'dan Merhaba Docker"
         Ubuntu'dan Merhaba Docker
@@ -122,11 +121,11 @@ Bir önceki bölümde `FROM` ve `MAINTAINER` Instruction'larını kullanmış ve
 
 ##### RUN 
 
-Build işlemi sırasında koşturulması gereken komutları belirtmek için kullanılır. Örneğin baz `ubuntu` Image'ında bulunmayan bir paketin (ping) oluşturulacak Image'a eklenmesi isteniyorsa `RUN apt-get install -y iputils-ping` Instruction'ı Dockerfile'a eklenerek Image oluşturulması sırasında Image'a bu paket eklenmiş olur.
+Build işlemi sırasında koşturulması gereken komutları belirtmek için kullanılır. Örneğin baz `ubuntu` Image'ında bulunmayan bir paketin (örneğin `ping`) oluşturulacak Image'a eklenmesi isteniyorsa `RUN apt-get install -y iputils-ping` Instruction'ı Dockerfile'a eklenerek Image oluşturulması sırasında Image'a bu paket eklenmiş olur.
 
 ##### CMD
 
-İlk blog'da üzerinde defalarca durulduğu gibi Docker Daemon bir Image'dan Container oluşturulması sürecinde, Daemon Image'ı çalıştırmaya hazırladıktan ve gerekli sanallaştırmayı yaptıktan sonra kontrolü Container'ın belirlediği bir komutu çalıştırarak Container'a devretmektedir. `CMD` ile Image için çalışacak default komut belirlenmektedir. Docker CLI, Image'da belirtilen `CMD`'nin komut satırından yeni bir Container çalıştırılırken ezilmesine (override edilmesine) izin vermektedir. Tahmin edebileceğiniz gibi Dockerfile içerisinde sadece bir adet `CMD` komutu bulunabilir. `CMD` birçok formatta verilebilir.
+İlk blog'da üzerinde defalarca durulduğu gibi Docker Daemon bir Image'dan Container oluşturulması sürecinde, Image'ı çalıştırmaya hazırladıktan ve gerekli sanallaştırmayı yaptıktan sonra kontrolü Container'ın belirlediği bir komutu çalıştırarak Container'a devretmektedir. `CMD` ile Image için çalışacak default komut belirlenmektedir. Docker CLI, Image'da belirtilen `CMD`'nin komut satırından yeni bir Container çalıştırılırken ezilmesine (override edilmesine) izin vermektedir. Tahmin edebileceğiniz gibi Dockerfile içerisinde sadece bir adet `CMD` komutu bulunabilir. `CMD` birçok formatta verilebilir.
 
 1. İlk format (tercih edilen) `exec form` olarak adlandırılır ve istenen herhangi bir çalıştırılabilir dosya (executable) ve ona verilen parametreleri içerir. Aşağıdaki gibi kullanılır.
 
@@ -138,7 +137,7 @@ Build işlemi sırasında koşturulması gereken komutları belirtmek için kull
 
 2. İkinci format sadece parametrelerin sağlandığı çalıştırılabilir dosyanın (executable) ise biraz sonra tanıtacağımız `ENTRYPOINT`'den alındığı formattır. Aşağıdaki gibi kullanılır.
 
-        CMD [ "executable", "param1", "param2" ]
+        CMD [ "param1", "param2" ]
 
     Google'ın DNS sunucularına sürekli ping atan bir Image'da aşağıdaki gibi Instruction'lar bulunmalıdır.
 
@@ -177,7 +176,7 @@ Bir önceki `CMD` Instruction'ı da anlatılırken belirtildiği gibi `ENTRYPOIN
 
 [Stackoverflow](http://stackoverflow.com)'daki sorulardan dikkatimi çeken `ENTRYPOINT` ve `CMD`'nin sıklıkla birbiri ile karıştırılması veya farklarının tam olarak nerede olduğunun anlaşılmaması ancak sanırım yukarıdaki detaylı açıklamalar sizin kafanızda bir netleşme sağlamıştır.
 
-Bu arada `ENTRYPOINT` ve `CMD` birlikte çok sade bir kullanım sunmak üzere kullanılabilirler. Aşağıdaki Dockerfile Instruction'larını ele alalım. Container'ın çalıştıracağı executable `/bin/ping` olarak belirlenmiştir ve kullanıcı bir parametre sağlamadığında `-help` parametresi verilmesi sağlanmıştır, dolayısıyla Image'ın kullanımı özetlenmiştir.
+Bu arada `ENTRYPOINT` ve `CMD` birlikte çok sade bir kullanım sunmak üzere kullanılabilirler. Aşağıdaki Dockerfile Instruction'larını ele alalım. Container'ın çalıştıracağı executable `/bin/ping` olarak belirlenmiştir ve kullanıcı bir parametre sağlamadığında `-help` parametresi verilmesi sağlanmıştır, dolayısıyla parametre verilmeden Container'ın çalıştırılmak istendiği durumda Image'ın kullanımı özetlenecektir.
 
         ENTRYPOINT [ "/bin/ping" ]
         CMD ["-help"]
@@ -200,11 +199,11 @@ Container parametre verilerek başlatıldığında ise verilen parametre `ping` 
 
 ##### EXPOSE
 
-Docker Container'ları yönetmek için oldukça kompleks bir Networking modulü barındırmaktadır. Başlı başına uzun bir blog konusu olabilir. Networking modülü gerek aynı Daemon içindeki Container'lar arasındaki bağlantıyı sağlamakta gerekse de Host ile iletişimi yönetmektedir. 
+Docker Container'ları yönetmek için oldukça kompleks bir Networking modulü barındırmaktadır. Networking modülü başlı başına uzun bir blog konusu olabilir. Networking modülü gerek aynı Daemon içindeki Container'lar arasındaki bağlantıyı sağlamakta gerekse de Host ile iletişimi yönetmektedir. 
 
-Default olarak Networking modülü Container'ların birbirlerinin UDP/TCP port'larına bağlanmalarına izin vermez. Başka Container'larla bir PORT üzerinden iletişim kurmak isteyen ya Container'lar Image'larında `EXPOSE` komutu ile ilgili portu (default TCP) belirtirler ya da Docker CLI'da `--expose <port_number>` ile başlatılmaları gereklidir.
+Default olarak Networking modülü Container'ların birbirlerinin UDP/TCP port'larına bağlanmalarına izin vermez. Başka Container'larla bir PORT üzerinden iletişim kurmak isteyen Container'lar ya Image'larında `EXPOSE` komutu ile ilgili portu (default TCP) belirtirler ya da Docker CLI'da `--expose <port_number>` ile başlatılmaları gereklidir.
 
-`ÖNEMLİ NOT:` Belirtilen port sadece aynı Daemon içerisindeki Container'ların bağlanabileceği şekilde erişime açılmaktadır. Docker'ın koşturulduğu host üzerinden Container'ların port'larına ulaşmak için Docker CLI'da Container başlatılırken `-p <port_number>` parametresinin verilmesi gereklidir. Uygun olan durumlarda Host'a portları görünür kılmak için `EXPOSE` edilen portları parametre olarak teker teker `-p 80 -p 443` ile vermek yerine `-P` (büyük P) ile tek parametre ile verebiliriz.
+`ÖNEMLİ NOT:` Belirtilen port Networking modülü tarafından sadece aynı Daemon içerisindeki Container'ların bağlanabileceği şekilde erişime açılmaktadır. Docker'ın koşturulduğu host üzerinden Container'ların port'larına ulaşmak için Docker CLI'da Container başlatılırken `-p <port_number>` parametresinin verilmesi gereklidir. Uygun olan durumlarda Host'a bütün portları görünür kılmak için `EXPOSE` edilen portları parametre olarak teker teker `-p 80 -p 443` ile vermek yerine `-P` (büyük P) ile tek parametre ile verebiliriz.
 
 ##### ADD
 
@@ -223,7 +222,7 @@ Host'tan Image'a klasör kopyalanması
 
     ADD [ "https://curl.haxx.se/download/curl-7.50.1.tar.gz", "/tmp/curl.tar.gz" ]
 
-`ÖNEMLİ NOT:` Host klasörde bulunan ve Image'a kopyalanmak istenmeyen dosyalar `.dockerignore` dosyasının içinde belirtilebilir.
+`ÖNEMLİ NOT:` Host klasörde bulunan ve Image'a kopyalanmak istenmeyen dosyalar `.dockerignore` dosyasının içinde belirtilebilir. Bu dosya tıplı `.gitignore`'a benzemektedir.
 
 ##### COPY
 
@@ -242,7 +241,7 @@ Dockerfile'ımızda aşağıda iki Instruction'ın bulunduğunu düşünelim.
 
 ##### HEALTHCHECK
 
-Hepimiz çalışır göründüğü halde gerçek işlevini getirmeyen bir servis ve process ile karşılaşmışızdır. Servisi koşturan process'in karşılaştığı içsel bir hata (infinite loop - sonsuz döngü) ile aslında dışarıdan sorunsuz görünmesine rağmen işlevini yerine getiremediği durumlardan bahsediyoruz. Docker bu soruna bir çözüm üretmeye çalışmıştır. `HEALTHCHECK` Instruction'ı tam olarak bu işe yaramaktadır. Bir servis (web sunucu, vb) vermek üzere oluşturulan Image'ın sağlıklı çalışıp çalışmadığının Daemon tarafından sorgulanmasına olanak tanır. Image'ı oluşturarak dışarıya bir servis sunan kişi bu servisin çalışıp çalışmadığını anlamaya yarayacak bir utility sağlayarak sayılan istenmeyen durumdan kaçınmış olur. 
+Hepimiz çalışır göründüğü halde gerçek işlevini getirmeyen bir servis ve process ile karşılaşmışızdır. Servisi koşturan process'in karşılaştığı içsel bir hata (infinite loop - sonsuz döngü, ilgili Thread'in Exit etmesi, vb) ile aslında dışarıdan sorunsuz görünmesine rağmen işlevini yerine getiremediği durumlardan bahsediyoruz. Docker bu soruna bir çözüm üretmeye çalışmıştır. `HEALTHCHECK` Instruction'ı tam olarak bu işe yaramaktadır. Bir servis (web sunucu, vb) vermek üzere oluşturulan Image'ın sağlıklı çalışıp çalışmadığının Daemon tarafından sorgulanmasına olanak tanır. Image'ı oluşturarak dışarıya bir servis sunan kişi bu servisin çalışıp çalışmadığını anlamaya yarayacak bir utility sağlayarak sayılan istenmeyen durumdan kaçınmış olur. 
 
 Aşağıda verilen örnekte 10 saniyede bir koşturulan `curl -f http://localhost:9876` komutu -curl ile yerel olarak 9876 portunda çalıştırılan web sunucudan ana sayfayı isteyen komut- ile maksimum 60 saniyede bir çıktı alıp alamadığına bakar eğer alamıyorsa Container'ın `health status`'unu `unhealthy` olarak işaretler, eğer cevap alırsa container'ı bu kaz `success` ile işaretler.
 
@@ -254,7 +253,7 @@ Birçok Instruction öğrendik, şimdi bu Instruction'larla çok faydalı bir Im
 
 Vereceğimiz ilk örnek basit bir web sitesi hazırlayarak bunu Nginx ile sunmak olacak. Aslında [Nginx](https://hub.docker.com/_/nginx/) Image'ı DockerHub'da official olarak kullanıma sunulmaktadır. Biz pratik yapma amaçlı olarak bu örneği seçtik. Gösterdiğimiz Dockerfile Instruction'larının birçoğunu kullanacak olmamız bu örneği seçmemizde etkili oldu. 
 
-1. Öncelikle internette küçük bir araştırma ile standart `ubuntu`'da `Nginx`'in nasıl kurulacağını öğrenmemiz gerekiyor. DigitalOcean tarafından yayınlanan [bu harika tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04)'da ihtiyacımız olan bilgilerin tamamı var.
+1. Öncelikle internette küçük bir araştırma ile standart `ubuntu`'da `Nginx`'in nasıl kurulacağını öğrenmemiz gerekiyor. Ailemizin VPS'i DigitalOcean tarafından yayınlanan [bu harika tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04)'da ihtiyacımız olan bilgilerin tamamı var.
 
     Özetle yapmamız gerekenler, aşağıdaki komutları çalıştırmak olacak. Bu komutların ne yaptığı tamamen konumuz dışında çünkü bu blog Nginx'ten ziyade Docker ile ilgili.
 
@@ -333,7 +332,7 @@ Vereceğimiz ilk örnek basit bir web sitesi hazırlayarak bunu Nginx ile sunmak
 
         docker run -p 8080:80 gsengun/mywebsite:0.1
 
-11. Tarayıcınızı açarak adres çubuğuna http://localhost:8080 yazın aşağıdaki gibi bir sayfa görmelisiniz.
+11. Tarayıcınızı açarak adres çubuğuna `http://localhost:8080` yazın aşağıdaki gibi bir sayfa görmelisiniz.
 
     {% include image.html url="/resource/img/DockerPart2/ServeWebSiteWithNginx.png" description="Serve Web Site with Nginx using Docker" %}
 
