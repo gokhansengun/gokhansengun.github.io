@@ -585,3 +585,12 @@ pre code {
     overflow-wrap: normal;
     white-space: pre;
 }
+
+.captioned-image-em {
+    display: block;
+}
+
+.captioned-image-em-centered {
+    display: block;
+    text-align: center;
+}
