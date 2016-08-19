@@ -4,7 +4,7 @@ title: Hakkımda
 subtitle:
 ---
 
-Netaş'ta Yeni Ürün Geliştirme ve Ar-Ge İş Geliştirme Müdürü olarak çalışıyorum. İstanbul'da yaşıyorum, evliyim ve bir çocuk babasıyım :) İyi düzeyde İngilizce orta düzeyde de Almanca biliyorum. 
+Netaş'ta Yeni Ürün Geliştirme ve Ar-Ge İş Geliştirme Müdürü olarak çalışıyorum. İstanbul'da yaşıyorum, evliyim ve bir çocuk babasıyım :) İleri düzeyde İngilizce orta düzeyde de Almanca biliyorum. 
 
 1984 yılında Malatya'da doğdum. ilk, orta ve lise öğrenimimi Malatya'da tamamladıktan sonra 2001 yılında Boğaziçi Üniversitesi İşletme Bölümü'nde yüksek öğrenimime başladım. 2003 yılında tekrar o zamanki adıyla Öğrenci Seçme Sınavına (ÖSS) girerek yine Boğaziçi Üniversitesi Elektrik-Elektronik Mühendisliği Bölümü'nü kazandım ve öğrenimime bu bölümde devam ettim. Bu kısım ilginç biraz belki bir blog yazısında bu kısmı da ele alma fırsatı bulurum.
 
