@@ -2,21 +2,19 @@
 layout: post
 title: Blog'un Teknik Altyapısı
 level: Başlangıç
-progress: finished-not-reviewed
 ---
 
-
-Bu blog'da, okuduğunuz bu blog'u hazırlarken ve sizlere sunarken kullanılan yöntemler, araçlar ve teknik altyapı ile ilgili detaylı bilgiler vermeye çalışacağız. Bu yazıyı okuyup referans verilen linkleri de takip ederek siz de kendi blog sitenizi oluşturabilirsiniz. Önceden web sitesi oluşturma, yayınlama ve web programlama tecrübeniz varsa hem yazıyı daha rahat takip edebilirsiniz hem de blog üzerinde yapmak istediğiniz değişiklikleri daha rahat yapabilirsiniz.
+Bu blog'da, okuduğunuz bu blog'u hazırlarken ve sizlere sunarken kullanılan yöntemler, araçlar ve teknik altyapı ile ilgili detaylı bilgiler vermeye çalışacağız. Bu yazıyı okuyup, referans verilen linkleri takip ederek siz de kendi blog sitenizi oluşturabilirsiniz. Önceden web sitesi oluşturma, yayınlama ve web programlama tecrübeniz varsa hem yazıyı daha rahat takip edebilirsiniz hem de blog üzerinde yapmak istediğiniz değişiklikleri daha rahat yapabilirsiniz.
 
 ## Web Sitelerinin Gelişimi
 
 Birçoğumuzun bildiği gibi web siteleri sunucular tarafından hazırlanan html dosyalarının bilgisayarlarımız ve akıllı telefonlarımızda kullandığımız tarayıcı'lar (browser) tarafından talep edilmesi ile ulaşılabilir hale gelir. İnternet'in ilk yıllarında bütün web siteleri her bir kullanıcı için kullanıcıya göre ayrı ayrı hazırlanmayan statik sayfaların önceden hazırlanıp kullanıcı talep ettiğinde kullanıcıya ulaştırılması ile sunuluyordu. Örnek olarak Apple'ın 1996 yılındaki [sitesine](https://web.archive.org/web/19961022105458/http://www.apple.com/) baktığımızda oldukça sade tasarlanmış ve kullanıcıya özel olmayan bir site olduğunu görebiliriz.
 
-Günümüzde kullanıcı ile etkileşime girmeyen ve içeriğini kullanıcıya göre belirlemeyen bir web sitesi bulmamız neredeyse imkansız. Güncel web siteleri kullanıcı deneyimini artırmak için sunucu tarafında çalışan uygulamalarla, kullanıcıları sistemlerine dahil edip kullanıcıya özel içerik oluşturup hedefledikleri amaca daha kolay ulaşabiliyorlar. Sayfa içeriklerinin her bir kullanıcı için sunucu tarafında oluşturulması bir takım performans problemleri ve bakım ihtiyacı yaratmaktadır. Sayfa içeriklerinin dinamik olarak hazırlanması sunucu tarafında çalışması gereken bir web sunucunun yanında bir uygulama sunucusu ile birlikte çoğu zaman bir de veri tabanı sunucusunu gerekli kılmaktadır.  
+Günümüzde kullanıcı ile etkileşime girmeyen ve içeriğini kullanıcıya göre belirlemeyen bir web sitesi bulmamız neredeyse imkansız. Güncel web siteleri kullanıcı deneyimini artırmak için sunucu tarafında çalışan uygulamalarla (ya da SPA'lar ile sunucuya web servis çağrıları yaparak), kullanıcıları sistemlerine dahil edip kullanıcıya özel içerik oluşturup hedefledikleri amaca daha kolay ulaşabiliyorlar. Sayfa içeriklerinin her bir kullanıcı için sunucu tarafında oluşturulması bir takım performans problemleri ve bakım ihtiyacı yaratmaktadır. Sayfa içeriklerinin dinamik olarak hazırlanması sunucu tarafında çalışması gereken bir web sunucunun yanında bir uygulama sunucusu ile birlikte çoğu zaman bir de veri tabanı sunucusunu gerekli kılmaktadır. Görüleceği üzere bir site için iki ya da üç sunucunun varlığı söz konusudur.
 
 ## Platform
 
-Sunucu tarafında çalışan uygulamalar, web sitesi geliştiricilerin işlerini o denli kolaylaştırmakta ve ürettikleri platformun esnek olmasını sağlamaktadır ki, günümüzde statik (kullanıcıdan kullanıcıya değişmeyen) içeriğe sahip birçok web sitesi sunucu tarafında çalışan uygulamalar tarafından üretilmektedir. Birçok blog sitesi de doğası gereği okuyucudan okuyucuya değişen bilgiler vermedikleri halde sayfaları sunucu tarafında çalışan uygulamalara ürettirmektedirler. 
+Sunucu tarafında çalışan uygulamalar, web sitesi geliştiricilerin işlerini o denli kolaylaştırmakta ve ürettikleri platformun esnek olmasını sağlamaktadır ki, günümüzde statik (kullanıcıdan kullanıcıya değişmeyen) içeriğe sahip birçok web sitesi, sunucu tarafında çalışan uygulamalar tarafından üretilmektedir. Birçok blog sitesi de doğası gereği okuyucudan okuyucuya değişen bilgiler vermedikleri halde sayfaları sunucu tarafında çalışan uygulamalara ürettirmektedirler. 
 
 Blog sitelerinin çok büyük bir bölümünde servis sağlayıcı olarak kullanılan [WordPress](https://wordpress.com/) ve [Ghost](https://ghost.org/) da sayfalarını sunucu tarafında çalışan uygulamalar ile üretmektedirler. Son kullanıcıya yönelik olarak hazırlanan ve son kullanıcının mail yazar gibi kolaylıkla blog yazısı hazırlamasına olanak tanıyan bu platformlar doğal olarak kullanıcıların büyük beğenisini topluyor, blog yazarları birkaç fare tıklaması ile yeni blog'ları kitlelerle buluşturabiliyorlar. 
 

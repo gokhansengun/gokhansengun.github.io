@@ -2,7 +2,6 @@
 layout: post
 title: "JMeter Bölüm 1: Nedir ve Ne İşe Yarar?"
 level: Başlangıç
-progress: finished-not-reviewed
 ---
 
 Bu blog yazısında Apache Software Foundation (Apache Yazılım Vakfı) tarafından geliştirilmekte olan JMeter uygulaması ile ilgili genel bilgiler vermeye çalışacağız. Bu blog'da kısaca tanıtılacak olan JMeter'i, sonraki iki blog'da detaylı olarak işlemeye devam edeceğiz. JMeter uygulamasının kullanım alanları ile birlikte sağladığı farklı bileşenleri ekran görüntüleri ile birlikte paylaşarak siz okuyucuların kafasında net bir JMeter imajı oluşturmaya çabalayacağız.
@@ -23,7 +22,7 @@ Bu blog yazısını okuduktan sonra aşağıdaki blog yazılarını da sırasıy
 
 JMeter, başlangıçta web uygulamalarının test edilebilmesi için tasarlanmış fakat sonrasında farklı test fonksiyonlarını da gerçekleştirecek şekilde geliştirilmiş bir Apache projesidir.
 
-JMeter web uygulamalarında html, resim, css ve js gibi statik dosyaları isteyerek test edebilmenin yanı sıra SOAP ve REST bazlı içeriği dinamik olarak üretilen web servisleri test etme amaçlı olarak da kullanılabilir. Gerçek kullanıcıların bir web uygulamasını kullanırken sunuculara yaptıkları kaynak talepleri (web istekleri), JMeter yardımı ile sanki gerçek kullanıcılar bu kaynakları talep ediyormuşcasına simüle edilir. JMeter ile simüle edilen kullanıcı senaryoları (kullanıcıların web uygulamasını kullanma şekilleri), web uygulamasının isteği girdiler (input) farklılaştırılarak sanki birden fazla kullanıcı aynı anda aynı senaryoyu çalıştırıyormuş gibi kurgulanır ve sistemde istenen büyüklükte bir yük oluşturulabilir. Bir kullanıcı senaryosu oluşturma ve bir kullanıcı için oluşturulan senaryonun farklı kullanıcılar tarafından da koşturulacak şekilde hazırlanması, yani JMeter'ın temel fonksiyonu diyebileceğimiz bu özellik, bir sonraki blog'da bir demo ile birlikte gösterilecektir.
+JMeter web uygulamalarında html, resim, css ve js gibi statik dosyaları isteyerek test edebilmenin yanı sıra SOAP (Simple Object Access Protocol) ve REST (REpresentational State Transfer) bazlı içeriği dinamik olarak üretilen web servisleri test etme amaçlı olarak da kullanılabilir. Gerçek kullanıcıların bir web uygulamasını kullanırken sunuculara yaptıkları kaynak talepleri (web istekleri), JMeter yardımı ile sanki gerçek kullanıcılar bu kaynakları talep ediyormuşcasına simüle edilir. JMeter ile simüle edilen kullanıcı senaryoları (kullanıcıların web uygulamasını kullanma şekilleri), web uygulamasının isteği girdiler (input) farklılaştırılarak sanki birden fazla kullanıcı aynı anda aynı senaryoyu çalıştırıyormuş gibi kurgulanır ve sistemde istenen büyüklükte bir yük oluşturulabilir. Bir kullanıcı senaryosu oluşturma ve bir kullanıcı için oluşturulan senaryonun farklı kullanıcılar tarafından da koşturulacak şekilde hazırlanması, yani JMeter'ın temel fonksiyonu diyebileceğimiz bu özellik, bir sonraki blog'da bir demo ile birlikte gösterilecektir.
 
 JMeter %100 Java ile yazılan bir araç olduğu için Java Runtime Environment (JRE) veya Java Development Environment (JDK) kurulu olmak kaydı ile Windows, Linux veya Mac işletim sistemine sahip herhangi bir bilgisayarda problemsiz çalıştırılabilmektedir. Bu blog yazısında Mac OS X işletim sistemi kurulu bir bilgisayar kullanılacak ve ekran görüntüleri Mac OS X işletim sisteminde alınacaktır fakat siz herhangi bir işletim sisteminde adımları takip edebilirsiniz. GUI'nin Java olması ve görünümün platformdan platforma pek fazla farklılık göstermemesinin adımları takip ederken işinizi kolaylaştıracağını düşünüyoruz.
 
@@ -40,13 +39,13 @@ Aşağıdaki adımları tamamlayarak JMeter hakkında genel anlamda fikir sahibi
 
 ## Test ve JMeter Terminolojisi
 
-Bu blog ve sonraki iki blog'da aynı dili konuşabilmek için test ve JMeter terminolojisine hakim olmamız gereklidir. Bu bölümde teorik olarak açıklanacak bazı kavramlar konunun daha iyi anlaşılmasını diğer bir kısmı ise JMeter bileşenlerinin kullanım alanlarının öğrenilmesini sağlayacaktır. Ayrıca bu bölümde yer verilen JMeter bileşenlerini ilerleyen bölümlerdeki demo'larda kullanacak ve fonksiyonlarını daha iyi anlayacağız.
+Bu blog ve sonraki iki blog'da aynı dili konuşabilmek için test ve JMeter terminolojisine hakim olmamız gereklidir. Bu bölümde teorik olarak açıklanacak bazı kavramlar konunun daha iyi anlaşılmasına yardımcı olacakken bir yandan da JMeter bileşenlerinin kullanım alanlarının öğrenilmesini sağlayacaktır. Ayrıca bu bölümde yer verilen JMeter bileşenlerini ilerleyen bölümlerdeki demo'larda kullanacak ve fonksiyonlarını daha iyi anlayacağız.
 
 ### Test Çeşitleri
 
 #### Fonksiyonel Test
 
-Sunulan servisin fonksiyon olarak doğruluğunu test eder. Öğrenciler için sınav sonuçlarının sunulduğu bir web uygulamasında yapılması gereken fonksiyonel testlerden bazıları her bir öğrencinin kendi sınav sonucunu sorgulayabilmesi, başkasına ait sınav sonucunu sorgulayamaması, her bir öğrencinin sınav sorgu sonucunun kendi sonucunu getirmesi (başka bir sonuç getirmemesi) ve sınava girmeyen bir öğrenci için sonuç dönülmemesi ile birlikte öğrencinin sınava girmediği bilgisinin dönülmesi olarak sıralanabilir.
+Sunulan servisin fonksiyon olarak doğruluğunu test eder. Öğrenciler için sınav sonuçlarının sunulduğu bir web uygulamasında yapılması gereken fonksiyonel testlerden bazıları her bir öğrencinin kendi sınav sonucunu sorgulayabilmesi, başkasına ait sınav sonucunu sorgulayamaması, her bir öğrencinin sorgusunun sadece kendi sonucunu getirmesi (başka bir sonuç getirmemesi) ve sınava girmeyen bir öğrenci için sonuç dönülmemesi ile birlikte öğrencinin sınava girmediği bilgisinin dönülmesi olarak sıralanabilir.
 
 #### Yük Testi
 
@@ -80,7 +79,7 @@ Sahip olduğumuz bilgisayarlar biz insanların aksine çok hızlı bir şekilde 
 
 Sisteminize 10 dakika içerisinde 100K kullanıcının gireceğine ve bir dakika boyunca işlem yapacağına göre plan yaptığınızı varsayalım. Hazırladığınız test senaryosunu 100K kullanıcıyı Ramp-up Time 10 dakika olarak sisteme sokacak şekilde hazırlamak yerine 1 dakikada 10K kullanıcıyı sisteme sokup işi biten kullanıcının sisteme tekrar tekrar (toplam 10 kere) girerek bütün adımları tekrarlamasını sağlayabilirsiniz. Loop Count buradaki her bir test kullanıcısının sisteme toplam giriş sayısıdır.
 
-Yukarıdaki senaryo dışında sisteminizin dayanıklılığını ve sürekliliğini test etmek üzere belirli bir süre için sistemin kullanıcılar tarafından normal kullanımından çok çok daha yoğun kullanılması senaryosunu kurgulamak için de Loop Count kullanılabilir. Örneğin, sisteminizi günde 10K kullanıcının 1 dakika için kullandığını düşünelim. Sistemimizin 1000 gün boyunca yeniden başlatılmadan sağlıklı çalışıp çalışmayacağını test etmek isteyelim. Sistemimize 1K kullanıcıyı belirli aralıklarla sokarak işi biten kullanıcının tekrar tekrar (toplam 10K x 1000 / 1K = 10000 kere) girmesini sağlayarak 10000 dakikada (yaklaşık 7 günde) uygulamamızın 1000 gün (yaklaşık 3 sene) boyunca tekrar başlatılmaya ihtiyaç duymadan sağlıklı çalışıp çalışmayacağını test edebiliriz.
+Yukarıdaki senaryo dışında sisteminizin dayanıklılığını ve sürekliliğini test etmek üzere belirli bir süre için sistemin kullanıcılar tarafından normal kullanımından çok çok daha yoğun kullanılması senaryosunu kurgulamak için de Loop Count kullanabilirsiniz. Örneğin, sistemimizi günde 10K kullanıcının 1 dakika için kullandığını düşünelim. Sistemimizin 1000 gün boyunca yeniden başlatılmadan sağlıklı çalışıp çalışmayacağını test etmek isteyelim. Sistemimize 1K kullanıcıyı belirli aralıklarla sokarak işi biten kullanıcının tekrar tekrar (toplam 10K x 1000 / 1K = 10000 kere) girmesini sağlayarak 10000 dakikada (yaklaşık 7 günde) uygulamamızın 1000 gün (yaklaşık 3 sene) boyunca tekrar başlatılmaya ihtiyaç duymadan sağlıklı çalışıp çalışmayacağını test edebiliriz.
 
 #### Sample Time (Örnekleme Süresi) ve Latency (Gecikme)
 
@@ -214,3 +213,7 @@ JMeter, Thread Group'ların çalıştırılmaya başlamasından önce Thread Gro
 ## Sonuç
 
 Bu blog'da genel olarak test terminolojilerinin üzerinden geçip, JMeter bileşenlerini yakından inceleyerek JMeter ile bir test senaryosu hazırlayabilecek duruma geldik. [Bir sonraki blog'da](/jmeter-fonksiyon-testi-hazirlama/) JMeter ile, ilgi çekici bir demo hazırlayarak öğrendiğimiz test kavramlarını ve JMeter bileşenlerini kullanarak öğrendiğimiz bilgileri pekiştirmeye çalışacağız. 
+
+#### Teşekkür
+
+Bu blog yazısını gözden geçiren ve düzeltmelerini yapan Dr. Mehmet Alper Uslu'ya ([alperuslu.net](http://alperuslu.net/)) teşekkür ederiz.

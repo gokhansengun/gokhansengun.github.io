@@ -3,7 +3,6 @@ layout: post
 title: "Makefile ve make nedir, ne işe yarar?"
 level: Başlangıç
 published: true
-progress: finished-not-reviewed
 ---
 
 Eğer daha önce C/C++ programlama dilleri ile program geliştirmiş, açık kaynak kodlu projeleri kaynağından derlemiş ve çalıştırmış iseniz muhakkak make ve Makefile'ı duymuş olmalısınız. Makefile'lar Unix/Linux'ta make, Windows'ta ise nmake araçları ile yorumlanır ve koşturulurlar. Makefile'ların en yaygın kullanımı, programların kaynak dosyalarının birbirleri ile bağımlılıklarını derleme ve linkleme (build) aşamasında yönetmek yani programlar derlenirken birbirlerine olan bağımlılıklara ve kaynak dosyaların son değiştirilme tarihlerine bakarak sadece derlenmesi gereken dosyaları derlemektir fakat Makefile'lar aslında çok farklı amaçlarla da kullanılabilirler. Bu blog'da sizleri Makefile ve make/nmake araçları ile tanıştırarak Makefile'ı günlük yaşantımızda sıklıkla karşılaştığımız problemlerin çözümünde nasıl kullanabileceğimizi göreceğiz.

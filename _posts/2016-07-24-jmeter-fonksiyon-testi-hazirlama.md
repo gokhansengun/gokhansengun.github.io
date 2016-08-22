@@ -2,7 +2,6 @@
 layout: post
 title: "JMeter Bölüm 2: Fonksiyon Testi Nasıl Hazırlanır?"
 level: Orta
-progress: finished-not-reviewed
 ---
 
 Bu blog'da bir önceki blog yazısında detaylı olarak tanıtımını yaptığımız JMeter aracı ile baştan sona bir fonksiyonel test demosu hazırlayacağız. Karşılaştığımız bütün problemleri çözecek ve bir sonraki adıma geçeceğiz. Fonksiyonel test script'imiz hazır olduktan sonra aynı script'i kullanarak testimize doğruluk ölçmeye yardımcı olacak Assertion'lar ekleyerek script'imizi Continuous Integration pipeline'ında kullanılabilir hale getirmeye çalışacağız. JMeter'ın Continuous Integration (CI) ve Continuous Delivery (CD) pipeline'larında nasıl kullanılabileceği sorusu ilerleyen zamanlarda başka bir blog'da cevap bulacak. 
@@ -293,3 +292,7 @@ Benzer şekilde Size Assertion, gelen response'ın minimum ve maksimum boyutlar�
 Bu blog'da JMeter'daki birçok özelliği kullanarak gerçek hayattan karmaşık bir test senaryosunu tamamlamış olduk. Önceki blog'da öğrendiğimiz bileşenlerin demo edilmiş halini görmenin yanında yeri geldikçe yeni bileşenleri de tanıma fırsatı bulduk ve onları da kullanarak konuyu bir bütün olarak ele almaya çalıştık.
 
 Bir sonraki [blog'da](/jmeter-pratik-test-hazirlama/) JMeter'da daha pratik bir biçimde nasıl test senaryoları hazırlanabileceğini göreceğiz.
+
+#### Teşekkür
+
+Bu blog yazısını gözden geçiren ve düzeltmelerini yapan Dr. Mehmet Alper Uslu'ya ([alperuslu.net](http://alperuslu.net/)) teşekkür ederiz.

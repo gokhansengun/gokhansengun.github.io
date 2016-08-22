@@ -2,7 +2,6 @@
 layout: post
 title: "Docker Bölüm 3: Docker Compose Hangi Amaçlarla ve Nasıl Kullanılır?"
 level: Başlangıç
-progress: finished-not-reviewed
 ---
 
 Docker blog serimizin ilk iki bölümünde Docker'ı günlük hayatta kullanmaya başlamak için gerekli bilgi seviyesini oluşturmak için Docker ve sunduğu olanakları yakından tanımaya çalıştık. Bu blog'da ise Docker'ı gerek geliştirme, gerek test ve gerekse de üretim ortamında nasıl kullanabileceğimiz ile ilgili çok pratik ve genellikle demo'lardan oluşan bilgileri elde edeceğiz. Eminim verilen örnekler sizin kafanızda da farklı çağrışımlar uyandıracak ve siz de kendinizi her gün uğraştığınız işlerde Docker kullanarak nasıl daha verimli olabileceğinize dair düşünceler içinde bulacaksınız.
@@ -592,3 +591,7 @@ Bu servisin tanımı aşağıda verilmiştir. Şimdi teker teker ilgili satırla
 Bu blog'da Docker'ı günlük hayat kullanımında çok daha etkili kılan Docker Compose'u çok detaylı bir biçimde inceleyerek Docker'la ilgili üç blog'luk blog serimizi tamamlamış olduk.
 
 Bundan sonraki blog yazılarındaki bütün örnek uygulamaları (demo'ları) Docker kullanarak vereceğiz ve bu blog serisinde öğrendiğimiz bilgiler emin olun çok işimize yarayacak.
+
+#### Teşekkür
+
+Bu blog yazısını gözden geçiren ve düzeltmelerini yapan Burak Sarp'a ([@Sarp_burak](https://twitter.com/Sarp_burak)) teşekkür ederiz.

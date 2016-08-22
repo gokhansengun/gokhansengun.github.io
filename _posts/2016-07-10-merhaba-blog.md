@@ -2,7 +2,6 @@
 layout: post
 title: Merhaba Blog Dünyası!
 level: Başlangıç
-progress: finished-not-reviewed
 ---
 
 İlk blog yazımda bu blogun başlatılma gerekçesi ve içerik hedefi ile ilgili biraz bilgi vermek istiyorum.
@@ -13,7 +12,7 @@ Kısaca başlatılma gereçleri ve amacı hakkında bilgi verdikten sonra detayl
 
 Uzun yıllar boyunca blog yazılarına hep uzaktan baktım. Bir dönem blog yazacak bir konu bulamamam, başka bir dönem konu olması fakat zaman olmaması, diğer bir dönem ise konu ve zaman olması fakat blog yazacağım konularda harcadığım efora değecek sayıda fazla okuyucu/takipçi kitlesinin bulunmadığı düşünmem sebepleriyle kendi kişisel blog'umu oluşturmayı hep geciktirdim. 
 
-Yaşım, deneyimlerim ve bilgi birikimin arttıkça artık bazı püf noktaları unutmaya, ihtiyaç duyduğumda geri dönüp bulamamaya veya bulsam bile düzenli ve rahatlıkla tekrar kullanılabilir formatta bulamamaya başladım. Tam da bu sebeple "Kendime Notlar" şeklinde isimlendirebileceğim ve hiç kimse tarafından faydalı ve takip edilmeye değer bulunmayacaksa bile kendim için faydalı olacak bu blog oluşturmaya karar verdim.
+Yaşım, deneyimlerim ve bilgi birikimin arttıkça artık bazı püf noktaları unutmaya, ihtiyaç duyduğumda geri dönüp bulamamaya veya bulsam bile düzenli ve rahatlıkla tekrar kullanılabilir formatta bulamamaya başladım. Tam da bu sebeple "Kendime Notlar" (Dr. Mahfi Eğilmez'e derin saygılarla) şeklinde isimlendirebileceğim ve hiç kimse tarafından faydalı ve takip edilmeye değer bulunmayacaksa bile kendim için faydalı olacak bu blog oluşturmaya karar verdim.
 
 ## Blog'da Yer Vereceğim İçerikler
 
