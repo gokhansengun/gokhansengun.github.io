@@ -13,7 +13,7 @@ Bu blog'da Makefile yapısını ve make aracını bütün yönleri ile inceleyer
 
 * Motivasyon olması açısından basit bir Makefile oluşturarak Makefile'ların nasıl çalıştığı ile ilgili kafamızda bir fikir oluşturmaya çalışacağız.
 * Makefile'ın bağımlılık altyapısı ve formatı ile ilgili bilgiler edineceğiz.
-* Makefile'ı ilerideki blog'larda hangi farklı senaryolar üzerinde konuşarak bu blog'u kapatacağız.
+* Makefile'ı ilerideki blog'larda hangi farklı senaryolarda kullanabileceğimizi konuşarak bu blog'u kapatacağız.
 
 ### Ön Koşullar
 
