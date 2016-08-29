@@ -75,7 +75,7 @@ JMeter Script'imizin genel görünümü aşağıdaki gibidir.
 
     {% include image.html url="/resource/img/JMeterPart4/UserDefinedVariables.png" description="User Defined Variables" %}
 
-2. `CSV Data Set Config` bölümünde Registration sistemimize bağlı olan 10000 öğrencinin öğrenci numarası, email'i ve parolasını (aslında parolasının hash'i olması gerekiyor ama testi kolay yapabilmek için parolayı plain olarak tuttuk) sakladığımız CSV dosyasının (JMX dosyası ile aynı klasörde bulunan) ismini, içindeki değerlerin hangi sırayla bulunduğu (bizim için `student_id,username,password`) ve hangi karakterle (bizim için `;`) ayrıldığını konfigüre ediyoruz.
+2. `CSV Data Set Config` bölümünde Registration sistemimize bağlı olan 10000 öğrencinin öğrenci numarası, email'i ve parolasını (aslında parolasının hash'i olması gerekiyor ama testi kolay yapabilmek için parolayı plain olarak tuttuk) sakladığımız CSV dosyasının (JMX dosyası ile aynı klasörde bulunan) ismini, içindeki değerlerin hangi sırayla bulunduğu (bizim için `student_id,username,password`) ve hangi karakterle (bizim için `;`) ayrıldığını konfigüre ettik.
 
     Bu dosya JMeter tarafından okunarak her bir satır JMeter tarafından oluşturulan Thread'lere (sanal kullanıcılar) atanacaktır. Böylelikle koşturduğumuz her bir thread dosyadaki satır sırasına göre ilgili öğrenciyi simüle edecektir. Bu dosyayı vererek testi şu anda yapacak olduğumuz gibi sadece 1 kullanıcı için çalıştırırsak bu kullanıcıya atanacak değişkenler dosyanın ilk satırındaki bilgiler olacaktır.
 
@@ -98,7 +98,7 @@ JMeter Script'imizin genel görünümü aşağıdaki gibidir.
 
     {% include image.html url="/resource/img/JMeterPart4/TokenJSONPathExtractor.png" description="Token JSON Path Extractor" %}
 
-    Sentaksı daha iyi anlayabilmek için eğer JSON cevabı aşağıdaki gibi olsaydı `access_token`'a erişmek için kullanmamız gereken Expression `$.token_info.access_token` olacaktı.
+    Sentaksı daha iyi anlayabilmek için yeni bir örnek verelim. Eğer JSON cevabı aşağıdaki gibi olsaydı `access_token`'a erişmek için kullanmamız gereken Expression `$.token_info.access_token` olacaktı.
 
         {
             "token_info": 
@@ -139,29 +139,104 @@ JMeter Script'imizin genel görünümü aşağıdaki gibidir.
                 "Instructor":"Instructor-2",
                 "Year":2016,
                 "Season":1
-            }
+            },
+            ...
         ]
 
-    Ders ekleme methodu `/api/Registration/AddCourseForStudent` için öğrencinin numarası ile `CourseId` yeterli olmaktadır. Bu sebeple aşağıdaki gibi `CourseId`'leri alan bir JSON Path Extractor beklentilerimizi karşılayacaktır. Bu JSON Path Extractor `avail_courses` değişkeninde dönen toplam kurs sayısını ve kurs Id'lerini tutacaktır. Birazdan bunları BeanShell Sampler'ımızda kullanacağız.
+    Ders ekleme methodu `/api/Registration/AddCourseForStudent` için öğrencinin numarası ile `CourseId` yeterli olmaktadır. Bu sebeple aşağıdaki gibi `CourseId`'leri alan bir JSON Path Extractor beklentilerimizi karşılayacaktır. Bu JSON Path Extractor `avail_courses` değişkeninde dönen toplam kurs sayısını ve kurs Id'lerini tutacaktır. Bir sonraki adımda bu değişkenlerin BeanShell Sampler'ında kullanıldığı görülecektir.
 
     {% include image.html url="/resource/img/JMeterPart4/CourseIdJSONPathExtractor.png" description="Course Id JSON Path Extractor" %}
 
-5. Toparlamak gerekirse bu adıma kadar sisteme giriş yaparak bir Token aldık ve o dönem için bize açılan dersleri listeledik ve parse ederek kullanmaya hazır hale getirdik. Bu adımda ise `api/Registration/AddCourseForStudent` HTTP çağrısı ile parse ettiğimiz ders listesinden rastgele 3 adet ders seçerek onları öğrencimizin ders listesine ekliyoruz.
+5. Toparlamak gerekirse bu adıma kadar sisteme giriş yaparak bir Token alan ve ilgili dönem için öğrencinin alımına açık olan dersler listelenmiş ve parse ederek kullanmaya hazır hale getirilmiştir. Bu adımda ise `api/Registration/AddCourseForStudent` HTTP çağrısı ile parse edilen ders listesinden rastgele 3 adet ders seçilerek bu dersler öğrencinin ders listesine eklenmiştir.
 
-    Öncelikle ders ekleme işlemini 3 kere yapabilmek için aşağıdaki gibi bir `Loop Controller` eklediğimize dikkat ediniz.
+    Öncelikle ders ekleme işlemini 3 kere yapabilmek için aşağıdaki gibi bir `Loop Controller` eklendiğine dikkat ediniz.
 
     {% include image.html url="/resource/img/JMeterPart4/AddCoursesLoopController.png" description="Add Courses Loop Controller" %}
 
-    Loop Controller'ın içinde yani her bir Thread (user) için 3 kere koşturulmak üzere aşağıdaki gibi bir BeanShell Sampler ekleyerek rastgele 3 ders seçme işlemini burada yaparak her bir Loop için seçeceğimiz ders kodunu `selected_course_id` değişkenine atıyoruz.
+    Loop Controller'ın içinde, yani her bir Thread (user) için 3 kere koşturulmak üzere, aşağıdaki gibi bir BeanShell Sampler eklenerek rastgele 3 ders seçme işlemi burada yapılmış ve her bir Loop için seçilecek ders kodu `selected_course_id` değişkenine atılmıştır.
 
     {% include image.html url="/resource/img/JMeterPart4/AddCoursesBeanShellSampler.png" description="Add Courses BeanShell Sampler" %}
 
-    Ekleyeceğimiz dersi BeanShell Sampler ile belirledikten sonra nihayet `api/Registration/AddCourseForStudent` çağrısını yaparak dersi öğrencinin listesine ekliyoruz.
+    Eklenecek ders, BeanShell Sampler ile belirledikten sonra nihayet `api/Registration/AddCourseForStudent` çağrısını yapılarak ders öğrencinin listesine eklenmektedir.
 
     {% include image.html url="/resource/img/JMeterPart4/AddCoursesHTTPSampler.png" description="Add Courses HTTP Sampler" %}
 
-6. Son adım olarak 3 ders eklediğimiz öğrencinin bütün derslerini `api/Registration/coursesbystudent` HTTP çağrısı ile çekecek bir HTTP Sampler ekliyoruz.
+6. Son adım olarak ilgili dönem için listesine 3 ders eklenen öğrencinin bütün dersleri `api/Registration/coursesbystudent` HTTP çağrısı ile çekecek bir HTTP Sampler eklenmiştir.
 
     {% include image.html url="/resource/img/JMeterPart4/ListCoursesByStudentHTTPSampler.png" description="List Courses By Student HTTP Sampler" %}
 
+### Test Sisteminin Ayağa Kaldırılması ve Tek Kişilik Testin Koşturulması
+
+1. Test sistemini Github'dan lokal sistemimize klonlayarak başlayalım. Popüler Git Client'ınızdan ya da komut satırından `git clone https://github.com/gokhansengun/Simple-Mono-Postgres-Demo.git` komutunu vererek Repo'yu lokal dosya sisteminize kopyalayın.
+
+2. Test yapacağımız sistemi Docker Compose ile ayağa kaldırmak için Repo'nun ana klasöründeki `Docker` klasörüne geçerek sırasıyla aşağıdaki komutları verin.
+
+        $ docker-compose up build
+        $ docker-compose up -d db
+        $ docker-compose up flyway-migrator
+        $ docker-compose up -d app
+
+    Bu komutları verdikten ve tamamlanmalarını bekledikten sonra `docker-compose ps` komutunu verin. Aşağıdaki bir çıktı elde etmeniz gerekir. `docker_app_1` isimli uygulama sunucusu Container'ının 8090, `docker_db_1` veri tabanı sunucusunun ise 5432 numaralı portu dinlediğini gözlemleyin, gördüğünüz gibi test sistemimiz testimize hazırdır. 
+
+        Gokhans-MacBook-Pro:Docker gsengun$ docker-compose ps
+                Name                        Command               State            Ports
+        -------------------------------------------------------------------------------------------
+        docker_app_1               mono /artifact/UniversityR ...   Up       0.0.0.0:8090->8090/tcp
+        docker_build_1             /bin/true                        Exit 0
+        docker_db_1                /docker-entrypoint.sh postgres   Up       0.0.0.0:5432->5432/tcp
+        docker_flyway-migrator_1   /scripts/wait-for-postgres ...   Exit 0
+
+3. Önceki blog'larda JMeter'da Sampler'lar tarafından yapılan Request ve Response'ların loglanması için kullandığımız `View Results Tree` Listener'ına ek olarak Performans Testi yaparken `View Results in Table` ve `Summary Report` Listener'ları eklenerek sunucuya yapılan HTTP Request'ler ile ilgili detaylı bilgilerin tabular formatta alınması hedeflenmiştir.
+
+    Performans testleri sırasında özellikle `Summary Report` Listener'ındaki bilgileri esas alarak sistemin istediğimiz performans kriterlerine getirmeye çalışacağız.
+
+    Test Script'inin çalıştırılması ile oluşan `View Results in Table`'ın örnek çıktısı aşağıda verilmiştir. Bu Listener'da her bir Sampler'ın Sample Time'ı ve Latency'si ve Status'ü tabular formatta verilmiştir. `Sample Time (Örnekleme Süresi) ve Latency (Gecikme)` [ilk JMeter Blog](/jmeter-nedir-ve-ne-ise-yarar/)'unda detaylı olarak ilgili başlıkta açıklanmıştır.
+
+    {% include image.html url="/resource/img/JMeterPart4/ExampleViewResultsInTable.png" description="Example of view Results in Table" %}
+
+    Test Script'inin çalıştırılması ile oluşan `Summary Report`'un örnek çıktısı aşağıda verilmiştir. `View Results in Table`'de görülen çıktının gruplanmış (Avg, Min, Max, Std Dev) formu ile Throughput (saniyede yapılan Request sayısı) ve KB/sec (saniyede gönderilen KB miktarı) bilgilerini görüntülemektedir.
+
+    {% include image.html url="/resource/img/JMeterPart4/ExampleSummaryReport.png" description="Example of Summary Report" %}
+
+4. Her bir yük testinden sonra test sistemini resetlemek ve yeniden başlatmak önemlidir. Özellikle üst üste yapılan testlerden sonra veri tabanında biriken datalar ilerleyen testlerde performansı olumsuz etkileyebilir. Test sistemini Docker Compose ile kurduğumuz için `docker-compose down -v` komutunu çalıştırarak Docker Compose tarafından oluşturulan Container'ları ve Volume'ları kaldırabiliriz.
+
+### İlk Performans Testi
+
+Ve en heyecanlı bölüme geldik, birazdan ilk performans testimizi çalıştıracağız. Tek kullanıcı için doğru bir şekilde çalıştığını belirlediğimiz sistemi eş zamanlı 400 kullanıcı vererek test edelim.
+
+1. Lokal'e kopyaladığınız Github Repo'sunun ana klasörüne göre `.\PerfTests` klasörünün altında bulunan `ListCoursesAndAddTestsOnePerson.jmx` dosyasını aynı klasöre kopyalayarak adını `ListCoursesAndAddTests.jmx` olarak değiştirerek JMeter ile açın.
+
+2. Öncelikle Thread Group üstüne tıklayarak aşağıda görüldüğü gibi `Action to be taken after a Sampler error` bölümünde `Stop Test` olan konfigürasyonu `Stop Thread` olarak değiştirin. Bu değişiklikle alınacak herhangi bir hatada bütün testin durdurulması yerine sadece hata alan Thread'in durdurulması diğer Thread'lerin akışlarına devam etmesi hedeflenmiştir.
+
+    Aynı ekranda `Number of Thread (users)` bölümünü `1`'den `400`'e değiştirin. 
+
+    {% include image.html url="/resource/img/JMeterPart4/ThreadGroupConfigurationUpdate.png" description="Thread Group Configuration Update" %}
+
+3. Bildiğiniz gibi `View Results Tree` ve `View Results in Table` Listener'ları bütün Sampler'ın Request ve Response'larını loglamaktadır. Performans testi sırasında JMeter tarafında bu tür işlemler yapmak JMeter'ın çalıştırıldığı bilgisayarın kaynaklarını test kullanıcısı yaratmak yerine loglamak için kullanacağı için bu Sampler'ları sadece hata durumlarında loglama yapacak şekilde ayarlamamız gereklidir. Aşağıdaki şekilde sadece Error olan Request'lerin loglanması sağlanabilir.
+
+    {% include image.html url="/resource/img/JMeterPart4/LogErrorsOnlyViewResultsTree.png" description="Log Errors Only in View Results Tree" %}
+
+    {% include image.html url="/resource/img/JMeterPart4/LogErrorsOnlyViewResultsInTable.png" description="Log Errors Only in View Results in Table" %}
+
+4. Test sistemimizi tekrar ayağa kaldırmaya hazırız. Aşağıdaki komutlarla sistemi ayağa kaldıralım ve testi başlatmaya hazır hale gelelim.
+
+        $ docker-compose up build
+        $ docker-compose up -d db
+        $ docker-compose up flyway-migrator
+        $ docker-compose up -d app
+
+5. JMeter'da testi başlatın ve `Summary Report`'taki sonucun ekran çıktısını alarak bir yere `JMeter-First-Test` ismi ile kaydedin. Benim bilgisayarımda oluşan çıktı aşağıdaki gibi oldu.
+
+    {% include image.html url="/resource/img/JMeterPart4/FirstPerfTestResults.png" description="Result of first performans Test" %}
+
+    Gördüğünüz gibi 400 kullanıcı için koşan testte kullanıcılar aşağıdaki gibi metrikler üretmiştir.
+    
+        `/Token` çağrısını Avg `1750 ms` ve Max `4045 ms`'de
+        `/api/Registration/ListCoursesByDepartmentYearSeason` çağrısını Avg `259 ms` ve Max `1607 ms`'de
+        `/api/Registration/AddCourseForStudent` çağrısını Avg `216 ms` ve Max `3959 ms`'de
+        `/api/Registration/coursesbystudent` çağrısını Avg `149 ms` ve Max `3920 ms`'de
+
+    Aslında sistemimiz 400 eş zamanlı kullanıcıya göre fena performans göstermedi. Kullanıcılar kabul edilebilir (`5000 ms`) sınırlar içerisinde isteklerine cevap alabildiler fakat 400 kullanıcı 4000 olduğunda Response zamanları da aynı oranda artarsa performans istenen sınırlar içerisinde kalmayacaktır. Şimdi iyileştirebildiğimiz kadar performansı iyileştirmeye çalışalım.  
+
+### İyileştirme Denemesi ve Yeni Yük Testi
 
