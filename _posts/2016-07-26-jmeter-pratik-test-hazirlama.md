@@ -121,4 +121,4 @@ JMX dosyasının son haline Github parolam haricinde [buradan](/resource/file/JM
 
 Bu blog'da JMeter'ın Recording Template'ini kullanarak bir önceki blog'da elle uzun uğraşlar sonucu hazırladığımız karmaşık test senaryosunun aynısını daha pratik bir şekilde tamamlamış olduk.
 
-Bir sonraki [blog'da](/jmeter-performans-testi-hazirlama/) JMeter'ın ileri düzey özelliklerinden ve bazı püf noktalarından bahsedeceğiz.
+Bir sonraki [blog'da](/jmeter-performans-testi-hazirlama/) JMeter'la nasıl performans testi hazırlayabileceğimizi göreceğiz.

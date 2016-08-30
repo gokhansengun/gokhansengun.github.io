@@ -29,7 +29,6 @@ Bu blog'da JMeter'ı bir Performans Testi aracı olarak kullanacağız. Kurgulay
 * JMeter'da ilgili kullanım senaryolarını tek bir kullanıcı için koşturan bir Test Plan oluşturacağız.
 * Input dosyası vererek oluşturduğumuz sistemi birçok kullanıcı için paralel olarak koşturacak ve test sonuçlarını inceleyeceğiz.
 * Sistemimizde bir iyileştirme yaparak testi tekrar koşturacağız ve test sonuçlarını karşılaştırmalı olarak göreceğiz.
-* Yüksek sayıda kullanıcıyı simüle etmek için JMeter Test Planlarını bulut (Cloud) üzerinde birçok makinada koşturmaya olanak tanıyan [Blazemeter](https://www.blazemeter.com)'a kısa bir bakış atarak bu blog'u noktalayacağız.
 
 ### Ön Koşullar
 
@@ -231,12 +230,78 @@ Ve en heyecanlı bölüme geldik, birazdan ilk performans testimizi çalıştır
 
     Gördüğünüz gibi 400 kullanıcı için koşan testte kullanıcılar aşağıdaki gibi metrikler üretmiştir.
     
-        `/Token` çağrısını Avg `1750 ms` ve Max `4045 ms`'de
-        `/api/Registration/ListCoursesByDepartmentYearSeason` çağrısını Avg `259 ms` ve Max `1607 ms`'de
-        `/api/Registration/AddCourseForStudent` çağrısını Avg `216 ms` ve Max `3959 ms`'de
-        `/api/Registration/coursesbystudent` çağrısını Avg `149 ms` ve Max `3920 ms`'de
+    * `/Token` çağrısı, Avg `6623 ms` ve Max `18219 ms`'de
+    * `/api/Registration/ListCoursesByDepartmentYearSeason` çağrısı, Avg `3319 ms` ve Max `17115 ms`'de
+    * `/api/Registration/AddCourseForStudent` çağrısı, Avg `898 ms` ve Max `16924 ms`'de
+    * `/api/Registration/CoursesByStudent` çağrısı, Avg `1035 ms` ve Max `9867 ms`'de
 
-    Aslında sistemimiz 400 eş zamanlı kullanıcıya göre fena performans göstermedi. Kullanıcılar kabul edilebilir (`5000 ms`) sınırlar içerisinde isteklerine cevap alabildiler fakat 400 kullanıcı 4000 olduğunda Response zamanları da aynı oranda artarsa performans istenen sınırlar içerisinde kalmayacaktır. Şimdi iyileştirebildiğimiz kadar performansı iyileştirmeye çalışalım.  
+    Aslında sistemimiz 400 eş zamanlı kullanıcıya göre fena performans göstermedi. Kullanıcılar kabul edilebilir (`20000 ms`) sınırlar içerisinde isteklerine cevap alabildiler fakat 400 kullanıcı 4000 olduğunda Response zamanları da aynı oranda artarsa performans istenen sınırlar içerisinde kalmayacaktır. Şimdi bir iyileştirme denemesi yapalım ve testi tekrarlayalım.
 
 ### İyileştirme Denemesi ve Yeni Yük Testi
 
+Registration sistemimizin performansı da birçok başka sistem gibi veri tabanı performansı ile paraleldir. Bu veya benzer bir sistemin performansını en iyi noktaya çıkarmak (boost) etmek için neler yapabileceğimizi .NET özelinde başka blog post'larda detaylı olarak ele alacağız. Burada konuyu dağıtmamak için detaylı olarak performansı en iyileştirmeye çalışmayacağız sadece bir fark yaratmaya çalışacağız.
+
+`/api/Registration/CoursesByStudent` çağrısının koşturulması sırasında aşağıdaki SQL dosyasının çalıştırılmaktadır.
+
+    SELECT 
+        c.course_id AS CourseId,
+        c.credit AS Credit,
+        c.department AS Department,
+        c.instructor AS Instructor, 
+        tc.season 
+    FROM taken_courses tc
+    INNER JOIN courses c ON c.course_id = tc.course_id
+    INNER JOIN students s ON tc.student_id = s.student_id
+    INNER JOIN asp_net_users usr ON usr.id = s.user_id
+    WHERE tc.student_id = @studentId AND usr.id = @userId
+
+Bu SQL (`@student_id` ve `@userId`) örnek dataları sağlandığında PostgreSQL'in Explain aracı aşağıdaki gibi bir çalıştırma planı sunmaktadır. Bu plandan görülebileceği üzere, Query'nin en fazla kayıtla uğraştığı bölümler `taken_courses` ve `students` tablolarından ilgili bilgileri çektiği bölümlerdir.
+
+{% include image.html url="/resource/img/JMeterPart4/PostgresExecutionPlanBefore.png" description="Postgres Execution Plan Before" %}
+
+Veri tabanını incelediğimizde Query'imizde WHERE Condition'ında kullanılan `taken_courses` tablosunun `student_id` alanı ile `taken_courses` tablosunun `students` tablosu ile JOIN yapmasında kullanılan `students` tablosunun `student_id` kolonunun Index'lenmediğini görürürüz. Aşağıdaki komutlarla veri tabanına aşağıdaki Index'leri eklememiz gerektiğini anlayabiliriz. Tekrar belirtmek istiyorum ki sadece bütünlük olması açısından bu bilgileri burada paylaşıyor ve fazla detay vermiyorum.
+
+    CREATE INDEX taken_courses_student_id_idx ON taken_courses (student_id);
+    CREATE INDEX students_student_id_idx ON students (student_id); 
+
+Index'leri ekledikten sonra PostgreSQL'un Explain aracının gösterdiği çalıştırma planı aşağıdaki gibi olmuştur. Planın baştan başa değiştiğine dikkat ediniz.
+
+{% include image.html url="/resource/img/JMeterPart4/PostgresExecutionPlanAfter.png" description="Postgres Execution Plan After" %}
+
+#### Yük Testinin Tekrarlanması
+
+Daha önce Performans Testlerinde sağlıklı sonuçlar elde edebilmek için değişik testler arasında platform, veri tabanındaki kayıt sayısı, vb farklılıklar bulunmaması gerektiğini söylemiştik. Test sistemimizi sıfırlayarak testi tekrarlayalım. Kullandığımız Docker Compose altyapısı bize bu noktada çok büyük kolaylık sağlamaktadır.
+
+Aşağıdaki adımları takip edebiliriz.
+
+1. Önceki testten kalan Container'ları ve Image'ları temizleyerek işe başlayalım. Projenin ana klasöründe bulunan `Docker` dizinine ulaşarak Terminal'den aşağıdaki komutu verin. Bu komut Docker Compose ile bu proje kapsamında yarattığımız bütün Image, Container ve Volume'ları temizleyecektir. 
+
+        $ docker-compose down -v --rmi local
+
+2. Aşağıdaki komutları vererek sistemi tekrar ayağa kaldıralım.
+
+        $ docker-compose up build
+        $ docker-compose up -d db
+        $ docker-compose up flyway-migrator
+        $ docker-compose up -d app
+
+3. Testi başlatmadan önce performans artışı sağlayacağını düşündüğümüz aşağıdaki Index'leri ekleyelim.
+
+        CREATE INDEX taken_courses_student_id_idx ON taken_courses (student_id);
+        CREATE INDEX students_student_id_idx ON students (student_id); 
+
+3. JMeter'da testi başlatın ve `Summary Report`'taki sonucun ekran çıktısını alarak bir yere `JMeter-Improvement-Try-1-Test` ismi ile kaydedin. Benim bilgisayarımda oluşan çıktı aşağıdaki gibi oldu.
+
+    {% include image.html url="/resource/img/JMeterPart4/ImprovementTryPerfTestResults.png" description="Improvement as a Result of Indexes" %}
+
+    Karşılaştırmayı daha iyi yapabilmek için yaptığımız ilk testin sonucunu aşağıya alalım.
+
+    {% include image.html url="/resource/img/JMeterPart4/FirstPerfTestResults.png" description="Result of first performans Test" %}
+
+    Gördüğünüz gibi iyileştirme yaptığımız SQL Query'sinin dahil olduğu `/api/Registration/CoursesByStudent` yani `Get Courses By Student` methodunun ortalama süresi `1035 ms`'den `432 ms`'ye düştü. Bunun yanında ilk bakışta ilginç gelebilecek şekilde iyileştirme yapmadığımız diğer bütün çağrıların ortalama dönüş süreleri `%30` ile `%90` arasında iyileşti. Bu iyileşme, eklediğimiz faydalı Index'lerle normalde daha uzun süren bir Query için veri tabanı kaynaklarının (Connection Pool'daki Connection'lar, vb) kullanımını düşürmemizle gerçekleşti. Veri tabanı kaynaklarından tasarruf etmemiz ortaya çıkan kullanılabilir kaynakların diğer çağrılar tarafından kullanılabilmesini ve sonucunda genel bir performans artışı sağladı.
+
+## Sonuç
+
+Bu blog'da JMeter'ın en fazla kullanıldığı alan olan Performans Testi hazırlama konusuna değindik. JMeter ile basit bir sistem üzerinde performans testi yaptık ve sonrasında küçük bir iyileştirme yaparak performans testini tekrarladık.
+
+Bir sonraki [blog'da](/jmeter-ileri-duzey-ozellikler/) JMeter'ın ileri düzey özelliklerinden ve bazı püf noktalarından bahsedeceğiz.
