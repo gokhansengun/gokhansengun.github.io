@@ -2,11 +2,11 @@
 layout: post
 title: "JMeter Bölüm 4: Performans Testi Nasıl Hazırlanır?"
 level: Orta
-published: false
-progress: continues
+published: true
+progress: finished
 ---
 
-JMeter'ın en çok kullanıldığı alan şüphesiz "Performans Testidir". Günümüz sistemlerinin geldiği noktada zengin fonksiyonlar sağlamak artık farklılık yaratan bir unsur olmaktan yavaş yavaş çıkmaktadır. Kullanıcılar üç aşağı beş yukarı benzer fonksiyonları sunan servisler arasında daha performanslı ve daha kararlı çalışan sistemleri tercih etmektedirler. Bu tarz sistemleri kullanıma sunmak için sistemin dar boğazlarını, yani performans problemi yaratacak bölümlerini, henüz gerçek kullanıcılar görmeden yakalamak ve çözmek için gerçek senaryolara yakın senaryolarda performans testleri yapmak gereklidir. JMeter sunduğu pratik test senaryosu hazırlama olanakları ve bu senaryoları farklı girdilerle paralel olarak istenen sayıda kullanıcı ile koşturabilme özellikleri ile Performans Testi yapmak için mükemmel bir alternatif olarak ortaya çıkmaktadır. JMeter ile paralel şekilde koşturulan sanal kullanıcılar kendilerine verilen senaryoları icra ederek sistemin verdiği cevapları ve metrikleri test sonrası kullanılmak üzere kaydederler. Oluşan bu bilgiler hemen test sonrası JMeter GUI'si ile incelenebildiği gibi bir dosyaya kaydedilerek test sonrası yine JMeter GUI ile açılıp incelenebilir. 
+Günümüz sistemlerinin geldiği noktada zengin fonksiyonlar sağlamak artık farklılık yaratan bir unsur olmaktan yavaş yavaş çıkmaktadır. Kullanıcılar, üç aşağı beş yukarı benzer fonksiyonları sunan servisler arasında daha performanslı ve daha kararlı çalışan sistemleri tercih etmektedirler. Bu tarz sistemleri kullanıma sunmak için sistemin dar boğazlarını, yani performans problemi yaratacak bölümlerini, henüz gerçek kullanıcılar görmeden yakalamak ve çözmek için gerçek senaryolara yakın senaryolarda performans testleri yapmak gereklidir. JMeter, sunduğu pratik test senaryosu hazırlama olanakları ve bu senaryoları farklı girdilerle paralel olarak istenen sayıda kullanıcı için koşturabilme özellikleri ile Performans Testi yapmak için mükemmel bir alternatif olarak ortaya çıkmaktadır ki JMeter'ın en çok kullanıldığı alan da zaten Performans Testidir. JMeter ile paralel şekilde koşturulan sanal kullanıcılar kendilerine verilen senaryoları icra ederek sistemin verdiği cevapları ve metrikleri test sonrası kullanılmak üzere kaydederler. Oluşan bu bilgiler hemen test sonrası JMeter GUI'si ile incelenebildiği gibi bir dosyaya kaydedilerek test sonrası yine JMeter GUI ile açılıp incelenebilir. 
 
 JMeter ile önceden bir deneyiminiz yoksa öncelikle aşağıdaki blog yazılarını okuyarak başlamanızı öneririz. Önceden deneyiminiz varsa bile aşağıda verilen blog yazılarını okumanızda fayda bulunmaktadır.
 
@@ -22,9 +22,9 @@ Bu blog yazısını okuduktan sonra aşağıdaki blog yazısını da okumanız t
 
 ### Çalışma Özeti
 
-Bu blog'da JMeter'ı bir Performans Testi aracı olarak kullanacağız. Kurgulayacağımız .NET tabanlı basit bir sistemde farazi bir Üniversite Ders Kayıt sistemini JMeter ile test edeceğiz. Sistemde iyileştirmemiz gereken kısımları belirleyeceğiz ve sistemi iteratif olarak iyileştirerek performans istediğimiz düzeye gelene kadar testler yapmaya devam edeceğiz.
+Bu blog'da JMeter'ı bir Performans Testi aracı olarak kullanacağız. Kurgulayacağımız .NET tabanlı basit bir sistemde farazi bir "Üniversite Ders Kayıt Sistemi"ni JMeter ile test edeceğiz. Sistemde iyileştirmemiz gereken kısımlardan birini belirleyeceğiz ve sistemi iteratif olarak iyileştirerek performansı iyileştirmeye çalışacağız.
 
-* Sistemimizin kullanım senaryolarını özetleyeceğiz 
+* Öncelikle sistemimizin kullanım senaryolarını özetleyeceğiz. 
 * Docker Compose kullanarak oluşturduğumuz sistemimi tanıtarak başlayacağız.
 * JMeter'da ilgili kullanım senaryolarını tek bir kullanıcı için koşturan bir Test Plan oluşturacağız.
 * Input dosyası vererek oluşturduğumuz sistemi birçok kullanıcı için paralel olarak koşturacak ve test sonuçlarını inceleyeceğiz.
@@ -39,29 +39,30 @@ Bu blog'da yer verilen adımları takip edebilmeniz için aşağıdaki koşullar
 
 ### Test Edilecek Sistemin Mimarisi ve Kullanım Senaryoları
 
-Test edeceğimiz sistem farazi bir Üniversite Ders Kayıt sistemi olacak. Bir HTTP API olarak sunulan bu sistemde aşağıdaki üç fonksiyon bulunacaktır. 
+Test edeceğimiz sistem, farazi bir Üniversite Ders Kayıt Sistemi olacak. Bir HTTP API olarak sunulan bu sistemde aşağıdaki üç fonksiyon bulunacaktır. 
 
 1. Öğrenciler kendilerine sağlanan kullanıcı adı ve parola ile sistemden bir Token alacaklar ve sonraki isteklerde bunu kullanacaklar. (`/Token`)
-2. Öğrenciler departman için açılan dersleri görebilecekler. (`/api/Registration/CoursesByStudent`)
+2. Öğrenciler belirli bir departman için açılan dersleri görebilecekler. (`/api/Registration/CoursesByStudent`)
 3. Öğrenciler açık derslerden kendilerine dönem için yeni bir ders ekleyebilecekler. (`/api/Registration/AddCourseForStudent`)
 4. Öğrenciler kendi aldıkları dersleri görebilecekler. (`/api/Registration/ListCoursesByDepartmentYearSeason`)
 
-Bu sistem kendi bilgisayarınızda rahatlıkla ayağa kaldırabilmeniz ve bir dış bağımlılık olmadan testleri koşturabilmeniz için `Docker` ile paketlenmiş ve `Docker Compose` ile orkestre edilmiştir. Önceki blog'lardan [Docker Compose'a](/docker-compose-nasil-kullanilir/) göz atmanız faydalı olabilir. Sözün özü bundan sonraki kısımları çalıştırabilmek için sisteminizde Docker 1.12 ve üzeri ve Docker-Compose 1.6 ve üzeri versiyon bulunması gereklidir. Docker kullanmak istemiyorsanız sistemi küçük bir çabayla ayağa kaldırıp test edebilirsiniz.
+Bu sistem kendi bilgisayarınızda rahatlıkla ayağa kaldırabilmeniz ve bir dış bağımlılık olmadan testleri koşturabilmeniz için `Docker` ile paketlenmiş ve `Docker Compose` ile orkestre edilmiştir. Önceki blog'lardan [Docker Compose'a](/docker-compose-nasil-kullanilir/) göz atmanız faydalı olabilir. Bu blog'daki adımları takip edebilmek için sisteminizde Docker 1.12 (veya üzeri) ve Docker-Compose 1.6 (veya üzeri) versiyonlarının bulunması gereklidir. Docker kullanmak istemiyorsanız sistemi küçük bir çabayla Mac ve Linux'ta Mono ya da Windows'ta Visual Studio kullanarak ayağa kaldırıp test edebilirsiniz.
 
-Yapacağımız performans testiyle bağlantılı olmasa da sistemin altyapısı ile ilgili bilgi almak için projenin [Github](https://github.com/gokhansengun/Simple-Mono-Postgres-Demo)'daki açıklamasını okuyabilirsiniz. Test edeceğimiz sistem .NET'i Linux ve Mac'te çalıştırmak üzere varlık sürdüren açık kaynaklı [Mono](http://www.mono-project.com/) platformu üzerinde çalıştırılmaktadır. Sunulan HTTP API, ASP.NET Web API'deki OWIN/Katana altyapısı ile oluşturulmuştur. Veri tabanı şeması ve test dataların veri tabanına yazılması için [Flyway](https://flywaydb.org/), veri tabanına erişim için popüler Micro ORM'lerden [Dapper](https://github.com/StackExchange/dapper-dot-net) kullanılmaktadır. Bütün bu sistemler `Docker` ile paketlenmekte, `Docker Compose` ile orkestre edilmekte ve `Makefile` ile birleştirilmektedir. Bütün bu sistemlerle ilgili detaylı blog yazılarını önceki blog'lardan bulabilirsiniz.
+Yapacağımız performans testiyle bağlantılı olmasa da sistemin altyapısı ile ilgili bilgi almak için projenin [Github](https://github.com/gokhansengun/Simple-Mono-Postgres-Demo)'daki açıklamasını okuyabilirsiniz. Test edeceğimiz sistem .NET'i Linux ve Mac'te çalıştırmak üzere varlık sürdüren açık kaynaklı [Mono](http://www.mono-project.com/) platformu üzerinde çalıştırılmaktadır. Sunulan HTTP API, ASP.NET Web API'deki OWIN/Katana altyapısı ile oluşturulmuştur. Veri tabanı şeması ve test dataların veri tabanına yazılması için [Flyway](https://flywaydb.org/), uygulama sunucusundan veri tabanına erişim için popüler Micro ORM'lerden [Dapper](https://github.com/StackExchange/dapper-dot-net) kullanılmaktadır. Bütün bu sistemler `Docker` ile paketlenmekte, `Docker Compose` ile orkestre edilmekte ve `Makefile` ile birleştirilmektedir. Kullanılan sistemlerle ilgili detaylı blog yazılarını önceki blog'lardan bulabilirsiniz.
 
 ### Tek Kullanıcı için Çalışacak JMeter Script'inin Oluşturulması
 
 Performans testi için oluşturucağımız JMeter Script'ini öncelikle bir kullanıcı için çalıştırılabilir hale getirmemiz gerekmektedir. Test öncesinde ise test senaryomuzu oluşturmalıyız. Test senaryomuz aşağıdaki adımlardan oluşacaktır.
 
-1. Kendisine sağlanan kullanıcı adı ve parola ile sisteme giriş yapması ve bir Token alması.
+1. Öğrencinin kendisine sağlanan kullanıcı adı ve parola ile sisteme giriş yapması ve bir Token alması.
 2. Öğrencinin Üniversite'nin bir departmanında (örneğin Elektrik-Elektronik - EE) açılan dersleri `/api/Registration/ListCoursesByDepartmentYearSeason` çağrısı ile listelemesi.
-3. Öğrencinin listelenen derslerden 3 adet seçmesi ve `/api/Registration/AddCourseForStudent` çağrısı ile o dönem alacağı derslere eklemesi.
-4. Aldığı dersleri `/api/Registration/ListCoursesByDepartmentYearSeason` ile listelemesi.
+3. Öğrencinin listelenen derslerden ayrı ayrı 3 adet ders seçmesi ve `/api/Registration/AddCourseForStudent` çağrısı ile bunları teker teker o dönem alacağı derslere eklemesi.
+4. Öğrencinin aldığı dersleri `/api/Registration/ListCoursesByDepartmentYearSeason` ile listelemesi.
 
 Önceki JMeter blog'larında JMeter Script oluşturmayı bol bol anlattık, bu sebeple bu bölümü normalden biraz hızlı geçeceğiz. Script'i hazır olarak vererek Script'te yer alan bölümleri anlatmakla yetineceğiz.
 
 * [Tek Kullanıcı için JMeter Script'i](/resource/file/JMeterPart4/ListCoursesAndAddTestsOnePerson.jmx)
+* [400 Kullanıcı için düzenlenen JMeter Script'i](/resource/file/JMeterPart4/ListCoursesAndAddTests.jmx)
 * [Kullanıcı Listesi](/resource/file/JMeterPart4/UserList.csv)
 
 JMeter Script'imizin genel görünümü aşağıdaki gibidir.
@@ -76,7 +77,7 @@ JMeter Script'imizin genel görünümü aşağıdaki gibidir.
 
 2. `CSV Data Set Config` bölümünde Registration sistemimize bağlı olan 10000 öğrencinin öğrenci numarası, email'i ve parolasını (aslında parolasının hash'i olması gerekiyor ama testi kolay yapabilmek için parolayı plain olarak tuttuk) sakladığımız CSV dosyasının (JMX dosyası ile aynı klasörde bulunan) ismini, içindeki değerlerin hangi sırayla bulunduğu (bizim için `student_id,username,password`) ve hangi karakterle (bizim için `;`) ayrıldığını konfigüre ettik.
 
-    Bu dosya JMeter tarafından okunarak her bir satır JMeter tarafından oluşturulan Thread'lere (sanal kullanıcılar) atanacaktır. Böylelikle koşturduğumuz her bir thread dosyadaki satır sırasına göre ilgili öğrenciyi simüle edecektir. Bu dosyayı vererek testi şu anda yapacak olduğumuz gibi sadece 1 kullanıcı için çalıştırırsak bu kullanıcıya atanacak değişkenler dosyanın ilk satırındaki bilgiler olacaktır.
+    Bu dosya JMeter tarafından okunacak, her bir satır JMeter tarafından oluşturulan Thread'lere (sanal kullanıcılar) atanacaktır. Böylelikle koşturduğumuz her bir thread dosyadaki satır sırasına göre ilgili öğrenciyi simüle edecektir. Bu dosyayı vererek testi şu anda yapacak olduğumuz gibi sadece 1 kullanıcı için çalıştırırsak bu kullanıcıya atanacak değişkenler dosyanın ilk satırındaki bilgiler olacaktır.
 
     {% include image.html url="/resource/img/JMeterPart4/CSVDataSetConfig.png" description="CSV Data Set Config" %}
 
@@ -197,7 +198,7 @@ JMeter Script'imizin genel görünümü aşağıdaki gibidir.
 
     {% include image.html url="/resource/img/JMeterPart4/ExampleSummaryReport.png" description="Example of Summary Report" %}
 
-4. Her bir yük testinden sonra test sistemini resetlemek ve yeniden başlatmak önemlidir. Özellikle üst üste yapılan testlerden sonra veri tabanında biriken datalar ilerleyen testlerde performansı olumsuz etkileyebilir. Test sistemini Docker Compose ile kurduğumuz için `docker-compose down -v` komutunu çalıştırarak Docker Compose tarafından oluşturulan Container'ları ve Volume'ları kaldırabiliriz.
+4. Her bir yük testinden sonra test sistemini resetlemek ve yeniden başlatmak önemlidir. Özellikle üst üste yapılan testlerden sonra veri tabanında biriken datalar ilerleyen testlerde performansı olumsuz etkileyebilir. Test sistemini Docker Compose ile kurduğumuz için `docker-compose down -v --rmi local` komutunu çalıştırarak Docker Compose tarafından oluşturulan Container'ları ve Volume'ları kaldırabiliriz.
 
 ### İlk Performans Testi
 
@@ -235,11 +236,11 @@ Ve en heyecanlı bölüme geldik, birazdan ilk performans testimizi çalıştır
     * `/api/Registration/AddCourseForStudent` çağrısı, Avg `898 ms` ve Max `16924 ms`'de
     * `/api/Registration/CoursesByStudent` çağrısı, Avg `1035 ms` ve Max `9867 ms`'de
 
-    Aslında sistemimiz 400 eş zamanlı kullanıcıya göre fena performans göstermedi. Kullanıcılar kabul edilebilir (`20000 ms`) sınırlar içerisinde isteklerine cevap alabildiler fakat 400 kullanıcı 4000 olduğunda Response zamanları da aynı oranda artarsa performans istenen sınırlar içerisinde kalmayacaktır. Şimdi bir iyileştirme denemesi yapalım ve testi tekrarlayalım.
+    Aslında sistemimiz 400 eş zamanlı kullanıcıya göre fena performans göstermedi. Kullanıcılar biraz zorlama ile kabul edilebilir (`< 20000 ms`) sınırlar içerisinde isteklerine cevap alabildiler fakat 400 kullanıcı 4000 olduğunda Response zamanları da aynı oranda artarsa performans istenen sınırlar içerisinde kalamayacağı aşikardır. Şimdi bir iyileştirme denemesi yapalım ve testi tekrarlayalım.
 
 ### İyileştirme Denemesi ve Yeni Yük Testi
 
-Registration sistemimizin performansı da birçok başka sistem gibi veri tabanı performansı ile paraleldir. Bu veya benzer bir sistemin performansını en iyi noktaya çıkarmak (boost) etmek için neler yapabileceğimizi .NET özelinde başka blog post'larda detaylı olarak ele alacağız. Burada konuyu dağıtmamak için detaylı olarak performansı en iyileştirmeye çalışmayacağız sadece bir fark yaratmaya çalışacağız.
+Registration sistemimizin performansı da birçok başka sistem gibi genellikle veri tabanı performansına bağımlıdır. Bu veya benzer bir sistemin performansını en iyi noktaya çıkarmak (boost etmek) için neler yapabileceğimizi .NET özelinde başka blog post'larda detaylı olarak ele alacağız. Burada konuyu dağıtmamak için detaylı olarak performansı en iyileştirmeye çalışmayacağız sadece bir fark yaratıp onu incelemeye çalışacağız.
 
 `/api/Registration/CoursesByStudent` çağrısının koşturulması sırasında aşağıdaki SQL dosyasının çalıştırılmaktadır.
 
@@ -255,7 +256,7 @@ Registration sistemimizin performansı da birçok başka sistem gibi veri taban�
     INNER JOIN asp_net_users usr ON usr.id = s.user_id
     WHERE tc.student_id = @studentId AND usr.id = @userId
 
-Bu SQL (`@student_id` ve `@userId`) örnek dataları sağlandığında PostgreSQL'in Explain aracı aşağıdaki gibi bir çalıştırma planı sunmaktadır. Bu plandan görülebileceği üzere, Query'nin en fazla kayıtla uğraştığı bölümler `taken_courses` ve `students` tablolarından ilgili bilgileri çektiği bölümlerdir.
+Bu SQL'e (`@student_id` ve `@userId`) örnek dataları sağlandığında PostgreSQL'in Explain aracı aşağıdaki gibi bir çalıştırma planı sunmaktadır. Bu plandan görülebileceği üzere, Query'nin en fazla kayıtla uğraştığı, I/O yaptığı dolayısıyla performans kaybettiği bölümler `taken_courses` ve `students` tablolarından ilgili bilgileri çektiği bölümlerdir.
 
 {% include image.html url="/resource/img/JMeterPart4/PostgresExecutionPlanBefore.png" description="Postgres Execution Plan Before" %}
 
@@ -285,20 +286,20 @@ Aşağıdaki adımları takip edebiliriz.
         $ docker-compose up flyway-migrator
         $ docker-compose up -d app
 
-3. Testi başlatmadan önce performans artışı sağlayacağını düşündüğümüz aşağıdaki Index'leri ekleyelim.
+3. Testi başlatmadan önce performans artışı sağlayacağını düşündüğümüz aşağıdaki Index'leri veri tabanımıza ekleyelim.
 
         CREATE INDEX taken_courses_student_id_idx ON taken_courses (student_id);
         CREATE INDEX students_student_id_idx ON students (student_id); 
 
-3. JMeter'da testi başlatın ve `Summary Report`'taki sonucun ekran çıktısını alarak bir yere `JMeter-Improvement-Try-1-Test` ismi ile kaydedin. Benim bilgisayarımda oluşan çıktı aşağıdaki gibi oldu.
+3. JMeter'da testi başlatalım ve `Summary Report`'taki sonucun ekran çıktısını alarak bir yere `JMeter-Improvement-Try-1-Test` ismi ile kaydedelim. Benim bilgisayarımda oluşan çıktı aşağıdaki gibi oldu.
 
     {% include image.html url="/resource/img/JMeterPart4/ImprovementTryPerfTestResults.png" description="Improvement as a Result of Indexes" %}
 
-    Karşılaştırmayı daha iyi yapabilmek için yaptığımız ilk testin sonucunu aşağıya alalım.
+    Karşılaştırmayı daha iyi yapabilmek için yaptığımız ilk testin sonucunu da aşağıya alalım.
 
     {% include image.html url="/resource/img/JMeterPart4/FirstPerfTestResults.png" description="Result of first performans Test" %}
 
-    Gördüğünüz gibi iyileştirme yaptığımız SQL Query'sinin dahil olduğu `/api/Registration/CoursesByStudent` yani `Get Courses By Student` methodunun ortalama süresi `1035 ms`'den `432 ms`'ye düştü. Bunun yanında ilk bakışta ilginç gelebilecek şekilde iyileştirme yapmadığımız diğer bütün çağrıların ortalama dönüş süreleri `%30` ile `%90` arasında iyileşti. Bu iyileşme, eklediğimiz faydalı Index'lerle normalde daha uzun süren bir Query için veri tabanı kaynaklarının (Connection Pool'daki Connection'lar, vb) kullanımını düşürmemizle gerçekleşti. Veri tabanı kaynaklarından tasarruf etmemiz ortaya çıkan kullanılabilir kaynakların diğer çağrılar tarafından kullanılabilmesini ve sonucunda genel bir performans artışı sağladı.
+    Gördüğünüz gibi iyileştirme yaptığımız SQL Query'sinin dahil olduğu `/api/Registration/CoursesByStudent` yani `Get Courses By Student` methodunun ortalama süresi `1035 ms`'den `432 ms`'ye düştü yani `%140` iyileşti. Bunun yanında ilk bakışta ilginç gelebilecek şekilde iyileştirme yapmadığımız diğer bütün çağrıların ortalama dönüş süreleri `%30` ile `%90` arasında iyileşti. Bu iyileşme, eklediğimiz faydalı Index'lerle normalde daha uzun süren bir Query için veri tabanı kaynaklarının (Connection Pool'daki Connection'lar, vb) kullanımını düşürmemizle gerçekleşti. Veri tabanı kaynaklarından tasarruf etmemiz ortaya çıkan kullanılabilir kaynakların diğer çağrılar tarafından kullanılabilmesini ve sonucunda genel bir performans artışı sağladı.
 
 ## Sonuç
 
