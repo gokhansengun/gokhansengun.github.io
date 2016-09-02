@@ -328,12 +328,12 @@ Kullanım senaryosunu örneklemeye çalışalım. Docker Compose ile oluşturdu�
         nginx-service:
             build: WebSite
             depends_on:
-                - service-b
+                - ruby-service
 
         ruby-service:
             build: WebApp
             depends_on:
-                - nginx-service
+                - redis-service
         
         redis-service:
             image: redis
