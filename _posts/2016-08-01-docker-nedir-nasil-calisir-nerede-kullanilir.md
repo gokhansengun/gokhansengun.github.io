@@ -343,6 +343,7 @@ Docker ile birlikte Tenancy mantığı uygulama kodundan kaldırılabilir. Uygul
 |`docker top <container_id>`|İlgili Container'da `top` komutunu çalıştırarak çıktısını gösterir|
 |`docker run -it <image_id|image_name> CMD`|Verilen Image'dan terminal'i attach ederek bir Container oluşturur|
 |`docker pause <container_id>`|İlgili Container'ı duraklatır|
+|`docker unpause <container_id>`|İlgili Container `pause` ile duraklatılmış ise çalışmasına devam ettirilir|
 |`docker stop <container_id>`|İlgili Container'ı durdurur|
 |`docker start <container_id>`|İlgili Container'ı durdurulmuşsa tekrar başlatır|
 |`docker rm <container_id>`|İlgili Container'ı kaldırır fakat ilişkili Volume'lara dokunmaz|
