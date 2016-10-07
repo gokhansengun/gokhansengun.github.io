@@ -4,6 +4,8 @@ title: "JMeter Bölüm 4: Performans Testi Nasıl Hazırlanır?"
 level: Orta
 published: true
 progress: finished
+lang: tr
+ref: jmeter-part-4
 ---
 
 Günümüz sistemlerinin geldiği noktada zengin fonksiyonlar sağlamak artık farklılık yaratan bir unsur olmaktan yavaş yavaş çıkmaktadır. Kullanıcılar, üç aşağı beş yukarı benzer fonksiyonları sunan servisler arasında daha performanslı ve daha kararlı çalışan sistemleri tercih etmektedirler. Bu tarz sistemleri kullanıma sunmak için sistemin dar boğazlarını, yani performans problemi yaratacak bölümlerini, henüz gerçek kullanıcılar görmeden yakalamak ve çözmek için gerçek senaryolara yakın senaryolarda performans testleri yapmak gereklidir. JMeter, sunduğu pratik test senaryosu hazırlama olanakları ve bu senaryoları farklı girdilerle paralel olarak istenen sayıda kullanıcı için koşturabilme özellikleri ile Performans Testi yapmak için mükemmel bir alternatif olarak ortaya çıkmaktadır ki JMeter'ın en çok kullanıldığı alan da zaten Performans Testidir. JMeter ile paralel şekilde koşturulan sanal kullanıcılar kendilerine verilen senaryoları icra ederek sistemin verdiği cevapları ve metrikleri test sonrası kullanılmak üzere kaydederler. Oluşan bu bilgiler hemen test sonrası JMeter GUI'si ile incelenebildiği gibi bir dosyaya kaydedilerek test sonrası yine JMeter GUI ile açılıp incelenebilir. 

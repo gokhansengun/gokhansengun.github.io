@@ -73,7 +73,6 @@ timezone: "Europe/Istanbul"
 markdown: kramdown
 highlighter: rouge
 permalink: /:title/
-paginate: 20
 
 kramdown:
   input: GFM
@@ -147,6 +146,3 @@ prose:
           element: "checkbox"
           label: "Publish"
           help: "Check to publish post, uncheck to hide."
-
-gems:
-  - jekyll-paginate

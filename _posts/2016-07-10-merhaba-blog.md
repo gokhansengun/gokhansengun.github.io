@@ -2,6 +2,8 @@
 layout: post
 title: Merhaba Blog Dünyası!
 level: Başlangıç
+lang: tr
+ref: hello-blog
 ---
 
 İlk blog yazımda bu blogun başlatılma gerekçesi ve içerik hedefi ile ilgili biraz bilgi vermek istiyorum.

@@ -2,6 +2,8 @@
 layout: post
 title: "Docker Bölüm 3: Docker Compose Hangi Amaçlarla ve Nasıl Kullanılır?"
 level: Başlangıç
+lang: tr
+ref: docker-part-3
 ---
 
 Docker blog serimizin ilk iki bölümünde Docker'ı günlük hayatta kullanmaya başlamak için gerekli bilgi seviyesini oluşturmak için Docker ve sunduğu olanakları yakından tanımaya çalıştık. Bu blog'da ise Docker'ı gerek geliştirme, gerek test ve gerekse de üretim ortamında nasıl kullanabileceğimiz ile ilgili çok pratik ve genellikle demo'lardan oluşan bilgileri elde edeceğiz. Eminim verilen örnekler sizin kafanızda da farklı çağrışımlar uyandıracak ve siz de kendinizi her gün uğraştığınız işlerde Docker kullanarak nasıl daha verimli olabileceğinize dair düşünceler içinde bulacaksınız.

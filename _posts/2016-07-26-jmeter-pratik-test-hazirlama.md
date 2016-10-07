@@ -3,6 +3,8 @@ layout: post
 title: "JMeter Bölüm 3: Pratik Test Senaryosu Kaydı Nasıl Yapılır?"
 level: Orta
 progress: finished-not-reviewed
+lang: tr
+ref: jmeter-part-3
 ---
 
 [Bir önceki blog yazısında](/jmeter-fonksiyon-testi-hazirlama/) JMeter kullanarak Github'da en çok kullanılan işlemleri bir fonksiyonel test senaryosu haline getirdik. Birçok komponenti bir arada etkili bir şekilde kullanmanın yanında, web uygulamaları için test senaryosu yazımında karşımıza çıkabilecek Cross Site Request Forgery (CSRF) ve başka bazı kavramları da öğrendik. O blog yazısının Yöntem başlığında da söz ettiğimiz gibi aslında JMeter script'lerini daha hızlı ve pratik bir şekilde hazırlamanın başka yolları da var. Bu blog yazısında bu yollardan web uygulamaları için kullanılabilecek en pratik yönteme bir göz atacağız.

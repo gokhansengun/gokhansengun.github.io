@@ -2,6 +2,8 @@
 layout: post
 title: Blog'un Teknik Altyapısı
 level: Başlangıç
+lang: tr
+ref: blog-technical-infrastructure
 ---
 
 Bu blog'da, okuduğunuz bu blog'u hazırlarken ve sizlere sunarken kullanılan yöntemler, araçlar ve teknik altyapı ile ilgili detaylı bilgiler vermeye çalışacağız. Bu yazıyı okuyup, referans verilen linkleri takip ederek siz de kendi blog sitenizi oluşturabilirsiniz. Önceden web sitesi oluşturma, yayınlama ve web programlama tecrübeniz varsa hem yazıyı daha rahat takip edebilirsiniz hem de blog üzerinde yapmak istediğiniz değişiklikleri daha rahat yapabilirsiniz.

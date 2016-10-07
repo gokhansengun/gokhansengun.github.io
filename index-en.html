@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Kendime Notlar
+title: Notes to myself
 subtitle: .net teknolojileri, docker, sql ve nosql veri tabanları, performans optimizasyonu, ci/cd ve verimlilik artıran geliştirici araçları ile ilgili yazılar
-lang: tr
+lang: en
 ref: index-page  
 ---
 
@@ -26,18 +26,18 @@ ref: index-page
         {% assign m = post.date | date: "%-m" %}
         {{ post.date | date: "%-d" }}
         {% case m %}
-          {% when '1' %}Ocak
-          {% when '2' %}Şubat
-          {% when '3' %}Mart
-          {% when '4' %}Nisan
-          {% when '5' %}Mayıs
-          {% when '6' %}Haziran
-          {% when '7' %}Temmuz
-          {% when '8' %}Ağustos
-          {% when '9' %}Eylül
-          {% when '10' %}Ekim
-          {% when '11' %}Kasım
-          {% when '12' %}Aralık
+          {% when '1' %}January
+          {% when '2' %}February
+          {% when '3' %}March
+          {% when '4' %}April
+          {% when '5' %}May
+          {% when '6' %}June
+          {% when '7' %}July
+          {% when '8' %}August
+          {% when '9' %}September
+          {% when '10' %}October
+          {% when '11' %}November
+          {% when '12' %}December
         {% endcase %}
         {{ post.date | date: "%Y" }}
       </span>
