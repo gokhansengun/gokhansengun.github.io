@@ -26,18 +26,18 @@ ref: index-page
         {% assign m = post.date | date: "%-m" %}
         {{ post.date | date: "%-d" }}
         {% case m %}
-          {% when '1' %}January
-          {% when '2' %}February
-          {% when '3' %}March
-          {% when '4' %}April
-          {% when '5' %}May
-          {% when '6' %}June
-          {% when '7' %}July
-          {% when '8' %}August
-          {% when '9' %}September
-          {% when '10' %}October
-          {% when '11' %}November
-          {% when '12' %}December
+          {% when '1' %}{{ site.t_date[page.lang].January }}
+          {% when '2' %}{{ site.t_date[page.lang].February }}
+          {% when '3' %}{{ site.t_date[page.lang].March }}
+          {% when '4' %}{{ site.t_date[page.lang].April }}
+          {% when '5' %}{{ site.t_date[page.lang].May }}
+          {% when '6' %}{{ site.t_date[page.lang].June }}
+          {% when '7' %}{{ site.t_date[page.lang].July }}
+          {% when '8' %}{{ site.t_date[page.lang].August }}
+          {% when '9' %}{{ site.t_date[page.lang].September }}
+          {% when '10' %}{{ site.t_date[page.lang].October }}
+          {% when '11' %}{{ site.t_date[page.lang].November }}
+          {% when '12' %}{{ site.t_date[page.lang].December }}
         {% endcase %}
         {{ post.date | date: "%Y" }}
       </span>

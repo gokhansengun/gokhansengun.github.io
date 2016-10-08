@@ -162,3 +162,31 @@ t:
     next: "SONRAKİ"
     previous: "ÖNCEKİ"
 
+t_date:
+  en:
+    January: "January"
+    February: "February"
+    March: "March"
+    April: "April"
+    May: "May"
+    June: "June"
+    July: "July"
+    August: "August"
+    September: "September"
+    October: "October"
+    November: "November"
+    December: "December"
+  tr:
+    January: "Ocak"
+    February: "Şubat"
+    March: "Mart"
+    April: "Nisan"
+    May: "Mayıs"
+    June: "Haziran"
+    July: "Temmuz"
+    August: "Ağustos"
+    September: "Eylül"
+    October: "Ekim"
+    November: "Kasım"
+    December: "Aralık"
+

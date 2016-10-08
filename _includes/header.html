@@ -42,18 +42,18 @@
           {% assign m = page.date | date: "%-m" %}
           {{ page.date | date: "%-d" }}
           {% case m %}
-            {% when '1' %}Ocak
-            {% when '2' %}Şubat
-            {% when '3' %}Mart
-            {% when '4' %}Nisan
-            {% when '5' %}Mayıs
-            {% when '6' %}Haziran
-            {% when '7' %}Temmuz
-            {% when '8' %}Ağustos
-            {% when '9' %}Eylül
-            {% when '10' %}Ekim
-            {% when '11' %}Kasım
-            {% when '12' %}Aralık
+            {% when '1' %}{{ site.t_date[page.lang].January }}
+            {% when '2' %}{{ site.t_date[page.lang].February }}
+            {% when '3' %}{{ site.t_date[page.lang].March }}
+            {% when '4' %}{{ site.t_date[page.lang].April }}
+            {% when '5' %}{{ site.t_date[page.lang].May }}
+            {% when '6' %}{{ site.t_date[page.lang].June }}
+            {% when '7' %}{{ site.t_date[page.lang].July }}
+            {% when '8' %}{{ site.t_date[page.lang].August }}
+            {% when '9' %}{{ site.t_date[page.lang].September }}
+            {% when '10' %}{{ site.t_date[page.lang].October }}
+            {% when '11' %}{{ site.t_date[page.lang].November }}
+            {% when '12' %}{{ site.t_date[page.lang].December }}
           {% endcase %}
           {{ page.date | date: "%Y" }}
         </span>
@@ -91,18 +91,18 @@
           {% assign m = page.date | date: "%-m" %}
           {{ page.date | date: "%-d" }}
           {% case m %}
-            {% when '1' %}Ocak
-            {% when '2' %}Şubat
-            {% when '3' %}Mart
-            {% when '4' %}Nisan
-            {% when '5' %}Mayıs
-            {% when '6' %}Haziran
-            {% when '7' %}Temmuz
-            {% when '8' %}Ağustos
-            {% when '9' %}Eylül
-            {% when '10' %}Ekim
-            {% when '11' %}Kasım
-            {% when '12' %}Aralık
+            {% when '1' %}{{ site.t_date[page.lang].January }}
+            {% when '2' %}{{ site.t_date[page.lang].February }}
+            {% when '3' %}{{ site.t_date[page.lang].March }}
+            {% when '4' %}{{ site.t_date[page.lang].April }}
+            {% when '5' %}{{ site.t_date[page.lang].May }}
+            {% when '6' %}{{ site.t_date[page.lang].June }}
+            {% when '7' %}{{ site.t_date[page.lang].July }}
+            {% when '8' %}{{ site.t_date[page.lang].August }}
+            {% when '9' %}{{ site.t_date[page.lang].September }}
+            {% when '10' %}{{ site.t_date[page.lang].October }}
+            {% when '11' %}{{ site.t_date[page.lang].November }}
+            {% when '12' %}{{ site.t_date[page.lang].December }}
           {% endcase %}
           {{ page.date | date: "%Y" }}
         </span>
