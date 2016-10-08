@@ -23,9 +23,13 @@ description: .net teknolojileri, docker, sql ve nosql veri tabanları, performan
 
 # List of links in the navigation bar
 navbar-links:
-  Blog: ""
-  Hakkımda: "aboutme"
-  #Arama: "search"
+  en:
+    Blog: "index-en/"
+    About Me: "aboutme-en"
+    #Arama: "search"
+  tr:
+    Blog: ""
+    Hakkımda: "aboutme"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
@@ -76,6 +80,7 @@ permalink: /:title/
 
 kramdown:
   input: GFM
+  syntax_highlighter: rouge
 
 # Default YAML values (more information on Jekyll's site)
 defaults:
@@ -146,3 +151,14 @@ prose:
           element: "checkbox"
           label: "Publish"
           help: "Check to publish post, uncheck to hide."
+
+# translations
+
+t:
+  en:
+    next: "NEXT"
+    previous: "PREVIOUS"
+  tr:
+    next: "SONRAKİ"
+    previous: "ÖNCEKİ"
+

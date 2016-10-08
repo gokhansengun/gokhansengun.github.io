@@ -21,16 +21,34 @@ layout: base
 	    </article>
 	  	  
       <ul class="pager blog-pager">
-        {% if page.previous.url %}
-        <li class="previous">
-          <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; ÖNCEKİ YAZI</a>
-        </li>
+      {% for post in site.posts %}
+        {% if post.lang == page.lang %}
+          {% if prev %}
+            <li class="previous">
+              <a href="{{ post.url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; {{ site.t[page.lang].previous }}</a>
+            </li>
+          {% endif %}
+          {% assign prev = false %}
+          {% if post.id == page.id %}
+            {% assign prev = true %}
+          {% endif %}
         {% endif %}
-        {% if page.next.url %}
-        <li class="next">
-          <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">SONRAKİ YAZI &rarr;</a>
-        </li>
+      {% endfor %}
+
+      {% for post in site.posts reversed %}
+        {% if post.lang == page.lang %}
+          {% if next %}
+            <li class="next">
+              <a href="{{ post.url }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">{{ site.t[page.lang].next }} &rarr;</a>
+            </li>
+            {% break %}
+          {% endif %}
+          {% assign next = false %}
+          {% if post.id == page.id %}
+            {% assign next = true %}
+          {% endif %}
         {% endif %}
+      {% endfor %}
       </ul>
       
 	    {% if page.comments %}

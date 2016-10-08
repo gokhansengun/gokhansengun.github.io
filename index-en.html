@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Notes to myself
-subtitle: .net teknolojileri, docker, sql ve nosql veri tabanları, performans optimizasyonu, ci/cd ve verimlilik artıran geliştirici araçları ile ilgili yazılar
+subtitle: blog posts about .net technologies, docker, sql ve nosql databases, performans optimization, ci/cd and developer tools related with productivity
 lang: en
 ref: index-page  
 ---
@@ -22,7 +22,7 @@ ref: index-page
 
     <p class="post-meta">
       <span class="post-date">
-        <strong>Tarih:</strong>
+        <strong>Date:</strong>
         {% assign m = post.date | date: "%-m" %}
         {{ post.date | date: "%-d" }}
         {% case m %}
@@ -42,13 +42,13 @@ ref: index-page
         {{ post.date | date: "%Y" }}
       </span>
       <span class="post-level">
-        <strong>Seviye:</strong> {{post.level }}
+        <strong>Level:</strong> {{post.level }}
       </span>
     </p>
 
     <div class="post-entry">
       {{ post.content | strip_html | xml_escape | truncatewords: 50 }}
-	  <a href="{{ post.url | prepend: site.baseurl }}" class="post-read-more">[Devamını&nbsp;Oku]</a>
+	  <a href="{{ post.url | prepend: site.baseurl }}" class="post-read-more">[Continue&nbsp;Reading]</a>
     </div>
 
    </article>

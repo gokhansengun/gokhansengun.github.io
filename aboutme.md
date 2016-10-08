@@ -2,6 +2,8 @@
 layout: page
 title: Hakkımda
 subtitle:
+lang: tr
+ref: aboutme-page 
 ---
 
 Netaş'ta Yeni Ürün Geliştirme ve Ar-Ge İş Geliştirme Müdürü olarak çalışıyorum. İstanbul'da yaşıyorum, evliyim ve bir çocuk babasıyım :) İleri düzeyde İngilizce orta düzeyde de Almanca biliyorum. 
@@ -26,6 +28,7 @@ Aşağıdaki konularla yakından ilgileniyorum, bu blogda çoğunlukla bu konula
 - NoSQL veri tabanları (MongoDb, Cassandra)
 - Uygulama sunucusu ve veri tabanı sunucusu performans optimizasyonu
 - Docker
+- Vagrant
 - Continuous Integration, Continuous Delivery
 - 3rd parti geliştirme araçları ve kütüphaneler (electron, flyway, log4net, Moq, xUnit)
 - Node.js ve Go dillerinde deneysel çalışmalar

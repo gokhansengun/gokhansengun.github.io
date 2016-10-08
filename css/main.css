@@ -594,3 +594,25 @@ pre code {
     display: block;
     text-align: center;
 }
+
+.navbar-header .navbar-brand {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.navbar-header .navbar-active-lang {
+    color: #000;
+}
+
+.navbar-header .navbar-inactive-lang {
+    color: #888;
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-header .navbar-brand {
+      padding: 15px 5px;
+      font-size: 12px;
+      line-height: 20px;
+  }
+}
+
