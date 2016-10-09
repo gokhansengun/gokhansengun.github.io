@@ -4,11 +4,10 @@ title: Why Do Long Database Transactions Affect Performance?
 level: Intermediate
 lang: en
 published: true
-progress: continues
 ref: why-do-long-db-transactions-affect-performance
 ---
 
-So almost everybody working with database transactions knows that the transactions should be started and then committed as soon as we are done with it. Is this really the case? If this is the case, what is the underlying mechanism causing performance issues if we start a transaction and do not hurry up in committing it or our business just does not allow to commit it very quickly? In this blog post, we will try to dig this subject by using a few programs.
+So almost everybody working with database transactions knows that the transactions should be started and then committed as soon as we are done with it to have better performance. Is this really the case? If this is the case, what is the underlying mechanism causing performance issues if we start a transaction and do not hurry up in committing it or our business just does not allow to commit it very quickly? In this blog post, we will try to dig this subject by using a few programs.
 
 ### Work Summary
 
@@ -19,16 +18,16 @@ In this blog, we will try to see mechanics of database transaction management an
 * We will learn what connection pooling is.
 * We will write a program to better see the mechanics of the database transaction handling of an application.
 * We will alter the program to show performance hit this time if long running database transactions are used.
-* We will talk about whether ambient transactions behave
+* We will talk about whether ambient transactions behave differently than connection transactions.
 * We will finally talk about the countermeasures to alleviate performance issues if we just really can not commit quickly due to the business logic we are running. 
 
 ### Prerequisites
 
-In order to follow this blog and the examples given easily, you need to be familiar with Docker Compose and JMeter a bit. Being able to run docker-compose and running JMeter will be enough. Even if you do not know Docker Compose and JMeter or just do not want to use them or do not want to follow along, you can trust what is written and tried here and still benefit from it :)
+In order to follow this blog and the examples given easily, you need to be familiar with Docker Compose and Make a bit. Being able to run docker-compose and running Make will be enough. Even if you do not know Docker Compose and Make or just do not want to use them or do not want to follow along, you can trust what is written and tried here and still benefit from it :)
 
 ### Disclaimer
 
-**Please note that everything written here is valid for .NET.** Database transaction management in other platforms may be different and these explanations might be not valid
+**Please note that everything written here is valid for .NET.** Although very unlikely, database transaction management in other platforms may be different and these explanations might be not valid.
 
 ### What is a database transaction?
 
@@ -38,15 +37,27 @@ Most striking database transaction example however related with money as you may
 
 ### How .NET handles a transaction with the database server?
 
-.NET applications issue commands to the database servers through `SqlCommand` object which requires an `SqlConnection` to be created. `SqlConnection` under the hood, communicates with the database using a pipe, TCP connection, etc. 
+.NET applications issue queries to the database servers through `SqlCommand` object which requires an `SqlConnection` to be created. `SqlConnection` under the hood, communicates with the database using a pipe, TCP connection, etc. 
 
-.NET provides the generic interface (ADO.NET) to communicate with the databases, this interface does not know any database. In order to communicate with a database, you need a database data provider written for the database. For example, in order to use MS-SQL database, you need the data provider for MS-SQL in namespace `System.Data.SqlClient`. To use one of the greatest Open Source databases, PostgreSQL you need [Npgsql](http://www.npgsql.org/).
+.NET provides the generic interface (ADO.NET) to communicate with the databases, this interface does not know any database. In order to communicate with a database, you need a database data provider written for the database. For example, in order to use MS-SQL database, you need the data provider for MS-SQL in namespace `System.Data.SqlClient`. To use one of the greatest Open Source databases, PostgreSQL you need [Npgsql](http://www.npgsql.org/) as Data Provider.
 
-Keeping the lecture short, when the application code issues a transaction to ADO.NET, ADO.NET passes it to the database data provider which instructs the database in the correct way that the commands through this connection will be transactional unless the transaction is committed or all rollbacked. So commands using a connection for which a transaction is created are included in the transaction. Looking this from the other side, the data provider can not use this connection for other commands that does not want to use the transaction because the data provider and the database is using the connection to keep track of the commands used in the transaction. This is an important observation. This connection will belong only to the commands that are part of the transaction and it will not be usable by others until the transaction committed or rolled back. 
+Keeping the lecture short, when the application code issues a transaction to ADO.NET, ADO.NET passes it to the database data provider which instructs the database in the correct way that the queries through this connection will be transactional unless the transaction is committed or all rolled back. So queries using a connection for which a transaction is created are included in the transaction. Looking this from the other side, the data provider can not use this connection for other queries that does not want to use the transaction because the data provider and the database is using the connection to keep track of the queries used in the transaction. This is an important observation. This connection will belong only to the queries that are part of the transaction and it will not be usable by others until the transaction committed or rolled back. 
 
-### What is connection pooling?
+### What is Connection Pooling?
 
-Most database data providers are using connection pooling to boost the performance. In order to communicate with the database, database data providers use pipe, TCP or another communication mechanism. Creating the connection (especially TCP connection due to three-way-handshake) is an expensive operation, therefore database data providers are trying to be smart and manage connections optimal based on the usage. For example, data provider does not close the connection immediately after executing the first command in case another command is received shortly after. In the same way, when the application sends multiple commands to the data provider, data provider may open multiple connections and keep them open to satisfy the requests. Finally data providers may be configured to open a minimum number of connections upfront and does not go beyond a maximum number of connections limit. For example, we may configure the data provider that in the first hit, it creates 10 connections and it does not go beyond 100 even if there is no available connection and there is a command to be satisfied.
+Most database data providers are using connection pooling to boost the performance. In order to communicate with the database, database data providers use pipe, TCP or another communication mechanism. Creating the connection (especially TCP connection due to three-way-handshake) is an expensive operation, therefore database data providers are trying to be smart and manage connections optimal based on the usage. For example, data provider does not close the connection immediately after executing the first command in case another command is received shortly after. In the same way, when the application sends multiple commands to the data provider, data provider may open multiple connections and keep them open to satisfy the requests. Finally data providers may be configured to open a minimum number of connections upfront and does not go beyond a maximum number of connections limit. For example, we may configure the data provider that in the first hit, it creates 10 connections and it does not go beyond 100 even if there is no available connection and there is a command to be satisfied. Connection Pooling is setup in application's configuration file `*.config` with Connection Strings. For the scenario given above, MS-SQL and PostgreSQL Connection String Examples are given below.
+
+MS-SQL:
+
+```
+"....;min pool size=10;max pool size=100;"
+```
+
+PostgreSQL:
+
+```
+"....;Minimum Pool Size=10;Maximum Pool Size=100;"
+```
 
 In order to better understand the connection pooling and its power, think a situation where we have maximum number of connections set to 100 (which is the default BTW). If on the average, our database queries are resulted in 50 ms, it means we can issue 20 (1000 / 50) commands in 1 second on single connection, 100 connections means 2000 (20 x 100) commands in a second which is a very good number. As you may see, the correct number of maximum connections should be engineered according to the application's behaviour.
 
@@ -111,7 +122,7 @@ app_1          | 23:54:33 EXCEPTION: with The connection pool has been exhausted
 app_1          | 23:54:33 EXCEPTION: with The connection pool has been exhausted, either raise MaxPoolSize (currently 2) or Timeout (currently 5 seconds)
 ```
 
-### Another C# program to explain performance hit of database connection shortage
+### Another C# program to explain performance hit of long transactions
 
 More examples will let us grab the subject better.
 
@@ -140,9 +151,9 @@ app_1          | 00:20:09 Committed for threadId: 12
 app_1          | Putting 100 for each of 20 took 41672 milliseconds
 ```
 
-So it took around 41 seconds instead of 10 seconds. OK 10 seconds is utopic, but it must be something closer. Hopefully we have Github and we have Docker, God bless them both.
+So it took around 41 seconds instead of 10 seconds. OK 10 seconds is utopic, but it must be something closer. Bottleneck in the database connection pool caused this. Threads have lost most of their times in trying to find a suitable connection because of the ones hold by Transactions. Hopefully we have Github and we have Docker and we can prove this observation by allowing more database connections in the next test, God bless them both.
 
-Below repository on `perf-hit` branch creates another console program that 
+Below repository on `perf-hit-avail-more-conns` branch creates another console program that 
 
 * Sets the maximum number of connections to 40
 * Sets connection timeout (time to wait until connecting to the database) to 30 seconds
@@ -212,5 +223,7 @@ As we clearly shown above, keeping the database transactions too long really hur
 Connection pooling is an optimization for performance, it is good one. This is both because it reuses the connection multiple times and it protects database server to overload. Think of a situation where your app issues 10K queries at the same time which can kill your database server. It might not be your app, actually most of the time your app is not alone, there are many applications sharing the database. Using all the available connections or indirectly resources (CPU, RAM), you make the database server unusable for both you and other users of the server. So as you may have guessed, it is again mostly an engineering problem, you have to define the maximum number of connections by engineering it.
 
 There is only one trick that could help reducing transaction open time though. Put database interaction at the end of the block and initiate transaction as late as possible. If your app uses a web service to validate a payment for example, validate through the service first, start the transaction and place the order later (assuming placing the order requires transaction). Starting the transaction, validating payment and placing the order will cause performance hit.
+
+Having said all of this, there is another truth about the performance, not every systems need this type of a performans optimization. If you are developing a system for only a few users, do not worry much about the performance and concentrate on implementing the functionality and the development cost.
 
 I hope you enjoyed as much as I enjoyed writing all these. Waiting for the comments and corrections if any.

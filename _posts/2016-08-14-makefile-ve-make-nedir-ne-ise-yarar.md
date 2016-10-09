@@ -26,14 +26,15 @@ Bu blog'da yer verilen konuyu daha rahat takip edebilmeniz için aşağıdaki ko
 
 #### Windows Kullanıcıları
 
-Sağlayacağımız Makefile'lar aslında Windows sistemlerde nmake ile sentaks olarak sorunsuz çalışabilir fakat Makefile'lar içerisinde kullanılan komutların bazıları Windows sistemlerde bulunmayacağı için bu blog'da verilen adımlar sağlıklı bir şekilde takip edilemeyecektir. 
+Sağlayacağımız Makefile'lar aslında Windows sistemlerde bazı araçlarla sentaks olarak sorunsuz çalışabilir fakat Makefile'lar içerisinde kullanılan komutların bazıları Windows sistemlerde bulunmayacağı için bu blog'da verilen adımlar sağlıklı bir şekilde takip edilemeyecektir. 
 
 Windows'ta Linux/Unix'teki make aracını çalıştırabilmek için bugün itibari ile dört opsiyon bulunmaktadır.
 
 1. Docker ile herhangi bir Ubuntu Linux bazlı Image terminal attached modda çalıştırılarak make aracına erişilebilir fakat Docker metin editörü olarak grafik bazlı bir araç sunmadığı için pek pratik olmayacaktır.
 2. Virtual Box, Hyper-V veya VMware ile Windows üzerine Linux/Unix bazlı bir işletim sistemi kurulabilir.
 3. Windows 10 öncesi sistemler için [Cygwin](https://www.cygwin.com/) kurularak buradan make aracına erişilebilir
-4. Windows 10 kullanıcıları için bizim tavsiye edeceğimiz ise [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about) ile birlikte Linux/Unix'teki make aracının kullanılmasıdır. Eğer Windows 10 kullanıyorsanız, bu yöntemi şiddetle tavsiye ederiz.
+4. [GnuWin32](http://gnuwin32.sourceforge.net/packages/make.htm) aracı kullanılabilir.
+5. Windows 10 kullanıcıları için bizim tavsiye edeceğimiz ise [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about) ile birlikte Linux/Unix'teki make aracının kullanılmasıdır. Eğer Windows 10 kullanıyorsanız, bu yöntemi şiddetle tavsiye ederiz. Windows 10 kullanmıyorsanız ya da Windows 10 kullanıyor fakat Bash kullanmak istemiyorsanız GnuWin32 güçlü bir alternatif olarak karşımızda durmaktadır.
 
 ### Makefile ve Make Aracı - Giriş
 
