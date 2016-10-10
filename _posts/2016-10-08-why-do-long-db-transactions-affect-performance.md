@@ -187,7 +187,7 @@ Ambient Transactions are great, really great. With the help of them, we are not 
 
 Below patch converts the Connection Transaction in our code to Ambient Transaction.
 
-```
+```csharp
 -   using (var transaction = sqlConnection.BeginTransaction(IsolationLevel.ReadCommitted))
 +   using (var tran = new TransactionScope())
     {

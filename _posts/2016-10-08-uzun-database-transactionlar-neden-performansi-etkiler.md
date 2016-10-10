@@ -195,7 +195,7 @@ Ambient Transaction'lar gerçekten çok faydalıdır. Sayelerinde veri tabanı T
 
 Aşağıdaki Patch test programlarında Connection Transaction'ını Ambient Transaction'a çevirmektedir.
 
-```
+```csharp
 -   using (var transaction = sqlConnection.BeginTransaction(IsolationLevel.ReadCommitted))
 +   using (var tran = new TransactionScope())
     {
