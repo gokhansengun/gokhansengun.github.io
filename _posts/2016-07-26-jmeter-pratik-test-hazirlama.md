@@ -2,7 +2,7 @@
 layout: post
 title: "JMeter Bölüm 3: Pratik Test Senaryosu Kaydı Nasıl Yapılır?"
 level: Orta
-progress: finished-not-reviewed
+progress: finished
 lang: tr
 ref: jmeter-part-3
 ---

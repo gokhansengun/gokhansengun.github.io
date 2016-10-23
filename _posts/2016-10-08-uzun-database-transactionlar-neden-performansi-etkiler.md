@@ -67,7 +67,7 @@ PostgreSQL:
 
 Connection Pooling ve getirdiği gücü daha iyi anlamak için maksimum bağlantı sayısının 100 verildiği (bu arada default bağlantı sayısı budur) bir durumu ele alalım. Ortalama olarak veri tabanı sorgularımızın 50ms'de sonuçlandığını düşünürsek, bir bağlantıdan 1 saniyede 20 (1000 / 50) sorgu gönderebiliriz. 100 bağlantıda toplam query sayısı saniyede 2000 (20 x 100) sorgu olmaktadır ki bu çok iyi bir rakamdır. Görüldüğü gibi izin verilen maksimum bağlantı sayısı uygulama ihtiyaçlarına ve veri tabanı kapasitesine göre Enginner edilmelidir.
 
-Bu noktada Connection Pool'ların proses ve Connection String bazlı olduğuna dikkat etmeliyiz. Herbir proses'in kendine ait bir Connection Pool'u vardır ve farklı proses'ler arasında paylaşılmaz. Aynı proses içinde de Connection Pool'un paylaşılması için Connection String'lerin aynı olması gerekir.
+Bu noktada Connection Pool'ların proses ve Connection String bazlı olduğuna dikkat etmeliyiz. Her bir proses'in kendine ait bir Connection Pool'u vardır ve farklı proses'ler arasında paylaşılmaz. Aynı proses içinde de Connection Pool'un paylaşılması için Connection String'lerin aynı olması gerekir.
 
 ### .NET Transaction yönetimini açıklayan bir C# programı
 
@@ -144,7 +144,7 @@ Aşağıda verilen Github Repository'sinin `perf-hit` Branch'indeki konsol progr
 
 Her bir döngüde 100 ms bekleyerek 100 döngüyü tamamlayan Thread'lerin ideal ortamda bütün işlemi sadece 10 saniyede (100 x 100 ms = 10000 ms) tamamlamasını bekleriz. Bu 10 saniyenin içerisine veri tabanına `SELECT 1` için yapılan sorgu sürelerini de eklememiz gerekir ancak bu sorgular muhtemelen 1 ms'den bile daha kısa sürecek sorgular olduğu için gözardı edilebilirler. 
 
-Bunları söylemekle birlikte 20 Thread için kullanıma sunulan sadece 5 adet veri tabanı bağlantısı olacağı için ve Transaction'lardan dolayı herbir Thread 100 saniye boyunca bir bağlantıyı başka Thread'ler için kullanılamaz hale getireceği için bir darboğaz yaşamayı beklemekteyiz.
+Bunları söylemekle birlikte 20 Thread için kullanıma sunulan sadece 5 adet veri tabanı bağlantısı olacağı için ve Transaction'lardan dolayı her bir Thread 100 saniye boyunca bir bağlantıyı başka Thread'ler için kullanılamaz hale getireceği için bir darboğaz yaşamayı beklemekteyiz.
 
 Eğer kendi bilgisayarınızdan takip ediyorsanız, Git'te `perf-hit` Branch'ine geçiş yaparak terminal'de `Docker` klasöründe olduğunuza emin olun. Önceki uygulamaları silmek için `make clean` komutunu verin ve yeni uygulamaları yaratmak için `make app` komutunu çalıştırın. 
 

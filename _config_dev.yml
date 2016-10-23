@@ -158,9 +158,13 @@ t:
   en:
     next: "NEXT"
     previous: "PREVIOUS"
+    level: "Level"
+    date: "Date"
   tr:
     next: "SONRAKİ"
     previous: "ÖNCEKİ"
+    level: "Seviye"
+    date: "Tarih"
 
 t_date:
   en:

@@ -38,7 +38,7 @@
 		  {% if include.type == "post" %}
       <p class="post-meta">
         <span class="post-date">
-          <strong>Tarih:</strong>
+          <strong>{{ site.t[page.lang].date }}:</strong>
           {% assign m = page.date | date: "%-m" %}
           {{ page.date | date: "%-d" }}
           {% case m %}
@@ -58,7 +58,7 @@
           {{ page.date | date: "%Y" }}
         </span>
         <span class="post-level">
-          <strong>Seviye:</strong> {{page.level }}
+          <strong>{{ site.t[page.lang].level }}:</strong> {{ page.level }}
         </span>
       </p>
       {% endif %}
@@ -87,7 +87,7 @@
 		  {% if include.type == "post" %}
       <p class="post-meta">
         <span class="post-date">
-          <strong>Tarih:</strong>
+          <strong>{{ site.t[page.lang].date }}:</strong>
           {% assign m = page.date | date: "%-m" %}
           {{ page.date | date: "%-d" }}
           {% case m %}
@@ -107,7 +107,7 @@
           {{ page.date | date: "%Y" }}
         </span>
         <span class="post-level">
-          <strong>Seviye:</strong> {{page.level }}
+          <strong>{{ site.t[page.lang].level }}:</strong> {{page.level }}
         </span>
       </p>
 		  {% endif %}

@@ -18,4 +18,4 @@ JMeter ile önceden bir deneyiminiz yoksa öncelikle aşağıdaki blog yazılar�
 
 [JMeter Bölüm 3: Pratik Test Senaryosu Kaydı Nasıl Yapılır?](/jmeter-pratik-test-hazirlama/)
 
-[JMeter Bölüm 4: Performans Testi Nasıl Hazırlanır??](/jmeter-performans-testi-hazirlama/)
+[JMeter Bölüm 4: Performans Testi Nasıl Hazırlanır?](/jmeter-performans-testi-hazirlama/)
