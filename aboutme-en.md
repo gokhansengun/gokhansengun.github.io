@@ -28,8 +28,8 @@ I am interested in below subjects, readers will be finding blogs especially rela
 - NoSQL databases (MongoDb, Cassandra)
 - Application server and database server performance optimization
 - Docker
-- Vagrant
-- Continuous Integration, Continuous Delivery
+- Vagrant, Packer, Consul, Terraform
+- Continuous Integration, Continuous Deployment
 - 3rd party development tools and libraries (electron, flyway, log4net, Moq, xUnit)
 - Experimental works on Node.js ve Go 
 - SPA (Single Page Application) development with HTML5, CSS, LESS, TypeScript, AngularJS, Bootstrap 
@@ -38,3 +38,4 @@ I am interested in below subjects, readers will be finding blogs especially rela
 - HTTP, TCP optimization
 - Linux + Mono installation and application development on Raspberry Pi
 - .NET Interop for consuming C/C++ libraries on Raspberry Pi 
+

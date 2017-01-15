@@ -30,8 +30,8 @@ Aşağıdaki konularla yakından ilgileniyorum, bu blogda çoğunlukla bu konula
 - NoSQL veri tabanları (MongoDb, Cassandra)
 - Uygulama sunucusu ve veri tabanı sunucusu performans optimizasyonu
 - Docker
-- Vagrant
-- Continuous Integration, Continuous Delivery
+- Vagrant, Packer, Consul, Terraform
+- Continuous Integration, Continuous Deployment
 - 3rd parti geliştirme araçları ve kütüphaneler (electron, flyway, log4net, Moq, xUnit)
 - Node.js ve Go dillerinde deneysel çalışmalar
 - HTML5, CSS, LESS, TypeScript, AngularJS, Bootstrap kullanarak SPA (Single Page Application) tasarımı
