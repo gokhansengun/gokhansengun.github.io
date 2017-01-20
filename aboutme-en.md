@@ -8,7 +8,7 @@ ref: aboutme-page
 
 <center><h2>Gökhan Şengün</h2></center>
 
-I work for Netas as New Product and R&D Business Development Manager. I live in Istanbul, am married with my love and dad of one kid. 
+I work for Netas as New Product and R&D Business Development Manager. I live in Istanbul, am married with my love and dad of two kids. 
 
 I started my professional work life as developing software for Embedded Systems. From 2006 to the end of 2012, I developed software on VxWorks and Embedded Linux systems using C and C++ for mission critical systems. This period allowed me to explore scheduling, file systems, network stack deeply. In 2012, I wanted to make a change in my career and moved to application development which I previously work on my spare times. Blending my previous knowledge on embedded systems with application development, I have gained several useful information especially in performance optimization and application durability (7x24).
 
