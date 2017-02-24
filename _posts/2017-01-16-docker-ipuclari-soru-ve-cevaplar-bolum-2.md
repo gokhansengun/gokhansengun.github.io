@@ -11,7 +11,7 @@ Docker Container'ların yaşam döngüleri çok iyi bir biçimde tanımlanmışt
 
 Dockerfile'ını kendi hazırladığınız Container'ları, Docker CLI veya Docker Compose CLI ile durdurmaya çalıştığınızda Container'ın hemen durdurulamadığını fakat 10 saniye sonra ancak durdurulabildiğini bugüne kadar gözlemlemiş olabilirsiniz. Henüz bu duruma rastlamadıysanız, Docker ile gelişen maceralarınızda karşılaşacağınızı garanti edebilirim. Bu blog'da bu davranışın neden sadece bazı Container'larda oluştuğuna ve bu davranışı nasıl değiştirebileceğimizi göreceğiz.
 
-### Soru 1
+### Soru 2
 
 Docker Hub'dan indirdiğiniz Nginx Docker Image'ının içine Dockerfile yardımı ile kendi sitenizdeki dosyaları kopyaladınız ve web sunucuyu başarılı bir şekilde ayağa kaldırdınız. Sitenizdeki yük fazla olduğu için birden fazla Nginx Container ayağa kaldırıyorsunuz ve bu Container'ları bir Load Balancer (Yük Dağıtıcı) arkasına koyarak gelen yükü eşit olarak dağıtıyorsunuz.
 
