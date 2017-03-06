@@ -357,7 +357,7 @@ Docker ile birlikte Tenancy mantığı uygulama kodundan kaldırılabilir. Uygul
 |`docker inspect <container_id>`|İlgili Container'la ilgili detaylı bilgiler verir|
 |`docker inspect <image_id|image_name>`|İlgili Image'la ilgili detaylı bilgiler verir|
 |`docker rm $(docker ps -aq)`|Bütün Container'ları kaldırır|
-|`docker stop $(docker ps -aq)`|Çalışan bütün Container'ları kaldırır|
+|`docker stop $(docker ps -aq)`|Çalışan bütün Container'ları durdurur|
 |`docker rmi $(docker images -aq)`|Bütün Image'ları kaldırır|
 |`docker images -q -f dangling=true`|Dangling (taglenmemiş ve bir Container ile ilişkilendirilmemiş) Image'ları listeler|
 |`docker rmi $(docker images -q -f dangling=true)`|Dangling Image'ları kaldırır|
