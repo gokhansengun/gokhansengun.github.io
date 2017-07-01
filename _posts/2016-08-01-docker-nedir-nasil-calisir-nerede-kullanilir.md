@@ -27,7 +27,7 @@ Aşağıdaki adımları tamamlayarak Docker hakkında genel anlamda fikir sahibi
 
 ### Motivasyon
 
-Bu blog'u okumaya başlamadan veya okumaya devam ederken aşağıdaki iki videoyu (özellikle de ilkini) izlemenizi ve bir makaleyi okumanız kesinlikle tavsiye edilir. Linkler ve açıklamalar aşağıda.
+Bu blog'u okumaya başlamadan veya okumaya devam ederken aşağıdaki iki videoyu (özellikle de ilkini) izlemeniz ve bir makaleyi okumanız kesinlikle tavsiye edilir. Linkler ve açıklamalar aşağıda.
 
 * [İlk video](https://www.youtube.com/watch?v=wW9CAH9nSLs)'da (5:21) Docker'ın fikir babası ve uygulayıcısı pek muhterem üstad Solomon Hykes'ın 21 Mart 2013'te Docker'ı ilk defa bir topluluk önünde demo etme görüntüleri var. Ecnebiler enteresan tabii, adam (Solomon) teknoloji dünyasını değiştirecek, 5 dakikası doldu diye adamın elini ayağına karıştırtıyorlar (hello world yerine hello wowlrd yazıyor). Prensip başka bir şey tabii :)
 * [İkinci video](https://www.youtube.com/watch?v=3N3n9FzebAA)'da (20:47) yine Solomon Hykes, Docker'ı neden geliştirdiklerini çok sade ve vurucu bir biçimde anlatıyor.
