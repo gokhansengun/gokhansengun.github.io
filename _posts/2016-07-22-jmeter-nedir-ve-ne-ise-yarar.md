@@ -184,7 +184,7 @@ JMeter Sampler'lar koşturulmadan önce ve sonra çalıştırılmak üzere sampl
 
 Yine aynı örneği (`www.milliyet.com.tr/siyaset/` sayfasını) kullanarak sayfa başında gösterilen ve HTML `<title>` tag'leri arasında bulunan sayfa başlığını alıp bir değişkene atmaya çalışalım. 
 
-Regex ile yakanalacak metin aşağıda işaretlenmiştir.
+Regex ile yakalanacak metin aşağıda işaretlenmiştir.
 
 {% include image.html url="/resource/img/JMeterPart1/JMeterMilliyetTitleRegexExtractor.png" description="JMeter Title Regex Extractor" %}
 
