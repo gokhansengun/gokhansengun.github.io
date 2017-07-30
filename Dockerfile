@@ -8,6 +8,8 @@ RUN chown -R jekyll /src/jekyll
 
 WORKDIR /src/jekyll
 
+RUN bundle update github-pages
+
 RUN jekyll clean
 
 RUN jekyll build 
