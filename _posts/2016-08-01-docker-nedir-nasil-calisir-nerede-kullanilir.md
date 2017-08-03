@@ -41,6 +41,10 @@ Bu blog'da yer verilen adımları takip edebilmeniz için aşağıdaki koşullar
 * Hypervisor bazlı sanallaştırma ortamları ile ilgili genel bilgi sahibi olmak (opsiyonel).
 * Blog'daki örneklerde Docker 1.12 versiyonu kullanılmıştır, verilen örneklerin tekrarlanabilmesi için Docker 1.12 veya üstü sürümlerin kullanılması gereklidir. Bu anlamda Windows için `Docker for Windows`, Mac OS X için ise `Docker for Mac` sürümlerinin kullanılması yeterli olacaktır.
 
+#### Önemli Uyarı
+
+* `Docker for Windows` ve `Docker for Mac` yerine `Docker Toolbox` üzerinden veya direkt olarak `docker-machine` kullanıyorsanız örneklerde `localhost` olarak verilen host isimlerini `docker-machine` IP'si (muhtemelen `192.168.99.100`) ile değiştirmeniz gerekebilir.
+
 ### Doğuş Hikayesi
 
 #### Tarihçe
