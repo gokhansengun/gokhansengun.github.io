@@ -54,23 +54,25 @@ Hemen işe koyulalım.
 
 1. Bu proje için yeni bir klasör oluşturarak, aşağıdaki içeriğe sahip bir `docker-compose.yml` dosyası oluşturun.
 
-        version: '2'
+   ```
+   version: '2'
 
-        services:
-            company_a_web_server:
-                image: nginx:latest
-                ports:
-                    - "8001:80"
+   services:
+      company_a_web_server:
+         image: nginx:latest
+         ports:
+            - "8001:80"
 
-            company_b_web_server:
-                image: nginx:latest
-                ports:
-                    - "8002:80"
+      company_b_web_server:
+         image: nginx:latest
+         ports:
+            - "8002:80"
 
-            company_c_web_server:
-                image: nginx:latest
-                ports:
-                    - "8003:80"
+      company_c_web_server:
+         image: nginx:latest
+         ports:
+            - "8003:80"
+   ```
 
     Docker Compose'un 1.6 ve sonraki versiyonlarında `docker-compose.yml` dosyasının formatı farklı özellikleri de destekleyecek şekilde geliştirilmiştir. Yukarıda verilen dosyada ilk satırın `version: '2'` olduğuna dikkat edin. Bu satır Docker Compose'a içeriğin 1.6 ile gelen versiyon yani `version: '2'` için değerlendirilmesini salık verir.
 
@@ -324,21 +326,23 @@ Kullanım senaryosunu örneklemeye çalışalım. Docker Compose ile oluşturdu�
 
 `docker-compose up` birden fazla Service tanımının olduğu Compose dosyalarında servisleri birbirlerine olan bağımlılıklarına göre sırayla başlatır. Eğer Service'ler arasında bir ilişki tanımı yoksa tanım sırasına göre başlatır. Servislerin birbirleri ile olan ilişkileri `depends_on` opsiyonu ile belirlenir. `docker-compose up`'a parametre ile bir servis ismi verildiğinde Compose öncelikle ilgili Service'in bağımlı olduğu Service'leri ve sonra ilgili Service'i başlatır. nginx-service servisinin ruby-service'e ruby-service'in de redis-service'e bağımlı olduğunu düşünelim. Bu durumda aşağıdaki gibi bir kullanım uygun olur.
 
-    version: '2'
+```
+version: '2'
 
-    services:
-        nginx-service:
-            build: WebSite
-            depends_on:
-                - ruby-service
+services:
+   nginx-service:
+      build: WebSite
+      depends_on:
+      - ruby-service
 
-        ruby-service:
-            build: WebApp
-            depends_on:
-                - redis-service
-        
-        redis-service:
-            image: redis
+   ruby-service:
+      build: WebApp
+      depends_on:
+      - redis-service
+    
+   redis-service:
+      image: redis
+```
 
 Başlangıçta bu opsiyon hep yanlış anlaşıldığı için ve muhtemelen siz de yanlış anlayacağınız için bu yanlış anlaşılmayı en baştan düzeltelim isterseniz. `depends_on` Service'leri başlatırken Service'lerin çalışmaya hazır hale gelip gelmediğini beklememektedir. Yukarıdaki örnekte, `ruby-service`'in `redis-service`'e bağımlılığı vardır. Burada `redis-service` Container'ı başlatıldıktan hemen sonra `ruby-service` Container'ı başlatılacaktır. Eğer Ruby uygulaması ilk açılışta Redis sunucunun hazır olup olmadığını kontrol ediyorsa ve hazır olmadığında hata veriyorsa Compose ile başlatıldıktan sonra muhtemelen hata verecektir çünkü Redis Container'ı ile Ruby App'inin Container'ı ile neredeyse aynı anlarda başlatılmış olmaktadır, Ruby App'inin Redis'in ayağa kalkması beklenmemektedir. Ruby App'inin Redis'in ayağa kalkmasının beklenmesi için bazı 3rd party mekanizmalar vardır ve bu hazırlayacağımız başka bir blog'un konusunu olacaktır fakat açık bir şekilde `depends_on` bu işe yaramamaktadır.
 
@@ -494,47 +498,51 @@ Uygulama yukarıda verilen bu basit fonksiyon için temel olarak 5 farklı servi
 
 `docker-compose.yml` dosyasının içeriği aşağıda verilmiştir. Şimdi burada tanımlanan servislerin üzerinden teker teker geçelim.
 
-    version: "2"
+```
+version: "2"
 
-    services:
-        voting-app:
-            build: ./vote
-            command: python app.py
-            volumes:
-                - ./vote:/app
-            ports:
-                - "5000:80"
-        
-        redis:
-            image: redis:alpine
-            ports: ["6379"]
+services:
+   voting-app:
+      build: ./vote
+      command: python app.py
+      volumes:
+         - ./vote:/app
+      ports:
+         - "5000:80"
+     
+   redis:
+      image: redis:alpine
+      ports: ["6379"]
+         
+   worker:
+      build: ./worker
             
-        worker:
-            build: ./worker
-            
-        db:
-            image: postgres:9.4
-        
-        result-app:
-            build: ./result
-            command: nodemon --debug server.js
-            volumes:
-                - ./result:/app
-            ports:
-                - "5001:80"
-                - "5858:5858"
+   db:
+      image: postgres:9.4
+    
+   result-app:
+      build: ./result
+      command: nodemon --debug server.js
+      volumes:
+         - ./result:/app
+      ports:
+         - "5001:80"
+         - "5858:5858"
+```
 
 ##### voting-app Service'i
 
 Bu servis aşağıdaki gibi tanımlanmıştır.
 
-    voting-app:
-        build: ./vote
-        command: python app.py
-        volumes:
-            - ./vote:/app
-        ports:
-            - "5000:80"
+```
+voting-app:
+   build: ./vote
+   command: python app.py
+   volumes:
+      - ./vote:/app
+   ports:
+      - "5000:80"
+```
 
 `build: ./vote` ile `docker-compose.yml` dosyasının bulunduğu klasöre göre relatif olarak `vote` klasöründe bulunan `Dockerfile`'a göre Image'ın build edilmesi istenmiştir. İsterseniz burada bulunan `Dockerfile`'ı bu blog serisinin  [ikinci blog](/docker-yeni-image-hazirlama/)'unda öğrendiğiniz bilgiler çerçevesinde inceleyebilirsiniz. `command: python app.py` ile Image build edildikten sonra Container oluşturulurken Image tarafından verilen default CMD'nin ezilmesi ve `python app.py` komutunun verilmesi konfigüre edilmiştir. 
 
@@ -575,14 +583,16 @@ Bu servis aşağıdaki gibi çok basit bir şekilde tanımlanmıştır ve bu ser
 
 Bu servisin tanımı aşağıda verilmiştir. Şimdi teker teker ilgili satırları inceleyelim.
 
-    result-app:
-        build: ./result
-        command: nodemon --debug server.js
-        volumes:
-            - ./result:/app
-        ports:
-            - "5001:80"
-            - "5858:5858"
+```
+result-app:
+   build: ./result
+   command: nodemon --debug server.js
+   volumes:
+      - ./result:/app
+   ports:
+      - "5001:80"
+      - "5858:5858"
+```
 
 Önceki servislerde de tekrar ettiğimiz gibi `build: ./result` satırı `docker-compose.yml` dosyasına göre relatif olarak `./result` klasöründe bulunan `Dockerfile`'ın build edilerek bu Service için oluşturulacak Container'larda kullanılması salık verilmiştir. `command: nodemon --debug server.js` satırı ile kullanılacak Image'ın default `CMD`'si ezilerek ilgili komutun koşturulması sağlanmıştır.
 
