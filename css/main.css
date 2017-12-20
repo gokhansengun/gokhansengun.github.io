@@ -616,3 +616,7 @@ pre code {
   }
 }
 
+.highlight pre {
+  background-color: rgb(249, 249, 237);
+  font-size: 13px;
+}
