@@ -1,15 +1,7 @@
----
-layout: page
-title: Kendime Notlar
-subtitle: docker, sql ve nosql veri tabanları, performans optimizasyonu, ci/cd ve verimlilik artıran geliştirici araçları ile ilgili yazılar
-lang: tr
-ref: index-page  
----
-
 <div class="posts-list container-fluid">
   {% assign posts=site.posts | where:"lang", page.lang %}
   {% for post in posts %}
-  {% unless post.medium %}
+  {% if post.medium %}
   <article class="row post-preview">
     <span class="col-sm-2 post-date hidden-xs">
       {% assign m = post.date | date: "%-m" %}
@@ -30,10 +22,10 @@ ref: index-page
       {% endcase %}
       {{ post.date | date: "%Y" }}
     </span>
-    <a href="{{ post.url | prepend: site.baseurl }}" class="col-sm-10 col-xs-12">
+    <a href="{{ post.ext-url }}" class="col-sm-10 col-xs-12" target="_blank">
       <span class="post-title">{{ post.title }}</span>
     </a>
   </article>
-  {% endunless %}
+  {% endif %}
   {% endfor %}
 </div>

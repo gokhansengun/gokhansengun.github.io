@@ -277,13 +277,12 @@ footer .theme-by {
 /* --- Post preview --- */
 
 .post-preview {
-  padding: 20px 0;
-  border-bottom: 3px solid #eee;
+  padding: 2px 0;
 }
 
 @media only screen and (min-width: 768px) {
   .post-preview {
-    padding: 35px 0;
+    padding: 2px 0;
   }
 }
 
@@ -303,7 +302,7 @@ footer .theme-by {
 }
 
 .post-preview .post-title {
-  font-size: 18px;
+  font-size: 12px;
   margin-top: 0;
 }
 .post-preview .post-subtitle {
@@ -325,13 +324,18 @@ footer .theme-by {
   display: inline-block;
   border-bottom: 1px solid #eee;
 }
-.post-preview .post-meta .post-date,
 .post-heading .post-meta .post-date {
   position: absolute;
   left: 10px;
   display: inline-block;
   border-bottom: 1px solid #eee;
 }
+
+.post-preview .post-date {
+  font-size: 14px;
+  text-align: right;
+}
+
 .post-preview .post-entry {
   font-family: 'PT Serif', Georgia, Times, "Times New Roman", serif;
   margin-top: 80px;
@@ -341,9 +345,16 @@ footer .theme-by {
   font-style: italic;
 }
 
+.blog-type-title {
+  padding-top: 20px;
+  font-size: 18px;
+  margin-top: 0;
+  text-align: center;
+}
+
 @media only screen and (min-width: 768px) {
   .post-preview .post-title {
-    font-size: 20px;
+    font-size: 14px;
   }
 }
 
@@ -387,7 +398,7 @@ footer .theme-by {
 }
 .intro-header .page-heading h1 {
   margin-top: 0;
-  font-size: 21px;
+  font-size: 18px;
 }
 .intro-header .post-heading h1 {
   margin-top: 0;
@@ -395,7 +406,7 @@ footer .theme-by {
 }
 .intro-header .page-heading .page-subheading,
 .intro-header .post-heading .post-subheading {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.1;
   display: block;
   font-family: 'PT Serif', Georgia, Times, "Times New Roman", serif;
@@ -440,7 +451,7 @@ footer .theme-by {
     padding: 150px 0;
   }  
   .intro-header .page-heading h1 {
-    font-size: 36px;
+    font-size: 30px;
   }
   .intro-header .post-heading h1 {
     font-size: 26px;
@@ -617,6 +628,6 @@ pre code {
 }
 
 .highlight pre {
-  background-color: rgb(249, 249, 237);
+  background-color: rgb(234, 234, 234);
   font-size: 13px;
 }

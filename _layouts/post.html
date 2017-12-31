@@ -23,30 +23,34 @@ layout: base
       <ul class="pager blog-pager">
       {% for post in site.posts %}
         {% if post.lang == page.lang %}
-          {% if prev %}
-            <li class="previous">
-              <a href="{{ post.url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; {{ site.t[page.lang].previous }}</a>
-            </li>
-          {% endif %}
-          {% assign prev = false %}
-          {% if post.id == page.id %}
-            {% assign prev = true %}
-          {% endif %}
+          {% unless post.medium %}
+            {% if prev %}
+              <li class="previous">
+                <a href="{{ post.url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; {{ site.t[page.lang].previous }}</a>
+              </li>
+            {% endif %}
+            {% assign prev = false %}
+            {% if post.id == page.id %}
+              {% assign prev = true %}
+            {% endif %}
+          {% endunless %}
         {% endif %}
       {% endfor %}
 
       {% for post in site.posts reversed %}
         {% if post.lang == page.lang %}
-          {% if next %}
-            <li class="next">
-              <a href="{{ post.url }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">{{ site.t[page.lang].next }} &rarr;</a>
-            </li>
-            {% break %}
-          {% endif %}
-          {% assign next = false %}
-          {% if post.id == page.id %}
-            {% assign next = true %}
-          {% endif %}
+          {% unless post.medium %}
+            {% if next %}
+              <li class="next">
+                <a href="{{ post.url }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">{{ site.t[page.lang].next }} &rarr;</a>
+              </li>
+              {% break %}
+            {% endif %}
+            {% assign next = false %}
+            {% if post.id == page.id %}
+              {% assign next = true %}
+            {% endif %}
+          {% endunless %} 
         {% endif %}
       {% endfor %}
       </ul>

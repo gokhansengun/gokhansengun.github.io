@@ -1,28 +1,17 @@
 ---
 layout: page
 title: Notes to myself
-subtitle: blog posts about .net technologies, docker, sql ve nosql databases, performans optimization, ci/cd and developer tools related with productivity
+subtitle: blog posts about docker, sql ve nosql databases, performans optimization, ci/cd and developer tools related with productivity
 lang: en
 ref: index-page  
 ---
 
-<div class="posts-list">
-  {% assign posts=site.posts | where:"lang", page.lang %}
-  {% for post in posts %}
-  <article class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-	  <h2 class="post-title">{{ post.title }}</h2>
-
-	  {% if post.subtitle %}
-	  <h3 class="post-subtitle">
-	    {{ post.subtitle }}
-	  </h3>
-	  {% endif %}
-    </a>
-
-    <p class="post-meta">
-      <span class="post-date">
-        <strong>Date:</strong>
+<div class="posts-list container-fluid">
+    {% assign posts=site.posts | where:"lang", page.lang %}
+    {% for post in posts %}
+    {% unless post.medium %}
+    <article class="row post-preview">
+      <span class="col-sm-2 post-date hidden-xs">
         {% assign m = post.date | date: "%-m" %}
         {{ post.date | date: "%-d" }}
         {% case m %}
@@ -41,16 +30,10 @@ ref: index-page
         {% endcase %}
         {{ post.date | date: "%Y" }}
       </span>
-      <span class="post-level">
-        <strong>Level:</strong> {{post.level }}
-      </span>
-    </p>
-
-    <div class="post-entry">
-      {{ post.content | strip_html | xml_escape | truncatewords: 50 }}
-	  <a href="{{ post.url | prepend: site.baseurl }}" class="post-read-more">[Continue&nbsp;Reading]</a>
-    </div>
-
-   </article>
-  {% endfor %}
-</div>
+      <a href="{{ post.url | prepend: site.baseurl }}" class="col-sm-10 col-xs-12">
+        <span class="post-title">{{ post.title }}</span>
+      </a>
+    </article>
+    {% endunless %}
+    {% endfor %}
+  </div>

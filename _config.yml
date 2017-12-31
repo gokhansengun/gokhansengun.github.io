@@ -107,51 +107,6 @@ exclude:
   - CNAME
   - Vagrantfile
 
-# prose.io config
-prose:
-  rooturl: '_posts'
-  media: 'img'
-  ignore:
-    - 404.html
-    - LICENSE
-    - feed.xml
-    - _config.yml
-    - /_layouts
-    - /_includes
-    - /css
-    - /img
-    - /js
-  metadata:
-    _posts:
-      - name: "layout"
-        field:
-          element: "hidden"
-          value: "post"
-      - name: "title"
-        field:
-          element: "text"
-          label: "Post title"
-          placeholder: "Title"
-          alterable: true
-      - name: "subtitle"
-        field:
-          element: "textarea"
-          label: "Subtitle"
-          placeholder: "A description of your post."
-          alterable: true
-      - name: "date"
-        field:
-          element: "text"
-          label: "Date"
-          help: "Enter date of post."
-          placeholder: "yyyy-mm-dd"
-          alterable: true
-      - name: "published"
-        field:
-          element: "checkbox"
-          label: "Publish"
-          help: "Check to publish post, uncheck to hide."
-
 # translations
 
 t:
@@ -160,37 +115,41 @@ t:
     previous: "PREVIOUS"
     level: "Level"
     date: "Date"
+    blog_post: "Blog Posts"
+    medium_post: "Medium Posts"
   tr:
     next: "SONRAKİ"
     previous: "ÖNCEKİ"
     level: "Seviye"
     date: "Tarih"
+    blog_post: "Blog Yazıları"
+    medium_post: "Medium  Yazıları"
 
 t_date:
   en:
-    January: "January"
-    February: "February"
-    March: "March"
-    April: "April"
+    January: "Jan"
+    February: "Feb"
+    March: "Mar"
+    April: "Apr"
     May: "May"
-    June: "June"
-    July: "July"
-    August: "August"
-    September: "September"
-    October: "October"
-    November: "November"
-    December: "December"
+    June: "Jun"
+    July: "Jul"
+    August: "Aug"
+    September: "Sep"
+    October: "Oct"
+    November: "Nov"
+    December: "Dec"
   tr:
-    January: "Ocak"
-    February: "Şubat"
-    March: "Mart"
-    April: "Nisan"
-    May: "Mayıs"
-    June: "Haziran"
-    July: "Temmuz"
-    August: "Ağustos"
-    September: "Eylül"
-    October: "Ekim"
-    November: "Kasım"
-    December: "Aralık"
+    January: "Oca"
+    February: "Şub"
+    March: "Mar"
+    April: "Nis"
+    May: "May"
+    June: "Haz"
+    July: "Tem"
+    August: "Ağu"
+    September: "Eyl"
+    October: "Eki"
+    November: "Kas"
+    December: "Ara"
 
