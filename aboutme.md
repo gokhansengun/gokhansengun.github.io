@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: aboutpage
 title: Hakkımda
 subtitle:
 lang: tr

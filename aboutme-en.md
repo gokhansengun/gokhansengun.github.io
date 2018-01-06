@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: aboutpage
 title: About Me
 subtitle:
 lang: en
