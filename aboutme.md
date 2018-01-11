@@ -8,7 +8,7 @@ ref: aboutme-page
 
 <center><h2>Gökhan Şengün</h2></center>
 
-Netaş'ta Yeni Ürün Geliştirme ve Ar-Ge İş Geliştirme Müdürü olarak çalışıyorum. İstanbul'da yaşıyorum, evliyim ve iki çocuk babasıyım :) İleri düzeyde İngilizce orta düzeyde de Almanca biliyorum. 
+Netaş'ta Yeni Ürün Geliştirme Müdürü olarak çalışıyorum. İstanbul'da yaşıyorum, evliyim ve iki çocuk babasıyım :) İleri düzeyde İngilizce orta düzeyde de Almanca biliyorum. 
 
 1984 yılında Malatya'da doğdum. ilk, orta ve lise öğrenimimi Malatya'da tamamladıktan sonra 2001 yılında Boğaziçi Üniversitesi İşletme Bölümü'nde yüksek öğrenimime başladım. 2003 yılında tekrar o zamanki adıyla Öğrenci Seçme Sınavına (ÖSS) girerek yine Boğaziçi Üniversitesi Elektrik-Elektronik Mühendisliği Bölümü'nü kazandım ve öğrenimime bu bölümde devam ettim. Bu kısım ilginç biraz belki bir blog yazısında bu kısmı da ele alma fırsatı bulurum.
 
@@ -24,22 +24,21 @@ Sayfanın altında bulunan sosyal medya hesaplarım ve mail aracılığı ile ba
 
 Aşağıdaki konularla yakından ilgileniyorum, bu blogda çoğunlukla bu konular ile ilgili yazılar bulacaksınız.
 
-- .NET framework, Mono, .NET Core
-- .NET teknolojileri (WCF, MVC, Web API, Entity Framework, OWIN, Xamarin, XAML, WPF)
 - İlişkili veri tabanı yönetim sistemlerinden (RDBMS) Microsoft SQL Server ve PostgreSQL 
 - NoSQL veri tabanları (MongoDb, Cassandra)
 - Uygulama sunucusu ve veri tabanı sunucusu performans optimizasyonu
-- Docker
-- Vagrant, Packer, Consul, Terraform
+- Bulut platformları (Aws, Azure, Google Cloud, DigitalOcean)
+- Docker, Kubernetes
+- HashiStack Araçları - Vagrant, Packer, Consul, Terraform, Vault, Nomad
 - Continuous Integration, Continuous Deployment
 - 3rd parti geliştirme araçları ve kütüphaneler (electron, flyway, log4net, Moq, xUnit)
-- Node.js ve Go dillerinde deneysel çalışmalar
+- .NET framework, Mono, .NET Core
+- .NET teknolojileri (WCF, MVC, Web API, Entity Framework, OWIN, Xamarin, XAML, WPF)- Node.js ve Go dillerinde deneysel çalışmalar
 - HTML5, CSS, LESS, TypeScript, AngularJS, Bootstrap kullanarak SPA (Single Page Application) tasarımı
 - Git, Apache JMeter, Apache Ab, Fiddler, IIS, WinDbg, npm, Jekyll, Gulp, Bower, SystemJS, jspm 
 - Web uygulama güvenliği
 - HTTP, TCP optimizasyonu
-- Raspberry Pi üzerinde Linux + Mono kurulumu ile uygulama kurgusu
-- Raspberry Pi üzerinde C# tarafından çağrılmak üzere C ve C++ ile yazılmış kütüphanelerin .NET Interop ile .NET tarafından kullanılabilir hale getirilmesi
+- Raspberry Pi üzerinde farklı dillerle IoT uygulamaları
 
 ### Özgeçmiş
 
@@ -75,4 +74,4 @@ Aşağıdaki konularla yakından ilgileniyorum, bu blogda çoğunlukla bu konula
 
 #### 2015:
 
-> * Netaş'ta Yeni Ürün Geliştirme ve Ar-Ge İş Geliştirme ekibinde yönetici olarak görev almaya başladım.
+> * Netaş'ta Yeni Ürün Geliştirme Müdürü olarak görev almaya başladım.
