@@ -1,0 +1,26 @@
+sudo: required
+
+language: bash
+
+services:
+  - docker
+
+env:
+  global:
+    - IMAGE_NAME=gsengun/blog
+
+script:
+  - docker build -t $IMAGE_NAME .
+  - docker tag $IMAGE_NAME:latest $IMAGE_NAME:1.0.$TRAVIS_BUILD_NUMBER
+
+after_script:
+  - docker images
+
+before_deploy:
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+
+deploy:
+  provider: script
+  script: docker push $IMAGE_NAME:latest && docker push $IMAGE_NAME:1.0.$TRAVIS_BUILD_NUMBER
+  on:
+    branch: master
