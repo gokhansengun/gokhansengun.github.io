@@ -30,9 +30,11 @@ ref: index-page
       {% endcase %}
       {{ post.date | date: "%Y" }}
     </span>
-    <a href="{{ post.url | prepend: site.baseurl }}" class="col-sm-10 col-xs-12">
-      <span class="post-title">{{ post.title }}</span>
-    </a>
+    <div class="col-sm-10 col-xs-12">
+      <a href="{{ post.url | prepend: site.baseurl }}">
+        <span class="post-title">{{ post.title }}</span>
+      </a>
+    </div>
   </article>
   {% endunless %}
   {% endfor %}

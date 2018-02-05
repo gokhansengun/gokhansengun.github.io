@@ -22,9 +22,11 @@
       {% endcase %}
       {{ post.date | date: "%Y" }}
     </span>
-    <a href="{{ post.ext-url }}" class="col-sm-10 col-xs-12" target="_blank">
-      <span class="post-title">{{ post.title }}</span>
-    </a>
+    <div class="col-sm-10 col-xs-12">
+      <a href="{{ post.ext-url }}" target="_blank">
+        <span class="post-title">{{ post.title }}</span>
+      </a>
+    </div>
   </article>
   {% endif %}
   {% endfor %}
