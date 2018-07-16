@@ -57,9 +57,11 @@
           {% endcase %}
           {{ page.date | date: "%Y" }}
         </span>
+        {% if page.layout == "post" %}
         <span class="post-level">
           <strong>{{ site.t[page.lang].level }}:</strong> {{ page.level }}
         </span>
+        {% endif %}
       </p>
       {% endif %}
         </div>
@@ -106,9 +108,11 @@
           {% endcase %}
           {{ page.date | date: "%Y" }}
         </span>
+        {% if page.layout == "post" %}
         <span class="post-level">
           <strong>{{ site.t[page.lang].level }}:</strong> {{page.level }}
         </span>
+        {% endif %}
       </p>
 		  {% endif %}
         </div>

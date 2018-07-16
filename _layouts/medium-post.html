@@ -1,0 +1,18 @@
+---
+layout: base
+---
+
+{% include header.html type="post" %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <hr />
+      <article role="main" class="blog-post">
+        Bu yazı Medium'da yayınlanmıştır. Yazıya ulaşmak için lütfen
+        <a href="{{ page.ext-url }}">buraya tıklayınız.</a>
+	      {{ content }}
+	    </article>
+    </div>
+  </div>
+</div>
