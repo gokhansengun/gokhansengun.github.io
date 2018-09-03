@@ -1,7 +1,7 @@
 ---
 layout: medium-post
-title: Dosya sistemi dosyaları nasıl saklar?
-ext-url: https://medium.com/@gokhansengun/d10e8b7a43a1
+title: Dosya sistemi dosyaları nasıl saklar  —  1?
+ext-url: https://medium.com/@gokhansengun/c33e9a07e971
 lang: tr
 medium: yes 
 ---
