@@ -116,6 +116,7 @@ t:
     level: "Level"
     date: "Date"
     blog_post: "Blog Posts"
+    talks: "Talks"
     medium_post: "Medium Posts"
   tr:
     next: "SONRAKİ"
@@ -123,6 +124,7 @@ t:
     level: "Seviye"
     date: "Tarih"
     blog_post: "Blog Yazıları"
+    talks: "Konuşmalar"
     medium_post: "Medium  Yazıları"
 
 t_date:
