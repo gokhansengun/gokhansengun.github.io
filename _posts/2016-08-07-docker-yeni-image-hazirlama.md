@@ -4,6 +4,7 @@ title: "Docker Bölüm 2: Yeni bir Docker Image'ı Nasıl Hazırlanır?"
 level: Başlangıç
 lang: tr
 ref: docker-part-2
+blog: yes
 ---
 
 Docker blog serimizin ilk bölümünde Docker nedir, nasıl çalışır ve nerede kullanılır sorularına cevap aramış ve Docker'a detaylı bir giriş yapmıştık. Önceki blog'da bahsettiğimiz gibi [DockerHub](https://hub.docker.com) gerek official (Ubuntu, Nginx, Redis, vb) gerekse de bu Image'lardan türetilen ve farklı özellikler barındıran birçok farklı ve çok faydalı Image içermektedir. Bu Image'lar ihtiyaçlarımızı çok büyük oranda karşılasa da kısa sürede gerek official gerekse de diğer repository'lerdeki Image'ları özelleştirme ihtiyacı ortaya çıkmaktadır. Blog serimizin ikinci bölümü olan bu blog'da Docker'ın sunduğu zengin özelleştirme araçlarını kullanarak mevcut Docker Image'larını özelleştirerek ihtiyaçlarımıza uygun hale getireceğiz ve bir yandan da Docker'ı bu vesile ile daha yakından tanımış olacağız. 

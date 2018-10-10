@@ -9,7 +9,7 @@ ref: index-page
 <div class="posts-list container-fluid">
     {% assign posts=site.posts | where:"lang", page.lang %}
     {% for post in posts %}
-    {% unless post.medium %}
+    {% if post.blog %}
     <article class="row post-preview">
       <span class="col-sm-2 post-date hidden-xs">
         {% assign m = post.date | date: "%-m" %}
@@ -36,6 +36,6 @@ ref: index-page
         </a>
       </div>
     </article>
-    {% endunless %}
+    {% endif %}
     {% endfor %}
   </div>

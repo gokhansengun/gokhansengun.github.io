@@ -5,6 +5,7 @@ level: Başlangıç
 published: true
 lang: tr
 ref: hosting-web-sites-from-your-own-computer
+blog: yes
 ---
 
 Evde kullandığımız bilgisayardan internete açık bir şekilde bir servisin (örneğin web sunucu) nasıl yayınlanabileceği konusu üzerine uzun süredir yazmak istiyordum. Bu konu ile ilgili bir mail grubunda soru gelince "fırsat bu fırsat" diyerek bu blog yazısına başladım. Sunucuların özel veri merkezlerinden bile çıkarılıp, konsolide edilmiş paylaşılan veri merkezlerine (public cloud - AWS, Azure, Google Cloud, DigitalOcean, vb) taşındığı, A'dan Z'ye bütün hizmetlerin (web sayfası sunma, veri tabanı, in-memory cache) cloud'da maliyet etkin bir biçimde sağlandığı bu devirde evden servis sağlamak da nereden çıktı dediğinizi duyar gibiyim :-)

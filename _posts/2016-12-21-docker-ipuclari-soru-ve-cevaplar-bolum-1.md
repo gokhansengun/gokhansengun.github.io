@@ -5,6 +5,7 @@ level: Orta
 published: true
 lang: tr
 ref: docker-tips-question-and-answer-part-1
+blog: yes
 ---
 
 Önceki blog yazılarında Docker'ın çıkış nedenini, çözdüğü problemleri ve kullanım alanlarını örneklerle açıklamış ve Docker'a aşinalık sağlamayı hedeflemiştik. Bu blog yazılarına birçok güzel yorum ve bir o kadar da soru geldi, hepsini elimizden geldiğince cevaplamaya çalıştık. Şimdi sıra kendi iş akışımızı Docker ile dönüştürme serüveninde herkesin işine yarayabilecek, Docker'ın kullanım alanlarını güzel bir şekilde örnekleyecek, Docker'ın getirdikleri ve götürdüklerinin daha iyi anlaşılmasına olanak tanıyacak bilgileri paylaşmaya geldi. 

@@ -4,6 +4,7 @@ title: "Docker Bölüm 1: Nedir, Nasıl Çalışır, Nerede Kullanılır?"
 level: Başlangıç
 lang: tr
 ref: docker-part-1
+blog: yes
 ---
 
 Popüler tabirle "Geleceğin Teknolojisi"ne aslında "Geleceğin Altyapı Teknolojisi"ne detaylı bir şekilde göz atacağız. Bu blog'da ilerleyen zamanlarda yer vereceğimiz post'ların neredeyse tamamının demo'larında Docker kullanacak olduğumuzdan post'ların anlaşılabilmesi açısından siz değerli okuyucuların "Yeter Derece"de Docker'a hakim olması gerekmektedir. Bu blog serisini başlatma sebebim tam olarak da bu. Başka kaynaklarda Docker ile ilgili bulunamayacak bilgilerin bu blog serisinde bulunacağı iddiasında değilim ancak derli toplu, pratik bilgilere ağırlık veren pragmatik bir yaklaşımla konuyu ele alacağımızı söyleyebilirim.

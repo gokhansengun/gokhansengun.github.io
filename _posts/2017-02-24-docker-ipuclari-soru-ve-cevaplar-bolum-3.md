@@ -5,6 +5,7 @@ level: Başlangıç
 published: true
 lang: tr
 ref: docker-tips-question-and-answer-part-3
+blog: yes
 ---
 
 Şimdiye kadar yaptığımız birçok örnekte Docker Container'ları hep servis tipi (Web sunucu, yük dağıtıcı, Cache, Database) işler için kullandık. Docker Container'lar, servis tipi işlerde kullanılmanın yanında Batch olarak adlandırabileceğimiz, zamanlanarak veya isteğe bağlı çalışacak bir şekilde de kullanılabilirler. Soru / Cevap serimizin bu bölümünde Docker'ı Batch tipi işlerde kullanmamıza yardımcı olarak konseptleri ve teknikleri tanıyacağız.

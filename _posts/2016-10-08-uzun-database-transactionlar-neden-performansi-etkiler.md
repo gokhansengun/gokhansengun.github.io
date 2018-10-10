@@ -5,6 +5,7 @@ level: Orta
 published: true
 lang: tr
 ref: why-do-long-db-transactions-affect-performance
+blog: yes
 ---
 
 Veri tabanı Transaction'ları ile uğraşan herkes iyi bir performans için Transaction'ların başlatılır başlatılmaz kısa bir süre içinde Commit'lenmesi gerektiğini bilir. Peki bu bilgi gerçekten doğru mudur? Eğer doğruysa veri tabanı Transaction'larını başlattıktan sonra Commit'lemekte acele etmediğimizde veya aslında acele etmek istesek bile iş kurallarının buna izin vermediği durumlarda, performansı olumsuz etkileyen esas mekanizma nedir? Bu blog yazısında, bu konuyu örnek programlar yazarak irdelemeye çalışacağız.

@@ -5,6 +5,7 @@ level: Intermediate
 lang: en
 published: true
 ref: why-do-long-db-transactions-affect-performance
+blog: yes
 ---
 
 So almost everybody working with database transactions knows that the transactions should be started and then committed as soon as we are done with it to have better performance. Is this really the case? If this is the case, what is the underlying mechanism causing performance issues if we start a transaction and do not hurry up in committing it or our business just does not allow to commit it very quickly? In this blog post, we will try to dig this subject by using a few programs.

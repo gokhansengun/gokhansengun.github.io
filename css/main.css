@@ -631,3 +631,8 @@ pre code {
   background-color: rgb(234, 234, 234);
   font-size: 13px;
 }
+
+.talk-duration, .talk-community {
+  font-style: italic;
+  font-size: 13px;
+}

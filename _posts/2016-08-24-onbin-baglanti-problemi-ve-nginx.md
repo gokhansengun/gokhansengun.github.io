@@ -6,6 +6,5 @@ published: false
 progress: only-planned
 lang: tr
 ref: 10-thousand-connection-problem
+blog: yes
 ---
-
-

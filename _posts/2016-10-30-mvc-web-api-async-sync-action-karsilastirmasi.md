@@ -5,6 +5,7 @@ level: Orta
 lang: tr
 published: true
 ref: asp-net-mvc-and-web-api-comparison-of-async-or-sync-actions
+blog: yes
 ---
 
 ASP.NET, .NET 4.5 versiyonu ile birlikte asenkron Action'ları desteklemektedir. Günümüzde asenkron işleme oldukça popüler hale gelmiştir ve her gün daha fazla uygulama asenkron olarak tasarlanmaya ve uygulanmaya başlanmıştır. Bu blog'da asenkron işlemlerin getirilerini ve uzun yıllar boyunca kullanmakta olduğumuz geleneksel senkron işlemler ile karşılaştırmasına yer vereceğiz. Blog'da sadece iddiaları ileri sürmektense, örnek programlar ile birlikte senkron ve asenkron işlemlerin davranışlarını gözlemleme fırsatı bulacağız. Bu yaklaşım, asenkron ve senkron işlemleri anlamanın yanı sıra, ASP.NET'in istekleri nasıl işlediği ve Thread yönetimi ile ilgili daha fazla bilgi sahibi olmamızı da sağlayacak. MVC ve Web API Action'larının işlenmesi arasında fazla bir fark bulunmamaktadır. Gösterim kolaylığı açısından bu blog'daki örneklerde Web API kullanacağız fakat yapılan saptamalar MVC için de geçerlidir.

@@ -5,6 +5,7 @@ level: Orta
 published: true
 lang: tr
 ref: docker-tips-question-and-answer-part-4
+blog: yes
 ---
 
 Serinin bu bölümünde Docker Inc'in Nisan 2017'deki konferansında duyurduğu ve büyük yankı uyandıran Multi-stage Build'ın ne anlama geldiğini öğrenecek ve bu özelliği kullanan bir örnek yapacağız. Tanıtılan özellik yakın zamanda eklendiği için bu blog'daki örneği takip edebilmek ve daha sonrasında kullanabilmek için Docker sürümünüzü en günceline 17.06.0-ce veya bir önceki sürüme 17.05.0-ce güncellemeniz gerekmektedir.

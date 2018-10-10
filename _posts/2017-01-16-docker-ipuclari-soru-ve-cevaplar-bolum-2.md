@@ -5,6 +5,7 @@ level: Orta
 published: true
 lang: tr
 ref: docker-tips-question-and-answer-part-2
+blog: yes
 ---
 
 Docker Container'ların yaşam döngüleri çok iyi bir biçimde tanımlanmıştır. Docker Daemon, Docker Image'ından bir Container oluşturarak Image içinde tanımlanan uygulamaya (Command) kontrolü bıraktıktan sonra uygulama, kendi isteği ile çıkış yapana kadar çalıştırılmaya devam eder. Container'ın çalışmasına müdahale gerektiğinde, Docker CLI yardımı ile Docker Daemon'a gönderilen komutlar, Container'ın çalışması duraklatabilir (Pause), durdurabilir (Stop) veya yeniden başlatabilir (Restart).
