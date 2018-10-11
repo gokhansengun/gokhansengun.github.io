@@ -34,7 +34,7 @@ Aşağıdaki konularla yakından ilgileniyorum, bu blogda çoğunlukla bu konula
 - 3rd parti geliştirme araçları ve kütüphaneler (electron, flyway, log4net, Moq, xUnit)
 - .NET framework, Mono, .NET Core
 - .NET teknolojileri (WCF, MVC, Web API, Entity Framework, OWIN, Xamarin, XAML, WPF)- Node.js ve Go dillerinde deneysel çalışmalar
-- HTML5, CSS, LESS, TypeScript, AngularJS, Bootstrap kullanarak SPA (Single Page Application) tasarımı
+- HTML5, CSS, LESS, TypeScript, React, Bootstrap kullanarak SPA (Single Page Application) tasarımı
 - Git, Apache JMeter, Apache Ab, Fiddler, IIS, WinDbg, npm, Jekyll, Gulp, Bower, SystemJS, jspm 
 - Web uygulama güvenliği
 - HTTP, TCP optimizasyonu

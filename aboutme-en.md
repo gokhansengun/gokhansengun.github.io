@@ -32,7 +32,7 @@ I am interested in below subjects, readers will be finding blogs especially rela
 - 3rd party development tools and libraries (electron, flyway, log4net, Moq, xUnit)
 - .NET framework, Mono, .NET Core
 - .NET technologies (WCF, MVC, Web API, Entity Framework, OWIN, Xamarin, XAML, WPF)- Experimental works on Node.js ve Go 
-- SPA (Single Page Application) development with HTML5, CSS, LESS, TypeScript, AngularJS, Bootstrap 
+- SPA (Single Page Application) development with HTML5, CSS, LESS, TypeScript, React, Bootstrap 
 - Git, Apache JMeter, Apache Ab, Fiddler, IIS, WinDbg, npm, Jekyll, Gulp, Bower, SystemJS, jspm 
 - Web application security
 - HTTP, TCP optimization
