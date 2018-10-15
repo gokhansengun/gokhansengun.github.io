@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Makefile ve make nedir, ne işe yarar?"
+title: "Makefile ve make Nedir, Ne İşe Yarar?"
 level: Başlangıç
 published: true
 lang: tr
