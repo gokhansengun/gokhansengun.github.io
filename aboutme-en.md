@@ -10,7 +10,7 @@ ref: aboutme-page
 
 I work for Netas as New Product Development Manager. I live in Istanbul, am married with my love and dad of two kids. 
 
-I started my professional work life as developing software for Embedded Systems. From 2006 to the end of 2012, I developed software on VxWorks and Embedded Linux systems using C and C++ for mission critical systems. This period allowed me to explore scheduling, file systems, network stack deeply. In 2012, I wanted to make a change in my career and moved to application development which I previously work on my spare times. Blending my previous knowledge on embedded systems with application development, I have gained several useful information especially in performance optimization and application durability (7x24).
+I started my professional work life as developing software for Embedded Systems. From 2006 to the end of 2012, I developed software on VxWorks and Embedded Linux systems using C and C++ for mission critical systems. This period allowed me to explore scheduling, file systems, network stack deeply. In 2012, I wanted to make a change in my career and moved to application development which I previously work on my spare times. Blending my previous knowledge on embedded systems with application development, I have gained several useful information especially in performance optimization and application durability (7x24). I have been primarily working on DevOps and Cloud techologies as of 2015.
 
 I will try to document the knowledge I obtained over the years to this blog. Hope to have something useful especially for me to go back and retrieve them when needed. If this blog also helps the readers, then this will be a great surplus. 
 
