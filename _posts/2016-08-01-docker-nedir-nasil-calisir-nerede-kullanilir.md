@@ -228,7 +228,7 @@ Bu bölümde Docker CLI'ı kullanarak yukarıda anlattığımız bileşenler ve 
         Gokhans-MacBook-Pro:~ gsengun$ docker rm e139e975009f
         e139e975009f
 
-7. `hello-world` Image'ı 2MB'ın altında pek fazla faydalı bir şey yapmamıza imkan tanımayan fakat Container yaşam döngüsü ve Docker'ın çalışma prensibini güzel özetleyen bir Image'dı. Şimdi biraz daha göze hoş gelen işlemler yapmak için bir `Nginx` Image'ı başlatalım fakat bu kez önce Pull etmek yerine direkt çalıştıralım. Önceki bölümde direkt çalıştırdığımızda Docker'ın önce lokal Image'lara baktığını, eğer istenen Image lokalde yoksa DockerHub'dan çektiğini söylemiştik. `Nginx` Image'ını indirmek ve bu Image'dan Image içinde konfigüre edilmiş default web sitesini 8080 nolu portta sunmaya başlamak için `docker run -p 8080:80 nginx` komutunu koşturun.
+7. `hello-world` Image'ı 2MB'ın altında pek fazla faydalı bir şey yapmamıza imkan tanımayan fakat Container yaşam döngüsü ve Docker'ın çalışma prensibini güzel özetleyen bir Image'dı. Şimdi biraz daha göze hoş gelen işlemler yapmak için bir `Nginx` Image'ı başlatalım fakat bu kez önce Pull etmek yerine direkt çalıştıralım. Önceki bölümde direkt çalıştırdığımızda Docker'ın önce lokal Image'lara baktığını, eğer istenen Image lokalde yoksa DockerHub'dan çektiğini söylemiştik. `Nginx` Image'ını indirmek ve bu Image'dan Image içinde konfigüre edilmiş default web sitesini 8080 nolu portta sunmaya başlamak için `docker run -p 8080:80 nginx:1.10` komutunu koşturun.
 
     `hello-world` Image'ına benzer şekilde `Nginx` Image'ının download edildiği sonrasında çalıştırıldığı ve istekler beklemeye başladığını göreceksiniz.
 
