@@ -75,3 +75,7 @@ Aşağıdaki konularla yakından ilgileniyorum, bu blogda çoğunlukla bu konula
 #### 2015:
 
 > * Netaş'ta Yeni Ürün Geliştirme Müdürü olarak görev almaya başladım.
+
+#### 2019:
+
+> * Freelance olarak DevOps Danışmanlık hizmetleri veriyorum.
